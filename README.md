@@ -8,5 +8,7 @@ Please feel free to give the API a whirl and give us feedback via this repositor
 
 There are a couple of small examples in using the API:
 
+
 Python 3: http://nbviewer.jupyter.org/gist/jzollerneon/3d0519e1f26db80b755cc865ef218d58
+
 Javascript: http://bl.ocks.org/jzollerneon/9700c4908bebbd5b5e546c0cd4decc4c
