@@ -20,8 +20,8 @@ There is also an R package, [nneo](https://github.com/ropenscilabs/nneo), in dev
 We have been migrating our back end code to a new platform, and we're almost done!  Now, we can start putting in some changes to the API that have been pending for a while:
 
 * Updated some missing documentation fields at http://data.neonscience.org/data-api
-* (Active now!) In a few days, some /products responses will have a new "keyword" list, with words related to specific data products.
-* (Active now!) In a few days, locationProperties in the /locations endpoint will no longer have the locationPropertyDescription element.
+* Active now: Some /products responses will have a new "keyword" list, with words related to specific data products.
+* Active now: locationProperties in the /locations endpoint will no longer have the locationPropertyDescription element.
 * In a few weeks, some /products responses will have a related data products section, showing parent, child, and related data products.
 * In a few weeks, /data file endpoints will start to change!  Currently, when using /data/&lt;product&gt;/&lt;site&gt;/&lt;month&gt;, a list of URL's is returned as /data/&lt;product&gt;/&lt;site&gt;/&lt;month&gt;/&lt;filename&gt;.  Starting with a few new data products, the list of URL's returned will have a form similar to **/s3.battelleecology.org/&lt;random string&gt;/&lt;filename&gt;**.  These new direct file URL's will also _expire_ after some time.  Some design decisions are still pending, so we'll post details as soon as we can.
  
