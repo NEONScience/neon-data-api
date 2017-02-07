@@ -1,3 +1,5 @@
+**2017-02-07**: a recent update accidentally removed siteCode, domainCode, and locationType from /locations endpoints.  We'll have them back in place soon!
+
 # neon-data-api
 
 NEON's data API is currently under development (v0); this is a forum to share ideas and code.
