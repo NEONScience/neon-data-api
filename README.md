@@ -1,4 +1,4 @@
-**2017-02-07**: a recent update accidentally removed siteCode, domainCode, and locationType from /locations endpoints.  We'll have them back in place soon!
+**2017-02-07**: a recent update accidentally removed siteCode, domainCode, and locationType from /locations endpoints.  We'll have them back in place soon.  Thanks to @cklunch for spotting it for us!
 
 # neon-data-api
 
