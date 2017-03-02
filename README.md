@@ -14,6 +14,13 @@ Javascript: http://bl.ocks.org/jzollerneon/9700c4908bebbd5b5e546c0cd4decc4c
 
 There is also an R package, [nneo](https://github.com/ropenscilabs/nneo), in development by [Scott Chamberlin](https://github.com/sckott) with [rOpenSci](https://github.com/ropenscilabs): https://github.com/ropenscilabs/nneo
 
+**2017-03-01 update**:
+
+The next change should be released early next week.  It addresses issue #15 (adding convenience urls to /sites, /products, and /locations), and issue #12 (removing status fields from the data).
+
+The ability to view parent, child, and related data products is still pending.  We currently use this internally.  If this is useful to the public at large, we would love to hear about it through this github's Issues page.
+
+We continue our migration to the S3 system for storing data.  The url change to the S3 system, mentioned in the last update, is still some time away from public implementation.  You can expect to see it in conjunction with our next major data product rollout.
 
 **2017-01-17 update**:
 
