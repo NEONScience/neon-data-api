@@ -14,7 +14,7 @@ Javascript: http://bl.ocks.org/jzollerneon/9700c4908bebbd5b5e546c0cd4decc4c
 
 There is also an R package, [nneo](https://github.com/ropenscilabs/nneo), in development by [Scott Chamberlin](https://github.com/sckott) with [rOpenSci](https://github.com/ropenscilabs): https://github.com/ropenscilabs/nneo
 
-**2017-03-01 update**:
+**2017-03-02 update**:
 
 The next change should be released in early March.  It addresses [issue #15](https://github.com/NEONInc/neon-data-api/issues/15) (adding convenience urls to /sites, /products, and /locations), and [issue #12](https://github.com/NEONInc/neon-data-api/issues/12) (removing status fields from the data).
 
