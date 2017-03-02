@@ -16,7 +16,7 @@ There is also an R package, [nneo](https://github.com/ropenscilabs/nneo), in dev
 
 **2017-03-01 update**:
 
-The next change should be released early next week.  It addresses issue #15 (adding convenience urls to /sites, /products, and /locations), and issue #12 (removing status fields from the data).
+The next change should be released in early March.  It addresses [issue #15](https://github.com/NEONInc/neon-data-api/issues/15) (adding convenience urls to /sites, /products, and /locations), and [issue #12](https://github.com/NEONInc/neon-data-api/issues/12) (removing status fields from the data).
 
 The ability to view parent, child, and related data products is still pending.  We currently use this internally.  If this is useful to the public at large, we would love to hear about it through this github's Issues page.
 
