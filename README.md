@@ -14,6 +14,12 @@ Javascript: http://bl.ocks.org/jzollerneon/9700c4908bebbd5b5e546c0cd4decc4c
 
 There is also an R package, [nneo](https://github.com/ropenscilabs/nneo), in development by [Scott Chamberlin](https://github.com/sckott) with [rOpenSci](https://github.com/ropenscilabs): https://github.com/ropenscilabs/nneo
 
+**2017-04-21 update**:
+
+Migration to the S3 storage system is starting to show up in the front end.  Queries for the /data endpoint for the [Litterfall](http://data.neonscience.org/data-product-view?dpCode=DP1.10033.001) data product will show the new, pre-signed storage URL's.  These pre-signed URL's _will expire_ an hour after they are requested, and will no longer return data.
+
+[Example query](http://data.neonscience.org/api/v0/data/DP1.10033.001/SRER/2016-06)
+
 **2017-03-02 update**:
 
 The next change should be released in early March.  It addresses [issue #15](https://github.com/NEONInc/neon-data-api/issues/15) (adding convenience urls to /sites, /products, and /locations), and [issue #12](https://github.com/NEONInc/neon-data-api/issues/12) (removing status fields from the data).
