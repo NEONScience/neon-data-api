@@ -1,0 +1,1741 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.1.3",
+    "title": "NEON Data API Requests",
+    "description": "\nExpand the options below, click GET, and then click TRY IT OUT to see example calls."
+  },
+  "basePath": "/api/v0",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "X-API-Token": {
+      "type": "apiKey",
+      "name": "X-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "X-API-Token": []
+    }
+  ],
+  "paths": {
+    "/products": {
+      "get": {
+        "description": "Get information about all data products.",
+        "tags": [
+          "Products"
+        ],
+        "operationId": "Get_products_",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of data products",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/product"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/products/{productCode}": {
+      "get": {
+        "description": "Get information about a data product.",
+        "tags": [
+          "Products"
+        ],
+        "operationId": "Get_products_productCode_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Data product to get",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single data product",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/product"
+                }
+              }
+            },
+            "headers": {
+              "X-RateLimit-Limit": {
+                "type": "integer",
+                "description": "Request burst limit."
+              },
+              "X-RateLimit-Remaining": {
+                "type": "integer",
+                "description": "The number of remaining requests of the burst limit."
+              },
+              "X-RateLimit-Reset": {
+                "type": "integer",
+                "description": "The number of seconds until the burst limit resets in full."
+              },
+              "RetryAfter": {
+                "type": "integer",
+                "description": "The number of seconds until the next request can be made."
+              }
+            }
+          },
+          "400": {
+            "description": "Product(s) not found",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/sites": {
+      "get": {
+        "description": "Get information about all sites.",
+        "tags": [
+          "Sites"
+        ],
+        "operationId": "Get_sites_",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of data products",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/site"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sites/{siteCode}": {
+      "get": {
+        "description": "Get information about a site.",
+        "tags": [
+          "Sites"
+        ],
+        "operationId": "Get_sites:siteCode_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "siteCode",
+            "in": "path",
+            "description": "Site to get",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single site",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/site"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Site(s) not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/locations/{locationName}": {
+      "get": {
+        "description": "Get information about a location.",
+        "tags": [
+          "Locations"
+        ],
+        "operationId": "Get_locations:locationName_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "locationName",
+            "in": "path",
+            "description": "Location to get",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "history",
+            "in": "query",
+            "description": "Option to obtain location history information",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "hierarchy",
+            "in": "query",
+            "description": "Option to obtain location hierarchy information",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "locationType",
+            "in": "query",
+            "description": "\"When obtaining location hierarchy, specify a type of descendant to query for. For example, to obtain the location hierarchy for all towers at location CPER, utilize: /CPER?hierarchy=true&locationType=TOWER\"",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single location",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/location"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Location(s) not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/locations/sites": {
+      "get": {
+        "description": "Get information about the site-level locations.",
+        "tags": [
+          "Locations",
+          "Sites"
+        ],
+        "operationId": "Get_locations_sites_",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of locations",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/location"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/data/{productCode}/{siteCode}/{year-month}": {
+      "get": {
+        "description": "Get files available for a given product/site/month combination",
+        "tags": [
+          "Data"
+        ],
+        "operationId": "Get_data:availability_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Product to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "path",
+            "description": "Site to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year-month",
+            "in": "path",
+            "description": "YYYY-MM month to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "description": "Package type to return, basic or expanded",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "basic",
+              "expanded"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available files",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "files": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/file"
+                      }
+                    },
+                    "urls": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "productCode": {
+                      "type": "string"
+                    },
+                    "siteCode": {
+                      "type": "string"
+                    },
+                    "month": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Product, site not found or invalid date range specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/taxonomy": {
+      "get": {
+        "description": "Get taxonomic lists.",
+        "tags": [
+          "Taxonomy"
+        ],
+        "operationId": "Get_taxonomy",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "taxonTypeCode",
+            "in": "query",
+            "description": "Taxon type code to get. Must not be used in conjunction with a taxon rank query parameter.",
+            "required": false,
+            "enum": [
+              "ALGAE",
+              "BEETLE",
+              "BIRD",
+              "FISH",
+              "HERPETOLOGY",
+              "MACROINVERTEBRATE",
+              "MOSQUITO",
+              "MOSQUITO_PATHOGENS",
+              "SMALL_MAMMAL",
+              "PLANT",
+              "TICK"
+            ],
+            "type": "string"
+          },
+          {
+            "name": "kingdom",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phylum",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "division",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "family",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "genus",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "scientificname",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "verbose",
+            "in": "query",
+            "description": "Get verbose result set",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The number of items to skip before starting to collect the result set",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of items to limit the result set to",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "stream",
+            "in": "query",
+            "description": "Option to obtain the result as a stream. Utilize for large requests.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of taxonomic information",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer",
+                  "description": "The number of results in the current paged response"
+                },
+                "total": {
+                  "type": "integer",
+                  "description": "The total number of results for the query"
+                },
+                "prev": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Link to the previous page of results when available"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Link to the next page of results when available"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/taxonomy"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Taxonomic data does not exist for specified query",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/samples/view": {
+      "get": {
+        "description": "Get a list of sample custody events, parent samples and child samples for a given sample identifier.",
+        "tags": [
+          "Samples"
+        ],
+        "operationId": "Get_samplesByTagClass",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sampleTag",
+            "in": "query",
+            "description": "Sample Tag of interest.  Must be used in conjunction with a Sample Class only.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sampleClass",
+            "in": "query",
+            "description": "Sample Class of interest. Must be used in conjunction with a Sample Tag only.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sampleUuid",
+            "in": "query",
+            "description": "UUID of Sample.  Must be used on its own.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "barcode",
+            "in": "query",
+            "description": "Barcode of Sample.  Must be used on its own.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "archiveGuid",
+            "in": "query",
+            "description": "archiveGuid of Sample.  Must be used on its own.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of sample views.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/views"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "Sample Not Found",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/samples/classes": {
+      "get": {
+        "description": "Get a list of Sample Classes for a given Sample Tag",
+        "tags": [
+          "Samples"
+        ],
+        "operationId": "Get_sampleClasses:sampleTag_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sampleTag",
+            "in": "query",
+            "description": "Sample Tag of interest",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of sample classes for a given Sample Tag",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/classes"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "Sample Not Found",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/samples/supportedClasses": {
+      "get": {
+        "description": "Get a list of sample classes and descriptions currently supported by the Sample Viewer",
+        "tags": [
+          "Samples"
+        ],
+        "operationId": "Get_supportedSampleClasses",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of supported sample classes and their descriptions",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/supportedClasses"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/samples/download": {
+      "get": {
+        "description": "Get a list of sample views for a given sample identifier and search degree.",
+        "tags": [
+          "Samples"
+        ],
+        "operationId": "Get_samplesDownloadBySampleTagClass",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sampleTag",
+            "in": "query",
+            "description": "Sample Tag of interest.  Must be used in conjunction with a Sample Class only.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sampleClass",
+            "in": "query",
+            "description": "Sample Class of interest. Must be used in conjunction with a Sample Tag only.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sampleUuid",
+            "in": "query",
+            "description": "UUID of Sample.  Must be used on its own.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "barcode",
+            "in": "query",
+            "description": "Barcode of Sample.  Must be used on its own.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "archiveGuid",
+            "in": "query",
+            "description": "archiveGuid of Sample.  Must be used on its own.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "degree",
+            "in": "query",
+            "description": "degree of sample search",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list of sample views",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/views"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "Sample Not Found",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "product": {
+      "type": "object",
+      "properties": {
+        "productCategory": {
+          "type": "string",
+          "description": "Level 1, 2, 3, or 4 data product"
+        },
+        "productCode": {
+          "type": "string",
+          "description": "Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)"
+        },
+        "productCodeLong": {
+          "type": "string",
+          "description": "Revisioned, long code for the data product (NEON.DOM.SITE.DP1.00001.001, etc)"
+        },
+        "productCodePresentation": {
+          "type": "string",
+          "description": "Shortened product code"
+        },
+        "productDescription": {
+          "type": "string",
+          "description": "A brief description of the data product."
+        },
+        "productHasExpanded": {
+          "type": "boolean",
+          "description": "Whether a data product has expanded data"
+        },
+        "productScienceTeam": {
+          "type": "string",
+          "description": "Science team responsible for the data product"
+        },
+        "productScienceTeamAbbr": {
+          "type": "string",
+          "description": "Three letter abbreviation for the data science team."
+        },
+        "productPublicationFormatType": {
+          "type": "string",
+          "description": "Class of publication system used during the publication process; can be independent from productScienceTeam."
+        },
+        "productStatus": {
+          "type": "string",
+          "enum": [
+            "FUTURE",
+            "ACTIVE",
+            "RETIRED"
+          ],
+          "description": "Future, active, or retired product status"
+        },
+        "keywords": {
+          "type": "array",
+          "description": "List of words and phrases associated with the data product",
+          "items": {
+            "type": "string"
+          }
+        },
+        "siteCodes": {
+          "type": "array",
+          "description": "List of sites and months of available data",
+          "items": {
+            "type": "object",
+            "properties": {
+              "siteCode": {
+                "type": "string",
+                "description": "Four character code for the site"
+              },
+              "availableMonths": {
+                "type": "array",
+                "description": "List of years and months that products are available.  Formatted as YYYY-MM.",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "availableDataUrls": {
+                "type": "array",
+                "description": "List of data urls for products that are available.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "specs": {
+          "type": "array",
+          "description": "List of documents associated with the data product.",
+          "items": {
+            "$ref": "#/definitions/spec"
+          }
+        },
+        "themes": {
+          "type": "array",
+          "description": "List of themes to which the data product belongs.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "spec": {
+      "type": "object",
+      "properties": {
+        "specName": {
+          "type": "string",
+          "description": "Name of the associated document."
+        },
+        "specId": {
+          "type": "string",
+          "description": "Document code for the associated document."
+        }
+      }
+    },
+    "site": {
+      "type": "object",
+      "properties": {
+        "domainCode": {
+          "type": "string",
+          "description": "Three character domain abbreviation (D01, D02, etc) for the domain this site is in"
+        },
+        "domainName": {
+          "type": "string",
+          "description": "Brief description for the domain this site is in"
+        },
+        "siteCode": {
+          "type": "string",
+          "description": "Four character code for the site"
+        },
+        "siteDescription": {
+          "type": "string",
+          "description": "Brief site description"
+        },
+        "siteLatitude": {
+          "type": "number",
+          "description": "Point latitude for the site"
+        },
+        "siteLongitude": {
+          "type": "number",
+          "description": "Point longitude for the site"
+        },
+        "siteName": {
+          "type": "string",
+          "description": "Full name for the site"
+        },
+        "siteType": {
+          "type": "string",
+          "enum": [
+            "CORE",
+            "RELOCATABLE"
+          ],
+          "description": "Core or Relocatable site"
+        },
+        "stateCode": {
+          "type": "string",
+          "description": "Two letter state code that this site is in"
+        },
+        "stateName": {
+          "type": "string",
+          "description": "Full name of the state or territory that this site is in"
+        },
+        "dataProducts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productAvailability"
+          }
+        }
+      }
+    },
+    "productAvailability": {
+      "type": "object",
+      "properties": {
+        "dataProductCode": {
+          "type": "string",
+          "description": "Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)"
+        },
+        "dataProductTitle": {
+          "type": "string",
+          "description": "Full title for the data product."
+        },
+        "availableMonths": {
+          "type": "array",
+          "description": "List of years and months that products are available.  Formatted as YYYY-MM.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "availableDataUrls": {
+          "type": "array",
+          "description": "List of data urls for products that are available.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "locationName": {
+          "type": "string",
+          "description": "Name of the location"
+        },
+        "locationDescription": {
+          "type": "string",
+          "description": "A description of the location."
+        },
+        "locationDecimalLatitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Decimal latitude for the location."
+        },
+        "locationDecimalLongitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Decimal longitude for the location."
+        },
+        "locationElevation": {
+          "type": "number",
+          "format": "double",
+          "description": "Elevation for the location."
+        },
+        "locationUtmZone": {
+          "type": "number",
+          "format": "int",
+          "description": "The integer Universal Transverse Mercator zone."
+        },
+        "locationUtmHemisphere": {
+          "type": "string",
+          "description": "The single character Universal Transverse Mercator hemisphere."
+        },
+        "locationUtmEasting": {
+          "type": "number",
+          "format": "double",
+          "description": "The Universal Transverse Mercator easting."
+        },
+        "locationUtmNorthing": {
+          "type": "number",
+          "format": "double",
+          "description": "The Universal Transverse Mercator northing."
+        },
+        "alphaOrientation": {
+          "type": "number",
+          "format": "double",
+          "description": "The angle (in degrees) at which the sensor is facing relative to true North."
+        },
+        "betaOrientation": {
+          "type": "number",
+          "format": "double",
+          "description": "Beta orientation for the location."
+        },
+        "gammaOrientation": {
+          "type": "number",
+          "format": "double",
+          "description": "Gamma orientation for the location."
+        },
+        "xOffset": {
+          "type": "number",
+          "format": "double",
+          "description": "Cartesian offsets of a sensor, in meters, east (positive values) or west (negative values) relative to where the geolocation point was taken."
+        },
+        "yOffset": {
+          "type": "number",
+          "format": "double",
+          "description": "Cartesian offsets of a sensor, in meters, north (positive values) or south (negative values) relative to where the geolocation point was taken."
+        },
+        "zOffset": {
+          "type": "number",
+          "format": "double",
+          "description": "Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to where the geolocation point was taken."
+        },
+        "locationPolygon": {
+          "type": "object",
+          "properties": {
+            "coordinates": {
+              "type": "array",
+              "description": "A list of vertices that define the closed structure for the polygon",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "Decimal latitude for the polygon coordinate."
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "Decimal longitude for the polygon coordinate."
+                  },
+                  "elevation": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "Elevation for the polygon coordinate."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "locationHistory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/locationHistory"
+          }
+        },
+        "locationChildren": {
+          "type": "array",
+          "description": "A list of names of locations within this location.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "locationChildrenUrls": {
+          "type": "array",
+          "description": "A list of URLs to request location data for the children of this location.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "locationParent": {
+          "type": "string",
+          "description": "Name of the location that this location is in."
+        },
+        "locationParentUrl": {
+          "type": "string",
+          "description": "URL to request location data for the parent of this location."
+        },
+        "locationParentHierarchy": {
+          "type": "object",
+          "description": "When querying for the hierarchy, the location's parent hierarchy",
+          "$ref": "#/definitions/locationParentHierarchy"
+        },
+        "locationChildHierarchy": {
+          "type": "array",
+          "description": "When querying for the hierarchy, the location's set of immediate children and associated hierarchy",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/locationChildHierarchy"
+          }
+        },
+        "domainCode": {
+          "type": "string",
+          "description": "Three character domain abbreviation (D01, D02, etc) for the domain this site is in"
+        },
+        "siteCode": {
+          "type": "string",
+          "description": "Four character code for the site"
+        },
+        "locationType": {
+          "type": "string"
+        },
+        "locationProperties": {
+          "type": "array",
+          "description": "List of properties associated with the location.  Contents vary based on the type of location.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "locationPropertyValue": {
+                "type": "string",
+                "description": "Can be a string or a number"
+              },
+              "locationPropertyName": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "locationHistory": {
+      "type": "object",
+      "properties": {
+        "locationDecimalLatitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Decimal latitude for the location."
+        },
+        "locationDecimalLongitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Decimal longitude for the location."
+        },
+        "locationElevation": {
+          "type": "number",
+          "format": "double",
+          "description": "Elevation for the location."
+        },
+        "locationUtmZone": {
+          "type": "number",
+          "format": "int",
+          "description": "The integer Universal Transverse Mercator zone."
+        },
+        "locationUtmHemisphere": {
+          "type": "string",
+          "description": "The single character Universal Transverse Mercator hemisphere."
+        },
+        "locationUtmEasting": {
+          "type": "number",
+          "format": "double",
+          "description": "The Universal Transverse Mercator easting."
+        },
+        "locationUtmNorthing": {
+          "type": "number",
+          "format": "double",
+          "description": "The Universal Transverse Mercator northing."
+        },
+        "alphaOrientation": {
+          "type": "number",
+          "format": "double",
+          "description": "The angle (in degrees) at which the sensor is facing relative to true North."
+        },
+        "betaOrientation": {
+          "type": "number",
+          "format": "double",
+          "description": "Beta orientation for the location."
+        },
+        "gammaOrientation": {
+          "type": "number",
+          "format": "double",
+          "description": "Gamma orientation for the location."
+        },
+        "xOffset": {
+          "type": "number",
+          "format": "double",
+          "description": "Cartesian offsets of a sensor, in meters, east (positive values) or west (negative values) relative to where the geolocation point was taken."
+        },
+        "yOffset": {
+          "type": "number",
+          "format": "double",
+          "description": "Cartesian offsets of a sensor, in meters, north (positive values) or south (negative values) relative to where the geolocation point was taken."
+        },
+        "zOffset": {
+          "type": "number",
+          "format": "double",
+          "description": "Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to where the geolocation point was taken."
+        },
+        "locationPolygon": {
+          "type": "object",
+          "properties": {
+            "coordinates": {
+              "type": "array",
+              "description": "A list of vertices that define the closed structure for the polygon",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "Decimal latitude for the polygon coordinate."
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "Decimal longitude for the polygon coordinate."
+                  },
+                  "elevation": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "Elevation for the polygon coordinate."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "locationProperties": {
+          "type": "array",
+          "description": "List of properties associated with the location.  Contents vary based on the type of location.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "locationPropertyValue": {
+                "type": "string",
+                "description": "Can be a string or a number"
+              },
+              "locationPropertyName": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "locationParentHierarchy": {
+      "type": "object",
+      "properties": {
+        "locationName": {
+          "type": "string",
+          "description": "Name of the location"
+        },
+        "locationParent": {
+          "type": "string",
+          "description": "Name of the location that this location is in."
+        },
+        "locationParentUrl": {
+          "type": "string",
+          "description": "URL to request location data for the parent of this location."
+        },
+        "locationParentHierarchy": {
+          "type": "object",
+          "description": "The location's parent hierarchy"
+        }
+      }
+    },
+    "locationChildHierarchy": {
+      "type": "object",
+      "properties": {
+        "locationName": {
+          "type": "string",
+          "description": "Name of the location"
+        },
+        "locationDescription": {
+          "type": "string",
+          "description": "A description of the location."
+        },
+        "locationChildHierarchy": {
+          "type": "array",
+          "description": "The location's child hierarchy",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "file": {
+      "type": "object",
+      "properties": {
+        "crc32": {
+          "description": "CRC-32 value in hex",
+          "type": "string"
+        },
+        "name": {
+          "description": "Filename",
+          "type": "string"
+        },
+        "url": {
+          "description": "Download URL, *will change in the future*",
+          "type": "string"
+        },
+        "size": {
+          "description": "Estimated file size in bytes",
+          "type": "number",
+          "format": "int"
+        }
+      }
+    },
+    "taxonomy": {
+      "type": "object",
+      "properties": {
+        "taxonTypeCode": {
+          "description": "NEON taxonomic grouping",
+          "type": "string"
+        },
+        "taxonID": {
+          "description": "NEON taxonomic code",
+          "type": "string"
+        },
+        "acceptedTaxonID": {
+          "description": "Accepted taxonomic code from the authoritative source (dwc:nameAccordingToID)",
+          "type": "string"
+        },
+        "dwc:scientificName": {
+          "description": "Scientific name, associated with the taxonID.  This is the name of the lowest level taxonomic rank that can be determined.  http://rs.tdwg.org/dwc/terms/scientificName",
+          "type": "string"
+        },
+        "dwc:scientificNameAuthorship": {
+          "description": "The authorship information for the scientificName formatted according to the conventions of the applicable nomenclaturalCode.  http://rs.tdwg.org/dwc/terms/scientificNameAuthorship",
+          "type": "string"
+        },
+        "dwc:taxonRank": {
+          "description": "The lowest level taxonomic rank that can be determined for the individual or specimen.  http://rs.tdwg.org/dwc/terms/taxonRank",
+          "type": "string"
+        },
+        "dwc:vernacularName": {
+          "description": "A common or vernacular name. http://rs.tdwg.org/dwc/terms/vernacularName",
+          "type": "string"
+        },
+        "taxonProtocolCategory": {
+          "description": "NEON protocol-specific categorization of the taxon",
+          "type": "string"
+        },
+        "dwc:nameAccordingToID": {
+          "description": "An identifier for the source in which the specific taxon concept circumscription is defined or implied.  http://rs.tdwg.org/dwc/terms/nameAccordingToID",
+          "type": "string"
+        },
+        "dwc:nameAccordingToTitle": {
+          "description": "The reference to the source in which the specific taxon concept circumscription is defined or implied.  http://tdwg.github.io/dwc/terms/nameAccordingTo",
+          "type": "string"
+        },
+        "dwc:kingdom": {
+          "description": "The scientific name of the kingdom in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/kingdom",
+          "type": "string"
+        },
+        "gbif:subkingdom": {
+          "description": "The scientific name of the subkingdom in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/subkingdom",
+          "type": "string"
+        },
+        "gbif:infrakingdom": {
+          "description": "The scientific name of the infrakingdom in which the taxon is classified",
+          "type": "string"
+        },
+        "gbif:superdivision": {
+          "description": "The scientific name of the superdivision in which the taxon is classified",
+          "type": "string"
+        },
+        "gbif:division": {
+          "description": "The scientific name of the division in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/phylum",
+          "type": "string"
+        },
+        "gbif:subdivision": {
+          "description": "The scientific name of the subdivision in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/subphylum",
+          "type": "string"
+        },
+        "gbif:infradivision": {
+          "description": "The scientific name of the infradivision in which the taxon is classified",
+          "type": "string"
+        },
+        "gbif:parvdivision": {
+          "description": "The scientific name of the parvdivision in which the taxon is classified",
+          "type": "string"
+        },
+        "gbif:superphylum": {
+          "description": "The scientific name of the superphylum in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/superphylum",
+          "type": "string"
+        },
+        "dwc:phylum": {
+          "description": "The scientific name of the phylum or division in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/phylum",
+          "type": "string"
+        },
+        "gbif:subphylum": {
+          "description": "The scientific name of the subphylum in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/subphylum",
+          "type": "string"
+        },
+        "gbif:infraphylum": {
+          "description": "The scientific name of the infraphylum in which the taxon is classified",
+          "type": "string"
+        },
+        "gbif:superclass": {
+          "description": "The scientific name of the superclass in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/superclass",
+          "type": "string"
+        },
+        "dwc:class": {
+          "description": "The scientific name of the class in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/class",
+          "type": "string"
+        },
+        "gbif:subclass": {
+          "description": "The scientific name of the subclass in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/subclass",
+          "type": "string"
+        },
+        "gbif:infraclass": {
+          "description": "The scientific name of the infraclass in which the taxon is classified",
+          "type": "string"
+        },
+        "gbif:superorder": {
+          "description": "The scientific name of the superorder in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/superorder",
+          "type": "string"
+        },
+        "dwc:order": {
+          "description": "The scientific name of the order in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/order",
+          "type": "string"
+        },
+        "gbif:suborder": {
+          "description": "The scientific name of the suborder in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/suborder",
+          "type": "string"
+        },
+        "gbif:infraorder": {
+          "description": "The scientific name of the infraorder in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/infraorder",
+          "type": "string"
+        },
+        "gbif:section": {
+          "description": "The scientific name of the section in which the organism is classified.  http://rs.gbif.org/vocabulary/gbif/rank/section",
+          "type": "string"
+        },
+        "gbif:subsection": {
+          "description": "The scientific name of the subsection in which the organism is classified.  http://rs.gbif.org/vocabulary/gbif/rank/subsection",
+          "type": "string"
+        },
+        "gbif:superfamily": {
+          "description": "The scientific name of the superfamily in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/superfamily",
+          "type": "string"
+        },
+        "dwc:family": {
+          "description": "The scientific name of the family in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/family",
+          "type": "string"
+        },
+        "gbif:subfamily": {
+          "description": "The scientific name of the subfamily in which the organism is classified.  http://rs.gbif.org/vocabulary/gbif/rank/subfamily",
+          "type": "string"
+        },
+        "gbif:tribe": {
+          "description": "The scientific name of the tribe in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/tribe",
+          "type": "string"
+        },
+        "gbif:subtribe": {
+          "description": "The scientific name of the subtribe in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/subtribe",
+          "type": "string"
+        },
+        "dwc:genus": {
+          "description": "The scientific name of the genus in which the organism is classified.  http://rs.tdwg.org/dwc/terms/genus",
+          "type": "string"
+        },
+        "dwc:subgenus": {
+          "description": "The scientific name of the subgenus in which the taxon is classified.  Values should include the genus to avoid homonym confusion.  http://rs.tdwg.org/dwc/terms/subgenus",
+          "type": "string"
+        },
+        "gbif:subspecies": {
+          "description": "The subspecies (infraspecific name below the rank of infraspecific epithet) of the scientific name applied to the taxon.  http://rs.gbif.org/vocabulary/gbif/rank/subspecies",
+          "type": "string"
+        },
+        "gbif:variety": {
+          "description": "The variety (infraspecific name below the rank of infraspecific epithet) of the scientific name applied to the taxon.  http://rs.gbif.org/vocabulary/gbif/rank/variety",
+          "type": "string"
+        },
+        "gbif:subvariety": {
+          "description": "The subvariety (infraspecific name below the rank of variety) of the scientific name applied to the taxon.  http://rs.gbif.org/vocabulary/gbif/rank/subvariety",
+          "type": "string"
+        },
+        "gbif:form": {
+          "description": "The form (infraspecific name below the rank of infraspecific epithet) of the scientific name applied to the taxon.  http://rs.gbif.org/vocabulary/gbif/rank/form",
+          "type": "string"
+        },
+        "gbif:subform": {
+          "description": "The subform (infraspecific name below the rank of form) of the scientific name applied to the taxon.  http://rs.gbif.org/vocabulary/gbif/rank/subform",
+          "type": "string"
+        },
+        "speciesGroup": {
+          "description": "The unofficial species group into which the taxon is categorized",
+          "type": "string"
+        },
+        "dwc:specificEpithet": {
+          "description": "The specific epithet (second part of the species name) of the scientific name applied to the taxon.  http://rs.tdwg.org/dwc/terms/specificEpithet",
+          "type": "string"
+        },
+        "dwc:infraspecificEpithet": {
+          "description": "The infraspecific epithet (scientific name below the rank of species) of the scientific name applied to the taxon.  http://rs.tdwg.org/dwc/terms/infraspecificEpithet",
+          "type": "string"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "detail": {
+          "type": "string"
+        },
+        "status": {
+          "type": "number",
+          "format": "int"
+        }
+      }
+    },
+    "sampleInfo": {
+      "type": "object",
+      "properties": {
+        "sampleUuid": {
+          "type": "string",
+          "description": "UUID for a given sample"
+        },
+        "sampleTag": {
+          "type": "string",
+          "description": "Sample Tag for a given sample"
+        },
+        "sampleClass": {
+          "type": "string",
+          "description": "Sample Class for a given sample"
+        },
+        "barcode": {
+          "type": "string",
+          "description": "Sample Barcode for a given sample"
+        },
+        "archiveGuid": {
+          "type": "string",
+          "description": "Archive GUID for a given sample"
+        }
+      }
+    },
+    "views": {
+      "type": "object",
+      "properties": {
+        "sampleViews": {
+          "type": "array",
+          "description": "array of sample views for a given sample",
+          "items": {
+            "$ref": "#/definitions/sampleView"
+          }
+        }
+      }
+    },
+    "sampleView": {
+      "type": "object",
+      "properties": {
+        "sampleUuid": {
+          "type": "string",
+          "description": "UUID for a given sample"
+        },
+        "sampleTag": {
+          "type": "string",
+          "description": "Sample Tag for a given sample"
+        },
+        "sampleClass": {
+          "type": "string",
+          "description": "Sample Class for a given sample"
+        },
+        "barcode": {
+          "type": "string",
+          "description": "Sample Barcode for a given sample"
+        },
+        "archiveGuid": {
+          "type": "string",
+          "description": "Archive GUID for a given sample"
+        },
+        "sampleEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sampleEvent"
+          }
+        },
+        "parentSampleIdentifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sampleInfo"
+          }
+        },
+        "childSampleIdentifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sampleInfo"
+          }
+        }
+      }
+    },
+    "sampleEvent": {
+      "type": "object",
+      "description": "Sample Event for a given sample.",
+      "properties": {
+        "ingestTableName": {
+          "type": "string",
+          "description": "Ingest Table Name"
+        },
+        "smsFieldEntries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smsField"
+          }
+        }
+      }
+    },
+    "smsField": {
+      "type": "object",
+      "properties": {
+        "smsKey": {
+          "type": "string",
+          "description": "SMS Field Name"
+        },
+        "smsValue": {
+          "type": "string",
+          "description": "SMS Field Value"
+        }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "Sample Class Name"
+        },
+        "value": {
+          "type": "string",
+          "description": "Sample Class Description"
+        }
+      }
+    },
+    "classes": {
+      "type": "object",
+      "properties": {
+        "sampleClasses": {
+          "type": "array",
+          "description": "array of Sample Classes for a given sample.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "supportedClasses": {
+      "type": "object",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "description": "array of Sample Classes and their descriptions for a given sample.",
+          "items": {
+            "$ref": "#/definitions/entry"
+          }
+        }
+      }
+    }
+  }
+}

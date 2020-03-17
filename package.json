@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "apps:clean": "(rm -r docs/content/explorer/build || true) && (rm -r docs/content/graphql/explorer/build || true)",
+    "apps:clean-deploy": "yarn run apps:clean && yarn run apps:deploy",
+    "apps:deploy": "mv packages/docs-app-swagger/build docs/content/explorer/ && mv packages/docs-app-graphiql/build docs/content/graphql/explorer/",
+    "build:all": "cd packages/docs-app-graphiql && yarn run build && cd ../docs-app-swagger && yarn run build",
+    "build:clean-deploy": "yarn run build:all && yarn run apps:clean-deploy",
+    "ci": "yarn install --frozen-lockfile",
+    "ci:prod": "yarn install --frozen-lockfile --production"
+  }
+}
