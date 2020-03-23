@@ -61,7 +61,7 @@ Get information about the site-level locations.
 
 |Name|Schema|
 |---|---|
-|**data**  <br>*optional*|< [location](#location) > array|
+|**data**|< [location](#location) > array|
 
 
 #### Produces
@@ -105,7 +105,7 @@ Get information about a location.
 
 |Name|Schema|
 |---|---|
-|**data**  <br>*optional*|[location](#location)|
+|**data**|[location](#location)|
 
 <a name="get_locations-locationname_response-400"></a>
 **Response 400**

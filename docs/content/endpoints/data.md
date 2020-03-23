@@ -45,18 +45,19 @@ Get files available for a given product/site/month combination
 
 |Name|Schema|
 |---|---|
-|**data**  <br>*optional*|[data](#data-productcode-sitecode-year-month-get-data)|
+|**data**|[data](#data-productcode-sitecode-year-month-get-data)|
 
 <a name="data-productcode-sitecode-year-month-get-data"></a>
 **data**
 
 |Name|Schema|
 |---|---|
-|**files**  <br>*optional*|< [file](#file) > array|
-|**month**  <br>*optional*|string|
-|**productCode**  <br>*optional*|string|
-|**siteCode**  <br>*optional*|string|
-|**urls**  <br>*optional*|< string > array|
+|**externalData**  <br>*optional*|< [externalData](#externalData) > array|
+|**files**|< [file](#file) > array|
+|**month**|string|
+|**productCode**|string|
+|**siteCode**|string|
+|**urls**|< string > array|
 
 <a name="get_data-availability_response-400"></a>
 **Response 400**
@@ -84,10 +85,29 @@ Get files available for a given product/site/month combination
 
 |Name|Description|Schema|
 |---|---|---|
-|**crc32**  <br>*optional*|CRC-32 value in hex|string|
-|**name**  <br>*optional*|Filename|string|
-|**size**  <br>*optional*|Estimated file size in bytes|number (int)|
-|**url**  <br>*optional*|Download URL, *will change in the future*|string|
+|**crc32**|CRC-32 value in hex|string|
+|**name**|Filename|string|
+|**size**|Estimated file size in bytes|number (int)|
+|**url**|Download URL|string|
+
+
+<a name="externalData"></a>
+### externalData
+
+|Name|Description|Schema|
+|---|---|---|
+|**name**|The name of the external data object|string|
+|**type**|The type of external data link provided.|string|
+|**url**|URL to external data.|number (int)|
+|**url**|Download URL|string|
+
+<a name="error"></a>
+### error
+
+|Name|Schema|
+|---|---|
+|**detail**  <br>*optional*|string|
+|**status**  <br>*optional*|number (int)|
 
 
 <a name="securityscheme"></a>

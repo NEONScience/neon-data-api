@@ -33,7 +33,7 @@ Get information about all data products.
 
 |Name|Schema|
 |---|---|
-|**data**  <br>*optional*|< [product](#product) > array|
+|**data**|< [product](#product) > array|
 
 
 #### Produces
@@ -73,7 +73,7 @@ Get information about a data product.
 
 |Name|Schema|
 |---|---|
-|**data**  <br>*optional*|[product](#product)|
+|**data**|[product](#product)|
 
 
 #### Produces
@@ -94,48 +94,58 @@ Get information about a data product.
 
 |Name|Description|Schema|
 |---|---|---|
-|**keywords**  <br>*optional*|List of words and phrases associated with the data product|< string > array|
-|**productCategory**  <br>*optional*|Level 1, 2, 3, or 4 data product|string|
-|**productCode**  <br>*optional*|Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)|string|
-|**productCodeLong**  <br>*optional*|Revisioned, long code for the data product (NEON.DOM.SITE.DP1.00001.001, etc)|string|
-|**productCodePresentation**  <br>*optional*|Shortened product code|string|
-|**productDescription**  <br>*optional*|A brief description of the data product.|string|
-|**productHasExpanded**  <br>*optional*|Whether a data product has expanded data|boolean|
-|**productPublicationFormatType**  <br>*optional*|Class of publication system used during the publication process; can be independent from productScienceTeam.|string|
-|**productScienceTeam**  <br>*optional*|Science team responsible for the data product|string|
-|**productScienceTeamAbbr**  <br>*optional*|Three letter abbreviation for the data science team.|string|
-|**productStatus**  <br>*optional*|Future, active, or retired product status|enum (FUTURE, ACTIVE, RETIRED)|
-|**siteCodes**  <br>*optional*|List of sites and months of available data|< [siteCodes](#product-sitecodes) > array|
-|**specs**  <br>*optional*|List of documents associated with the data product.|< [spec](#spec) > array|
-|**themes**  <br>*optional*|List of themes to which the data product belongs.|< string > array|
+|**changeLogs**|List of issues and associated details for the product.|< [changeLogs](#changeLogs) > array|
+|**keywords**|List of words and phrases associated with the data product|< string > array|
+|**productCategory**|Level 1, 2, 3, or 4 data product|string|
+|**productCode**|Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)|string|
+|**productCodeLong**|Revisioned, long code for the data product (NEON.DOM.SITE.DP1.00001.001, etc)|string|
+|**productCodePresentation**|Shortened product code|string|
+|**productName**|The name of the data product.|string|
+|**productDescription**|A brief description of the data product.|string|
+|**productAbstract**|An abstract for the data product.|string|
+|**productHasExpanded**|Whether a data product has expanded data|boolean|
+|**productBasicDescription**|A description of the basic package available for download|string|
+|**productExpandedDescription**|A description of the expanded package available for download|string|
+|**productPublicationFormatType**|Class of publication system used during the publication process; can be independent from productScienceTeam.|string|
+|**productScienceTeam**|Science team responsible for the data product|string|
+|**productScienceTeamAbbr**|Three letter abbreviation for the data science team.|string|
+|**productStatus**|Future, active, or retired product status|enum (FUTURE, ACTIVE, RETIRED)|
+|**siteCodes**|List of sites and months of available data|< [siteCodes](#product-sitecodes) > array|
+|**specs**|List of documents associated with the data product.|< [spec](#spec) > array|
+|**themes**|List of themes to which the data product belongs.|< string > array|
 
 <a name="product-sitecodes"></a>
 **siteCodes**
 
 |Name|Description|Schema|
 |---|---|---|
-|**availableDataUrls**  <br>*optional*|List of data urls for products that are available.|< string > array|
-|**availableMonths**  <br>*optional*|List of years and months that products are available.  Formatted as YYYY-MM.|< string > array|
-|**siteCode**  <br>*optional*|Four character code for the site|string|
+|**availableDataUrls**|List of data urls for products that are available.|< string > array|
+|**availableMonths**|List of years and months that products are available.  Formatted as YYYY-MM.|< string > array|
+|**siteCode**|Four character code for the site|string|
 
-
-<a name="productavailability"></a>
-### productAvailability
-
-|Name|Description|Schema|
-|---|---|---|
-|**availableDataUrls**  <br>*optional*|List of data urls for products that are available.|< string > array|
-|**availableMonths**  <br>*optional*|List of years and months that products are available.  Formatted as YYYY-MM.|< string > array|
-|**dataProductCode**  <br>*optional*|Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)|string|
-|**dataProductTitle**  <br>*optional*|Full title for the data product.|string|
 
 <a name="spec"></a>
 ### spec
 
 |Name|Description|Schema|
 |---|---|---|
-|**specId**  <br>*optional*|Document code for the associated document.|string|
-|**specName**  <br>*optional*|Name of the associated document.|string|
+|**specId**|Document code for the associated document.|string|
+|**specName**|Name of the associated document.|string|
+
+
+<a name="changeLogs"></a>
+### changeLogs
+
+|Name|Description|Schema|
+|---|---|---|
+|**id**|The identifier for the issue.|number (int)|
+|**parentIssueID**|The identifier for the parent issue that this issue is associated with.|number (int)|
+|**issueDate**|The date and time associated with the creation of the issue.|string (date-time)|
+|**resolvedDate**|The date and time associated with the resolution of the issue.|string (date-time)|
+|**dateRangeStart**|The start of the date interval that this issue impacts the data product.|string (date-time)|
+|**dateRangeEnd**|The end of the date interval that this issue impacts the data product.|string (date-time)|
+|**locationAffected**|The locations affected by this issue.|string (date-time)|
+|**resolution**|The description of the resolution applied for this issue.|string (date-time)|
 
 
 <a name="error"></a>

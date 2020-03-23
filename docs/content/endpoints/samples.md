@@ -73,7 +73,7 @@ Get a list of Sample Classes for a given Sample Tag
 
 |Name|Schema|
 |---|---|
-|**data**  <br>*optional*|[classes](#classes)|
+|**data**|[classes](#classes)|
 
 
 #### Produces
@@ -97,12 +97,12 @@ Get a list of sample views for a given sample identifier and search degree.
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
-|**Query**|**archiveGuid**  <br>*optional*|archiveGuid of Sample.  Must be used on its own.|string|
-|**Query**|**barcode**  <br>*optional*|Barcode of Sample.  Must be used on its own.|string|
-|**Query**|**degree**  <br>*optional*|degree of sample search|string|
-|**Query**|**sampleClass**  <br>*optional*|Sample Class of interest. Must be used in conjunction with a Sample Tag only.|string|
-|**Query**|**sampleTag**  <br>*optional*|Sample Tag of interest.  Must be used in conjunction with a Sample Class only.|string|
-|**Query**|**sampleUuid**  <br>*optional*|UUID of Sample.  Must be used on its own.|string|
+|**Query**|**archiveGuid**|archiveGuid of Sample.  Must be used on its own.|string|
+|**Query**|**barcode**|Barcode of Sample.  Must be used on its own.|string|
+|**Query**|**degree**|degree of sample search|string|
+|**Query**|**sampleClass**|Sample Class of interest. Must be used in conjunction with a Sample Tag only.|string|
+|**Query**|**sampleTag**|Sample Tag of interest.  Must be used in conjunction with a Sample Class only.|string|
+|**Query**|**sampleUuid**|UUID of Sample.  Must be used on its own.|string|
 
 
 #### Responses
@@ -119,7 +119,7 @@ Get a list of sample views for a given sample identifier and search degree.
 
 |Name|Schema|
 |---|---|
-|**data**  <br>*optional*|[views](#views)|
+|**data**|[views](#views)|
 
 
 #### Produces
@@ -151,7 +151,7 @@ Get a list of sample classes and descriptions currently supported by the Sample 
 
 |Name|Schema|
 |---|---|
-|**data**  <br>*optional*|[supportedClasses](#supportedclasses)|
+|**data**|[supportedClasses](#supportedclasses)|
 
 
 #### Produces
@@ -196,7 +196,7 @@ Get a list of sample custody events, parent samples and child samples for a give
 
 |Name|Schema|
 |---|---|
-|**data**  <br>*optional*|[views](#views)|
+|**data**|[views](#views)|
 
 
 #### Produces
@@ -217,7 +217,7 @@ Get a list of sample custody events, parent samples and child samples for a give
 
 |Name|Description|Schema|
 |---|---|---|
-|**sampleClasses**  <br>*optional*|array of Sample Classes for a given sample.|< string > array|
+|**sampleClasses**|array of Sample Classes for a given sample.|< string > array|
 
 
 <a name="entry"></a>
@@ -225,8 +225,8 @@ Get a list of sample custody events, parent samples and child samples for a give
 
 |Name|Description|Schema|
 |---|---|---|
-|**key**  <br>*optional*|Sample Class Name|string|
-|**value**  <br>*optional*|Sample Class Description|string|
+|**key**|Sample Class Name|string|
+|**value**|Sample Class Description|string|
 
 <a name="sampleevent"></a>
 ### sampleEvent
@@ -235,8 +235,8 @@ Sample Event for a given sample.
 
 |Name|Description|Schema|
 |---|---|---|
-|**ingestTableName**  <br>*optional*|Ingest Table Name|string|
-|**smsFieldEntries**  <br>*optional*||< [smsField](#smsfield) > array|
+|**ingestTableName**|Ingest Table Name|string|
+|**smsFieldEntries**||< [smsField](#smsfield) > array|
 
 
 <a name="sampleinfo"></a>
@@ -244,11 +244,11 @@ Sample Event for a given sample.
 
 |Name|Description|Schema|
 |---|---|---|
-|**archiveGuid**  <br>*optional*|Archive GUID for a given sample|string|
-|**barcode**  <br>*optional*|Sample Barcode for a given sample|string|
-|**sampleClass**  <br>*optional*|Sample Class for a given sample|string|
-|**sampleTag**  <br>*optional*|Sample Tag for a given sample|string|
-|**sampleUuid**  <br>*optional*|UUID for a given sample|string|
+|**archiveGuid**|Archive GUID for a given sample|string|
+|**barcode**|Sample Barcode for a given sample|string|
+|**sampleClass**|Sample Class for a given sample|string|
+|**sampleTag**|Sample Tag for a given sample|string|
+|**sampleUuid**|UUID for a given sample|string|
 
 
 <a name="sampleview"></a>
@@ -256,22 +256,22 @@ Sample Event for a given sample.
 
 |Name|Description|Schema|
 |---|---|---|
-|**archiveGuid**  <br>*optional*|Archive GUID for a given sample|string|
-|**barcode**  <br>*optional*|Sample Barcode for a given sample|string|
-|**childSampleIdentifiers**  <br>*optional*||< [sampleInfo](#sampleinfo) > array|
-|**parentSampleIdentifiers**  <br>*optional*||< [sampleInfo](#sampleinfo) > array|
-|**sampleClass**  <br>*optional*|Sample Class for a given sample|string|
-|**sampleEvents**  <br>*optional*||< [sampleEvent](#sampleevent) > array|
-|**sampleTag**  <br>*optional*|Sample Tag for a given sample|string|
-|**sampleUuid**  <br>*optional*|UUID for a given sample|string|
+|**archiveGuid**|Archive GUID for a given sample|string|
+|**barcode**|Sample Barcode for a given sample|string|
+|**childSampleIdentifiers**||< [sampleInfo](#sampleinfo) > array|
+|**parentSampleIdentifiers**||< [sampleInfo](#sampleinfo) > array|
+|**sampleClass**|Sample Class for a given sample|string|
+|**sampleEvents**||< [sampleEvent](#sampleevent) > array|
+|**sampleTag**|Sample Tag for a given sample|string|
+|**sampleUuid**|UUID for a given sample|string|
 
 <a name="smsfield"></a>
 ### smsField
 
 |Name|Description|Schema|
 |---|---|---|
-|**smsKey**  <br>*optional*|SMS Field Name|string|
-|**smsValue**  <br>*optional*|SMS Field Value|string|
+|**smsKey**|SMS Field Name|string|
+|**smsValue**|SMS Field Value|string|
 
 
 <a name="supportedclasses"></a>
@@ -279,14 +279,14 @@ Sample Event for a given sample.
 
 |Name|Description|Schema|
 |---|---|---|
-|**entries**  <br>*optional*|array of Sample Classes and their descriptions for a given sample.|< [entry](#entry) > array|
+|**entries**|array of Sample Classes and their descriptions for a given sample.|< [entry](#entry) > array|
 
 <a name="views"></a>
 ### views
 
 |Name|Description|Schema|
 |---|---|---|
-|**sampleViews**  <br>*optional*|array of sample views for a given sample|< [sampleView](#sampleview) > array|
+|**sampleViews**|array of sample views for a given sample|< [sampleView](#sampleview) > array|
 
 
 <a name="error"></a>

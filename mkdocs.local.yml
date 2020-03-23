@@ -35,7 +35,7 @@ extra_css:
 # Nav items
 nav:
   - 'About': index.md
-  - 'API Endpoints':
+  - 'REST API Endpoints':
     - 'Products': 'endpoints/products.md'
     - 'Sites': 'endpoints/sites.md'
     - 'Locations': 'endpoints/locations.md'
@@ -43,8 +43,7 @@ nav:
     - 'Taxonomy': 'endpoints/taxonomy.md'
     - 'Samples': 'endpoints/samples.md'
   - 'REST API Explorer': 'explorer/index.local.md'
-  - 'GraphQL':
-    - 'About': 'graphql/index.md'
+  - 'GraphQL': 'graphql/index.md'
   - 'GraphQL Explorer': 'graphql/explorer/index.local.md'
   - 'Data Use and Policy': data-use-policy.md
 

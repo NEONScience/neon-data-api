@@ -51,11 +51,11 @@ Get taxonomic lists.
 
 |Name|Description|Schema|
 |---|---|---|
-|**count**  <br>*optional*|The number of results in the current paged response|integer|
-|**data**  <br>*optional*||< [taxonomy](#taxonomy) > array|
-|**next**  <br>*optional*|Link to the next page of results when available|string (uri)|
-|**prev**  <br>*optional*|Link to the previous page of results when available|string (uri)|
-|**total**  <br>*optional*|The total number of results for the query|integer|
+|**count**|The number of results in the current paged response|integer|
+|**data**||< [taxonomy](#taxonomy) > array|
+|**next**|Link to the next page of results when available|string (uri)|
+|**prev**|Link to the previous page of results when available|string (uri)|
+|**total**|The total number of results for the query|integer|
 
 <a name="get_taxonomy-response-400"></a>
 **Response 400**
@@ -83,22 +83,22 @@ Get taxonomic lists.
 
 |Name|Description|Schema|
 |---|---|---|
-|**acceptedTaxonID**  <br>*optional*|Accepted taxonomic code from the authoritative source (dwc:nameAccordingToID)|string|
-|**dwc:class**  <br>*optional*|The scientific name of the class in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/class|string|
-|**dwc:family**  <br>*optional*|The scientific name of the family in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/family|string|
-|**dwc:genus**  <br>*optional*|The scientific name of the genus in which the organism is classified.  http://rs.tdwg.org/dwc/terms/genus|string|
+|**acceptedTaxonID**|Accepted taxonomic code from the authoritative source (dwc:nameAccordingToID)|string|
+|**dwc:class**|The scientific name of the class in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/class|string|
+|**dwc:family**|The scientific name of the family in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/family|string|
+|**dwc:genus**|The scientific name of the genus in which the organism is classified.  http://rs.tdwg.org/dwc/terms/genus|string|
 |**dwc:infraspecificEpithet**  <br>*optional*|The infraspecific epithet (scientific name below the rank of species) of the scientific name applied to the taxon.  http://rs.tdwg.org/dwc/terms/infraspecificEpithet|string|
-|**dwc:kingdom**  <br>*optional*|The scientific name of the kingdom in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/kingdom|string|
-|**dwc:nameAccordingToID**  <br>*optional*|An identifier for the source in which the specific taxon concept circumscription is defined or implied.  http://rs.tdwg.org/dwc/terms/nameAccordingToID|string|
+|**dwc:kingdom**|The scientific name of the kingdom in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/kingdom|string|
+|**dwc:nameAccordingToID**|An identifier for the source in which the specific taxon concept circumscription is defined or implied.  http://rs.tdwg.org/dwc/terms/nameAccordingToID|string|
 |**dwc:nameAccordingToTitle**  <br>*optional*|The reference to the source in which the specific taxon concept circumscription is defined or implied.  http://tdwg.github.io/dwc/terms/nameAccordingTo|string|
-|**dwc:order**  <br>*optional*|The scientific name of the order in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/order|string|
-|**dwc:phylum**  <br>*optional*|The scientific name of the phylum or division in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/phylum|string|
-|**dwc:scientificName**  <br>*optional*|Scientific name, associated with the taxonID.  This is the name of the lowest level taxonomic rank that can be determined.  http://rs.tdwg.org/dwc/terms/scientificName|string|
-|**dwc:scientificNameAuthorship**  <br>*optional*|The authorship information for the scientificName formatted according to the conventions of the applicable nomenclaturalCode.  http://rs.tdwg.org/dwc/terms/scientificNameAuthorship|string|
+|**dwc:order**|The scientific name of the order in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/order|string|
+|**dwc:phylum**|The scientific name of the phylum or division in which the taxon is classified.  http://rs.tdwg.org/dwc/terms/phylum|string|
+|**dwc:scientificName**|Scientific name, associated with the taxonID.  This is the name of the lowest level taxonomic rank that can be determined.  http://rs.tdwg.org/dwc/terms/scientificName|string|
+|**dwc:scientificNameAuthorship**|The authorship information for the scientificName formatted according to the conventions of the applicable nomenclaturalCode.  http://rs.tdwg.org/dwc/terms/scientificNameAuthorship|string|
 |**dwc:specificEpithet**  <br>*optional*|The specific epithet (second part of the species name) of the scientific name applied to the taxon.  http://rs.tdwg.org/dwc/terms/specificEpithet|string|
 |**dwc:subgenus**  <br>*optional*|The scientific name of the subgenus in which the taxon is classified.  Values should include the genus to avoid homonym confusion.  http://rs.tdwg.org/dwc/terms/subgenus|string|
-|**dwc:taxonRank**  <br>*optional*|The lowest level taxonomic rank that can be determined for the individual or specimen.  http://rs.tdwg.org/dwc/terms/taxonRank|string|
-|**dwc:vernacularName**  <br>*optional*|A common or vernacular name. http://rs.tdwg.org/dwc/terms/vernacularName|string|
+|**dwc:taxonRank**|The lowest level taxonomic rank that can be determined for the individual or specimen.  http://rs.tdwg.org/dwc/terms/taxonRank|string|
+|**dwc:vernacularName**|A common or vernacular name. http://rs.tdwg.org/dwc/terms/vernacularName|string|
 |**gbif:division**  <br>*optional*|The scientific name of the division in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/phylum|string|
 |**gbif:form**  <br>*optional*|The form (infraspecific name below the rank of infraspecific epithet) of the scientific name applied to the taxon.  http://rs.gbif.org/vocabulary/gbif/rank/form|string|
 |**gbif:infraclass**  <br>*optional*|The scientific name of the infraclass in which the taxon is classified|string|
@@ -116,7 +116,7 @@ Get taxonomic lists.
 |**gbif:suborder**  <br>*optional*|The scientific name of the suborder in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/suborder|string|
 |**gbif:subphylum**  <br>*optional*|The scientific name of the subphylum in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/subphylum|string|
 |**gbif:subsection**  <br>*optional*|The scientific name of the subsection in which the organism is classified.  http://rs.gbif.org/vocabulary/gbif/rank/subsection|string|
-|**gbif:subspecies**  <br>*optional*|The subspecies (infraspecific name below the rank of infraspecific epithet) of the scientific name applied to the taxon.  http://rs.gbif.org/vocabulary/gbif/rank/subspecies|string|
+|**gbif:subspecies**|The subspecies (infraspecific name below the rank of infraspecific epithet) of the scientific name applied to the taxon.  http://rs.gbif.org/vocabulary/gbif/rank/subspecies|string|
 |**gbif:subtribe**  <br>*optional*|The scientific name of the subtribe in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/subtribe|string|
 |**gbif:subvariety**  <br>*optional*|The subvariety (infraspecific name below the rank of variety) of the scientific name applied to the taxon.  http://rs.gbif.org/vocabulary/gbif/rank/subvariety|string|
 |**gbif:superclass**  <br>*optional*|The scientific name of the superclass in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/superclass|string|
@@ -125,11 +125,11 @@ Get taxonomic lists.
 |**gbif:superorder**  <br>*optional*|The scientific name of the superorder in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/superorder|string|
 |**gbif:superphylum**  <br>*optional*|The scientific name of the superphylum in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/superphylum|string|
 |**gbif:tribe**  <br>*optional*|The scientific name of the tribe in which the taxon is classified.  http://rs.gbif.org/vocabulary/gbif/rank/tribe|string|
-|**gbif:variety**  <br>*optional*|The variety (infraspecific name below the rank of infraspecific epithet) of the scientific name applied to the taxon.  http://rs.gbif.org/vocabulary/gbif/rank/variety|string|
+|**gbif:variety**|The variety (infraspecific name below the rank of infraspecific epithet) of the scientific name applied to the taxon.  http://rs.gbif.org/vocabulary/gbif/rank/variety|string|
 |**speciesGroup**  <br>*optional*|The unofficial species group into which the taxon is categorized|string|
-|**taxonID**  <br>*optional*|NEON taxonomic code|string|
+|**taxonID**|NEON taxonomic code|string|
 |**taxonProtocolCategory**  <br>*optional*|NEON protocol-specific categorization of the taxon|string|
-|**taxonTypeCode**  <br>*optional*|NEON taxonomic grouping|string|
+|**taxonTypeCode**|NEON taxonomic grouping|string|
 
 
 <a name="error"></a>

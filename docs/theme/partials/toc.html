@@ -1,25 +1,25 @@
 {% if page and page.meta and page.meta.toc is defined %}
-    <script>
-        window.onload = function () {
-            var toc = document.querySelector("div[data-md-component=\"toc\"]");
-            toc.parentNode.removeChild(toc);
-            var content = document.querySelector("div.md-content");
-            content.style.marginRight = 0;
-            var swagger = document.querySelector("#swagger-frame")
-            if (swagger) {
-              swagger.style.display = "block";
-            }
-            var graphiql = document.querySelector("#graphiql-frame")
-            if (graphiql) {
-              var innerGrid = document.querySelector("div.md-main__inner.md-grid");
-              if (innerGrid) {
-                innerGrid.style.maxWidth = "100%";
-                innerGrid.style.marginRight = "25px";
-                innerGrid.style.marginLeft = "25px";
-              }
-            }
-        };
-    </script>
+  <script>
+    window.addEventListener("load", function () {
+      var toc = document.querySelector("div[data-md-component=\"toc\"]");
+      toc.parentNode.removeChild(toc);
+      var content = document.querySelector("div.md-content");
+      content.style.marginRight = 0;
+      var swagger = document.querySelector("#swagger-frame")
+      if (swagger) {
+        swagger.style.display = "block";
+      }
+      var graphiql = document.querySelector("#graphiql-frame")
+      if (graphiql) {
+        var innerGrid = document.querySelector("div.md-main__inner.md-grid");
+        if (innerGrid) {
+          innerGrid.style.maxWidth = "100%";
+          innerGrid.style.marginRight = "25px";
+          innerGrid.style.marginLeft = "25px";
+        }
+      }
+    });
+  </script>
 {% endif %}
 
 {% import "partials/language.html" as lang with context %}

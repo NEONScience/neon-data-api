@@ -15,6 +15,9 @@
 # production
 /packages/**/*/build
 
+# generated
+/packages/docs-app-graphiql/graphql/schema.md
+
 # misc
 .DS_Store
 **/*.DS_Store

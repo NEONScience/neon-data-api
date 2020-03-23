@@ -100,17 +100,27 @@ Get information about a site.
 
 |Name|Description|Schema|
 |---|---|---|
-|**dataProducts**  <br>*optional*||< [productAvailability](#productavailability) > array|
-|**domainCode**  <br>*optional*|Three character domain abbreviation (D01, D02, etc) for the domain this site is in|string|
-|**domainName**  <br>*optional*|Brief description for the domain this site is in|string|
-|**siteCode**  <br>*optional*|Four character code for the site|string|
-|**siteDescription**  <br>*optional*|Brief site description|string|
-|**siteLatitude**  <br>*optional*|Point latitude for the site|number|
-|**siteLongitude**  <br>*optional*|Point longitude for the site|number|
-|**siteName**  <br>*optional*|Full name for the site|string|
-|**siteType**  <br>*optional*|Core or Relocatable site|enum (CORE, RELOCATABLE)|
-|**stateCode**  <br>*optional*|Two letter state code that this site is in|string|
-|**stateName**  <br>*optional*|Full name of the state or territory that this site is in|string|
+|**dataProducts**|List of data products and months of available data|< [productAvailability](#productavailability) > array|
+|**domainCode**|Three character domain abbreviation (D01, D02, etc) for the domain this site is in|string|
+|**domainName**|Brief description for the domain this site is in|string|
+|**siteCode**|Four character code for the site|string|
+|**siteDescription**|Brief site description|string|
+|**siteLatitude**|Point latitude for the site|number|
+|**siteLongitude**|Point longitude for the site|number|
+|**siteName**|Full name for the site|string|
+|**siteType**|Core or Relocatable site|enum (CORE, RELOCATABLE)|
+|**stateCode**|Two letter state code that this site is in|string|
+|**stateName**|Full name of the state or territory that this site is in|string|
+
+<a name="productavailability"></a>
+### productAvailability
+
+|Name|Description|Schema|
+|---|---|---|
+|**availableDataUrls**|List of data urls for products that are available.|< string > array|
+|**availableMonths**|List of years and months that products are available.  Formatted as YYYY-MM.|< string > array|
+|**dataProductCode**|Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)|string|
+|**dataProductTitle**|Full title for the data product.|string|
 
 
 <a name="error"></a>

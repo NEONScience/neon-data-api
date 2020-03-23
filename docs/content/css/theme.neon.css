@@ -41,3 +41,24 @@ iframe.graphiql-docs {
     0 1px 1px 0 rgba(0,0,0,.14),
     0 1px 3px 0 rgba(0,0,0,.12);
 }
+
+div.app-open-container {
+  display: inline-flex;
+  float: right;
+  padding: 6px 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #002c77;
+  color: #002c77;
+}
+div.app-open-container:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, .04) !important;
+}
+div.app-open-container a.app-open-link {
+  display: inline-flex;
+  color: #002c77 !important;
+}
+div.app-open-container a.app-open-link img.app-open-img {
+  margin-left: 10px;
+}

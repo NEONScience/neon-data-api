@@ -13,7 +13,7 @@ const defaultQuery = `
 
 # Here's a query for retrieving a single data product
 # as specified by the query variables window below.
-query Product($productCode: String) {
+query Product($productCode: String!) {
   product (productCode: $productCode) {
     productCode
     productName

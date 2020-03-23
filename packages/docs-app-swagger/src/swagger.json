@@ -368,16 +368,16 @@
                 "data": {
                   "type": "object",
                   "properties": {
+                    "externalData": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/externalData"
+                      }
+                    },
                     "files": {
                       "type": "array",
                       "items": {
                         "$ref": "#/definitions/file"
-                      }
-                    },
-                    "urls": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
                       }
                     },
                     "productCode": {
@@ -860,13 +860,29 @@
           "type": "string",
           "description": "Shortened product code"
         },
+        "productName": {
+          "type": "string",
+          "description": "The name of the data product."
+        },
         "productDescription": {
           "type": "string",
           "description": "A brief description of the data product."
         },
+        "productAbstract": {
+          "type": "string",
+          "description": "An abstract for the data product."
+        },
         "productHasExpanded": {
           "type": "boolean",
           "description": "Whether a data product has expanded data"
+        },
+        "productBasicDescription": {
+          "type": "boolean",
+          "description": "A description of the basic package available for download"
+        },
+        "productExpandedDescription": {
+          "type": "boolean",
+          "description": "A description of the expanded package available for download"
         },
         "productScienceTeam": {
           "type": "string",
@@ -888,6 +904,53 @@
             "RETIRED"
           ],
           "description": "Future, active, or retired product status"
+        },
+        "changeLogs": {
+          "type": "array",
+          "description": "List of issues and associated details for the product.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "format": "int",
+                "description": "The identifier for the issue."
+              },
+              "parentIssueID": {
+                "type": "number",
+                "format": "int",
+                "description": "The identifier for the parent issue that this issue is associated with."
+              },
+              "issueDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The date and time associated with the creation of the issue."
+              },
+              "resolvedDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The date and time associated with the resolution of the issue."
+              },
+              "dateRangeStart": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The start of the date interval that this issue impacts the data product."
+              },
+              "dateRangeEnd": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The end of the date interval that this issue impacts the data product."
+              },
+              "locationAffected": {
+                "type": "string",
+                "description": "The locations affected by this issue."
+              },
+              "resolution": {
+                "type": "string",
+                "description": "The description of the resolution applied for this issue."
+              }
+            }
+          }
         },
         "keywords": {
           "type": "array",
@@ -1376,13 +1439,30 @@
           "type": "string"
         },
         "url": {
-          "description": "Download URL, *will change in the future*",
+          "description": "Download URL",
           "type": "string"
         },
         "size": {
           "description": "Estimated file size in bytes",
           "type": "number",
           "format": "int"
+        }
+      }
+    },
+    "externalData": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the external data object.",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of external data link provided.",
+          "type": "string"
+        },
+        "url": {
+          "description": "URL to external data.",
+          "type": "string"
         }
       }
     },
