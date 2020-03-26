@@ -52,7 +52,7 @@ Get files available for a given product/site/month combination
 
 |Name|Schema|
 |---|---|
-|**externalData**  <br>*optional*|< [externalData](#externalData) > array|
+|**externalData**  <br>*optional*|< [externalData](#externaldata) > array|
 |**files**|< [file](#file) > array|
 |**month**|string|
 |**productCode**|string|

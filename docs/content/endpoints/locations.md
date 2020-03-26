@@ -163,14 +163,14 @@ Get information about a location.
 |**zOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to where the geolocation point was taken.|number (double)|
 
 <a name="location-locationpolygon"></a>
-**locationPolygon**
+### locationPolygon
 
 |Name|Description|Schema|
 |---|---|---|
 |**coordinates**  <br>*optional*|A list of vertices that define the closed structure for the polygon|< [coordinates](#location-coordinates) > array|
 
 <a name="location-coordinates"></a>
-**coordinates**
+### coordinates
 
 |Name|Description|Schema|
 |---|---|---|
@@ -179,7 +179,7 @@ Get information about a location.
 |**longitude**  <br>*optional*|Decimal longitude for the polygon coordinate.|number (double)|
 
 <a name="location-locationproperties"></a>
-**locationProperties**
+### locationProperties
 
 |Name|Description|Schema|
 |---|---|---|
@@ -219,14 +219,14 @@ Get information about a location.
 |**zOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to where the geolocation point was taken.|number (double)|
 
 <a name="locationhistory-locationpolygon"></a>
-**locationPolygon**
+### locationPolygon
 
 |Name|Description|Schema|
 |---|---|---|
 |**coordinates**  <br>*optional*|A list of vertices that define the closed structure for the polygon|< [coordinates](#locationhistory-coordinates) > array|
 
 <a name="locationhistory-coordinates"></a>
-**coordinates**
+### coordinates
 
 |Name|Description|Schema|
 |---|---|---|
@@ -235,7 +235,7 @@ Get information about a location.
 |**longitude**  <br>*optional*|Decimal longitude for the polygon coordinate.|number (double)|
 
 <a name="locationhistory-locationproperties"></a>
-**locationProperties**
+### locationProperties
 
 |Name|Description|Schema|
 |---|---|---|

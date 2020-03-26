@@ -7,7 +7,7 @@ The `/sites` endpoint provides information about
 are currently available.  Numerous data products are produced from each site. 
 Site names are abbreviated into four-letter site codes -- for example, 
 the Arikaree River site abbreviation is ARIK. For more information about sites, 
-you can find a listing on our 
+including the four-letter code for each site, you can find a list on our 
 [main website](https://www.neonscience.org/field-sites/field-sites-map/list). 
 If you need to know about our remote 
 sensing data availability, visit the 

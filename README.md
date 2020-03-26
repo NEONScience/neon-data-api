@@ -15,8 +15,8 @@ any bugs or descrepancies.
 
 ## NEON-Utilities
 
-NEON provides a set of R packages for working with the NEON data API:  
-[github.com/NEONScience/NEON-utilities](https://github.com/NEONScience/NEON-utilities)
+NEON provides a set of R CRAN packages for working with the NEON data API:  
+[NEON-utilities](https://cran.r-project.org/web/packages/neonUtilities/index.html)
 
 ## Contributing
 

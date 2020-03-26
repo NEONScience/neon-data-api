@@ -826,17 +826,13 @@
     "product": {
       "type": "object",
       "properties": {
-        "productCategory": {
+        "productCodeLong": {
           "type": "string",
-          "description": "Level 1, 2, 3, or 4 data product"
+          "description": "Revisioned, long code for the data product (NEON.DOM.SITE.DP1.00001.001, etc)"
         },
         "productCode": {
           "type": "string",
           "description": "Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)"
-        },
-        "productCodeLong": {
-          "type": "string",
-          "description": "Revisioned, long code for the data product (NEON.DOM.SITE.DP1.00001.001, etc)"
         },
         "productCodePresentation": {
           "type": "string",
@@ -850,34 +846,6 @@
           "type": "string",
           "description": "A brief description of the data product."
         },
-        "productAbstract": {
-          "type": "string",
-          "description": "An abstract for the data product."
-        },
-        "productHasExpanded": {
-          "type": "boolean",
-          "description": "Whether a data product has expanded data"
-        },
-        "productBasicDescription": {
-          "type": "boolean",
-          "description": "A description of the basic package available for download"
-        },
-        "productExpandedDescription": {
-          "type": "boolean",
-          "description": "A description of the expanded package available for download"
-        },
-        "productScienceTeam": {
-          "type": "string",
-          "description": "Science team responsible for the data product"
-        },
-        "productScienceTeamAbbr": {
-          "type": "string",
-          "description": "Three letter abbreviation for the data science team."
-        },
-        "productPublicationFormatType": {
-          "type": "string",
-          "description": "Class of publication system used during the publication process; can be independent from productScienceTeam."
-        },
         "productStatus": {
           "type": "string",
           "enum": [
@@ -886,6 +854,61 @@
             "RETIRED"
           ],
           "description": "Future, active, or retired product status"
+        },
+        "productCategory": {
+          "type": "string",
+          "description": "Level 1, 2, 3, or 4 data product"
+        },
+        "productHasExpanded": {
+          "type": "boolean",
+          "description": "Whether a data product has expanded data"
+        },
+        "productScienceTeamAbbr": {
+          "type": "string",
+          "description": "Three letter abbreviation for the data science team."
+        },
+        "productScienceTeam": {
+          "type": "string",
+          "description": "Science team responsible for the data product"
+        },
+        "productPublicationFormatType": {
+          "type": "string",
+          "description": "Class of publication system used during the publication process; can be independent from productScienceTeam."
+        },
+        "productAbstract": {
+          "type": "string",
+          "description": "An abstract for the data product."
+        },
+        "productDesignDescription": {
+          "type": "string",
+          "description": "A design description of the data product"
+        },
+        "productStudyDescription": {
+          "type": "string",
+          "description": "A study description of the data product"
+        },
+        "productBasicDescription": {
+          "type": "string",
+          "description": "A description of the basic package available for download"
+        },
+        "productExpandedDescription": {
+          "type": "string",
+          "description": "A description of the expanded package available for download"
+        },
+        "productSensor": {
+          "type": "string",
+          "description": "A description of the sensor utilized by the data product"
+        },
+        "productRemarks": {
+          "type": "string",
+          "description": "Remarks about the data product"
+        },
+        "themes": {
+          "type": "array",
+          "description": "List of themes to which the data product belongs.",
+          "items": {
+            "type": "string"
+          }
         },
         "changeLogs": {
           "type": "array",
@@ -934,6 +957,13 @@
             }
           }
         },
+        "specs": {
+          "type": "array",
+          "description": "List of documents associated with the data product.",
+          "items": {
+            "$ref": "#/definitions/spec"
+          }
+        },
         "keywords": {
           "type": "array",
           "description": "List of words and phrases associated with the data product",
@@ -966,20 +996,6 @@
                 }
               }
             }
-          }
-        },
-        "specs": {
-          "type": "array",
-          "description": "List of documents associated with the data product.",
-          "items": {
-            "$ref": "#/definitions/spec"
-          }
-        },
-        "themes": {
-          "type": "array",
-          "description": "List of themes to which the data product belongs.",
-          "items": {
-            "type": "string"
           }
         }
       }

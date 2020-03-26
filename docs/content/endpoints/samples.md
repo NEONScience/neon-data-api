@@ -17,9 +17,6 @@ from it, has two primary purposes:
   1. to find the current or past physical location of a sample  
   2. to explore the sample hierarchy  
 
-Currently, all samples are supported except for those associated with ground 
-beetles and canopy foliage; future updates will add the remaining samples. 
-
 Use the `/samples/supportedClasses` endpoint to download the current list of 
 supported sample classes. 
 
@@ -41,8 +38,9 @@ for a unique sample ID and a specified number of degrees of relatedness
 N=3 will return any data from samples related by three degrees). 
 
 If you are interested in requesting an archived sample for your research, 
-the data returned can tell you if a given sample was archived, and at what 
-facility. If your primary interest is in data for analysis, use the NEON data portal.  
+the data returned can tell you if a given sample was archived, and at what facility. 
+Visit the [Biorepository Portal](https://biorepo.neonscience.org/portal/index.php) 
+to request samples. If your primary interest is in data for analysis, use the NEON data portal.
 
 
 <a name="get_sampleclasses-sampletag"></a>

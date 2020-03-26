@@ -10,7 +10,7 @@ In the API, data products are specified using a 13 character code. For instance,
 uses product code DP1.20092.001, where DP1 
 refers to [data level](https://www.neonscience.org/data/about-data/data-processing-publication) 
 1 (quality controlled), 20092 is the unique numeric id of 
-the data product, and 001 refers to the revision. All of our data products are 
+the data product, and 001 refers to the revision. Almost all of our data products are 
 currently provisional and annotated as revision 1.  
 
 
@@ -18,7 +18,7 @@ currently provisional and annotated as revision 1.
 ### GET `/products`
 
 #### Description
-Get information about all data products.
+Get information about all current data products.
 
 
 #### Responses
@@ -94,34 +94,37 @@ Get information about a data product.
 
 |Name|Description|Schema|
 |---|---|---|
-|**changeLogs**|List of issues and associated details for the product.|< [changeLogs](#changeLogs) > array|
-|**keywords**|List of words and phrases associated with the data product|< string > array|
-|**productCategory**|Level 1, 2, 3, or 4 data product|string|
-|**productCode**|Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)|string|
 |**productCodeLong**|Revisioned, long code for the data product (NEON.DOM.SITE.DP1.00001.001, etc)|string|
+|**productCode**|Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)|string|
 |**productCodePresentation**|Shortened product code|string|
 |**productName**|The name of the data product.|string|
 |**productDescription**|A brief description of the data product.|string|
-|**productAbstract**|An abstract for the data product.|string|
+|**productStatus**|Future, active, or retired product status|enum (FUTURE, ACTIVE, RETIRED)|
+|**productCategory**|Level 1, 2, 3, or 4 data product|string|
 |**productHasExpanded**|Whether a data product has expanded data|boolean|
+|**productScienceTeamAbbr**|Three letter abbreviation for the data science team.|string|
+|**productPublicationFormatType**|Class of publication system used during the publication process; can be independent from productScienceTeam.|string|
+|**productAbstract**|An abstract for the data product.|string|
+|**productDesignDescription**|A design description of the data product|string|
+|**productStudyDescription**|A study description of the data product|string|
 |**productBasicDescription**|A description of the basic package available for download|string|
 |**productExpandedDescription**|A description of the expanded package available for download|string|
-|**productPublicationFormatType**|Class of publication system used during the publication process; can be independent from productScienceTeam.|string|
-|**productScienceTeam**|Science team responsible for the data product|string|
-|**productScienceTeamAbbr**|Three letter abbreviation for the data science team.|string|
-|**productStatus**|Future, active, or retired product status|enum (FUTURE, ACTIVE, RETIRED)|
-|**siteCodes**|List of sites and months of available data|< [siteCodes](#product-sitecodes) > array|
-|**specs**|List of documents associated with the data product.|< [spec](#spec) > array|
+|**productSensor**|A description of the type of sensor utilized by the data product|string|
+|**productRemarks**|Remarks about the data product|string|
 |**themes**|List of themes to which the data product belongs.|< string > array|
+|**changeLogs**|List of issues and associated details for the product.|< [changeLogs](#changelogs) > array|
+|**specs**|List of documents associated with the data product.|< [spec](#spec) > array|
+|**keywords**|List of words and phrases associated with the data product|< string > array|
+|**siteCodes**|List of sites and months of available data|< [siteCodes](#sitecodes) > array|
 
 <a name="product-sitecodes"></a>
-**siteCodes**
+### siteCodes
 
 |Name|Description|Schema|
 |---|---|---|
-|**availableDataUrls**|List of data urls for products that are available.|< string > array|
-|**availableMonths**|List of years and months that products are available.  Formatted as YYYY-MM.|< string > array|
 |**siteCode**|Four character code for the site|string|
+|**availableMonths**|List of years and months that products are available.  Formatted as YYYY-MM.|< string > array|
+|**availableDataUrls**|List of data urls for products that are available.|< string > array|
 
 
 <a name="spec"></a>
@@ -130,7 +133,7 @@ Get information about a data product.
 |Name|Description|Schema|
 |---|---|---|
 |**specId**|Document code for the associated document.|string|
-|**specName**|Name of the associated document.|string|
+|**specNumber**|Name of the associated document.|string|
 
 
 <a name="changeLogs"></a>
