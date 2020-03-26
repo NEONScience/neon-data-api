@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.1.3",
+    "version": "0.2.0",
     "title": "NEON Data API Requests",
     "description": "\nExpand the options below, click GET, and then click TRY IT OUT to see example calls."
   },
@@ -87,24 +87,6 @@
                 "data": {
                   "$ref": "#/definitions/product"
                 }
-              }
-            },
-            "headers": {
-              "X-RateLimit-Limit": {
-                "type": "integer",
-                "description": "Request burst limit."
-              },
-              "X-RateLimit-Remaining": {
-                "type": "integer",
-                "description": "The number of remaining requests of the burst limit."
-              },
-              "X-RateLimit-Reset": {
-                "type": "integer",
-                "description": "The number of seconds until the burst limit resets in full."
-              },
-              "RetryAfter": {
-                "type": "integer",
-                "description": "The number of seconds until the next request can be made."
               }
             }
           },

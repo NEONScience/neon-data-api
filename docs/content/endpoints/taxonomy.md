@@ -13,7 +13,7 @@ larger recordsets. Also note that the scientificname parameter only
 supports exact, not fuzzy, string matching. 
 
 <a name="get_taxonomy"></a>
-### GET /taxonomy
+### GET `/taxonomy`
 
 #### Description
 Get taxonomic lists.
@@ -140,14 +140,5 @@ Get taxonomic lists.
 |**detail**  <br>*optional*|string|
 |**status**  <br>*optional*|number (int)|
 
-
-<a name="securityscheme"></a>
-## API Tokens
-
-<a name="x-api-token"></a>
-### X-API-Token
-*Type* : apiKey  
-*Name* : X-API-Token  
-*In* : HEADER
 
 <br />

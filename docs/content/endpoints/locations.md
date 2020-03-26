@@ -262,14 +262,4 @@ Get information about a location.
 |**status**  <br>*optional*|number (int)|
 
 
-<a name="securityscheme"></a>
-## API Tokens
-
-<a name="x-api-token"></a>
-### X-API-Token
-*Type* : apiKey  
-*Name* : X-API-Token  
-*In* : HEADER
-
-
 <br />

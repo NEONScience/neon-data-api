@@ -15,7 +15,7 @@ sensing data availability, visit the
 
 
 <a name="get_sites"></a>
-### GET /sites
+### GET `/sites`
 
 #### Description
 Get information about all sites.
@@ -46,7 +46,7 @@ Get information about all sites.
 
 
 <a name="get_sites-sitecode"></a>
-### GET /sites/{siteCode}
+### GET `/sites/{siteCode}`
 
 #### Description
 Get information about a site.
@@ -131,14 +131,5 @@ Get information about a site.
 |**detail**  <br>*optional*|string|
 |**status**  <br>*optional*|number (int)|
 
-
-<a name="securityscheme"></a>
-## API Tokens
-
-<a name="x-api-token"></a>
-### X-API-Token
-*Type* : apiKey  
-*Name* : X-API-Token  
-*In* : HEADER
 
 <br />

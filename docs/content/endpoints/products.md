@@ -15,7 +15,7 @@ currently provisional and annotated as revision 1.
 
 
 <a name="get_products"></a>
-### GET /products
+### GET `/products`
 
 #### Description
 Get information about all data products.
@@ -47,7 +47,7 @@ Get information about all data products.
 
 
 <a name="get_products_productcode"></a>
-### GET /products/{productCode}
+### GET `/products/{productCode}`
 
 #### Description
 Get information about a data product.
@@ -64,7 +64,7 @@ Get information about a data product.
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Single data product  <br>**Headers** :   <br>`X-RateLimit-Limit` (integer) : Request burst limit.  <br>`X-RateLimit-Remaining` (integer) : The number of remaining requests of the burst limit.  <br>`X-RateLimit-Reset` (integer) : The number of seconds until the burst limit resets in full.  <br>`RetryAfter` (integer) : The number of seconds until the next request can be made.|[Response 200](#get_products_productcode_response-200)|
+|**200**|Single data product|[Response 200](#get_products_productcode_response-200)|
 |**400**|Product(s) not found|[error](#error)|
 |**default**|General error|[error](#error)|
 
@@ -155,17 +155,6 @@ Get information about a data product.
 |---|---|
 |**detail**  <br>*optional*|string|
 |**status**  <br>*optional*|number (int)|
-
-
-
-<a name="securityscheme"></a>
-## API Tokens
-
-<a name="x-api-token"></a>
-### X-API-Token
-*Type* : apiKey  
-*Name* : X-API-Token  
-*In* : HEADER
 
 
 <br />

@@ -45,7 +45,10 @@ nav:
   - 'REST API Explorer': 'explorer/index.md'
   - 'GraphQL': 'graphql/index.md'
   - 'GraphQL Explorer': 'graphql/explorer/index.md'
+  - 'Rate Limiting': 'rate-limiting.md'
   - 'Data Use and Policy': data-use-policy.md
+  - 'Contributing':
+    - 'Building and Testing': contributing/building.md
 
 plugins:
   - search
@@ -67,7 +70,7 @@ markdown_extensions:
   - pymdownx.superfences
 
 # Copyright
-copyright: 'Copyright &copy; 2020 Battelle'
+copyright: 'Copyright &copy; {{COPYRIGHT_YEAR}} Battelle'
 
 extra:
   manifest: 'assets/images/site.webmanifest'

@@ -16,7 +16,7 @@ file is more than 24 hours, you may need to obtain a new URL before proceeding.
 ## Paths
 
 <a name="get_data-availability"></a>
-### GET /data/{productCode}/{siteCode}/{year-month}
+### GET `/data/{productCode}/{siteCode}/{year-month}`
 
 #### Description
 Get files available for a given product/site/month combination
@@ -108,16 +108,6 @@ Get files available for a given product/site/month combination
 |---|---|
 |**detail**  <br>*optional*|string|
 |**status**  <br>*optional*|number (int)|
-
-
-<a name="securityscheme"></a>
-## API Tokens
-
-<a name="x-api-token"></a>
-### X-API-Token
-*Type* : apiKey  
-*Name* : X-API-Token  
-*In* : HEADER
 
 
 <br />

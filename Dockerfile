@@ -14,6 +14,7 @@ RUN cd /usr/src/app/build-temp/api-docs \
 RUN cd /usr/src/app/build-temp/api-docs \
   && sed -i "s/{{TIMESTAMP}}/$(date +%s)/g" docs/content/explorer/index.md \
   && sed -i "s/{{TIMESTAMP}}/$(date +%s)/g" docs/content/graphql/explorer/index.md \
+  && sed -i "s/{{COPYRIGHT_YEAR}}/$(date +%Y)/g" mkdocs.yml \
   && mkdocs build --config-file mkdocs.yml \
   && mv /usr/src/app/build-temp/api-docs/site /usr/src/app/ \
   && rm -rf /usr/src/app/build-temp

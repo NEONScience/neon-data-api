@@ -45,7 +45,10 @@ nav:
   - 'REST API Explorer': 'explorer/index.local.md'
   - 'GraphQL': 'graphql/index.md'
   - 'GraphQL Explorer': 'graphql/explorer/index.local.md'
+  - 'Rate Limiting': 'rate-limiting.md'
   - 'Data Use and Policy': data-use-policy.md
+  - 'Contributing':
+    - 'Building and Testing': contributing/building.md
 
 plugins:
   - search

@@ -46,7 +46,7 @@ facility. If your primary interest is in data for analysis, use the NEON data po
 
 
 <a name="get_sampleclasses-sampletag"></a>
-### GET /samples/classes
+### GET `/samples/classes`
 
 #### Description
 Get a list of Sample Classes for a given Sample Tag
@@ -87,7 +87,7 @@ Get a list of Sample Classes for a given Sample Tag
 
 
 <a name="get_samplesdownloadbysampletagclass"></a>
-### GET /samples/download
+### GET `/samples/download`
 
 #### Description
 Get a list of sample views for a given sample identifier and search degree.
@@ -133,7 +133,7 @@ Get a list of sample views for a given sample identifier and search degree.
 
 
 <a name="get_supportedsampleclasses"></a>
-### GET /samples/supportedClasses
+### GET `/samples/supportedClasses`
 
 #### Description
 Get a list of sample classes and descriptions currently supported by the Sample Viewer
@@ -165,7 +165,7 @@ Get a list of sample classes and descriptions currently supported by the Sample 
 
 
 <a name="get_samplesbytagclass"></a>
-### GET /samples/view
+### GET `/samples/view`
 
 #### Description
 Get a list of sample custody events, parent samples and child samples for a given sample identifier.
@@ -296,16 +296,6 @@ Sample Event for a given sample.
 |---|---|
 |**detail**  <br>*optional*|string|
 |**status**  <br>*optional*|number (int)|
-
-
-<a name="securityscheme"></a>
-## API Tokens
-
-<a name="x-api-token"></a>
-### X-API-Token
-*Type* : apiKey  
-*Name* : X-API-Token  
-*In* : HEADER
 
 
 <br />
