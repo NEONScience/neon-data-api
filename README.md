@@ -21,4 +21,4 @@ NEON provides a set of R packages for working with the NEON data API:
 ## Contributing
 
 To get started with building and running the docs project, please refer to our 
-[building and testing](docs/contributing/building.md) section.
+[building and testing](docs/content/contributing/building.md) section.
