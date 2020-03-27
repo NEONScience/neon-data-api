@@ -7,9 +7,9 @@ URLs to downloadable files. Several terabytes of data are presently available.
 To keep data files to a reasonable size, they are generally arranged in 
 product/site/monthly chunks. Even so, files can be large and you may find it 
 worthwhile to check the size attribute before downloading. Also note that the 
-provided URLs are from an Amazon S3 service and expire about 24 hours after 
+provided URLs are from an Amazon S3 service and expire 1 hour after 
 generation. If the time between when you obtain a URL and start downloading the 
-file is more than 24 hours, you may need to obtain a new URL before proceeding.  
+file is more than 1 hour, you may need to obtain a new URL before proceeding.  
 
 
 <a name="paths"></a>

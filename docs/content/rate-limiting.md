@@ -107,7 +107,7 @@ provided on the account page.
 
 !!! warning
     Tokens should be treated like credentials. 
-    Never share you API token and store it in a secure location. 
+    Never share your API token and store it in a secure location. 
     It is strongly recommended to never commit this token to source control 
     repositories such as GitHub. If your token has been compromised, 
     please disable or delete the token through the 
