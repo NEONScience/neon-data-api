@@ -28,12 +28,11 @@ Get information about all current data products.
 |**200**|List of data products|[Response 200](#get_products_response-200)|
 |**default**|General error|[error](#error)|
 
-<a name="get_products_response-200"></a>
-**Response 200**
+<h5 id="get_products_response-200">Response 200</h5>
 
 |Name|Schema|
 |---|---|
-|**data**|< [product](#product) > array|
+|**data**|[[product](#product)]|
 
 
 #### Produces
@@ -68,8 +67,7 @@ Get information about a data product.
 |**400**|Product(s) not found|[error](#error)|
 |**default**|General error|[error](#error)|
 
-<a name="get_products_productcode_response-200"></a>
-**Response 200**
+<h5 id="get_products_productcode_response-200">Response 200</h5>
 
 |Name|Schema|
 |---|---|
@@ -111,11 +109,11 @@ Get information about a data product.
 |**productExpandedDescription**|A description of the expanded package available for download|string|
 |**productSensor**|A description of the type of sensor utilized by the data product|string|
 |**productRemarks**|Remarks about the data product|string|
-|**themes**|List of themes to which the data product belongs.|< string > array|
-|**changeLogs**|List of issues and associated details for the product.|< [changeLogs](#changelogs) > array|
-|**specs**|List of documents associated with the data product.|< [spec](#spec) > array|
-|**keywords**|List of words and phrases associated with the data product|< string > array|
-|**siteCodes**|List of sites and months of available data|< [siteCodes](#sitecodes) > array|
+|**themes**|List of themes to which the data product belongs.|[string]|
+|**changeLogs**|List of issues and associated details for the product.|[[changeLogs](#changelogs)]|
+|**specs**|List of documents associated with the data product.|[[spec](#spec)]|
+|**keywords**|List of words and phrases associated with the data product|[string]|
+|**siteCodes**|List of sites and months of available data|[[siteCodes](#sitecodes)]|
 
 <a name="product-sitecodes"></a>
 ### siteCodes
@@ -123,8 +121,8 @@ Get information about a data product.
 |Name|Description|Schema|
 |---|---|---|
 |**siteCode**|Four character code for the site|string|
-|**availableMonths**|List of years and months that products are available.  Formatted as YYYY-MM.|< string > array|
-|**availableDataUrls**|List of data urls for products that are available.|< string > array|
+|**availableMonths**|List of years and months that products are available.  Formatted as YYYY-MM.|[string]|
+|**availableDataUrls**|List of data urls for products that are available.|[string]|
 
 
 <a name="spec"></a>

@@ -36,35 +36,22 @@ Get files available for a given product/site/month combination
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Available files|[Response 200](#get_data-availability_response-200)|
-|**400**|Product, site not found or invalid date range specified|[Response 400](#get_data-availability_response-400)|
+|**200**|Available files|[Response 200](#get_data_availability_resposne_200)|
+|**400**|Product, site not found or invalid date range specified|[Response 400](#get_data_availability_resposne_400)|
 |**default**|General error|[error](#error)|
 
-<a name="get_data-availability_response-200"></a>
-**Response 200**
+<h5 id="get_data_availability_resposne_200">Response 200</h5>
 
 |Name|Schema|
 |---|---|
 |**data**|[data](#data-productcode-sitecode-year-month-get-data)|
 
-<a name="data-productcode-sitecode-year-month-get-data"></a>
-**data**
+
+<h5 id="get_data_availability_resposne_400">Response 400</h5>
 
 |Name|Schema|
 |---|---|
-|**externalData**  <br>*optional*|< [externalData](#externaldata) > array|
-|**files**|< [file](#file) > array|
-|**month**|string|
-|**productCode**|string|
-|**siteCode**|string|
-|**urls**|< string > array|
-
-<a name="get_data-availability_response-400"></a>
-**Response 400**
-
-|Name|Schema|
-|---|---|
-|**errors**  <br>*optional*|< [error](#error) > array|
+|**errors**  <br>*optional*|[[error](#error)]|
 
 
 #### Produces
@@ -79,6 +66,17 @@ Get files available for a given product/site/month combination
 
 <a name="definitions"></a>
 ## Definitions
+
+<a name="data-productcode-sitecode-year-month-get-data"></a>
+### data
+
+|Name|Schema|
+|---|---|
+|**externalData**  <br>*optional*|[[externalData](#externaldata)]|
+|**files**|[[file](#file)]|
+|**productCode**|string|
+|**siteCode**|string|
+|**month**|string|
 
 <a name="file"></a>
 ### file
@@ -99,7 +97,6 @@ Get files available for a given product/site/month combination
 |**name**|The name of the external data object|string|
 |**type**|The type of external data link provided.|string|
 |**url**|URL to external data.|number (int)|
-|**url**|Download URL|string|
 
 <a name="error"></a>
 ### error

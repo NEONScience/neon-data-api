@@ -53,15 +53,14 @@ Get information about the site-level locations.
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|List of locations|[Response 200](#get_locations_sites_response-200)|
+|**200**|List of locations|[Response 200](#get_location_sites_success_200)|
 |**default**|General error|[error](#error)|
 
-<a name="get_locations_sites_response-200"></a>
-**Response 200**
+<h5 id="get_location_sites_success_200">Response 200</h5>
 
 |Name|Schema|
 |---|---|
-|**data**|< [location](#location) > array|
+|**data**|[[location](#location)]|
 
 
 #### Produces
@@ -100,19 +99,17 @@ Get information about a location.
 |**400**|Location(s) not found|[Response 400](#get_locations-locationname_response-400)|
 |**default**|General error|[error](#error)|
 
-<a name="get_locations-locationname_response-200"></a>
-**Response 200**
+<h5 id="get_locations-locationname_response-200">Response 200</h5>
 
 |Name|Schema|
 |---|---|
 |**data**|[location](#location)|
 
-<a name="get_locations-locationname_response-400"></a>
-**Response 400**
+<h5 id="get_locations-locationname_response-400">Response 200</h5>
 
 |Name|Schema|
 |---|---|
-|**errors**  <br>*optional*|< [error](#error) > array|
+|**errors**  <br>*optional*|[[error](#error)]|
 
 
 #### Produces
@@ -134,67 +131,57 @@ Get information about a location.
 
 |Name|Description|Schema|
 |---|---|---|
-|**alphaOrientation**  <br>*optional*|The angle (in degrees) at which the sensor is facing relative to true North.|number (double)|
-|**betaOrientation**  <br>*optional*|Beta orientation for the location.|number (double)|
+|**locationName**  <br>*optional*|Name of the location|string|
+|**locationDescription**  <br>*optional*|A description of the location.|string|
+|**locationType**  <br>*optional*||string|
 |**domainCode**  <br>*optional*|Three character domain abbreviation (D01, D02, etc) for the domain this site is in|string|
-|**gammaOrientation**  <br>*optional*|Gamma orientation for the location.|number (double)|
-|**locationChildHierarchy**  <br>*optional*|When querying for the hierarchy, the location's set of immediate children and associated hierarchy|< [locationChildHierarchy](#locationchildhierarchy) > array|
-|**locationChildren**  <br>*optional*|A list of names of locations within this location.|< string > array|
-|**locationChildrenUrls**  <br>*optional*|A list of URLs to request location data for the children of this location.|< string > array|
+|**siteCode**  <br>*optional*|Four character code for the site|string|
 |**locationDecimalLatitude**  <br>*optional*|Decimal latitude for the location.|number (double)|
 |**locationDecimalLongitude**  <br>*optional*|Decimal longitude for the location.|number (double)|
-|**locationDescription**  <br>*optional*|A description of the location.|string|
 |**locationElevation**  <br>*optional*|Elevation for the location.|number (double)|
-|**locationHistory**  <br>*optional*||< [locationHistory](#locationhistory) > array|
-|**locationName**  <br>*optional*|Name of the location|string|
-|**locationParent**  <br>*optional*|Name of the location that this location is in.|string|
-|**locationParentHierarchy**  <br>*optional*|When querying for the hierarchy, the location's parent hierarchy|[locationParentHierarchy](#locationparenthierarchy)|
-|**locationParentUrl**  <br>*optional*|URL to request location data for the parent of this location.|string|
-|**locationPolygon**  <br>*optional*||[locationPolygon](#location-locationpolygon)|
-|**locationProperties**  <br>*optional*|List of properties associated with the location.  Contents vary based on the type of location.|< [locationProperties](#location-locationproperties) > array|
-|**locationType**  <br>*optional*||string|
 |**locationUtmEasting**  <br>*optional*|The Universal Transverse Mercator easting.|number (double)|
-|**locationUtmHemisphere**  <br>*optional*|The single character Universal Transverse Mercator hemisphere.|string|
 |**locationUtmNorthing**  <br>*optional*|The Universal Transverse Mercator northing.|number (double)|
+|**locationUtmHemisphere**  <br>*optional*|The single character Universal Transverse Mercator hemisphere.|string|
 |**locationUtmZone**  <br>*optional*|The integer Universal Transverse Mercator zone.|number (int)|
-|**siteCode**  <br>*optional*|Four character code for the site|string|
+|**alphaOrientation**  <br>*optional*|The angle (in degrees) at which the sensor is facing relative to true North.|number (double)|
+|**betaOrientation**  <br>*optional*|Beta orientation for the location.|number (double)|
+|**gammaOrientation**  <br>*optional*|Gamma orientation for the location.|number (double)|
 |**xOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, east (positive values) or west (negative values) relative to where the geolocation point was taken.|number (double)|
 |**yOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, north (positive values) or south (negative values) relative to where the geolocation point was taken.|number (double)|
 |**zOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to where the geolocation point was taken.|number (double)|
+|**locationPolygon**  <br>*optional*||[locationPolygon](#locationpolygon)|
+|**locationProperties**  <br>*optional*|List of properties associated with the location.  Contents vary based on the type of location.|[[locationProperties](#locationproperties)]|
+|**locationHistory**  <br>*optional*||[[locationHistory](#locationhistory)]|
+|**locationParent**  <br>*optional*|Name of the location that this location is in.|string|
+|**locationParentUrl**  <br>*optional*|URL to request location data for the parent of this location.|string|
+|**locationParentHierarchy**  <br>*optional*|When querying for the hierarchy, the location's parent hierarchy|[locationParentHierarchy](#locationparenthierarchy)|
+|**locationChildren**  <br>*optional*|A list of names of locations within this location.|[string]|
+|**locationChildrenUrls**  <br>*optional*|A list of URLs to request location data for the children of this location.|[string]|
+|**locationChildHierarchy**  <br>*optional*|When querying for the hierarchy, the location's set of immediate children and associated hierarchy|[[locationChildHierarchy](#locationchildhierarchy)]|
 
-<a name="location-locationpolygon"></a>
+<a name="locationpolygon"></a>
 ### locationPolygon
 
 |Name|Description|Schema|
 |---|---|---|
-|**coordinates**  <br>*optional*|A list of vertices that define the closed structure for the polygon|< [coordinates](#location-coordinates) > array|
+|**coordinates**  <br>*optional*|A list of vertices that define the closed structure for the polygon|[[coordinates](#coordinates)]|
 
-<a name="location-coordinates"></a>
+<a name="coordinates"></a>
 ### coordinates
 
 |Name|Description|Schema|
 |---|---|---|
-|**elevation**  <br>*optional*|Elevation for the polygon coordinate.|number (double)|
 |**latitude**  <br>*optional*|Decimal latitude for the polygon coordinate.|number (double)|
 |**longitude**  <br>*optional*|Decimal longitude for the polygon coordinate.|number (double)|
+|**elevation**  <br>*optional*|Elevation for the polygon coordinate.|number (double)|
 
-<a name="location-locationproperties"></a>
+<a name="locationproperties"></a>
 ### locationProperties
 
 |Name|Description|Schema|
 |---|---|---|
 |**locationPropertyName**  <br>*optional*||string|
 |**locationPropertyValue**  <br>*optional*|Can be a string or a number|string|
-
-
-<a name="locationchildhierarchy"></a>
-### locationChildHierarchy
-
-|Name|Description|Schema|
-|---|---|---|
-|**locationChildHierarchy**  <br>*optional*|The location's child hierarchy|< object > array|
-|**locationDescription**  <br>*optional*|A description of the location.|string|
-|**locationName**  <br>*optional*|Name of the location|string|
 
 
 <a name="locationhistory"></a>
@@ -202,45 +189,24 @@ Get information about a location.
 
 |Name|Description|Schema|
 |---|---|---|
-|**alphaOrientation**  <br>*optional*|The angle (in degrees) at which the sensor is facing relative to true North.|number (double)|
-|**betaOrientation**  <br>*optional*|Beta orientation for the location.|number (double)|
-|**gammaOrientation**  <br>*optional*|Gamma orientation for the location.|number (double)|
+|**current**|Indicates if this is the current location for this location.|boolean|
+|**locationStartDate**|The start date and time for this location.|string (date-time)|
+|**locationEndDate**  <br>*optional*|The end date and time for this location.|string (date-time)|
 |**locationDecimalLatitude**  <br>*optional*|Decimal latitude for the location.|number (double)|
 |**locationDecimalLongitude**  <br>*optional*|Decimal longitude for the location.|number (double)|
 |**locationElevation**  <br>*optional*|Elevation for the location.|number (double)|
-|**locationPolygon**  <br>*optional*||[locationPolygon](#locationhistory-locationpolygon)|
-|**locationProperties**  <br>*optional*|List of properties associated with the location.  Contents vary based on the type of location.|< [locationProperties](#locationhistory-locationproperties) > array|
 |**locationUtmEasting**  <br>*optional*|The Universal Transverse Mercator easting.|number (double)|
-|**locationUtmHemisphere**  <br>*optional*|The single character Universal Transverse Mercator hemisphere.|string|
 |**locationUtmNorthing**  <br>*optional*|The Universal Transverse Mercator northing.|number (double)|
+|**locationUtmHemisphere**  <br>*optional*|The single character Universal Transverse Mercator hemisphere.|string|
 |**locationUtmZone**  <br>*optional*|The integer Universal Transverse Mercator zone.|number (int)|
+|**alphaOrientation**  <br>*optional*|The angle (in degrees) at which the sensor is facing relative to true North.|number (double)|
+|**betaOrientation**  <br>*optional*|Beta orientation for the location.|number (double)|
+|**gammaOrientation**  <br>*optional*|Gamma orientation for the location.|number (double)|
 |**xOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, east (positive values) or west (negative values) relative to where the geolocation point was taken.|number (double)|
 |**yOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, north (positive values) or south (negative values) relative to where the geolocation point was taken.|number (double)|
 |**zOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to where the geolocation point was taken.|number (double)|
-
-<a name="locationhistory-locationpolygon"></a>
-### locationPolygon
-
-|Name|Description|Schema|
-|---|---|---|
-|**coordinates**  <br>*optional*|A list of vertices that define the closed structure for the polygon|< [coordinates](#locationhistory-coordinates) > array|
-
-<a name="locationhistory-coordinates"></a>
-### coordinates
-
-|Name|Description|Schema|
-|---|---|---|
-|**elevation**  <br>*optional*|Elevation for the polygon coordinate.|number (double)|
-|**latitude**  <br>*optional*|Decimal latitude for the polygon coordinate.|number (double)|
-|**longitude**  <br>*optional*|Decimal longitude for the polygon coordinate.|number (double)|
-
-<a name="locationhistory-locationproperties"></a>
-### locationProperties
-
-|Name|Description|Schema|
-|---|---|---|
-|**locationPropertyName**  <br>*optional*||string|
-|**locationPropertyValue**  <br>*optional*|Can be a string or a number|string|
+|**locationPolygon**  <br>*optional*||[locationPolygon](#locationpolygon)|
+|**locationProperties**  <br>*optional*|List of properties associated with the location.  Contents vary based on the type of location.|[[locationProperties](#locationproperties)]|
 
 
 <a name="locationparenthierarchy"></a>
@@ -252,6 +218,15 @@ Get information about a location.
 |**locationParent**  <br>*optional*|Name of the location that this location is in.|string|
 |**locationParentHierarchy**  <br>*optional*|The location's parent hierarchy|object|
 |**locationParentUrl**  <br>*optional*|URL to request location data for the parent of this location.|string|
+
+<a name="locationchildhierarchy"></a>
+### locationChildHierarchy
+
+|Name|Description|Schema|
+|---|---|---|
+|**locationChildHierarchy**  <br>*optional*|The location's child hierarchy|[object]|
+|**locationDescription**  <br>*optional*|A description of the location.|string|
+|**locationName**  <br>*optional*|Name of the location|string|
 
 <a name="error"></a>
 ### error

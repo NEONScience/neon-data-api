@@ -25,14 +25,14 @@ Get information about all sites.
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|List of data products|[Response 200](#get_sites_response-200)|
+|**200**|List of sites|[Response 200](#get_sites-response-200)|
+|**default**|General error|[error](#error)|
 
-<a name="get_sites_response-200"></a>
-**Response 200**
+<h5 id="get_sites-response-200">Response 200</h5>
 
 |Name|Schema|
 |---|---|
-|**data**  <br>*optional*|< [site](#site) > array|
+|**data**  <br>*optional*|[[site](#site)]|
 
 
 #### Produces
@@ -63,23 +63,21 @@ Get information about a site.
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Single site|[Response 200](#get_sites-sitecode_response-200)|
-|**400**|Site(s) not found|[Response 400](#get_sites-sitecode_response-400)|
+|**200**|Single site|[Response 200](#get_sites_sitecode-response-200)|
+|**400**|Site(s) not found|[Response 400](#get_sites_sitecode-response-400)|
 |**default**|General error|[error](#error)|
 
-<a name="get_sites-sitecode_response-200"></a>
-**Response 200**
+<h5 id="get_sites_sitecode-response-200">Response 200</h5>
 
 |Name|Schema|
 |---|---|
 |**data**  <br>*optional*|[site](#site)|
 
-<a name="get_sites-sitecode_response-400"></a>
-**Response 400**
+<h5 id="get_sites_sitecode-response-400">Response 400</h5>
 
 |Name|Schema|
 |---|---|
-|**errors**  <br>*optional*|< [error](#error) > array|
+|**errors**  <br>*optional*|[[error](#error)]|
 
 
 #### Produces
@@ -100,27 +98,27 @@ Get information about a site.
 
 |Name|Description|Schema|
 |---|---|---|
-|**dataProducts**|List of data products and months of available data|< [productAvailability](#productavailability) > array|
-|**domainCode**|Three character domain abbreviation (D01, D02, etc) for the domain this site is in|string|
-|**domainName**|Brief description for the domain this site is in|string|
 |**siteCode**|Four character code for the site|string|
+|**siteName**|Full name for the site|string|
 |**siteDescription**|Brief site description|string|
+|**siteType**|Core or Relocatable site|enum (CORE, RELOCATABLE)|
 |**siteLatitude**|Point latitude for the site|number|
 |**siteLongitude**|Point longitude for the site|number|
-|**siteName**|Full name for the site|string|
-|**siteType**|Core or Relocatable site|enum (CORE, RELOCATABLE)|
 |**stateCode**|Two letter state code that this site is in|string|
 |**stateName**|Full name of the state or territory that this site is in|string|
+|**domainCode**|Three character domain abbreviation (D01, D02, etc) for the domain this site is in|string|
+|**domainName**|Brief description for the domain this site is in|string|
+|**dataProducts**|List of data products and months of available data|[[productAvailability](#productavailability)]|
 
 <a name="productavailability"></a>
 ### productAvailability
 
 |Name|Description|Schema|
 |---|---|---|
-|**availableDataUrls**|List of data urls for products that are available.|< string > array|
-|**availableMonths**|List of years and months that products are available.  Formatted as YYYY-MM.|< string > array|
 |**dataProductCode**|Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)|string|
 |**dataProductTitle**|Full title for the data product.|string|
+|**availableMonths**|List of years and months that products are available.  Formatted as YYYY-MM.|[string]|
+|**availableDataUrls**|List of data urls for products that are available.|[string]|
 
 
 <a name="error"></a>

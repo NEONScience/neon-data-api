@@ -61,13 +61,12 @@ Get a list of Sample Classes for a given Sample Tag
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|List of sample classes for a given Sample Tag|[Response 200](#get_sampleclasses-sampletag_response-200)|
+|**200**|List of sample classes for a given Sample Tag|[Response 200](#get_sample_classes_response-200)|
 |**400**|Bad Request|[error](#error)|
 |**404**|Sample Not Found|[error](#error)|
 |**default**|General error|[error](#error)|
 
-<a name="get_sampleclasses-sampletag_response-200"></a>
-**Response 200**
+<h5 id="get_sample_classes_response-200">Response 200</h5>
 
 |Name|Schema|
 |---|---|
@@ -95,12 +94,12 @@ Get a list of sample views for a given sample identifier and search degree.
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
-|**Query**|**archiveGuid**|archiveGuid of Sample.  Must be used on its own.|string|
-|**Query**|**barcode**|Barcode of Sample.  Must be used on its own.|string|
-|**Query**|**degree**|degree of sample search|string|
-|**Query**|**sampleClass**|Sample Class of interest. Must be used in conjunction with a Sample Tag only.|string|
 |**Query**|**sampleTag**|Sample Tag of interest.  Must be used in conjunction with a Sample Class only.|string|
+|**Query**|**sampleClass**|Sample Class of interest. Must be used in conjunction with a Sample Tag only.|string|
+|**Query**|**barcode**|Barcode of Sample.  Must be used on its own.|string|
 |**Query**|**sampleUuid**|UUID of Sample.  Must be used on its own.|string|
+|**Query**|**archiveGuid**|archiveGuid of Sample.  Must be used on its own.|string|
+|**Query**|**degree**|degree of sample search|string|
 
 
 #### Responses
@@ -112,8 +111,7 @@ Get a list of sample views for a given sample identifier and search degree.
 |**404**|Sample Not Found|[error](#error)|
 |**default**|General error|[error](#error)|
 
-<a name="get_samplesdownloadbysampletagclass-response-200"></a>
-**Response 200**
+<h5 id="get_samplesdownloadbysampletagclass-response-200">Response 200</h5>
 
 |Name|Schema|
 |---|---|
@@ -144,8 +142,7 @@ Get a list of sample classes and descriptions currently supported by the Sample 
 |**200**|List of supported sample classes and their descriptions|[Response 200](#get_supportedsampleclasses-response-200)|
 |**default**|General error|[error](#error)|
 
-<a name="get_supportedsampleclasses-response-200"></a>
-**Response 200**
+<h5 id="get_supportedsampleclasses-response-200">Response 200</h5>
 
 |Name|Schema|
 |---|---|
@@ -173,11 +170,11 @@ Get a list of sample custody events, parent samples and child samples for a give
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
-|**Query**|**archiveGuid**  <br>*optional*|archiveGuid of Sample.  Must be used on its own.|string|
-|**Query**|**barcode**  <br>*optional*|Barcode of Sample.  Must be used on its own.|string|
-|**Query**|**sampleClass**  <br>*optional*|Sample Class of interest. Must be used in conjunction with a Sample Tag only.|string|
 |**Query**|**sampleTag**  <br>*optional*|Sample Tag of interest.  Must be used in conjunction with a Sample Class only.|string|
+|**Query**|**sampleClass**  <br>*optional*|Sample Class of interest. Must be used in conjunction with a Sample Tag only.|string|
+|**Query**|**barcode**  <br>*optional*|Barcode of Sample.  Must be used on its own.|string|
 |**Query**|**sampleUuid**  <br>*optional*|UUID of Sample.  Must be used on its own.|string|
+|**Query**|**archiveGuid**  <br>*optional*|archiveGuid of Sample.  Must be used on its own.|string|
 
 
 #### Responses
@@ -189,8 +186,7 @@ Get a list of sample custody events, parent samples and child samples for a give
 |**404**|Sample Not Found|[error](#error)|
 |**default**|General error|[error](#error)|
 
-<a name="get_samplesbytagclass-response-200"></a>
-**Response 200**
+<h5 id="get_samplesbytagclass-response-200">Response 200</h5>
 
 |Name|Schema|
 |---|---|
@@ -215,7 +211,7 @@ Get a list of sample custody events, parent samples and child samples for a give
 
 |Name|Description|Schema|
 |---|---|---|
-|**sampleClasses**|array of Sample Classes for a given sample.|< string > array|
+|**sampleClasses**|array of Sample Classes for a given sample.|[string]|
 
 
 <a name="entry"></a>
@@ -234,7 +230,7 @@ Sample Event for a given sample.
 |Name|Description|Schema|
 |---|---|---|
 |**ingestTableName**|Ingest Table Name|string|
-|**smsFieldEntries**||< [smsField](#smsfield) > array|
+|**smsFieldEntries**||[[smsField](#smsfield)]|
 
 
 <a name="sampleinfo"></a>
@@ -242,11 +238,11 @@ Sample Event for a given sample.
 
 |Name|Description|Schema|
 |---|---|---|
-|**archiveGuid**|Archive GUID for a given sample|string|
-|**barcode**|Sample Barcode for a given sample|string|
-|**sampleClass**|Sample Class for a given sample|string|
-|**sampleTag**|Sample Tag for a given sample|string|
 |**sampleUuid**|UUID for a given sample|string|
+|**sampleTag**|Sample Tag for a given sample|string|
+|**sampleClass**|Sample Class for a given sample|string|
+|**barcode**|Sample Barcode for a given sample|string|
+|**archiveGuid**|Archive GUID for a given sample|string|
 
 
 <a name="sampleview"></a>
@@ -254,14 +250,14 @@ Sample Event for a given sample.
 
 |Name|Description|Schema|
 |---|---|---|
-|**archiveGuid**|Archive GUID for a given sample|string|
-|**barcode**|Sample Barcode for a given sample|string|
-|**childSampleIdentifiers**||< [sampleInfo](#sampleinfo) > array|
-|**parentSampleIdentifiers**||< [sampleInfo](#sampleinfo) > array|
-|**sampleClass**|Sample Class for a given sample|string|
-|**sampleEvents**||< [sampleEvent](#sampleevent) > array|
-|**sampleTag**|Sample Tag for a given sample|string|
 |**sampleUuid**|UUID for a given sample|string|
+|**sampleTag**|Sample Tag for a given sample|string|
+|**sampleClass**|Sample Class for a given sample|string|
+|**barcode**|Sample Barcode for a given sample|string|
+|**archiveGuid**|Archive GUID for a given sample|string|
+|**sampleEvents**||[[sampleEvent](#sampleevent)]|
+|**parentSampleIdentifiers**||[[sampleInfo](#sampleinfo)]|
+|**childSampleIdentifiers**||[[sampleInfo](#sampleinfo)]|
 
 <a name="smsfield"></a>
 ### smsField
@@ -277,14 +273,14 @@ Sample Event for a given sample.
 
 |Name|Description|Schema|
 |---|---|---|
-|**entries**|array of Sample Classes and their descriptions for a given sample.|< [entry](#entry) > array|
+|**entries**|array of Sample Classes and their descriptions for a given sample.|[[entry](#entry)]|
 
 <a name="views"></a>
 ### views
 
 |Name|Description|Schema|
 |---|---|---|
-|**sampleViews**|array of sample views for a given sample|< [sampleView](#sampleview) > array|
+|**sampleViews**|array of sample views for a given sample|[[sampleView](#sampleview)]|
 
 
 <a name="error"></a>

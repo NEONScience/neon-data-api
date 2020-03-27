@@ -117,7 +117,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of data products",
+            "description": "List of sites",
             "schema": {
               "type": "object",
               "properties": {
@@ -1016,33 +1016,17 @@
     "site": {
       "type": "object",
       "properties": {
-        "domainCode": {
-          "type": "string",
-          "description": "Three character domain abbreviation (D01, D02, etc) for the domain this site is in"
-        },
-        "domainName": {
-          "type": "string",
-          "description": "Brief description for the domain this site is in"
-        },
         "siteCode": {
           "type": "string",
           "description": "Four character code for the site"
         },
-        "siteDescription": {
-          "type": "string",
-          "description": "Brief site description"
-        },
-        "siteLatitude": {
-          "type": "number",
-          "description": "Point latitude for the site"
-        },
-        "siteLongitude": {
-          "type": "number",
-          "description": "Point longitude for the site"
-        },
         "siteName": {
           "type": "string",
           "description": "Full name for the site"
+        },
+        "siteDescription": {
+          "type": "string",
+          "description": "Brief site description"
         },
         "siteType": {
           "type": "string",
@@ -1052,6 +1036,18 @@
           ],
           "description": "Core or Relocatable site"
         },
+        "siteLatitude": {
+          "type": "number",
+          "description": "Point latitude for the site"
+        },
+        "siteLongitude": {
+          "type": "number",
+          "description": "Point longitude for the site"
+        },
+        "domainCode": {
+          "type": "string",
+          "description": "Three character domain abbreviation (D01, D02, etc) for the domain this site is in"
+        },
         "stateCode": {
           "type": "string",
           "description": "Two letter state code that this site is in"
@@ -1059,6 +1055,10 @@
         "stateName": {
           "type": "string",
           "description": "Full name of the state or territory that this site is in"
+        },
+        "domainName": {
+          "type": "string",
+          "description": "Brief description for the domain this site is in"
         },
         "dataProducts": {
           "type": "array",
@@ -1106,6 +1106,17 @@
           "type": "string",
           "description": "A description of the location."
         },
+        "locationType": {
+          "type": "string"
+        },
+        "domainCode": {
+          "type": "string",
+          "description": "Three character domain abbreviation (D01, D02, etc) for the domain this site is in"
+        },
+        "siteCode": {
+          "type": "string",
+          "description": "Four character code for the site"
+        },
         "locationDecimalLatitude": {
           "type": "number",
           "format": "double",
@@ -1121,15 +1132,6 @@
           "format": "double",
           "description": "Elevation for the location."
         },
-        "locationUtmZone": {
-          "type": "number",
-          "format": "int",
-          "description": "The integer Universal Transverse Mercator zone."
-        },
-        "locationUtmHemisphere": {
-          "type": "string",
-          "description": "The single character Universal Transverse Mercator hemisphere."
-        },
         "locationUtmEasting": {
           "type": "number",
           "format": "double",
@@ -1139,6 +1141,15 @@
           "type": "number",
           "format": "double",
           "description": "The Universal Transverse Mercator northing."
+        },
+        "locationUtmZone": {
+          "type": "number",
+          "format": "int",
+          "description": "The integer Universal Transverse Mercator zone."
+        },
+        "locationUtmHemisphere": {
+          "type": "string",
+          "description": "The single character Universal Transverse Mercator hemisphere."
         },
         "alphaOrientation": {
           "type": "number",
@@ -1199,59 +1210,6 @@
             }
           }
         },
-        "locationHistory": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/locationHistory"
-          }
-        },
-        "locationChildren": {
-          "type": "array",
-          "description": "A list of names of locations within this location.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "locationChildrenUrls": {
-          "type": "array",
-          "description": "A list of URLs to request location data for the children of this location.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "locationParent": {
-          "type": "string",
-          "description": "Name of the location that this location is in."
-        },
-        "locationParentUrl": {
-          "type": "string",
-          "description": "URL to request location data for the parent of this location."
-        },
-        "locationParentHierarchy": {
-          "type": "object",
-          "description": "When querying for the hierarchy, the location's parent hierarchy",
-          "$ref": "#/definitions/locationParentHierarchy"
-        },
-        "locationChildHierarchy": {
-          "type": "array",
-          "description": "When querying for the hierarchy, the location's set of immediate children and associated hierarchy",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/locationChildHierarchy"
-          }
-        },
-        "domainCode": {
-          "type": "string",
-          "description": "Three character domain abbreviation (D01, D02, etc) for the domain this site is in"
-        },
-        "siteCode": {
-          "type": "string",
-          "description": "Four character code for the site"
-        },
-        "locationType": {
-          "type": "string"
-        },
         "locationProperties": {
           "type": "array",
           "description": "List of properties associated with the location.  Contents vary based on the type of location.",
@@ -1267,12 +1225,68 @@
               }
             }
           }
+        },
+        "locationHistory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/locationHistory"
+          }
+        },
+        "locationParent": {
+          "type": "string",
+          "description": "Name of the location that this location is in."
+        },
+        "locationParentUrl": {
+          "type": "string",
+          "description": "URL to request location data for the parent of this location."
+        },
+        "locationParentHierarchy": {
+          "type": "object",
+          "description": "When querying for the hierarchy, the location's parent hierarchy",
+          "$ref": "#/definitions/locationParentHierarchy"
+        },
+        "locationChildren": {
+          "type": "array",
+          "description": "A list of names of locations within this location.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "locationChildrenUrls": {
+          "type": "array",
+          "description": "A list of URLs to request location data for the children of this location.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "locationChildHierarchy": {
+          "type": "array",
+          "description": "When querying for the hierarchy, the location's set of immediate children and associated hierarchy",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/locationChildHierarchy"
+          }
         }
       }
     },
     "locationHistory": {
       "type": "object",
       "properties": {
+        "current": {
+          "type": "boolean",
+          "description": "Indicates if this is the current location for this location."
+        },
+        "locationStartDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start date and time for this location."
+        },
+        "locationEndDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end date and time for this location."
+        },
         "locationDecimalLatitude": {
           "type": "number",
           "format": "double",
@@ -1288,15 +1302,6 @@
           "format": "double",
           "description": "Elevation for the location."
         },
-        "locationUtmZone": {
-          "type": "number",
-          "format": "int",
-          "description": "The integer Universal Transverse Mercator zone."
-        },
-        "locationUtmHemisphere": {
-          "type": "string",
-          "description": "The single character Universal Transverse Mercator hemisphere."
-        },
         "locationUtmEasting": {
           "type": "number",
           "format": "double",
@@ -1306,6 +1311,15 @@
           "type": "number",
           "format": "double",
           "description": "The Universal Transverse Mercator northing."
+        },
+        "locationUtmHemisphere": {
+          "type": "string",
+          "description": "The single character Universal Transverse Mercator hemisphere."
+        },
+        "locationUtmZone": {
+          "type": "number",
+          "format": "int",
+          "description": "The integer Universal Transverse Mercator zone."
         },
         "alphaOrientation": {
           "type": "number",
