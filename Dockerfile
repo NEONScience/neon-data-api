@@ -42,6 +42,11 @@ FROM alpine:3.11
 
 # Traefik auto discover labels
 LABEL \
+  traefik.http.routers.portal-public-api-docs.entrypoints="web" \
+  traefik.http.routers.portal-public-api-docs.rule="PathPrefix(`/docs`)" \
+  traefik.http.routers.portal-public-api-docs.priority="100" \
+  traefik.http.routers.portal-public-api-docs.service="portal-public-api-docs" \
+  traefik.http.routers.portal-public-api-docs.middlewares="portal-compress@file, portal-headers@file" \
   traefik.http.services.portal-public-api-docs.loadbalancer.server.port="3020" \
   traefik.http.services.portal-public-api-docs.loadbalancer.healthcheck.path="/health" \
   traefik.http.services.portal-public-api-docs.loadbalancer.healthcheck.interval="10s" \

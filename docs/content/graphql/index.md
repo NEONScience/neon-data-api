@@ -84,7 +84,7 @@ type DataProduct {
 ```  
 
 The shape of the GraphQL schema definition will determine how queries can be 
-formed. Note that in the above query, the `DataProduct` object designates three
+formed. Note that in the following query, the `DataProduct` object designates three
 properties that are defined in the schema definition. A POST request 
 with the following JSON body would produce the desired result:    
 
