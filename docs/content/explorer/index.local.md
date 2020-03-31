@@ -2,7 +2,13 @@ toc: false
 
 # REST API Explorer
 
-Try out REST API calls for various endpoints and inspect the responses.
+Try out REST API calls for various endpoints and inspect the responses.  
+
+!!! note
+    The explorer is meant for **demonstration purposes only** and should not be utilized 
+    as the authoritative source of API data. Requests that result in a large response body 
+    will be truncated and may not represent the full response.  
+
 
 <!-- Using the raw HTML for admonition here so we can display on demand -->
 <div class="neon-data-api-app-ie" data-docs-app-ie-display="block" style="display: none;">

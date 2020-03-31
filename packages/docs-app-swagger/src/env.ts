@@ -3,6 +3,7 @@ export interface ApiHostEnv {
   getApiProtocol: () => string;
   getApiHostName: () => string;
   getApiHost: () => string;
+  getApiRootPath: () => string;
 };
 
 const Env: ApiHostEnv = {
@@ -24,6 +25,11 @@ const Env: ApiHostEnv = {
   },
   getApiHost: (): string => {
     return `${Env.getApiProtocol()}//${Env.getApiHostName()}`;
+  },
+  getApiRootPath: (): string => {
+    return (typeof process.env.REACT_APP_NEON_API_ROOT === "string")
+      ? process.env.REACT_APP_NEON_API_ROOT
+      : "";
   }
 };
 
