@@ -9,6 +9,13 @@ header.md-header {
   html .md-nav--primary .md-nav__title--site {
     background-color: #002c77;
   }
+  nav.md-nav.md-nav--secondary .md-nav__list .md-nav,
+  nav.md-nav.md-nav--secondary .md-nav__list .md-nav .md-nav__list .md-nav {
+    height: auto;
+  }
+  nav.md-nav.md-nav--secondary .md-nav__list .md-nav .md-nav__list .md-nav .md-nav__list {
+    flex: unset;
+  }
 }
 @media only screen and (max-width: 59.9375em) {
   .md-nav__source {
