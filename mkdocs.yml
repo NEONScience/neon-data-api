@@ -2,7 +2,7 @@
 site_name: NEON Data API
 site_description: 'NEON Data API Documentation'
 site_author: 'Battelle'
-site_dir: site/docs/
+site_dir: site/data-api/
 # site_url: 'https://data.neonscience.org/data-api'
 edit_uri: 'edit/master/docs/'
 
@@ -22,9 +22,6 @@ theme:
   logo: 'assets/images/neon-logo-white.svg'
   feature:
     tabs: false
-  # palette:
-  #   primary: 'indigo'
-  #   accent: 'indigo'
   font:
     text: 'Inter'
     code: 'Roboto Mono'

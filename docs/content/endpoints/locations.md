@@ -149,6 +149,7 @@ Get information about a location.
 |**xOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, east (positive values) or west (negative values) relative to where the geolocation point was taken.|number (double)|
 |**yOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, north (positive values) or south (negative values) relative to where the geolocation point was taken.|number (double)|
 |**zOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to where the geolocation point was taken.|number (double)|
+|**offsetLocation**  <br>*optional*|The named location used as a reference point. Offsets are relative to this location.|[location](#location)|
 |**locationPolygon**  <br>*optional*||[locationPolygon](#locationpolygon)|
 |**locationProperties**  <br>*optional*|List of properties associated with the location.  Contents vary based on the type of location.|[[locationProperties](#locationproperties)]|
 |**locationHistory**  <br>*optional*||[[locationHistory](#locationhistory)]|

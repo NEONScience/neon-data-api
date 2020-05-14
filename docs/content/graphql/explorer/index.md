@@ -19,7 +19,7 @@ Try out GraphQL API calls for various queries and inspect the responses.
 </div>
 
 <div class="app-open-container">
-  <a href="/docs/graphql/explorer/build/"
+  <a href="/data-api/graphql/explorer/build/"
     class="app-open-link"
     target="_blank"
     title="Launch" aria-label="Launch"> 
@@ -29,5 +29,5 @@ Try out GraphQL API calls for various queries and inspect the responses.
       src="../../assets/images/launch-black-18dp.svg" width="24" height="24"> 
   </a>
 </div>
-<iframe id="graphiql-frame" src="/docs/graphql/explorer/build/index.html?{{TIMESTAMP}}" scrolling="no" class="graphiql-docs">
+<iframe id="graphiql-frame" src="/data-api/graphql/explorer/build/index.html?{{TIMESTAMP}}" scrolling="no" class="graphiql-docs">
 </iframe>

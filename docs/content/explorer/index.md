@@ -24,5 +24,5 @@ Try out REST API calls for various endpoints and inspect the responses.
   </div>
 </div>
 
-<iframe id="swagger-frame" src="/docs/explorer/build/index.html?{{TIMESTAMP}}" scrolling="no" class="swagger-docs">
+<iframe id="swagger-frame" src="/data-api/explorer/build/index.html?{{TIMESTAMP}}" scrolling="no" class="swagger-docs">
 </iframe>

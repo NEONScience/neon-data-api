@@ -1181,6 +1181,11 @@
           "format": "double",
           "description": "Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to where the geolocation point was taken."
         },
+        "offsetLocation": {
+          "type": "object",
+          "$ref": "#/definitions/location",
+          "description": "The named location used as a reference point. Offsets are relative to this location."
+        },
         "locationPolygon": {
           "type": "object",
           "properties": {

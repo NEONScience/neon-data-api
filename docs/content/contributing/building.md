@@ -83,6 +83,6 @@ script for running the container:
 ``` bash
 ./docker.run.sh
 ```
-You should now have an instance running at: `localhost:3200/docs/`
+You should now have an instance running at: `localhost:3200/data-api/`
 
 <br/>
