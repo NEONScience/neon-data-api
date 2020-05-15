@@ -13,6 +13,8 @@ If you need to know about our remote
 sensing data availability, visit the 
 [Airborne Data webpage](https://www.neonscience.org/data-collection/airborne-remote-sensing).  
 
+<a name="paths"></a>
+## Paths
 
 <a name="get_sites"></a>
 ### GET `/sites`

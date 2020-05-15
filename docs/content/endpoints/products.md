@@ -13,6 +13,8 @@ refers to [data level](https://www.neonscience.org/data/about-data/data-processi
 the data product, and 001 refers to the revision. Almost all of our data products are 
 currently provisional and annotated as revision 1.  
 
+<a name="paths"></a>
+## Paths
 
 <a name="get_products"></a>
 ### GET `/products`

@@ -12,6 +12,9 @@ you may wish to use an offset value of 0 and adjust the limit value to support
 larger recordsets. Also note that the scientificname parameter only 
 supports exact, not fuzzy, string matching. 
 
+<a name="paths"></a>
+## Paths
+
 <a name="get_taxonomy"></a>
 ### GET `/taxonomy`
 

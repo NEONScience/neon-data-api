@@ -42,6 +42,8 @@ the data returned can tell you if a given sample was archived, and at what facil
 Visit the [Biorepository Portal](https://biorepo.neonscience.org/portal/index.php) 
 to request samples. If your primary interest is in data for analysis, use the NEON data portal.
 
+<a name="paths"></a>
+## Paths
 
 <a name="get_sampleclasses-sampletag"></a>
 ### GET `/samples/classes`
