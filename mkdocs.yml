@@ -1,0 +1,84 @@
+# Project
+site_name: NEON Data API
+site_description: 'NEON Data API Documentation'
+site_author: 'Battelle'
+site_dir: site/data-api/
+site_url: 'https://data.neonscience.org'
+edit_uri: 'edit/master/docs/'
+
+docs_dir: 'docs/content'
+
+# Repository
+repo_name: 'NEONScience/neon-data-api'
+repo_url: 'https://github.com/NEONScience/neon-data-api'
+
+# Theme
+theme:
+  name: 'material'
+  custom_dir: 'docs/theme'
+  language: en
+  include_sidebar: true
+  favicon: 'assets/images/favicon.ico'
+  logo: 'assets/images/neon-logo-white.svg'
+  feature:
+    tabs: false
+  font:
+    text: 'Inter'
+    code: 'Roboto Mono'
+
+extra_css:
+  - 'css/theme.neon.css'
+
+# Nav items
+nav:
+  - 'About': index.md
+  - 'REST API Endpoints':
+    - 'Products': 'endpoints/products.md'
+    - 'Sites': 'endpoints/sites.md'
+    - 'Locations': 'endpoints/locations.md'
+    - 'Data': 'endpoints/data.md'
+    - 'Taxonomy': 'endpoints/taxonomy.md'
+    - 'Samples': 'endpoints/samples.md'
+  - 'REST API Explorer': 'explorer/index.md'
+  - 'GraphQL': 'graphql/index.md'
+  - 'GraphQL Explorer': 'graphql/explorer/index.md'
+  - 'Rate Limiting': 'rate-limiting.md'
+  - 'Data Use and Policy': data-use-policy.md
+  - 'Contributing':
+    - 'Building and Testing': contributing/building.md
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+  - exclude:
+      glob:
+        - 'explorer/index.local.md'
+        - 'graphql/explorer/index.local.md'
+
+markdown_extensions:
+  - meta
+  - admonition
+  - footnotes
+  - codehilite
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+
+# Copyright
+copyright: 'Copyright &copy; {{COPYRIGHT_YEAR}} Battelle'
+
+extra:
+  manifest: 'assets/images/site.webmanifest'
+  social:
+    - type: 'facebook'
+      link: 'https://www.facebook.com/NEONScienceData'
+    - type: 'github'
+      link: 'https://github.com/NEONScience'
+    - type: 'twitter'
+      link: 'https://twitter.com/NEON_Sci'
+    - type: 'linkedin'
+      link: 'https://www.linkedin.com/company/neon-science/'
+    - type: 'youtube'
+      link: 'https://www.youtube.com/neonscience'

@@ -1,0 +1,104 @@
+/* body {
+  background-color: #f3f5f5;
+} */
+body, input {
+  font-family: "Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+@media only screen and (min-width: 60em) {
+  .md-content {
+    margin-right: none !important;
+  }
+}
+@media only screen and (min-width: 76.25em) {
+  .md-sidebar--secondary {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 760px) {
+  .neon-data-api-docs-swagger .swagger-ui div.scheme-container {
+    display: flex !important;
+    width: 100% !important;
+  }
+  .neon-data-api-docs-swagger .swagger-ui div.scheme-container .auth-wrapper {
+    justify-content: flex-start;
+  }
+}
+
+.neon-data-api-docs-swagger .swagger-ui .info {
+  margin-top: 20px;
+}
+/* .neon-data-api-docs-swagger .swagger-ui .scheme-container {
+  background-color: #f3f5f5;
+} */
+.neon-data-api-docs-swagger .swagger-ui .dialog-ux .modal-ux {
+  top: 300px;
+}
+.neon-data-api-docs-swagger .swagger-ui button.authorization__btn.locked,
+.neon-data-api-docs-swagger .swagger-ui button.authorization__btn.unlocked {
+  display: none;
+}
+.neon-data-api-docs-swagger .swagger-ui h4.opblock-tag.no-desc {
+  margin-bottom: 20px;
+}
+.neon-data-api-docs-swagger .swagger-ui div.opblock-tag-section.is-open {
+  margin-bottom: 15px;
+}
+.neon-data-api-docs-swagger .swagger-ui div.opblock {
+  padding: 15px;
+}
+.neon-data-api-docs-swagger .swagger-ui div.opblock {
+  box-shadow:
+    0px 3px 3px -2px rgba(0,0,0,0.2),
+    0px 3px 4px 0px rgba(0,0,0,0.14),
+    0px 1px 8px 0px rgba(0,0,0,0.12);
+}
+.neon-data-api-docs-swagger .swagger-ui div.opblock:hover {
+  background-color: rgba(0,0,0,.02);
+}
+.neon-data-api-docs-swagger .swagger-ui div.opblock.is-open:hover {
+  background-color: unset !important;
+}
+
+.neon-data-api-docs-swagger .swagger-ui {
+  font-family: "Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.neon-data-api-docs-swagger .swagger-ui code,
+.neon-data-api-docs-swagger .swagger-ui div.highlight-code pre,
+.neon-data-api-docs-swagger .swagger-ui .opblock-body pre.microlight .headerline {
+  font-family: "Roboto Mono", monospace;
+  line-height: 1.5;
+}
+
+.neon-data-api-docs-swagger .swagger-ui section.models,
+.neon-data-api-docs-swagger .swagger-ui section.models.is-open {
+  padding: 0 0 20px;
+  padding: 15px;
+  box-shadow:
+    0px 3px 3px -2px rgba(0,0,0,0.2),
+    0px 3px 4px 0px rgba(0,0,0,0.14),
+    0px 1px 8px 0px rgba(0,0,0,0.12);
+  background-color: #ffffff;
+  border: none;
+}
+.neon-data-api-docs-swagger .swagger-ui section.models.is-open h4 {
+  border: none;
+}
+.neon-data-api-docs-swagger .swagger-ui section.models h4 {
+  padding: 10px;
+  font-size: 24px;
+  color: #3b4151;
+}
+
+.neon-data-api-docs-swagger .swagger-ui div.information-container.wrapper {
+  width: 70%;
+  display: inline-flex;
+}
+.neon-data-api-docs-swagger .swagger-ui div.scheme-container {
+  display: inline-flex;
+  width: 30%;
+  vertical-align: bottom;
+  margin-bottom: 41px;
+  box-shadow: none;
+  padding: 0;
+}
