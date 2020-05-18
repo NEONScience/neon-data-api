@@ -3,7 +3,7 @@ site_name: NEON Data API
 site_description: 'NEON Data API Documentation'
 site_author: 'Battelle'
 site_dir: site/data-api/
-edit_uri: 'edit/master/docs/'
+edit_uri: 'edit/master/docs/content'
 dev_addr: 0.0.0.0:8000
 
 docs_dir: 'docs/content'
