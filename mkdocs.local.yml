@@ -31,6 +31,7 @@ extra_css:
 
 # Nav items
 nav:
+  - 'Data Portal Home': 'https://data.neonscience.org/home'
   - 'About': index.md
   - 'REST API Endpoints':
     - 'Products': 'endpoints/products.md'
@@ -65,6 +66,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.smartsymbols
   - pymdownx.superfences
+  - toc:
+      permalink: true
 
 # Copyright
 copyright: 'Copyright &copy; 2020 Battelle'
