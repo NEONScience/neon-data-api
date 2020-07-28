@@ -1215,6 +1215,25 @@
             }
           }
         },
+        "activePeriods": {
+          "type": "array",
+          "description": "List of active periods for the location",
+          "items": {
+            "type": "object",
+            "properties": {
+              "activatedDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The activation date for the time period"
+              },
+              "deactivatedDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The deactivation date for the time period"
+              }
+            }
+          }
+        },
         "locationProperties": {
           "type": "array",
           "description": "List of properties associated with the location.  Contents vary based on the type of location.",
@@ -1410,6 +1429,10 @@
           "type": "string",
           "description": "Name of the location"
         },
+        "locationType": {
+          "type": "string",
+          "description": "Type of the location"
+        },
         "locationParent": {
           "type": "string",
           "description": "Name of the location that this location is in."
@@ -1431,6 +1454,10 @@
           "type": "string",
           "description": "Name of the location"
         },
+        "locationType": {
+          "type": "string",
+          "description": "Type of the location"
+        },
         "locationDescription": {
           "type": "string",
           "description": "A description of the location."
@@ -1447,22 +1474,26 @@
     "file": {
       "type": "object",
       "properties": {
-        "crc32": {
-          "description": "CRC-32 value in hex",
-          "type": "string"
-        },
         "name": {
           "description": "Filename",
-          "type": "string"
-        },
-        "url": {
-          "description": "Download URL",
           "type": "string"
         },
         "size": {
           "description": "Estimated file size in bytes",
           "type": "number",
           "format": "int"
+        },
+        "md5": {
+          "description": "MD5 value in hex",
+          "type": "string"
+        },
+        "crc32": {
+          "description": "CRC-32 value in hex",
+          "type": "string"
+        },
+        "url": {
+          "description": "Download URL",
+          "type": "string"
         }
       }
     },

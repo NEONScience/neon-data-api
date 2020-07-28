@@ -1,7 +1,5 @@
 # Sites Endpoint
 
-## Sites
-
 The `/sites` endpoint provides information about 
 [NEON field sites](https://www.neonscience.org/field-sites/field-sites-map) where data 
 are currently available.  Numerous data products are produced from each site. 
@@ -14,16 +12,16 @@ sensing data availability, visit the
 [Airborne Data webpage](https://www.neonscience.org/data-collection/airborne-remote-sensing).  
 
 <a name="paths"></a>
-## Paths
+## **Paths**
 
 <a name="get_sites"></a>
 ### GET `/sites`
 
-#### Description
+#### **Description**
 Get information about all sites.
 
 
-#### Responses
+#### **Responses**
 
 |HTTP Code|Description|Schema|
 |---|---|---|
@@ -37,12 +35,12 @@ Get information about all sites.
 |**data**  <br>*optional*|[[site](#site)]|
 
 
-#### Produces
+#### **Produces**
 
 * `application/json`
 
 
-#### Tags
+#### **Tags**
 
 * Sites
 
@@ -50,18 +48,18 @@ Get information about all sites.
 <a name="get_sites-sitecode"></a>
 ### GET `/sites/{siteCode}`
 
-#### Description
+#### **Description**
 Get information about a site.
 
 
-#### Parameters
+#### **Parameters**
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Path**|**siteCode**  <br>*required*|Site to get|string|
 
 
-#### Responses
+#### **Responses**
 
 |HTTP Code|Description|Schema|
 |---|---|---|
@@ -82,21 +80,21 @@ Get information about a site.
 |**errors**  <br>*optional*|[[error](#error)]|
 
 
-#### Produces
+#### **Produces**
 
 * `application/json`
 
 
-#### Tags
+#### **Tags**
 
 * Sites
 
 <a name="definitions"></a>
-## Definitions
+## **Definitions**
 
 
 <a name="site"></a>
-### site
+### **site**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -113,7 +111,7 @@ Get information about a site.
 |**dataProducts**|List of data products and months of available data|[[productAvailability](#productavailability)]|
 
 <a name="productavailability"></a>
-### productAvailability
+### **productAvailability**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -124,7 +122,7 @@ Get information about a site.
 
 
 <a name="error"></a>
-### error
+### **error**
 
 |Name|Schema|
 |---|---|

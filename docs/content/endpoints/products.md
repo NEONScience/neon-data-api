@@ -1,7 +1,5 @@
 # Data Products Endpoint
 
-## Products
-
 The `/products` endpoint provides information about NEON data products, 
 including availability by site and month (also see the 
 [data product catalog](https://data.neonscience.org/data-products/explore)). 
@@ -14,16 +12,16 @@ the data product, and 001 refers to the revision. Almost all of our data product
 currently provisional and annotated as revision 1.  
 
 <a name="paths"></a>
-## Paths
+## **Paths**
 
 <a name="get_products"></a>
 ### GET `/products`
 
-#### Description
+#### **Description**
 Get information about all current data products.
 
 
-#### Responses
+#### **Responses**
 
 |HTTP Code|Description|Schema|
 |---|---|---|
@@ -37,12 +35,12 @@ Get information about all current data products.
 |**data**|[[product](#product)]|
 
 
-#### Produces
+#### **Produces**
 
 * `application/json`
 
 
-#### Tags
+#### **Tags**
 
 * Products
 
@@ -50,18 +48,18 @@ Get information about all current data products.
 <a name="get_products_productcode"></a>
 ### GET `/products/{productCode}`
 
-#### Description
+#### **Description**
 Get information about a data product.
 
 
-#### Parameters
+#### **Parameters**
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Path**|**productCode**  <br>*required*|Data product to get|string|
 
 
-#### Responses
+#### **Responses**
 
 |HTTP Code|Description|Schema|
 |---|---|---|
@@ -76,21 +74,21 @@ Get information about a data product.
 |**data**|[product](#product)|
 
 
-#### Produces
+#### **Produces**
 
 * `application/json`
 
 
-#### Tags
+#### **Tags**
 
 * Products
 
 
 <a name="definitions"></a>
-## Definitions
+## **Definitions**
 
 <a name="product"></a>
-### product
+### **product**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -118,7 +116,7 @@ Get information about a data product.
 |**siteCodes**|List of sites and months of available data|[[siteCodes](#sitecodes)]|
 
 <a name="product-sitecodes"></a>
-### siteCodes
+### **siteCodes**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -128,7 +126,7 @@ Get information about a data product.
 
 
 <a name="spec"></a>
-### spec
+### **spec**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -137,7 +135,7 @@ Get information about a data product.
 
 
 <a name="changeLogs"></a>
-### changeLogs
+### **changeLogs**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -152,7 +150,7 @@ Get information about a data product.
 
 
 <a name="error"></a>
-### error
+### **error**
 
 |Name|Schema|
 |---|---|

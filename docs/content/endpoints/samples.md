@@ -1,7 +1,5 @@
 # Samples Endpoint
 
-## Samples
-
 NEON samples are physical objects collected or measured and tracked over time. 
 Most samples are collected and held in possession, but some samples remain in 
 the field, such as trees and live mammals. Some samples are discarded after analysis, 
@@ -43,23 +41,23 @@ Visit the [Biorepository Portal](https://biorepo.neonscience.org/portal/index.ph
 to request samples. If your primary interest is in data for analysis, use the NEON data portal.
 
 <a name="paths"></a>
-## Paths
+## **Paths**
 
 <a name="get_sampleclasses-sampletag"></a>
 ### GET `/samples/classes`
 
-#### Description
+#### **Description**
 Get a list of Sample Classes for a given Sample Tag
 
 
-#### Parameters
+#### **Parameters**
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Query**|**sampleTag**  <br>*required*|Sample Tag of interest|string|
 
 
-#### Responses
+#### **Responses**
 
 |HTTP Code|Description|Schema|
 |---|---|---|
@@ -75,12 +73,12 @@ Get a list of Sample Classes for a given Sample Tag
 |**data**|[classes](#classes)|
 
 
-#### Produces
+#### **Produces**
 
 * `application/json`
 
 
-#### Tags
+#### **Tags**
 
 * Samples
 
@@ -88,11 +86,11 @@ Get a list of Sample Classes for a given Sample Tag
 <a name="get_samplesdownloadbysampletagclass"></a>
 ### GET `/samples/download`
 
-#### Description
+#### **Description**
 Get a list of sample views for a given sample identifier and search degree.
 
 
-#### Parameters
+#### **Parameters**
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
@@ -104,7 +102,7 @@ Get a list of sample views for a given sample identifier and search degree.
 |**Query**|**degree**|degree of sample search|string|
 
 
-#### Responses
+#### **Responses**
 
 |HTTP Code|Description|Schema|
 |---|---|---|
@@ -120,12 +118,12 @@ Get a list of sample views for a given sample identifier and search degree.
 |**data**|[views](#views)|
 
 
-#### Produces
+#### **Produces**
 
 * `application/json`
 
 
-#### Tags
+#### **Tags**
 
 * Samples
 
@@ -133,11 +131,11 @@ Get a list of sample views for a given sample identifier and search degree.
 <a name="get_supportedsampleclasses"></a>
 ### GET `/samples/supportedClasses`
 
-#### Description
+#### **Description**
 Get a list of sample classes and descriptions currently supported by the Sample Viewer
 
 
-#### Responses
+#### **Responses**
 
 |HTTP Code|Description|Schema|
 |---|---|---|
@@ -151,12 +149,12 @@ Get a list of sample classes and descriptions currently supported by the Sample 
 |**data**|[supportedClasses](#supportedclasses)|
 
 
-#### Produces
+#### **Produces**
 
 * `application/json`
 
 
-#### Tags
+#### **Tags**
 
 * Samples
 
@@ -164,11 +162,11 @@ Get a list of sample classes and descriptions currently supported by the Sample 
 <a name="get_samplesbytagclass"></a>
 ### GET `/samples/view`
 
-#### Description
+#### **Description**
 Get a list of sample custody events, parent samples and child samples for a given sample identifier.
 
 
-#### Parameters
+#### **Parameters**
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
@@ -179,7 +177,7 @@ Get a list of sample custody events, parent samples and child samples for a give
 |**Query**|**archiveGuid**  <br>*optional*|archiveGuid of Sample.  Must be used on its own.|string|
 
 
-#### Responses
+#### **Responses**
 
 |HTTP Code|Description|Schema|
 |---|---|---|
@@ -195,21 +193,21 @@ Get a list of sample custody events, parent samples and child samples for a give
 |**data**|[views](#views)|
 
 
-#### Produces
+#### **Produces**
 
 * `application/json`
 
 
-#### Tags
+#### **Tags**
 
 * Samples
 
 
 <a name="definitions"></a>
-## Definitions
+## **Definitions**
 
 <a name="classes"></a>
-### classes
+### **classes**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -217,7 +215,7 @@ Get a list of sample custody events, parent samples and child samples for a give
 
 
 <a name="entry"></a>
-### entry
+### **entry**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -225,7 +223,7 @@ Get a list of sample custody events, parent samples and child samples for a give
 |**value**|Sample Class Description|string|
 
 <a name="sampleevent"></a>
-### sampleEvent
+### **sampleEvent**
 Sample Event for a given sample.
 
 
@@ -236,7 +234,7 @@ Sample Event for a given sample.
 
 
 <a name="sampleinfo"></a>
-### sampleInfo
+### **sampleInfo**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -248,7 +246,7 @@ Sample Event for a given sample.
 
 
 <a name="sampleview"></a>
-### sampleView
+### **sampleView**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -262,7 +260,7 @@ Sample Event for a given sample.
 |**childSampleIdentifiers**||[[sampleInfo](#sampleinfo)]|
 
 <a name="smsfield"></a>
-### smsField
+### **smsField**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -271,14 +269,14 @@ Sample Event for a given sample.
 
 
 <a name="supportedclasses"></a>
-### supportedClasses
+### **supportedClasses**
 
 |Name|Description|Schema|
 |---|---|---|
 |**entries**|array of Sample Classes and their descriptions for a given sample.|[[entry](#entry)]|
 
 <a name="views"></a>
-### views
+### **views**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -286,7 +284,7 @@ Sample Event for a given sample.
 
 
 <a name="error"></a>
-### error
+### **error**
 
 |Name|Schema|
 |---|---|

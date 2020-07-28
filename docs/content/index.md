@@ -1,6 +1,6 @@
 # Welcome to the NEON Data API
 
-## Introduction
+## **Introduction**
 
 The NEON Data API (Application Programming Interface) can be used to quickly access 
 NEON data and information about our data products and sampling locations. 
@@ -19,7 +19,7 @@ We also provide an
 [R package](https://cran.r-project.org/web/packages/neonUtilities/index.html) 
 that you can use to download and reformat the data.    
 
-## Feedback
+## **Feedback**
 
 **Tell us what you think**: If you have design ideas, functionality requests, bug notes, 
 examples of how you used the API, or anything else you would like us to know, 

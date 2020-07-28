@@ -1,7 +1,5 @@
 # Rate Limiting
 
-## About
-
 To ensure the quality of NEON's data API and associated services, 
 the data APIs are subject to rate limiting. Limits are applied and tracked globally 
 across all endpoints. You do not need to authenticate in order to explore NEON data. However, if you 
@@ -27,7 +25,7 @@ The burst amount will recover at the defined rate.
     it will take 100 seconds to recover the full burst amount.
 
 <a name="Usage"></a>
-### Inspecting Rate Limits
+### **Inspecting Rate Limits**
 
 For all endpoints, when rate limiting is applied, HTTP headers will be included 
 in the response showing the current utilization of your rate limit.
@@ -43,7 +41,7 @@ X-Ratelimit-Remaining: 200
 By inspecting the `X-RateLimit-Remaining` header, you can ensure that you always stay 
 within the defined limits.
 
-#### Headers
+#### **Headers**
 
 |Name|Type|Description|
 |---|---|---|
@@ -53,7 +51,7 @@ within the defined limits.
 |**RetryAfter**  <br>*optional*|number (int)|The number of seconds until the next request can be made|
 
 <a name="default-rates"></a>
-### Default Rates  
+### **Default Rates**  
 
 By default when no API token is provided with a request, limits are applied on 
 a per IP address basis with the following rate specification:
@@ -63,7 +61,7 @@ a per IP address basis with the following rate specification:
 |Public|200 requests|2 requests per second|IP address|
 
 <a name="exceeding-limit"></a>
-### Exceeding the Rate Limit
+### **Exceeding the Rate Limit**
 
 In order to exceed the rate limit you must:  
 
@@ -91,13 +89,13 @@ RetryAfter: 1
     over a short period of time, the best way to avoid being rate limited is to 
     always inspect the `X-RateLimit-Remaining` response header and react accordingly.
 
-## API Tokens  
+## **API Tokens**  
 
 The NEON data API provides users the ability to manage and obtain API tokens. 
 For rate limiting, this allows us to supply a higher rate limit for authenticated 
 users and tokens, enabling intensive use of the APIs.
 
-### Generation
+### **Generation**
 
 In order to generate an API Token, you must first sign in with your account 
 or create an account with the Data Portal. You can sign up or sign in by accessing 
@@ -114,7 +112,7 @@ provided on the account page.
     [My Account](https://data.neonscience.org/myaccount) page and discontinue 
     use of the token.
 
-### Utilization
+### **Utilization**
 
 To utilize an API Token when making a request, include it as a header or query 
 parameter:  
@@ -152,7 +150,7 @@ and `X-RateLimit-Remaining` headers and verify it matches one of the
 [token rates](#token-rates) defined below.
 
 <a name="token-rates"></a>
-### Token Rates
+### **Token Rates**
 
 By default when an API token is sent with a request, limits are applied on 
 a per token basis with the following rate specification for the token's `rate` scope.

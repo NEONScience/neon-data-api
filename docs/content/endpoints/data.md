@@ -1,7 +1,5 @@
 # Data Endpoint
 
-## Data
-
 The `/data` endpoint shows which monthly data files are available, and provides 
 URLs to downloadable files. Several terabytes of data are presently available. 
 To keep data files to a reasonable size, they are generally arranged in 
@@ -13,16 +11,16 @@ file is more than 1 hour, you may need to obtain a new URL before proceeding.
 
 
 <a name="paths"></a>
-## Paths
+## **Paths**
 
 <a name="get_data-availability"></a>
 ### GET `/data/{productCode}/{siteCode}/{year-month}`
 
-#### Description
+#### **Description**
 Get files available for a given product/site/month combination
 
 
-#### Parameters
+#### **Parameters**
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
@@ -32,7 +30,7 @@ Get files available for a given product/site/month combination
 |**Query**|**package**  <br>*optional*|Package type to return, basic or expanded|enum (basic, expanded)|
 
 
-#### Responses
+#### **Responses**
 
 |HTTP Code|Description|Schema|
 |---|---|---|
@@ -54,21 +52,21 @@ Get files available for a given product/site/month combination
 |**errors**  <br>*optional*|[[error](#error)]|
 
 
-#### Produces
+#### **Produces**
 
 * `application/json`
 
 
-#### Tags
+#### **Tags**
 
 * Data
 
 
 <a name="definitions"></a>
-## Definitions
+## **Definitions**
 
 <a name="data-productcode-sitecode-year-month-get-data"></a>
-### data
+### **data**
 
 |Name|Schema|
 |---|---|
@@ -79,18 +77,19 @@ Get files available for a given product/site/month combination
 |**month**|string|
 
 <a name="file"></a>
-### file
+### **file**
 
 |Name|Description|Schema|
 |---|---|---|
-|**crc32**|CRC-32 value in hex|string|
 |**name**|Filename|string|
 |**size**|Estimated file size in bytes|number (int)|
+|**md5**|MD5 value in hex|string|
+|**crc32**|CRC-32 value in hex|string|
 |**url**|Download URL|string|
 
 
 <a name="externalData"></a>
-### externalData
+### **externalData**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -99,7 +98,7 @@ Get files available for a given product/site/month combination
 |**url**|URL to external data.|number (int)|
 
 <a name="error"></a>
-### error
+### **error**
 
 |Name|Schema|
 |---|---|
