@@ -1216,7 +1216,7 @@ Type definition for a generic location property value
 </thead>
 <tbody>
 <tr>
-<td colspan="2" valign="top"><strong>locationPropertyValue</strong></td>
+<td colspan="2" valign="top"><strong>locationPropertyName</strong></td>
 <td valign="top"><a href="#scalars">String</a></td>
 <td>
 
@@ -1225,8 +1225,8 @@ The name of the property
 </td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>locationPropertyName</strong></td>
-<td valign="top"><a href="#scalars">String</a></td>
+<td colspan="2" valign="top"><strong>locationPropertyValue</strong></td>
+<td valign="top"><a href="#scalars">AnyScalar</a></td>
 <td>
 
 The value of the property
@@ -1571,6 +1571,12 @@ The end month to filter the associated availability to. Formatted as YYYY-MM.
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td valign="top"><strong>AnyScalar</strong></td>
+      <td>
+        The AnyScalar data type represents a union of possible scalar values.
+      </td>
+    </tr>
     <tr>
       <td valign="top"><strong>Boolean</strong></td>
       <td>Built-in Boolean</td>
