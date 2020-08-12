@@ -1,7 +1,5 @@
 # Taxonomy Endpoint
 
-## Taxonomic Data
-
 The `/taxonomy` endpoint provides acess to NEON's taxon lists for major 
 groupings such as plants, algae, beetles, and small mammals. Taxon lists are 
 compiled from a variety of published sources, and are primarily used by field 
@@ -13,16 +11,16 @@ larger recordsets. Also note that the scientificname parameter only
 supports exact, not fuzzy, string matching. 
 
 <a name="paths"></a>
-## Paths
+## **Paths**
 
 <a name="get_taxonomy"></a>
 ### GET `/taxonomy`
 
-#### Description
+#### **Description**
 Get taxonomic lists.
 
 
-#### Parameters
+#### **Parameters**
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
@@ -41,7 +39,7 @@ Get taxonomic lists.
 |**Query**|**stream**  <br>*optional*|Option to obtain the result as a stream. Utilize for large requests.|boolean|
 
 
-#### Responses
+#### **Responses**
 
 |HTTP Code|Description|Schema|
 |---|---|---|
@@ -66,21 +64,21 @@ Get taxonomic lists.
 |**errors**  <br>*optional*|[[error](#error)]|
 
 
-#### Produces
+#### **Produces**
 
 * `application/json`
 
 
-#### Tags
+#### **Tags**
 
 * Taxonomy
 
 
 <a name="definitions"></a>
-## Definitions
+## **Definitions**
 
 <a name="taxonomy"></a>
-### taxonomy
+### **taxonomy**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -134,7 +132,7 @@ Get taxonomic lists.
 
 
 <a name="error"></a>
-### error
+### **error**
 
 |Name|Schema|
 |---|---|

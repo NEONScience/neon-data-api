@@ -1,7 +1,5 @@
 # GraphQL API
 
-## Introduction
-
 In addition to providing REST API endpoints, the NEON Data API also provides 
 a GraphQL endpoint, allowing users to take advantage of the flexibility and 
 efficiency of the GraphQL data query language to access NEON metadata and data.  
@@ -9,12 +7,12 @@ efficiency of the GraphQL data query language to access NEON metadata and data.
 The `/graphql` endpoint affords users the ability to define *precisely* the desired data 
 in the request and receive *only* the desired data in response.  
 
-## Using GraphQL
+## **Using GraphQL**
 
 The following example will illustrate how to use the GraphQL endpoint by comparing 
 a `/products` endpoint request for the current REST API to a comparable GraphQL query.
 
-### REST API
+### **REST API**
 
 In order to retrieve all data product codes, names, and descriptions with 
 the REST `/products` endpoint, the following request would need to be made 
@@ -55,7 +53,7 @@ to obtain all associated metadata for a data product.
     }
     ```
 
-### GraphQL Query
+### **GraphQL Query**
 
 If a user wants to retrieve all product codes, names, and descriptions, 
 with the `/graphql` endpoint, given the following GraphQL schema object:  
@@ -233,15 +231,15 @@ query Products {
 
 See the [Examples](#examples) section for more query examples.
 
-## Endpoint Definition
+## **Endpoint Definition**
 
 <a name="post_graphql"></a>
 ### POST `/graphql`
 
-#### Description
+#### **Description**
 All GraphQL queries utilize a single `/graphql` endpoint.
 
-### Queries
+### **Queries**
 Supported queries for the GraphQL endpoint.  
 
 <table>
@@ -291,12 +289,120 @@ Supported queries for the GraphQL endpoint.
       <td valign="top">[<a href="#site">Site</a>!]</td>
       <td>Get a set of sites based on a site filter</td>
     </tr>
+    <tr>
+      <td valign="top"><strong>location</strong></td>
+      <td valign="top">name<br><a href="#scalars">String</a>!</td>
+      <td valign="top"><a href="#location">Location</a>!</td>
+      <td>Get a single location by name</td>
+    </tr>
+    <tr>
+      <td valign="top"><strong>locationHierarchy</strong></td>
+      <td valign="top">
+        name<br><a href="#scalars">String</a>!<br>
+        locationType<br><a href="#scalars">String</a>
+      </td>
+      <td valign="top"><a href="#location">Location</a>!</td>
+      <td>
+        Get a single location hierarchy by name and optional type. <br>
+        Specify a type of descendant to query for. For example, to obtain the
+        location hierarchy for all towers at
+        location CPER, utilize: locationType=TOWER
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><strong>findLocations</strong></td>
+      <td valign="top">query<br><a href="#locationquery">LocationQuery</a>!</td>
+      <td valign="top">[<a href="#location">Location</a>!]</td>
+      <td>
+        Get a set of locations based on a location query.<br>
+        The maximum allowable number of locations for a single request is 1000.
+      </td>
+    </tr>
   </tbody>
 </table>
 
-### Objects
+### **Objects**
 
-#### DataProduct
+#### **ActivePeriod**
+
+Type definition for an active period for a location
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>activatedDate</strong></td>
+<td valign="top"><a href="#scalars">DateTime</a></td>
+<td>
+
+The activation date for the time period
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>deactivatedDate</strong></td>
+<td valign="top"><a href="#scalars">DateTime</a></td>
+<td>
+
+The deactivation date for the time period
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **Coordinate**
+
+Type definition for a coordinate
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>latitude</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Decimal latitude for the coordinate
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>longitude</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Decimal longitude for the coordinate
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>elevation</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Elevation for the coordinate
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **DataProduct**
 
 Type definition for a data product
 
@@ -432,7 +538,7 @@ List of sites and months of available data
 </tbody>
 </table>
 
-#### DataProductSite
+#### **DataProductSite**
 
 Type definition for a set of sites describing available data
 associated with a data product
@@ -477,7 +583,7 @@ List of data urls for products that are available.
 </tbody>
 </table>
 
-#### DataProductSpec
+#### **DataProductSpec**
 
 Type definition for a set of documents associated with a data product
 
@@ -512,7 +618,647 @@ Name of the associated document.
 </tbody>
 </table>
 
-#### Site
+#### **Location**
+
+Type definition for a NEON location
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>locationName</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+Name of the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationDescription</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+A description of the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationType</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The type of location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>domainCode</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+Three character domain abbreviation
+(D01, D02, etc) for the domain this site is in
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>siteCode</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+Four character code for the site
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationDecimalLatitude</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Decimal latitude for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationDecimalLongitude</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Decimal longitude for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationElevation</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Elevation for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationUtmEasting</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+The Universal Transverse Mercator easting
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationUtmNorthing</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+The Universal Transverse Mercator northing
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationUtmZone</strong></td>
+<td valign="top"><a href="#scalars">Int</a></td>
+<td>
+
+The integer Universal Transverse Mercator zone
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationUtmHemisphere</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The single character Universal Transverse Mercator hemisphere
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>alphaOrientation</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+The angle (in degrees) at which the sensor is facing relative to true North
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>betaOrientation</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Beta orientation for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>gammaOrientation</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Gamma orientation for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>xOffset</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Cartesian offsets of a sensor, in meters, east (positive values) or west
+(negative values) relative to where the geolocation point was taken
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>yOffset</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Cartesian offsets of a sensor, in meters, north (positive values) or south
+(negative values) relative to where the geolocation point was taken
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>zOffset</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Cartesian offsets of a sensor, in meters, up (positive values) or down
+(negative values) relative to where the geolocation point was taken
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>offsetLocation</strong></td>
+<td valign="top"><a href="#location">Location</a></td>
+<td>
+
+The named location used as a reference point. Offsets are relative
+to this location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationPolygon</strong></td>
+<td valign="top"><a href="#polygon">Polygon</a></td>
+<td>
+
+A list of vertices that define the closed structure for the polygon
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>activePeriods</strong></td>
+<td valign="top">[<a href="#activeperiod">ActivePeriod</a>!]</td>
+<td>
+
+List of active periods for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationProperties</strong></td>
+<td valign="top">[<a href="#locationproperty">LocationProperty</a>!]</td>
+<td>
+
+List of properties associated with the location.
+Contents vary based on the type of location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationHistory</strong></td>
+<td valign="top">[<a href="#locationhistory">LocationHistory</a>!]</td>
+<td>
+
+The location's history
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationParent</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+Name of the location that this location is in
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationParentUrl</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+URL to request location data for the parent of this location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationParentHierarchy</strong></td>
+<td valign="top"><a href="#locationparenthierarchy">LocationParentHierarchy</a></td>
+<td>
+
+When querying for the hierarchy, the location's parent hierarchy
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationChildren</strong></td>
+<td valign="top">[<a href="#scalars">String</a>!]</td>
+<td>
+
+A list of names of locations within this location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationChildrenUrls</strong></td>
+<td valign="top">[<a href="#scalars">String</a>!]</td>
+<td>
+
+A list of URLs to request location data for the children of this location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationChildHierarchy</strong></td>
+<td valign="top">[<a href="#locationchildhierarhcy">LocationChildHierarhcy</a>!]</td>
+<td>
+
+When querying for the hierarchy, the location's set of immediate children
+and associated hierarchy
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **LocationChildHierarhcy**
+
+Type definition for a child location hierarchy
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>locationName</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+Name of the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationType</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+Type of location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationDescription</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+A description for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationChildHierarchy</strong></td>
+<td valign="top">[<a href="#locationchildhierarhcy">LocationChildHierarhcy</a>!]</td>
+<td>
+
+The location's child hierarchy
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **LocationHistory**
+
+Type definition for a history record for a location
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>current</strong></td>
+<td valign="top"><a href="#scalars">Boolean</a></td>
+<td>
+
+Indicates if this is the current location for this location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationStartDate</strong></td>
+<td valign="top"><a href="#scalars">DateTime</a></td>
+<td>
+
+The start date and time for this location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationEndDate</strong></td>
+<td valign="top"><a href="#scalars">DateTime</a></td>
+<td>
+
+The end date and time for this location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationDecimalLatitude</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Decimal latitude for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationDecimalLongitude</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Decimal longitude for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationElevation</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Elevation for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationUtmEasting</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+The Universal Transverse Mercator easting
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationUtmNorthing</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+The Universal Transverse Mercator northing
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationUtmHemisphere</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The single character Universal Transverse Mercator hemisphere
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationUtmZone</strong></td>
+<td valign="top"><a href="#scalars">Int</a></td>
+<td>
+
+The integer Universal Transverse Mercator zone
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>alphaOrientation</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+The angle (in degrees) at which the sensor is facing relative to true North
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>betaOrientation</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Beta orientation for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>gammaOrientation</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Gamma orientation for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>xOffset</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Cartesian offsets of a sensor, in meters, east (positive values) or west
+(negative values) relative to where the geolocation point was taken
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>yOffset</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Cartesian offsets of a sensor, in meters, north (positive values) or south
+(negative values) relative to where the geolocation point was taken
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>zOffset</strong></td>
+<td valign="top"><a href="#scalars">Float</a></td>
+<td>
+
+Cartesian offsets of a sensor, in meters, up (positive values) or down
+(negative values) relative to where the geolocation point was taken
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationPolygon</strong></td>
+<td valign="top"><a href="#polygon">Polygon</a></td>
+<td>
+
+A list of vertices that define the closed structure for the polygon
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationProperties</strong></td>
+<td valign="top">[<a href="#locationproperty">LocationProperty</a>!]</td>
+<td>
+
+List of properties associated with the location.
+Contents vary based on the type of location
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **LocationParentHierarchy**
+
+Type definition for a parent location hierarchy
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>locationName</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+Name of the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationType</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+Type of location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationParent</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+Name of the location that this location is in
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationParentUrl</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+RL to request location data for the parent of this location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationParentHierarchy</strong></td>
+<td valign="top"><a href="#locationparenthierarchy">LocationParentHierarchy</a></td>
+<td>
+
+The location's parent hierarchy
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **LocationProperty**
+
+Type definition for a generic location property value
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>locationPropertyName</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The name of the property
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locationPropertyValue</strong></td>
+<td valign="top"><a href="#scalars">AnyScalar</a></td>
+<td>
+
+The value of the property
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **Polygon**
+
+Type definition for a polygon
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>coordinates</strong></td>
+<td valign="top">[<a href="#coordinate">Coordinate</a>!]!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+#### **Site**
 
 Type definition for a site
 
@@ -629,7 +1375,7 @@ List of data products and months of available data
 </tbody>
 </table>
 
-#### SiteDataProduct
+#### **SiteDataProduct**
 
 Type definition for a set of products describing available data
 associated with a site
@@ -684,9 +1430,9 @@ List of data urls for products that are available.
 </tbody>
 </table>
 
-### Inputs
+### **Inputs**
 
-#### DataProductFilter
+#### **DataProductFilter**
 
 Input type for encapsulating data product filter fields
 
@@ -738,7 +1484,32 @@ The end month to filter the associated availability to. Formatted as YYYY-MM.
 </tbody>
 </table>
 
-#### SiteFilter
+#### **LocationQuery**
+
+Input type for encapsulating location query fields
+
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>locationNames</strong></td>
+<td valign="top">[<a href="#scalars">String</a>!]!</td>
+<td>
+
+The set of location names to get for
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **SiteFilter**
 
 Input type for encapsulating site filter fields
 
@@ -790,7 +1561,7 @@ The end month to filter the associated availability to. Formatted as YYYY-MM.
 </tbody>
 </table>
 
-### Scalars
+### **Scalars**
 
 <table>
   <thead>
@@ -801,8 +1572,20 @@ The end month to filter the associated availability to. Formatted as YYYY-MM.
   </thead>
   <tbody>
     <tr>
+      <td valign="top"><strong>AnyScalar</strong></td>
+      <td>
+        The AnyScalar data type represents a union of possible scalar values.
+      </td>
+    </tr>
+    <tr>
       <td valign="top"><strong>Boolean</strong></td>
       <td>Built-in Boolean</td>
+    </tr>
+    <tr>
+      <td valign="top"><strong>DateTime</strong></td>
+      <td>
+        The DateTime data type represents a date as an ISO formatted date time: yyyy-MM-dd'T'HH:mm:ss'Z'
+      </td>
     </tr>
     <tr>
       <td valign="top"><strong>Float</strong></td>
@@ -819,14 +1602,14 @@ The end month to filter the associated availability to. Formatted as YYYY-MM.
   </tbody>
 </table>
 
-## Examples
+## **Examples**
 
 The following examples will provide both an example POST request JSON body as well 
 as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).  
 
-### Data Products
+### **Data Products**
 
-#### All data products
+#### **All data products**
 
 !!! example
     Get all products and include the product code, name, and description for each:  
@@ -880,7 +1663,7 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
       }"
     ```
 
-#### One or many data products  
+#### **One or many data products**  
 
 !!! example
     Get one or many data products with availability information.
@@ -998,7 +1781,7 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
       }"
     ```
 
-#### Filtered data products
+#### **Filtered data products**
 
 !!! example
     Get a data product and filter by availability.
@@ -1078,9 +1861,9 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
     ```
 
 
-### Sites
+### **Sites**
 
-#### All sites
+#### **All sites**
 
 !!! example    
     Get sites with code, description, latitude, longitude.  
@@ -1138,7 +1921,7 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
       }"
     ```
 
-#### One or many sites
+#### **One or many sites**
 
 !!! example
     Get one or many sites with availability information.
@@ -1265,7 +2048,7 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
       }"
     ```
 
-#### Filtered sites
+#### **Filtered sites**
 
 !!! example
     Get a site and filter by availability.
@@ -1347,7 +2130,179 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
       }"
     ```
 
-## Resources
+### **Locations**
+
+#### **Get a location**
+
+!!! example
+    Get location information by name
+
+    ``` Ruby tab="GraphiQL Query"
+    query Location {
+      location(name: "ABBY") {
+        locationName
+        locationDescription
+        locationType
+        domainCode
+        siteCode
+        locationDecimalLatitude
+        locationDecimalLongitude
+        locationElevation
+        locationUtmEasting
+        locationUtmNorthing
+        locationUtmHemisphere
+        locationUtmZone
+        alphaOrientation
+        betaOrientation
+        gammaOrientation
+        xOffset
+        yOffset
+        zOffset
+        locationProperties {
+          locationPropertyName
+          locationPropertyValue
+        }
+      }
+    }
+    ```
+
+    ``` JSON tab="POST JSON Body"
+    {
+      "query": "query Location {
+        location(name: \"ABBY\") {
+          locationName
+          locationDescription
+          locationType
+          domainCode
+          siteCode
+          locationDecimalLatitude
+          locationDecimalLongitude
+          locationElevation
+          locationUtmEasting
+          locationUtmNorthing
+          locationUtmHemisphere
+          locationUtmZone
+          alphaOrientation
+          betaOrientation
+          gammaOrientation
+          xOffset
+          yOffset
+          zOffset
+          locationProperties {
+            locationPropertyName
+            locationPropertyValue
+          }
+        }
+      }"
+    }
+    ```  
+
+    ``` bash tab="HTTPie"
+    http --download --output=neon-location-ABBY-graphql.json \
+      POST https://data.neonscience.org/graphql \
+      Content-Type:application/json \
+      query="query Location { \
+        location(name: \"ABBY\") { \
+          locationName \
+          locationDescription \
+          locationType \
+          domainCode \
+          siteCode \
+          locationDecimalLatitude \
+          locationDecimalLongitude \
+          locationElevation \
+          locationUtmEasting \
+          locationUtmNorthing \
+          locationUtmHemisphere \
+          locationUtmZone \
+          alphaOrientation \
+          betaOrientation \
+          gammaOrientation \
+          xOffset \
+          yOffset \
+          zOffset \
+          locationProperties { \
+            locationPropertyName \
+            locationPropertyValue \
+          } \
+        } \
+      }"
+    ```  
+
+#### **Find locations**
+
+!!! example
+    Get a set of locations by name
+
+    **Find locations query:**
+
+    ``` Ruby tab="GraphiQL Query"
+    # Query editor window
+    query findLocations($query: LocationQuery!) {
+      locations: findLocations(query: $query) {
+        locationName
+        locationDescription
+        locationType
+        domainCode
+        siteCode
+        locationDecimalLatitude
+        locationDecimalLongitude
+        locationElevation
+      }
+    }
+
+    # Query variables window
+    {
+      "query": {
+        "locationNames": ["D10", "CPER", "ARIK"]
+      }
+    }
+    ```
+
+    ``` JSON tab="POST JSON Body"
+    {
+      "query": "query findLocations {
+        locations: findLocations(
+            query: { 
+              locationNames: [\"D10\", \"CPER\", \"ARIK\"]
+            }
+        ) {
+          locationName
+          locationDescription
+          locationType
+          domainCode
+          siteCode
+          locationDecimalLatitude
+          locationDecimalLongitude
+          locationElevation
+        }
+      }"
+    }
+    ```  
+
+    ``` bash tab="HTTPie"
+    http --download --output=neon-locations-graphql.json \
+      POST https://data.neonscience.org/graphql \
+      Content-Type:application/json \
+      query="query findLocations { \
+        locations: findLocations( \
+            query: {  \
+              locationNames: [\"D10\", \"CPER\", \"ARIK\"] \
+            } \
+        ) { \
+          locationName \
+          locationDescription \
+          locationType \
+          domainCode \
+          siteCode \
+          locationDecimalLatitude \
+          locationDecimalLongitude \
+          locationElevation \
+        } \
+      }"
+    ```
+
+## **Resources**
 
 For a deeper dive into GraphQL concepts:  
 

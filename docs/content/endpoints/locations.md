@@ -1,7 +1,5 @@
 # Locations Endpoint
 
-## Locations
-
 The `/locations` endpoint provides more detailed information about 
 [where NEON collects data](https://www.neonscience.org/about/about/spatiotemporal-design) 
 than the `/sites` endpoint. A location is any discrete place or 
@@ -40,16 +38,16 @@ A full list of available locationTypes will be made available soon.
 
 
 <a name="paths"></a>
-## Paths
+## **Paths**
 
 <a name="get_locations_sites"></a>
 ### GET `/locations/sites`
 
-#### Description
+#### **Description**
 Get information about the site-level locations.
 
 
-#### Responses
+#### **Responses**
 
 |HTTP Code|Description|Schema|
 |---|---|---|
@@ -63,12 +61,12 @@ Get information about the site-level locations.
 |**data**|[[location](#location)]|
 
 
-#### Produces
+#### **Produces**
 
 * `application/json`
 
 
-#### Tags
+#### **Tags**
 
 * Locations
 * Sites
@@ -77,11 +75,11 @@ Get information about the site-level locations.
 <a name="get_locations-locationname"></a>
 ### GET `/locations/{locationName}`
 
-#### Description
+#### **Description**
 Get information about a location.
 
 
-#### Parameters
+#### **Parameters**
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
@@ -91,7 +89,7 @@ Get information about a location.
 |**Query**|**locationType**  <br>*optional*|"When obtaining location hierarchy, specify a type of descendant to query for. For example, to obtain the location hierarchy for all towers at location CPER, utilize: /CPER?hierarchy=true&locationType=TOWER"|string|
 
 
-#### Responses
+#### **Responses**
 
 |HTTP Code|Description|Schema|
 |---|---|---|
@@ -112,28 +110,28 @@ Get information about a location.
 |**errors**  <br>*optional*|[[error](#error)]|
 
 
-#### Produces
+#### **Produces**
 
 * `application/json`
 
 
-#### Tags
+#### **Tags**
 
 * Locations
 
 
 
 <a name="definitions"></a>
-## Definitions
+## **Definitions**
 
 <a name="location"></a>
-### location
+### **location**
 
 |Name|Description|Schema|
 |---|---|---|
 |**locationName**  <br>*optional*|Name of the location|string|
 |**locationDescription**  <br>*optional*|A description of the location.|string|
-|**locationType**  <br>*optional*||string|
+|**locationType**  <br>*optional*|Type of the location|string|
 |**domainCode**  <br>*optional*|Three character domain abbreviation (D01, D02, etc) for the domain this site is in|string|
 |**siteCode**  <br>*optional*|Four character code for the site|string|
 |**locationDecimalLatitude**  <br>*optional*|Decimal latitude for the location.|number (double)|
@@ -150,6 +148,7 @@ Get information about a location.
 |**yOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, north (positive values) or south (negative values) relative to where the geolocation point was taken.|number (double)|
 |**zOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to where the geolocation point was taken.|number (double)|
 |**offsetLocation**  <br>*optional*|The named location used as a reference point. Offsets are relative to this location.|[location](#location)|
+|**activePeriods**  <br>*optional*|List of active periods for the location|[[activePeriod](#activeperiod)]|
 |**locationPolygon**  <br>*optional*||[locationPolygon](#locationpolygon)|
 |**locationProperties**  <br>*optional*|List of properties associated with the location.  Contents vary based on the type of location.|[[locationProperties](#locationproperties)]|
 |**locationHistory**  <br>*optional*||[[locationHistory](#locationhistory)]|
@@ -160,15 +159,23 @@ Get information about a location.
 |**locationChildrenUrls**  <br>*optional*|A list of URLs to request location data for the children of this location.|[string]|
 |**locationChildHierarchy**  <br>*optional*|When querying for the hierarchy, the location's set of immediate children and associated hierarchy|[[locationChildHierarchy](#locationchildhierarchy)]|
 
+<a name="activeperiod"></a>
+### **activePeriod**
+
+|Name|Description|Schema|
+|---|---|---|
+|**activatedDate**  <br>*optional*|The activation date for the time period|string|
+|**deactivatedDate**  <br>*optional*|The deactivation date for the time period|string|
+
 <a name="locationpolygon"></a>
-### locationPolygon
+### **locationPolygon**
 
 |Name|Description|Schema|
 |---|---|---|
 |**coordinates**  <br>*optional*|A list of vertices that define the closed structure for the polygon|[[coordinates](#coordinates)]|
 
 <a name="coordinates"></a>
-### coordinates
+### **coordinates**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -177,7 +184,7 @@ Get information about a location.
 |**elevation**  <br>*optional*|Elevation for the polygon coordinate.|number (double)|
 
 <a name="locationproperties"></a>
-### locationProperties
+### **locationProperties**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -186,7 +193,7 @@ Get information about a location.
 
 
 <a name="locationhistory"></a>
-### locationHistory
+### **locationHistory**
 
 |Name|Description|Schema|
 |---|---|---|
@@ -211,26 +218,28 @@ Get information about a location.
 
 
 <a name="locationparenthierarchy"></a>
-### locationParentHierarchy
+### **locationParentHierarchy**
 
 |Name|Description|Schema|
 |---|---|---|
 |**locationName**  <br>*optional*|Name of the location|string|
+|**locationType**  <br>*optional*|Type of the location|string|
 |**locationParent**  <br>*optional*|Name of the location that this location is in.|string|
 |**locationParentHierarchy**  <br>*optional*|The location's parent hierarchy|object|
 |**locationParentUrl**  <br>*optional*|URL to request location data for the parent of this location.|string|
 
 <a name="locationchildhierarchy"></a>
-### locationChildHierarchy
+### **locationChildHierarchy**
 
 |Name|Description|Schema|
 |---|---|---|
 |**locationChildHierarchy**  <br>*optional*|The location's child hierarchy|[object]|
 |**locationDescription**  <br>*optional*|A description of the location.|string|
 |**locationName**  <br>*optional*|Name of the location|string|
+|**locationType**  <br>*optional*|Type of the location|string|
 
 <a name="error"></a>
-### error
+### **error**
 
 |Name|Schema|
 |---|---|

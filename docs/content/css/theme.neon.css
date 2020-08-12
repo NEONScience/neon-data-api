@@ -28,6 +28,11 @@ header.md-header {
   }
 } */
 
+.md-typeset h2 strong,
+.md-typeset h3 strong {
+  font-weight: 400;
+}
+
 iframe.swagger-docs {
   display: none;
   margin: 0;

@@ -1,6 +1,6 @@
 # Building and Testing
 
-## Building and Running the Docs
+## **Building and Running the Docs**
 
 The docs project consists of two main components:
 
@@ -8,7 +8,7 @@ The docs project consists of two main components:
     `docs` directory, and   
   - the supporting React applications hosted in the `packages` directory
 
-### Requirements
+### **Requirements**
 
   - MkDocs Project development  
     - Python 3.7+
@@ -18,7 +18,7 @@ The docs project consists of two main components:
     - Yarn - [Installation info](https://yarnpkg.com/en/docs/install)
   - Docker
 
-### MkDocs
+### **MkDocs**
 
 To build the MkDocs project, first install the python dependencies using pip:
 ``` bash
@@ -30,7 +30,7 @@ mkdocs serve --config-file mkdocs.local.yml
 ```
 You should now have an instance running at: `localhost:8000`
 
-### React Applications
+### **React Applications**
 
 The application are hosted in the `/packages` directory, utilizing a monorepo 
 approach for managing application dependencies with Yarn workspaces. Yarn will 
@@ -72,7 +72,7 @@ yarn run build:clean-deploy
     Note that this will build each React application, and replace the current app's 
     build directory in the `docs` project with the updated build.
 
-### Building and Packaging with Docker
+### **Building and Packaging with Docker**
 
 To build the project, utilize the convenience scripts for building a Docker container:
 ``` bash
