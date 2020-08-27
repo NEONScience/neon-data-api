@@ -1,11 +1,11 @@
 {
   "name": "docs-app-graphiql",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "private": true,
   "homepage": ".",
   "dependencies": {
-    "@types/node": "^12.12.53",
-    "@types/react": "^16.9.43",
+    "@types/node": "^14.6.1",
+    "@types/react": "^16.9.48",
     "@types/react-dom": "^16.9.8",
     "graphiql": "^1.0.3",
     "graphql": "^15.3.0",
@@ -13,7 +13,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "3.4.3",
     "typescript": "3.9.7"
   },
   "scripts": {
