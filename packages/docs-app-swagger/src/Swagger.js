@@ -77,7 +77,8 @@ const responseInterceptor = (res) => {
 };
 
 export const getSwaggerUI = (spec) => (
-  <SwaggerUI spec={spec}
+  <SwaggerUI
+    spec={spec}
     docExpansion="list"
     requestInterceptor={requestInterceptor}
     responseInterceptor={responseInterceptor}
