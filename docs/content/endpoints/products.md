@@ -146,7 +146,8 @@ Get information about a data product.
 |**dateRangeStart**|The start of the date interval that this issue impacts the data product.|string (date-time)|
 |**dateRangeEnd**|The end of the date interval that this issue impacts the data product.|string (date-time)|
 |**locationAffected**|The locations affected by this issue.|string (date-time)|
-|**resolution**|The description of the resolution applied for this issue.|string (date-time)|
+|**issue**|The description of the issue.|string|
+|**resolution**|The description of the resolution applied for this issue.|string|
 
 
 <a name="error"></a>

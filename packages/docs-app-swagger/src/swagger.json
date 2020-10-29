@@ -950,6 +950,10 @@
                 "type": "string",
                 "description": "The locations affected by this issue."
               },
+              "issue": {
+                "type": "string",
+                "description": "The description of the issue."
+              },
               "resolution": {
                 "type": "string",
                 "description": "The description of the resolution applied for this issue."
