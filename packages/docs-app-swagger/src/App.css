@@ -69,6 +69,10 @@ body, input {
   font-family: "Roboto Mono", monospace;
   line-height: 1.5;
 }
+.neon-data-api-docs-swagger .swagger-ui .code,
+.neon-data-api-docs-swagger .swagger-ui code {
+  white-space: pre-wrap !important;
+}
 
 .neon-data-api-docs-swagger .swagger-ui section.models,
 .neon-data-api-docs-swagger .swagger-ui section.models.is-open {

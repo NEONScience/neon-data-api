@@ -1,5 +1,10 @@
 :root {
-  --md-accent-fg-color: #002c77;
+  --md-accent-fg-color: #0073cf;
+  --md-typeset-a-color: #0073cf;
+}
+[data-md-color-primary=white] {
+  --md-accent-fg-color: #0073cf;
+  --md-typeset-a-color: #0073cf;
 }
 .md-header[data-md-state=shadow] {
   /* box-shadow:
@@ -82,17 +87,16 @@ div.app-open-container {
   float: right;
   padding: 6px 15px;
   margin-bottom: 10px;
-  border-radius: 4px;
-  border: 1px solid #002c77;
+  border: 1px solid #0073cf;
   color: #002c77;
 }
 div.app-open-container:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, .04) !important;
+  background-color: rgba(0, 115, 207, 0.04) !important;
 }
 div.app-open-container a.app-open-link {
   display: inline-flex;
-  color: #002c77 !important;
+  color: #0073cf !important;
 }
 div.app-open-container a.app-open-link img.app-open-img {
   margin-left: 10px;

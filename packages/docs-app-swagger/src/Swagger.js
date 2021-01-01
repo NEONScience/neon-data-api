@@ -1,5 +1,5 @@
 import React from "react";
-import SwaggerUI from "swagger-ui-react"
+import SwaggerUI from "swagger-ui-react";
 
 import Env from "./env";
 
@@ -33,37 +33,70 @@ const requestInterceptor = (req) => {
  */
 const responseInterceptor = (res) => {
   const url = new URL(res.url);
-  if (!TRUNCATE_ENDPOINTS[url.pathname]) {
+  const shouldTruncate = Object.keys(TRUNCATE_ENDPOINTS)
+    .some(value => url.pathname.startsWith(value));
+  if (!shouldTruncate) {
     return res;
   }
-  if (exists(res.body) && Array.isArray(res.body.data) && (res.body.data.length > 3)) {
+  if (exists(res.body) && exists(res.body.data)) {
+    const shouldSliceData = Array.isArray(res.body.data)
+      && (res.body.data.length > 3);
     const body = {
       ...res.body,
-      data: res.body.data.slice(0, 3),
+      data: shouldSliceData ? res.body.data.slice(0, 3) : res.body.data,
     };
     delete res.body;
     delete res.obj;
     delete res.text;
     delete res.data;
-    switch (TRUNCATE_ENDPOINTS[url.pathname]) {
+    const appliedPathKey = Object.keys(TRUNCATE_ENDPOINTS)
+      .find(value => url.pathname.startsWith(value));
+    switch (TRUNCATE_ENDPOINTS[appliedPathKey]) {
       case "products":
-        body.data = body.data.map(p => {
-          if (Array.isArray(p.changeLogs) && (p.changeLogs.length > 3)) {
-            p.changeLogs = p.changeLogs.slice(0, 3);
-          }
-          if (Array.isArray(p.siteCodes) && (p.siteCodes.length > 3)) {
-            p.siteCodes = p.siteCodes.slice(0, 3);
-          }
-          return p;
-        });
+        if (shouldSliceData) {
+          body.data = body.data.map(p => {
+            if (Array.isArray(p.changeLogs) && (p.changeLogs.length > 3)) {
+              p.changeLogs = p.changeLogs.slice(0, 3);
+            }
+            if (Array.isArray(p.siteCodes) && (p.siteCodes.length > 3)) {
+              p.siteCodes = p.siteCodes.slice(0, 3);
+            }
+            return p;
+          });
+        } else {
+          const trimChangeLogs = (Array.isArray(body.data.changeLogs)
+            && (body.data.changeLogs.length > 3));
+          const trimSiteCodes = (Array.isArray(body.data.siteCodes)
+            && (body.data.siteCodes.length > 3));
+          body.data = {
+            ...body.data,
+            changeLogs: trimChangeLogs
+              ? body.data.changeLogs.slice(0, 3)
+              : body.data.changeLogs,
+            siteCodes: trimSiteCodes
+              ? body.data.siteCodes.slice(0, 3)
+              : body.data.siteCodes,
+          };
+        }
         break;
       case "sites":
-        body.data = body.data.map(s => {
-          if (Array.isArray(s.dataProducts) && (s.dataProducts.length > 3)) {
-            s.dataProducts = s.dataProducts.slice(0, 3);
-          }
-          return s;
-        });
+        if (shouldSliceData) {
+          body.data = body.data.map(s => {
+            if (Array.isArray(s.dataProducts) && (s.dataProducts.length > 3)) {
+              s.dataProducts = s.dataProducts.slice(0, 3);
+            }
+            return s;
+          });
+        } else {
+          const trimProducts = (Array.isArray(body.data.dataProducts)
+            && (body.data.dataProducts.length > 3));
+          body.data = {
+            ...body.data,
+            dataProducts: trimProducts
+              ? body.data.dataProducts.slice(0, 3)
+              : body.data.dataProducts,
+          };
+        }
         break;
       default:
         break;

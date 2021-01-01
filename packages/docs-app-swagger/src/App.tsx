@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import { getSwaggerUI } from "./Swagger";
 
-import "swagger-ui-react/swagger-ui.css"
+import "swagger-ui-react/swagger-ui.css";
 import "./App.css";
 import "./swagger-theme-material.min.css";
 
