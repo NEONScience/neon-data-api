@@ -1,4 +1,4 @@
-window.addEventListener('load', function () {
+function customize() {
   const browserIsIE = (navigator.userAgent.indexOf('MSIE') !== -1)
     || (navigator.appVersion.indexOf('Trident/') > -1);
   if (browserIsIE) {
@@ -21,4 +21,14 @@ window.addEventListener('load', function () {
       innerGrid.style.marginLeft = '25px';
     }
   }
+}
+
+window.addEventListener('load', function () {
+  customize();
+});
+// Custom event listener for mkdocs-material "instant" feature.
+// See:
+// https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/instant/index.ts
+window.document.addEventListener('DOMContentSwitch', function () {
+  customize();
 });

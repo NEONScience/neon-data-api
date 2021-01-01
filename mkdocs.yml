@@ -26,7 +26,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.expand
-    # - navigation.instant
+    - navigation.instant
   font:
     text: 'Inter'
     code: 'Roboto Mono'
