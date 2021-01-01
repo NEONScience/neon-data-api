@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.2.0",
+    "version": "0.3.0",
     "title": "NEON Data API Requests",
-    "description": "\nExpand the options below, click GET, and then click TRY IT OUT to see example calls."
+    "description": "Expand the options below, click GET, and then click TRY IT OUT to see example calls."
   },
   "basePath": "/api/v0",
   "consumes": [
@@ -34,6 +34,15 @@
         "operationId": "Get_products_",
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "release",
+            "in": "query",
+            "description": "The name of the release to get availability for",
+            "required": false,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -76,6 +85,13 @@
             "description": "Data product to get",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "release",
+            "in": "query",
+            "description": "The name of the release to get availability for",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -115,6 +131,15 @@
         "produces": [
           "application/json"
         ],
+        "parameters": [
+          {
+            "name": "release",
+            "in": "query",
+            "description": "The name of the release to get availability for",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "List of sites",
@@ -150,6 +175,13 @@
             "description": "Site to get",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "release",
+            "in": "query",
+            "description": "The name of the release to get availability for",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -166,6 +198,808 @@
           },
           "400": {
             "description": "Site(s) not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/releases": {
+      "get": {
+        "description": "Get information about all available data releases.",
+        "tags": [
+          "Releases"
+        ],
+        "operationId": "Get_releases_",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of data releases",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/release"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/releases/{releaseIdentifier}": {
+      "get": {
+        "description": "Get information about a data release.",
+        "tags": [
+          "Releases"
+        ],
+        "operationId": "Get_releases_releaseIdentifier_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "releaseIdentifier",
+            "in": "path",
+            "description": "Release tag or UUID to get for",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single data release",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/release"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Release(s) not found",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/releases/{releaseTag}/products": {
+      "get": {
+        "description": "Get information about all data products within a specific release.",
+        "tags": [
+          "Releases"
+        ],
+        "operationId": "Get_releases_products_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "releaseTag",
+            "in": "path",
+            "description": "The name of the release to get availability for",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of data products",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/product"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/releases/{releaseTag}/products/{productCode}": {
+      "get": {
+        "description": "Get information about a data product within a specific release.",
+        "tags": [
+          "Releases"
+        ],
+        "operationId": "Get_releases_products_productCode_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "releaseTag",
+            "in": "path",
+            "description": "The name of the release to get availability for",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Data product to get",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single data product",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/product"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Product(s) not found",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/releases/{releaseTag}/sites": {
+      "get": {
+        "description": "Get information about all sites within a specific release.",
+        "tags": [
+          "Releases"
+        ],
+        "operationId": "Get_releases_sites_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "releaseTag",
+            "in": "path",
+            "description": "The name of the release to get availability for",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of sites",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/site"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/releases/{releaseTag}/sites/{siteCode}": {
+      "get": {
+        "description": "Get information about a site within a specific release.",
+        "tags": [
+          "Releases"
+        ],
+        "operationId": "Get_releases_sites:siteCode_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "releaseTag",
+            "in": "path",
+            "description": "The name of the release to get availability for",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "path",
+            "description": "Site to get",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single site",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/site"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Site(s) not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/releases/{releaseTag}/data/{productCode}/{siteCode}/{year-month}": {
+      "get": {
+        "description": "Get files available for a given release and product/site/month combination",
+        "tags": [
+          "Releases"
+        ],
+        "operationId": "Get_releases_data:availability_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "releaseTag",
+            "in": "path",
+            "description": "The name of the release to get availability for",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Product to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "path",
+            "description": "Site to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year-month",
+            "in": "path",
+            "description": "YYYY-MM month to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "description": "Package type to return, basic or expanded",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "basic",
+              "expanded"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available files",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/data"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Product, site not found or invalid date range specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/releases/{releaseTag}/data/{productCode}/{siteCode}/{year-month}/{filename}": {
+      "get": {
+        "description": "Get a file for a given release and product/site/month/filename combination",
+        "tags": [
+          "Releases"
+        ],
+        "operationId": "Get_releases_data:availability_file_",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "name": "releaseTag",
+            "in": "path",
+            "description": "The name of the release to get availability for",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Product to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "path",
+            "description": "Site to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year-month",
+            "in": "path",
+            "description": "YYYY-MM month to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filename",
+            "in": "path",
+            "description": "The name of the file",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "description": "Package type to return, basic or expanded",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "basic",
+              "expanded"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available file data",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "302": {
+            "description": "Found available file and redirects to data",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "400": {
+            "description": "Invalid file name specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/releases/{releaseTag}/data/package/{productCode}/{siteCode}/{year-month}": {
+      "get": {
+        "description": "Get a data package for a given release and product/site/month and package combination",
+        "tags": [
+          "Releases"
+        ],
+        "operationId": "Get_releases_data:availability_package_",
+        "produces": [
+          "application/zip"
+        ],
+        "parameters": [
+          {
+            "name": "releaseTag",
+            "in": "path",
+            "description": "The name of the release to get availability for",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Product to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "path",
+            "description": "Site to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year-month",
+            "in": "path",
+            "description": "YYYY-MM month to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "description": "Package type to return, basic or expanded",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "basic",
+              "expanded"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available data package as zip",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "400": {
+            "description": "Invalid product, site, or month specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/data/{productCode}/{siteCode}/{year-month}": {
+      "get": {
+        "description": "Get files available for a given product/site/month combination",
+        "tags": [
+          "Data"
+        ],
+        "operationId": "Get_data:availability_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Product to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "path",
+            "description": "Site to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year-month",
+            "in": "path",
+            "description": "YYYY-MM month to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "description": "Package type to return, basic or expanded",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "basic",
+              "expanded"
+            ]
+          },
+          {
+            "name": "release",
+            "in": "query",
+            "description": "The name of the release to get for",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available files",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/data"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Product, site not found or invalid date range specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/data/{productCode}/{siteCode}/{year-month}/{filename}": {
+      "get": {
+        "description": "Get a file for a given product/site/month/filename combination",
+        "tags": [
+          "Data"
+        ],
+        "operationId": "Get_data:availability_file_",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Product to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "path",
+            "description": "Site to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year-month",
+            "in": "path",
+            "description": "YYYY-MM month to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filename",
+            "in": "path",
+            "description": "The name of the file",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "description": "Package type to return, basic or expanded",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "basic",
+              "expanded"
+            ]
+          },
+          {
+            "name": "release",
+            "in": "query",
+            "description": "The name of the release to get for",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available file data",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "302": {
+            "description": "Found available file and redirects to data",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "400": {
+            "description": "Invalid file name specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/data/package/{productCode}/{siteCode}/{year-month}": {
+      "get": {
+        "description": "Get a data package for a given product/site/month and package combination",
+        "tags": [
+          "Data"
+        ],
+        "operationId": "Get_data:availability_package_",
+        "produces": [
+          "application/zip"
+        ],
+        "parameters": [
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Product to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "path",
+            "description": "Site to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year-month",
+            "in": "path",
+            "description": "YYYY-MM month to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "description": "Package type to return, basic or expanded",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "basic",
+              "expanded"
+            ]
+          },
+          {
+            "name": "release",
+            "in": "query",
+            "description": "The name of the release to get for",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available data package as zip",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "400": {
+            "description": "Invalid product, site, or month specified",
             "schema": {
               "type": "object",
               "properties": {
@@ -283,108 +1117,6 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/definitions/location"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "General error",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        }
-      }
-    },
-    "/data/{productCode}/{siteCode}/{year-month}": {
-      "get": {
-        "description": "Get files available for a given product/site/month combination",
-        "tags": [
-          "Data"
-        ],
-        "operationId": "Get_data:availability_",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "productCode",
-            "in": "path",
-            "description": "Product to check for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "siteCode",
-            "in": "path",
-            "description": "Site to check for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "year-month",
-            "in": "path",
-            "description": "YYYY-MM month to check for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "package",
-            "in": "query",
-            "description": "Package type to return, basic or expanded",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "basic",
-              "expanded"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Available files",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "type": "object",
-                  "properties": {
-                    "externalData": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/definitions/externalData"
-                      }
-                    },
-                    "files": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/definitions/file"
-                      }
-                    },
-                    "productCode": {
-                      "type": "string"
-                    },
-                    "siteCode": {
-                      "type": "string"
-                    },
-                    "month": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Product, site not found or invalid date range specified",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "errors": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/error"
                   }
                 }
               }
@@ -975,6 +1707,43 @@
             "type": "string"
           }
         },
+        "releases": {
+          "type": "array",
+          "description": "List of releases that this product has available data within.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "release": {
+                "type": "string",
+                "description": "The name of the release"
+              },
+              "generationDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The generation date of the release."
+              },
+              "url": {
+                "type": "string",
+                "description": "The URL to the API endpoint that references the release."
+              },
+              "productDoi": {
+                "type": "object",
+                "description": "A description for the DOI associated with the product and release.",
+                "properties": {
+                  "generationDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The generation date of the DOI."
+                  },
+                  "url": {
+                    "type": "string",
+                    "description": "The DOI URL for the product and release."
+                  }
+                }
+              }
+            }
+          }
+        },
         "siteCodes": {
           "type": "array",
           "description": "List of sites and months of available data",
@@ -987,7 +1756,7 @@
               },
               "availableMonths": {
                 "type": "array",
-                "description": "List of years and months that products are available.  Formatted as YYYY-MM.",
+                "description": "List of years and months that products are available. Formatted as YYYY-MM.",
                 "items": {
                   "type": "string"
                 }
@@ -998,6 +1767,26 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "availableReleases": {
+                "type": "array",
+                "description": "List of available releases and months contained within each release.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "release": {
+                      "type": "string",
+                      "description": "The name of the release."
+                    },
+                    "availableMonths": {
+                      "type": "array",
+                      "description": "List of years and months that products are available within for this release. Formatted as YYYY-MM.",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -1007,13 +1796,26 @@
     "spec": {
       "type": "object",
       "properties": {
-        "specName": {
-          "type": "string",
-          "description": "Name of the associated document."
-        },
         "specId": {
           "type": "string",
-          "description": "Document code for the associated document."
+          "description": "Document identifier for the associated document."
+        },
+        "specNumber": {
+          "type": "string",
+          "description": "The specification number for the associated document."
+        },
+        "specType": {
+          "type": "string",
+          "description": "The MIME type of the associated document."
+        },
+        "specSize": {
+          "type": "number",
+          "format": "int",
+          "description": "The size in bytes of the associated document."
+        },
+        "specDescription": {
+          "type": "string",
+          "description": "Description of the associated document."
         }
       }
     },
@@ -1064,6 +1866,28 @@
           "type": "string",
           "description": "Brief description for the domain this site is in"
         },
+        "releases": {
+          "type": "array",
+          "description": "List of releases that this site has available data within.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "release": {
+                "type": "string",
+                "description": "The name of the release"
+              },
+              "generationDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The generation date of the release."
+              },
+              "url": {
+                "type": "string",
+                "description": "The URL to the API endpoint that references the release."
+              }
+            }
+          }
+        },
         "dataProducts": {
           "type": "array",
           "items": {
@@ -1095,6 +1919,191 @@
           "description": "List of data urls for products that are available.",
           "items": {
             "type": "string"
+          }
+        },
+        "availableReleases": {
+          "type": "array",
+          "description": "List of available releases and months contained within each release.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "release": {
+                "type": "string",
+                "description": "The name of the release."
+              },
+              "availableMonths": {
+                "type": "array",
+                "description": "List of years and months that products are available within for this release. Formatted as YYYY-MM.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "productCode": {
+          "type": "string",
+          "description": "The product code."
+        },
+        "siteCode": {
+          "type": "string",
+          "description": "The four letter site code."
+        },
+        "month": {
+          "type": "string",
+          "description": "The available month. Formatted as YYYY-MM."
+        },
+        "release": {
+          "type": "string",
+          "description": "The name of the associated release."
+        },
+        "packages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The type of package."
+              },
+              "url": {
+                "type": "string",
+                "description": "The URL to the data package API endpoint."
+              }
+            }
+          }
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/file"
+          }
+        },
+        "externalData": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/externalData"
+          }
+        }
+      }
+    },
+    "file": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Filename",
+          "type": "string"
+        },
+        "size": {
+          "description": "File size in bytes",
+          "type": "number",
+          "format": "int"
+        },
+        "md5": {
+          "description": "MD5 value in hex",
+          "type": "string"
+        },
+        "crc32": {
+          "description": "CRC-32 value in hex",
+          "type": "string"
+        },
+        "url": {
+          "description": "Download URL",
+          "type": "string"
+        }
+      }
+    },
+    "externalData": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the external data object.",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of external data link provided.",
+          "type": "string"
+        },
+        "url": {
+          "description": "URL to external data.",
+          "type": "string"
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "properties": {
+        "release": {
+          "type": "string",
+          "description": "The name or \"tag\" of the release."
+        },
+        "uuid": {
+          "type": "string",
+          "description": "The UUID associated with the release."
+        },
+        "generationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Generation date of the release."
+        },
+        "artifacts": {
+          "type": "array",
+          "description": "The set of artifacts associated with the release.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the artifact."
+              },
+              "type": {
+                "type": "string",
+                "description": "The type of the artifact."
+              },
+              "url": {
+                "type": "string",
+                "description": "The download URL for the artifact"
+              },
+              "size": {
+                "type": "number",
+                "format": "int",
+                "description": "The file size in bytes."
+              },
+              "md5": {
+                "type": "string",
+                "description": "MD5 value in hex"
+              }
+            }
+          }
+        },
+        "dataProducts": {
+          "type": "array",
+          "description": "The set of available data products within the release.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "productCode": {
+                "type": "string",
+                "description": "Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)"
+              },
+              "productName": {
+                "type": "string",
+                "description": "The name of the data product."
+              },
+              "productDescription": {
+                "type": "string",
+                "description": "A brief description of the data product."
+              },
+              "productDoi": {
+                "type": "string",
+                "description": "The DOI for the product within the release."
+              }
+            }
           }
         }
       }
@@ -1475,49 +2484,6 @@
         }
       }
     },
-    "file": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Filename",
-          "type": "string"
-        },
-        "size": {
-          "description": "Estimated file size in bytes",
-          "type": "number",
-          "format": "int"
-        },
-        "md5": {
-          "description": "MD5 value in hex",
-          "type": "string"
-        },
-        "crc32": {
-          "description": "CRC-32 value in hex",
-          "type": "string"
-        },
-        "url": {
-          "description": "Download URL",
-          "type": "string"
-        }
-      }
-    },
-    "externalData": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "The name of the external data object.",
-          "type": "string"
-        },
-        "type": {
-          "description": "The type of external data link provided.",
-          "type": "string"
-        },
-        "url": {
-          "description": "URL to external data.",
-          "type": "string"
-        }
-      }
-    },
     "taxonomy": {
       "type": "object",
       "properties": {
@@ -1711,18 +2677,6 @@
         }
       }
     },
-    "error": {
-      "type": "object",
-      "properties": {
-        "detail": {
-          "type": "string"
-        },
-        "status": {
-          "type": "number",
-          "format": "int"
-        }
-      }
-    },
     "sampleInfo": {
       "type": "object",
       "properties": {
@@ -1866,6 +2820,18 @@
           "items": {
             "$ref": "#/definitions/entry"
           }
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "detail": {
+          "type": "string"
+        },
+        "status": {
+          "type": "number",
+          "format": "int"
         }
       }
     }

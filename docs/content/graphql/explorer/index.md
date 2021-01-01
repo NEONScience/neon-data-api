@@ -1,4 +1,7 @@
-toc: false
+---
+hide:
+  - toc
+---
 
 # GraphQL API Explorer
 

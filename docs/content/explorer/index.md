@@ -1,4 +1,7 @@
-toc: false
+---
+hide:
+  - toc
+---
 
 # REST API Explorer
 

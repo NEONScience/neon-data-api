@@ -14,7 +14,7 @@ parameters that allow you to refine your search. If you need more information,
 try visiting our 
 [FAQ](https://data.neonscience.org/faq), 
 [GitHub repository](https://github.com/NEONScience/neon-data-api), 
-or [Using the NEON API tutorial](https://www.neonscience.org/neon-api-usage). 
+or [Using the NEON API tutorial](https://www.neonscience.org/resources/learning-hub/tutorials/neon-api-usage). 
 We also provide an 
 [R package](https://cran.r-project.org/web/packages/neonUtilities/index.html) 
 that you can use to download and reformat the data.    

@@ -3,7 +3,7 @@ import { getSwaggerUI } from "./Swagger";
 
 import "swagger-ui-react/swagger-ui.css"
 import "./App.css";
-import "./swagger-theme-material.css";
+import "./swagger-theme-material.min.css";
 
 import swaggerJSON from "./swagger.json";
 

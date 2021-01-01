@@ -13,11 +13,15 @@
     "swagger-ui-react": "~3.32.5",
     "typescript": "3.9.7"
   },
+  "devDependencies": {
+    "minify": "^6.0.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "minify:css": "minify ./src/swagger-theme-material.css > ./src/swagger-theme-material.min.css"
   },
   "eslintConfig": {
     "extends": "react-app"

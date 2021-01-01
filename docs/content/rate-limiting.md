@@ -120,30 +120,36 @@ parameter:
   - Header Name: `X-API-Token`
   - Query Parameter Name: `apiToken`  
 
-``` bash tab="cURL"
-# Replace TOKEN_VALUE with your API Token
-# X-API-Token header
-curl --verbose -H "X-API-Token: TOKEN_VALUE" \
-  -X GET https://data.neonscience.org/api/v0/products/DP1.00001.001 \
-  >> neon-data-products-DP1.00001.001.json
+=== "cURL"
 
-# apiToken query parameter
-curl --verbose \
-  -X GET https://data.neonscience.org/api/v0/products/DP1.00001.001?apiToken=TOKEN_VALUE \
-  >> neon-data-products-DP1.00001.001.json
-```  
+    ``` bash
+    # Replace TOKEN_VALUE with your API Token
+    # X-API-Token header
+    curl --verbose -H "X-API-Token: TOKEN_VALUE" \
+      -X GET https://data.neonscience.org/api/v0/products/DP1.00001.001 \
+      >> neon-data-products-DP1.00001.001.json
+    ```  
+    ``` bash
+    # apiToken query parameter
+    curl --verbose \
+      -X GET https://data.neonscience.org/api/v0/products/DP1.00001.001?apiToken=TOKEN_VALUE \
+      >> neon-data-products-DP1.00001.001.json
+    ```  
 
-``` bash tab="HTTPie"
-# Replace TOKEN_VALUE with your API Token
-# X-API-Token header
-http --download --output=neon-data-products-DP1.00001.001.json \
-  GET https://data.neonscience.org/api/v0/products/DP1.00001.001 \
-  X-API-Token:TOKEN_VALUE
+=== "HTTPie"
 
-# apiToken query parameter
-http --download --output=neon-data-products-DP1.00001.001.json \
-  GET https://data.neonscience.org/api/v0/products/DP1.00001.001?apiToken=TOKEN_VALUE
-```
+    ``` bash
+    # Replace TOKEN_VALUE with your API Token
+    # X-API-Token header
+    http --download --output=neon-data-products-DP1.00001.001.json \
+      GET https://data.neonscience.org/api/v0/products/DP1.00001.001 \
+      X-API-Token:TOKEN_VALUE
+    ```  
+    ``` bash
+    # apiToken query parameter
+    http --download --output=neon-data-products-DP1.00001.001.json \
+      GET https://data.neonscience.org/api/v0/products/DP1.00001.001?apiToken=TOKEN_VALUE
+    ```
 
 To verify that you are utilizing the token properly, inspect the `X-RateLimit-Limit` 
 and `X-RateLimit-Remaining` headers and verify it matches one of the 
