@@ -1,10 +1,14 @@
 :root {
   --md-accent-fg-color: #0073cf;
   --md-typeset-a-color: #0073cf;
+  --md-footer-bg-color: #352723;
+  --md-footer-bg-color--dark: #4B372E;
 }
 [data-md-color-primary=white] {
   --md-accent-fg-color: #0073cf;
   --md-typeset-a-color: #0073cf;
+  --md-footer-bg-color: #352723;
+  --md-footer-bg-color--dark: #4B372E;
 }
 .md-header[data-md-state=shadow] {
   /* box-shadow:

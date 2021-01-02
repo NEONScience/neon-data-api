@@ -1,2 +1,0 @@
-(this["webpackJsonpdocs-app-swagger"]=this["webpackJsonpdocs-app-swagger"]||[]).push([[154],{1099:function(s,a){s.exports=function(s){return{name:"Shell Session",aliases:["console"],contains:[{className:"meta",begin:/^\s{0,3}[/~\w\d[\]()@-]*[>%$#]/,starts:{end:/[^\\](?=\s*$)/,subLanguage:"bash"}}]}}}}]);
-//# sourceMappingURL=react-syntax-highlighter_languages_highlight_shell.2fe45bc3.chunk.js.map

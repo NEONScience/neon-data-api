@@ -19,9 +19,6 @@
     "noEmit": true,
     "jsx": "react"
   },
-  "include": [
-    "src"
-  ],
   "exclude": [
     "node_modules",
     "dist",
@@ -32,5 +29,8 @@
     "webpack",
     "jest",
     "src/setupTests.ts"
-  ]
+  ],
+  "plugins": [{
+    "name": "typescript-tslint-plugin"
+  }]
 }

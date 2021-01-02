@@ -1,2 +1,0 @@
-(this["webpackJsonpdocs-app-swagger"]=this["webpackJsonpdocs-app-swagger"]||[]).push([[51],{992:function(a,s){a.exports=function(a){var s=a.COMMENT(/\(\*/,/\*\)/);return{name:"Extended Backus-Naur Form",illegal:/\S/,contains:[s,{className:"attribute",begin:/^[ ]*[a-zA-Z]+([\s_-]+[a-zA-Z]+)*/},{begin:/=/,end:/[.;]/,contains:[s,{className:"meta",begin:/\?.*\?/},{className:"string",variants:[a.APOS_STRING_MODE,a.QUOTE_STRING_MODE,{begin:"`",end:"`"}]}]}]}}}}]);
-//# sourceMappingURL=react-syntax-highlighter_languages_highlight_ebnf.ccab81a4.chunk.js.map

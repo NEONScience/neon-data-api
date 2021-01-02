@@ -1,6 +1,6 @@
 {
   "name": "docs-app-graphiql",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "homepage": ".",
   "dependencies": {
@@ -16,12 +16,26 @@
     "react-scripts": "^4.0.1",
     "typescript": "~4.1.3"
   },
+  "devDependencies": {
+    "graphql-markdown": "^5.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "typescript-tslint-plugin": "^1.0.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate:graphql-markdown": "yarn run graphql-markdown https://data.neonscience.org/graphql > ./graphql/schema.md"
+    "generate:graphql-markdown": "yarn run graphql-markdown https://data.neonscience.org/graphql > ./graphql/schema.md",
+    "lint": "(eslint src/ --ext .js,.jsx,.ts,.tsx || true) && exit 0",
+    "lint:fix": "(eslint --fix src/ --ext .js,.jsx,.ts,.tsx || true) && exit 0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,8 +51,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "graphql-markdown": "^5.2.0"
   }
 }

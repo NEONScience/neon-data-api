@@ -729,9 +729,13 @@
         "responses": {
           "200": {
             "description": "Available data package as zip",
-            "schema": {
-              "type": "string",
-              "format": "binary"
+            "content": {
+              "application/zip": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
             }
           },
           "400": {
@@ -993,9 +997,13 @@
         "responses": {
           "200": {
             "description": "Available data package as zip",
-            "schema": {
-              "type": "string",
-              "format": "binary"
+            "content": {
+              "application/zip": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
             }
           },
           "400": {
