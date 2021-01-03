@@ -11,6 +11,15 @@ refers to [data level](https://www.neonscience.org/data/about-data/data-processi
 the data product, and 001 refers to the revision. Almost all of our data products are 
 currently provisional and annotated as revision 1.  
 
+<a name="data-releases"></a>
+## **Data Releases**
+
+The `/products` based endpoints allow filtering the response based on data available within 
+a particular release by adding a query parameter `release={releaseTag}` to requests.  
+
+The learn more about data releases, see: <a href="#" onclick="Router.jumpToReleasePage()">releases</a>
+
+
 <a name="paths"></a>
 ## **Paths**
 
@@ -20,6 +29,11 @@ currently provisional and annotated as revision 1.
 #### **Description**
 Get information about all current data products.
 
+#### **Parameters**
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Query**|**release**  <br>*optional*|The name or tag of the release to get availability for.|string|
 
 #### **Responses**
 
@@ -57,6 +71,7 @@ Get information about a data product.
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Path**|**productCode**  <br>*required*|Data product to get|string|
+|**Query**|**release**  <br>*optional*|The name or tag of the release to get availability for.|string|
 
 
 #### **Responses**
@@ -113,25 +128,19 @@ Get information about a data product.
 |**changeLogs**|List of issues and associated details for the product.|[[changeLogs](#changelogs)]|
 |**specs**|List of documents associated with the data product.|[[spec](#spec)]|
 |**keywords**|List of words and phrases associated with the data product|[string]|
+|**releases**|List of releases that this product has available data within.|[[releases](#product-releases)]|
 |**siteCodes**|List of sites and months of available data|[[siteCodes](#sitecodes)]|
-
-<a name="product-sitecodes"></a>
-### **siteCodes**
-
-|Name|Description|Schema|
-|---|---|---|
-|**siteCode**|Four character code for the site|string|
-|**availableMonths**|List of years and months that products are available.  Formatted as YYYY-MM.|[string]|
-|**availableDataUrls**|List of data urls for products that are available.|[string]|
-
 
 <a name="spec"></a>
 ### **spec**
 
 |Name|Description|Schema|
 |---|---|---|
-|**specId**|Document code for the associated document.|string|
-|**specNumber**|Name of the associated document.|string|
+|**specDescription**|Description of the associated document.|string|
+|**specId**|Document identifier for the associated document.|string|
+|**specNumber**|The specification number for the associated document.|string|
+|**specSize**|The size in bytes of the associated document.|number (int)|
+|**specType**|The MIME type of the associated document.|string|
 
 
 <a name="changeLogs"></a>
@@ -148,6 +157,43 @@ Get information about a data product.
 |**locationAffected**|The locations affected by this issue.|string (date-time)|
 |**issue**|The description of the issue.|string|
 |**resolution**|The description of the resolution applied for this issue.|string|
+
+<a name="product-releases"></a>
+### **releases**
+
+|Name|Description|Schema|
+|---|---|---|
+|**release**|The name of the release|string|
+|**generationDate**|The generation date of the release.|string (date-time)|
+|**url**|The URL to the API endpoint that references the release.|string|
+|**productDoi**|A description for the DOI associated with the product and release.|[productDoi](#product-productdoi)|
+
+<a name="product-productdoi"></a>
+### **productDoi**
+
+|Name|Description|Schema|
+|---|---|---|
+|**generationDate**|The generation date of the DOI.|string (date-time)|
+|**url**|The DOI URL for the product and release.|string|
+
+
+<a name="product-sitecodes"></a>
+### **siteCodes**
+
+|Name|Description|Schema|
+|---|---|---|
+|**siteCode**|Four character code for the site|string|
+|**availableMonths**|List of years and months that products are available.  Formatted as YYYY-MM.|[string]|
+|**availableDataUrls**|List of data urls for products that are available.|[string]|
+|**availableReleases**|List of available releases and months contained within each release.|[[availableReleases](#product-availablereleases)]|
+
+<a name="product-availablereleases"></a>
+### **availableReleases**
+
+|Name|Description|Schema|
+|---|---|---|
+|**release**|The name of the release.|string|
+|**availableMonths**|List of years and months that products are available within for this release. Formatted as YYYY-MM.|[string ]|
 
 
 <a name="error"></a>

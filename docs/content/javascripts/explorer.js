@@ -23,6 +23,35 @@ function customize() {
   }
 }
 
+const Router = {
+  jumpToReleasePage: () => Router.jumpTo('endpoints', 'endpoints/releases/'),
+  jumpToProduct: () => Router.jumpTo('endpoints', 'endpoints/products/#product'),
+  jumpToSite: () => Router.jumpTo('endpoints', 'endpoints/sites/#site'),
+  jumpToData: () => Router.jumpTo('endpoints', 'endpoints/data/#data'),
+  jumpTo: (anchor, route = '') => {
+    event.preventDefault();
+    event.stopPropagation();
+    try {
+      if (anchor && !(window.location.pathname.indexOf(anchor) > -1)) {
+        console.log('Invalid anchor definition');
+        return;
+      }
+      const pathSplit = window.location.pathname.split(anchor);
+      let appliedRoute = route;
+      const pathEndsWithSlash = (pathSplit[0].indexOf('/') === (pathSplit[0].length - 1));
+      const routeStartsWithSlash = (route.indexOf('/') === 0);
+      if (pathEndsWithSlash && routeStartsWithSlash) {
+        appliedRoute = appliedRoute.slice(1, appliedRoute.length);
+      } else if (!pathEndsWithSlash && !routeStartsWithSlash) {
+        appliedRoute = '/' + appliedRoute;
+      }
+      window.location.href = pathSplit[0] + appliedRoute;
+    } catch (e) {
+      console.error(e);
+    }
+  },
+};
+
 window.addEventListener('load', function () {
   customize();
 });

@@ -11,6 +11,14 @@ If you need to know about our remote
 sensing data availability, visit the 
 [Airborne Data webpage](https://www.neonscience.org/data-collection/airborne-remote-sensing).  
 
+<a name="data-releases"></a>
+## **Data Releases**
+
+The `/sites` based endpoints allow filtering the response based on data available within 
+a particular release by adding a query parameter `release={releaseTag}` to requests.  
+
+The learn more about data releases, see: <a href="#" onclick="Router.jumpToReleasePage()">releases</a>
+
 <a name="paths"></a>
 ## **Paths**
 
@@ -20,6 +28,11 @@ sensing data availability, visit the
 #### **Description**
 Get information about all sites.
 
+#### **Parameters**
+
+|Type|Name|Description|Schema|
+|---|---|---|---|
+|**Query**|**release**  <br>*optional*|The name or tag of the release to get availability for.|string|
 
 #### **Responses**
 
@@ -57,6 +70,7 @@ Get information about a site.
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Path**|**siteCode**  <br>*required*|Site to get|string|
+|**Query**|**release**  <br>*optional*|The name or tag of the release to get availability for.|string|
 
 
 #### **Responses**
@@ -108,7 +122,17 @@ Get information about a site.
 |**stateName**|Full name of the state or territory that this site is in|string|
 |**domainCode**|Three character domain abbreviation (D01, D02, etc) for the domain this site is in|string|
 |**domainName**|Brief description for the domain this site is in|string|
+|**releases**|List of releases that this site has available data within.|[[releases](#site-releases)]|
 |**dataProducts**|List of data products and months of available data|[[productAvailability](#productavailability)]|
+
+<a name="site-releases"></a>
+### **releases**
+
+|Name|Description|Schema|
+|---|---|---|
+|**release**|The name of the release|string|
+|**generationDate**|The generation date of the release.|string (date-time)|
+|**url**|The URL to the API endpoint that references the release.|string|
 
 <a name="productavailability"></a>
 ### **productAvailability**
@@ -119,7 +143,15 @@ Get information about a site.
 |**dataProductTitle**|Full title for the data product.|string|
 |**availableMonths**|List of years and months that products are available.  Formatted as YYYY-MM.|[string]|
 |**availableDataUrls**|List of data urls for products that are available.|[string]|
+|**availableReleases**|List of available releases and months contained within each release.|[[availableReleases](#productavailability-availablereleases)]|
 
+<a name="productavailability-availablereleases"></a>
+### **availableReleases**
+
+|Name|Description|Schema|
+|---|---|---|
+|**release**|The name of the release.|string|
+|**availableMonths**|List of years and months that products are available within for this release. Formatted as YYYY-MM.|[string]|
 
 <a name="error"></a>
 ### **error**
