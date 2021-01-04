@@ -12,8 +12,12 @@ file is more than 1 hour, you may need to obtain a new URL before proceeding.
 <a name="data-releases"></a>
 ## **Data Releases**
 
-The `/data` based endpoints allow filtering the response based on data available within 
-a particular release by adding a query parameter `release={releaseTag}` to requests.  
+The `/data` endpoints allow filtering the response based on data available within 
+a particular release by adding a `release `query parameter to requests. For example:  
+
+  ```
+  /data/{productCode}/{siteCode}/{year-month}?release={releaseTag}
+  ```
 
 The learn more about data releases, see: <a href="#" onclick="Router.jumpToReleasePage()">releases</a>
 
@@ -139,7 +143,7 @@ Get a data package for a given product/site/month and package combination
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Available data package as zip|No Content|
+|**200**|Available data package as a ZIP|The ZIP package|
 |**400**|Invalid product, site, or month specified|[Response 400](#get_data-availability_package_response-400)|
 |**default**|General error|[error](#error)|
 
@@ -170,7 +174,7 @@ Get a data package for a given product/site/month and package combination
 |Name|Description|Schema|
 |---|---|---|
 |**productCode**|The product code.|string|
-|**siteCode**|The four letter site code.]string|
+|**siteCode**|The four letter site code.|string|
 |**month**|The available month. Formatted as YYYY-MM.|string|
 |**release**|The name of the associated release.|string|
 |**packages**  <br>*optional*|The set of data packages.|[[packages](#data-packages)]|

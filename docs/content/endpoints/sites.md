@@ -14,8 +14,12 @@ sensing data availability, visit the
 <a name="data-releases"></a>
 ## **Data Releases**
 
-The `/sites` based endpoints allow filtering the response based on data available within 
-a particular release by adding a query parameter `release={releaseTag}` to requests.  
+The `/sites` endpoints allow filtering the response based on data available within 
+a particular release by adding a `release` query parameter to requests. For example:  
+
+  ```
+  /sites?release={releaseTag}
+  ```
 
 The learn more about data releases, see: <a href="#" onclick="Router.jumpToReleasePage()">releases</a>
 

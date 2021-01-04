@@ -73,6 +73,18 @@ main.md-main .md-sidebar.md-sidebar--secondary {
   padding: 2.75rem 0px 1.2rem 0px;
 }
 
+footer.md-footer .md-footer-meta .md-footer-meta__inner {
+  padding: 1rem .2rem .2rem .2rem;
+}
+.md-footer.md-footer-nav.md-footer-nav__logo {
+  margin: 1rem auto 1rem auto;
+  padding: 0 .6rem;
+}
+.md-footer-footnote {
+  font-size: 0.7rem;
+  padding: 10px 10px 30px 10px;
+}
+
 @media (min-width: 1620px) {
   .md-header-nav.md-grid {
     margin: 0px auto !important;

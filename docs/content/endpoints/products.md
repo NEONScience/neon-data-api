@@ -14,8 +14,12 @@ currently provisional and annotated as revision 1.
 <a name="data-releases"></a>
 ## **Data Releases**
 
-The `/products` based endpoints allow filtering the response based on data available within 
-a particular release by adding a query parameter `release={releaseTag}` to requests.  
+The `/products` endpoints allow filtering the response based on data available within 
+a particular release by adding a `release` query parameter to requests. For example:  
+
+  ```
+  /products?release={releaseTag}
+  ```
 
 The learn more about data releases, see: <a href="#" onclick="Router.jumpToReleasePage()">releases</a>
 
@@ -193,7 +197,7 @@ Get information about a data product.
 |Name|Description|Schema|
 |---|---|---|
 |**release**|The name of the release.|string|
-|**availableMonths**|List of years and months that products are available within for this release. Formatted as YYYY-MM.|[string ]|
+|**availableMonths**|List of years and months that products are available within for this release. Formatted as YYYY-MM.|[string]|
 
 
 <a name="error"></a>
