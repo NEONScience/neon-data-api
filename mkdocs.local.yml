@@ -55,8 +55,6 @@ nav:
     - 'GraphQL Explorer': 'graphql/explorer/index.local.md'
     - 'Rate Limiting': 'rate-limiting.md'
     - 'Data Use and Policy': data-use-policy.md
-    - 'Contributing':
-      - 'Building and Testing': contributing/building.md
   - Data Use and Policy: 'https://www.neonscience.org/data-samples/data-policies-citation'
 
 plugins:
@@ -65,6 +63,7 @@ plugins:
       minify_html: true
   - exclude:
       glob:
+        - 'contributing/building.md'
         - 'explorer/index.md'
         - 'graphql/explorer/index.md'
 
