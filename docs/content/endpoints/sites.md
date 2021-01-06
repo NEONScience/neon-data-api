@@ -1,20 +1,11 @@
 # Sites Endpoint
 
-The `/sites` endpoint provides information about 
-[NEON field sites](https://www.neonscience.org/field-sites/field-sites-map) where data 
-are currently available.  Numerous data products are produced from each site. 
-Site names are abbreviated into four-letter site codes -- for example, 
-the Arikaree River site abbreviation is ARIK. For more information about sites, 
-including the four-letter code for each site, you can find a list on our 
-[main website](https://www.neonscience.org/field-sites/field-sites-map/list). 
-If you need to know about our remote 
-sensing data availability, visit the 
-[Airborne Data webpage](https://www.neonscience.org/data-collection/airborne-remote-sensing).  
+The `/sites` endpoint provides information about [NEON field sites](https://www.neonscience.org/field-sites/) where data are available.  Numerous data products are produced from each site. Site names are abbreviated into four-letter site codes -- for example, the Arikaree River site abbreviation is ARIK. For more information about sites, including the four-letter code for each site, you can find a list on our [main website](https://www.neonscience.org/field-sites/explore-field-sites). For information about locations within a site (plots, instruments, etc.), explore the `/locations` endpoint.
 
 <a name="data-releases"></a>
 ## **Data Releases**
 
-The `/sites` endpoints allow filtering the response based on data available within 
+The `/sites` endpoint allows filtering the response based on data available within 
 a particular release by adding a `release` query parameter to requests. For example:  
 
   ```
@@ -74,7 +65,7 @@ Get information about a site.
 |Type|Name|Description|Schema|
 |---|---|---|---|
 |**Path**|**siteCode**  <br>*required*|Site to get|string|
-|**Query**|**release**  <br>*optional*|The name or tag of the release to get availability for.|string|
+|**Query**|**release**  <br>*optional*|The name or tag of the release to get availability for|string|
 
 
 #### **Responses**
@@ -118,15 +109,15 @@ Get information about a site.
 |---|---|---|
 |**siteCode**|Four character code for the site|string|
 |**siteName**|Full name for the site|string|
-|**siteDescription**|Brief site description|string|
+|**siteDescription**|Brief version of site name|string|
 |**siteType**|Core or Relocatable site|enum (CORE, RELOCATABLE)|
 |**siteLatitude**|Point latitude for the site|number|
 |**siteLongitude**|Point longitude for the site|number|
-|**stateCode**|Two letter state code that this site is in|string|
+|**stateCode**|Two-letter state code that this site is in|string|
 |**stateName**|Full name of the state or territory that this site is in|string|
-|**domainCode**|Three character domain abbreviation (D01, D02, etc) for the domain this site is in|string|
-|**domainName**|Brief description for the domain this site is in|string|
-|**releases**|List of releases that this site has available data within.|[[releases](#site-releases)]|
+|**domainCode**|Three-character domain abbreviation (D01, D02, etc) for the domain this site is in|string|
+|**domainName**|Name of the domain this site is in|string|
+|**releases**|List of releases that this site has available data within|[[releases](#site-releases)]|
 |**dataProducts**|List of data products and months of available data|[[productAvailability](#productavailability)]|
 
 <a name="site-releases"></a>
@@ -135,19 +126,19 @@ Get information about a site.
 |Name|Description|Schema|
 |---|---|---|
 |**release**|The name of the release|string|
-|**generationDate**|The generation date of the release.|string (date-time)|
-|**url**|The URL to the API endpoint that references the release.|string|
+|**generationDate**|The generation date of the release|string (date-time)|
+|**url**|The URL to the API endpoint that references the release|string|
 
 <a name="productavailability"></a>
 ### **productAvailability**
 
 |Name|Description|Schema|
 |---|---|---|
-|**dataProductCode**|Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)|string|
-|**dataProductTitle**|Full title for the data product.|string|
-|**availableMonths**|List of years and months that products are available.  Formatted as YYYY-MM.|[string]|
-|**availableDataUrls**|List of data urls for products that are available.|[string]|
-|**availableReleases**|List of available releases and months contained within each release.|[[availableReleases](#productavailability-availablereleases)]|
+|**dataProductCode**|Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc.)|string|
+|**dataProductTitle**|Full title for the data product|string|
+|**availableMonths**|List of years and months that products are available, formatted as YYYY-MM|[string]|
+|**availableDataUrls**|List of data urls for products that are available|[string]|
+|**availableReleases**|List of available releases and months contained within each release|[[availableReleases](#productavailability-availablereleases)]|
 
 <a name="productavailability-availablereleases"></a>
 ### **availableReleases**
