@@ -9,7 +9,7 @@ uses product code DP1.20092.001, where DP1
 refers to [data level](https://www.neonscience.org/data/about-data/data-processing-publication) 
 1 (quality controlled), 20092 is the unique numeric id of 
 the data product, and 001 refers to the revision. Almost all of our data products are 
-currently provisional and annotated as revision 1.  
+currently in revision 1.  
 
 <a name="data-releases"></a>
 ## **Data Releases**
