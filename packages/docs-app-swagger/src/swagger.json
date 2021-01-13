@@ -27,7 +27,7 @@
   "paths": {
     "/products": {
       "get": {
-        "description": "Get information about all data products.",
+        "description": "Get information about all data products",
         "tags": [
           "Products"
         ],
@@ -70,7 +70,7 @@
     },
     "/products/{productCode}": {
       "get": {
-        "description": "Get information about a data product.",
+        "description": "Get information about a data product",
         "tags": [
           "Products"
         ],
@@ -123,7 +123,7 @@
     },
     "/sites": {
       "get": {
-        "description": "Get information about all sites.",
+        "description": "Get information about all field sites",
         "tags": [
           "Sites"
         ],
@@ -142,7 +142,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of sites",
+            "description": "List of field sites",
             "schema": {
               "type": "object",
               "properties": {
@@ -160,7 +160,7 @@
     },
     "/sites/{siteCode}": {
       "get": {
-        "description": "Get information about a site.",
+        "description": "Get information about a field site",
         "tags": [
           "Sites"
         ],
@@ -221,7 +221,7 @@
     },
     "/releases": {
       "get": {
-        "description": "Get information about all available data releases.",
+        "description": "Get information about all available data releases",
         "tags": [
           "Releases"
         ],
@@ -255,7 +255,7 @@
     },
     "/releases/{releaseIdentifier}": {
       "get": {
-        "description": "Get information about a data release.",
+        "description": "Get information about a data release",
         "tags": [
           "Releases"
         ],
@@ -267,7 +267,7 @@
           {
             "name": "releaseIdentifier",
             "in": "path",
-            "description": "Release tag or UUID to get for",
+            "description": "Release tag or UUID to get information for",
             "required": true,
             "type": "string"
           }
@@ -301,7 +301,7 @@
     },
     "/releases/{releaseTag}/products": {
       "get": {
-        "description": "Get information about all data products within a specific release.",
+        "description": "Get information about all data products within a specific release",
         "tags": [
           "Releases"
         ],
@@ -344,7 +344,7 @@
     },
     "/releases/{releaseTag}/products/{productCode}": {
       "get": {
-        "description": "Get information about a data product within a specific release.",
+        "description": "Get information about a data product within a specific release",
         "tags": [
           "Releases"
         ],
@@ -397,7 +397,7 @@
     },
     "/releases/{releaseTag}/sites": {
       "get": {
-        "description": "Get information about all sites within a specific release.",
+        "description": "Get information about all sites within a specific release",
         "tags": [
           "Releases"
         ],
@@ -434,7 +434,7 @@
     },
     "/releases/{releaseTag}/sites/{siteCode}": {
       "get": {
-        "description": "Get information about a site within a specific release.",
+        "description": "Get information about a field site within a specific release",
         "tags": [
           "Releases"
         ],
@@ -1031,7 +1031,7 @@
     },
     "/locations/{locationName}": {
       "get": {
-        "description": "Get information about a location.",
+        "description": "Get information about a location",
         "tags": [
           "Locations"
         ],
@@ -1106,7 +1106,7 @@
     },
     "/locations/sites": {
       "get": {
-        "description": "Get information about the site-level locations.",
+        "description": "Get information about the site-level locations",
         "tags": [
           "Locations",
           "Sites"
@@ -1141,7 +1141,7 @@
     },
     "/taxonomy": {
       "get": {
-        "description": "Get taxonomic lists.",
+        "description": "Get taxonomic lists",
         "tags": [
           "Taxonomy"
         ],
@@ -1313,7 +1313,7 @@
     },
     "/samples/view": {
       "get": {
-        "description": "Get a list of sample custody events, parent samples and child samples for a given sample identifier.",
+        "description": "For a given sample identifier, get a list of sample custody events as well as any parent and child sample identifiers that currently exist.",
         "tags": [
           "Samples"
         ],
@@ -1445,7 +1445,7 @@
     },
     "/samples/supportedClasses": {
       "get": {
-        "description": "Get a list of sample classes and descriptions currently supported by the Sample Viewer",
+        "description": "Get a list of sample classes and descriptions currently available",
         "tags": [
           "Samples"
         ],
@@ -1605,7 +1605,7 @@
         },
         "productScienceTeamAbbr": {
           "type": "string",
-          "description": "Three letter abbreviation for the data science team."
+          "description": "Three letter abbreviation for the science team responsible for the data product"
         },
         "productScienceTeam": {
           "type": "string",
@@ -1617,7 +1617,7 @@
         },
         "productAbstract": {
           "type": "string",
-          "description": "An abstract for the data product."
+          "description": "An abstract for the data product"
         },
         "productDesignDescription": {
           "type": "string",
@@ -1810,7 +1810,7 @@
         },
         "specNumber": {
           "type": "string",
-          "description": "The specification number for the associated document."
+          "description": "The specification number or name for the associated document."
         },
         "specType": {
           "type": "string",
@@ -2175,17 +2175,17 @@
         "alphaOrientation": {
           "type": "number",
           "format": "double",
-          "description": "The angle (in degrees) at which the sensor is facing relative to true North."
+          "description": "The elevation or pitch angle (in degrees) in the vertical plane at which a sensor is oriented relative to the horizontal plane."
         },
         "betaOrientation": {
           "type": "number",
           "format": "double",
-          "description": "Beta orientation for the location."
+          "description": "The roll angle (in degrees) about the longitudinal axis of the sensor at which the sensor is oriented."
         },
         "gammaOrientation": {
           "type": "number",
           "format": "double",
-          "description": "Gamma orientation for the location."
+          "description": "The azimuth or yaw angle (in degrees) at which a sensor is facing relative to true North."
         },
         "xOffset": {
           "type": "number",
@@ -2369,17 +2369,17 @@
         "alphaOrientation": {
           "type": "number",
           "format": "double",
-          "description": "The angle (in degrees) at which the sensor is facing relative to true North."
+          "description": "The elevation or pitch angle (in degrees) in the vertical plane at which a sensor is oriented relative to the horizontal plane."
         },
         "betaOrientation": {
           "type": "number",
           "format": "double",
-          "description": "Beta orientation for the location."
+          "description": "The roll angle (in degrees) about the longitudinal axis of the sensor at which the sensor is oriented."
         },
         "gammaOrientation": {
           "type": "number",
           "format": "double",
-          "description": "Gamma orientation for the location."
+          "description": "The azimuth or yaw angle (in degrees) at which a sensor is facing relative to true North."
         },
         "xOffset": {
           "type": "number",
