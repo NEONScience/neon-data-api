@@ -21,7 +21,7 @@ The learn more about data releases, see: <a href="#" onclick="Router.jumpToRelea
 ### GET `/sites`
 
 #### **Description**
-Get information about all sites.
+Get information about all field sites.
 
 #### **Parameters**
 
@@ -33,7 +33,7 @@ Get information about all sites.
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|List of sites|[Response 200](#get_sites-response-200)|
+|**200**|List of field sites|[Response 200](#get_sites-response-200)|
 |**default**|General error|[error](#error)|
 
 <h5 id="get_sites-response-200">Response 200</h5>
@@ -57,7 +57,7 @@ Get information about all sites.
 ### GET `/sites/{siteCode}`
 
 #### **Description**
-Get information about a site.
+Get information about a field site.
 
 
 #### **Parameters**

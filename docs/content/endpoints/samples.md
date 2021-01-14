@@ -112,7 +112,7 @@ Get a list of sample views for a given sample identifier and search degree.
 ### GET `/samples/supportedClasses`
 
 #### **Description**
-Get a list of sample classes and descriptions currently supported by the Sample Viewer
+Get a list of sample classes and descriptions currently available
 
 
 #### **Responses**
@@ -143,7 +143,7 @@ Get a list of sample classes and descriptions currently supported by the Sample 
 ### GET `/samples/view`
 
 #### **Description**
-Get a list of sample custody events as well as any parent or child samples for a given sample identifier.
+For a given sample identifier, get a list of sample custody events as well as any parent and child sample identifiers that currently exist.
 
 
 #### **Parameters**

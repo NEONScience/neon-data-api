@@ -60,7 +60,7 @@ Get information about a data release.
 
 |Type|Name|Description|Schema|
 |---|---|---|---|
-|**Path**|**releaseIdentifier**  <br>*required*|Release tag or UUID to get for|string|
+|**Path**|**releaseIdentifier**  <br>*required*|Release tag or UUID to get information for|string|
 
 
 #### Responses
@@ -210,7 +210,7 @@ Get information about all sites within a specific release.
 ### GET `/releases/{releaseTag}/sites/{siteCode}`
 
 #### Description
-Get information about a site within a specific release.
+Get information about a field site within a specific release
 
 
 #### Parameters

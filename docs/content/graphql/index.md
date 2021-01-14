@@ -940,7 +940,7 @@ The single character Universal Transverse Mercator hemisphere
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-The angle (in degrees) at which the sensor is facing relative to true North
+The elevation or pitch angle (in degrees) in the vertical plane at which a sensor is oriented relative to the horizontal plane.
 
 </td>
 </tr>
@@ -949,7 +949,7 @@ The angle (in degrees) at which the sensor is facing relative to true North
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Beta orientation for the location
+The roll angle (in degrees) about the longitudinal axis of the sensor at which the sensor is oriented.
 
 </td>
 </tr>
@@ -958,7 +958,7 @@ Beta orientation for the location
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Gamma orientation for the location
+The azimuth or yaw angle (in degrees) at which a sensor is facing relative to true North.
 
 </td>
 </tr>
@@ -967,8 +967,7 @@ Gamma orientation for the location
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Cartesian offsets of a sensor, in meters, east (positive values) or west
-(negative values) relative to where the geolocation point was taken
+Cartesian offsets of a sensor, in meters, west (positive values) or east (negative values) relative to the reference location.
 
 </td>
 </tr>
@@ -977,8 +976,7 @@ Cartesian offsets of a sensor, in meters, east (positive values) or west
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Cartesian offsets of a sensor, in meters, north (positive values) or south
-(negative values) relative to where the geolocation point was taken
+Cartesian offsets of a sensor, in meters, south (positive values) or north (negative values) relative to the reference location.
 
 </td>
 </tr>
@@ -987,8 +985,7 @@ Cartesian offsets of a sensor, in meters, north (positive values) or south
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Cartesian offsets of a sensor, in meters, up (positive values) or down
-(negative values) relative to where the geolocation point was taken
+Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to the reference location.
 
 </td>
 </tr>
@@ -1259,7 +1256,7 @@ The integer Universal Transverse Mercator zone
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-The angle (in degrees) at which the sensor is facing relative to true North
+The elevation or pitch angle (in degrees) in the vertical plane at which a sensor is oriented relative to the horizontal plane.
 
 </td>
 </tr>
@@ -1268,7 +1265,7 @@ The angle (in degrees) at which the sensor is facing relative to true North
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Beta orientation for the location
+The roll angle (in degrees) about the longitudinal axis of the sensor at which the sensor is oriented.
 
 </td>
 </tr>
@@ -1277,7 +1274,7 @@ Beta orientation for the location
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Gamma orientation for the location
+The azimuth or yaw angle (in degrees) at which a sensor is facing relative to true North.
 
 </td>
 </tr>
@@ -1286,8 +1283,7 @@ Gamma orientation for the location
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Cartesian offsets of a sensor, in meters, east (positive values) or west
-(negative values) relative to where the geolocation point was taken
+Cartesian offsets of a sensor, in meters, west (positive values) or east (negative values) relative to the reference location.
 
 </td>
 </tr>
@@ -1296,8 +1292,7 @@ Cartesian offsets of a sensor, in meters, east (positive values) or west
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Cartesian offsets of a sensor, in meters, north (positive values) or south
-(negative values) relative to where the geolocation point was taken
+Cartesian offsets of a sensor, in meters, south (positive values) or north (negative values) relative to the reference location.
 
 </td>
 </tr>
@@ -1306,8 +1301,7 @@ Cartesian offsets of a sensor, in meters, north (positive values) or south
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Cartesian offsets of a sensor, in meters, up (positive values) or down
-(negative values) relative to where the geolocation point was taken
+Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to the reference location.
 
 </td>
 </tr>

@@ -115,12 +115,12 @@ Get information about a location.
 |**locationUtmNorthing**  <br>*optional*|The Universal Transverse Mercator northing|number (double)|
 |**locationUtmHemisphere**  <br>*optional*|The single character Universal Transverse Mercator hemisphere|string|
 |**locationUtmZone**  <br>*optional*|The Universal Transverse Mercator zone|number (int)|
-|**alphaOrientation**  <br>*optional*|The angle (in degrees) at which a sensor is facing relative to true North|number (double)|
-|**betaOrientation**  <br>*optional*|Beta orientation for the location|number (double)|
-|**gammaOrientation**  <br>*optional*|Gamma orientation for the location|number (double)|
-|**xOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, east (positive values) or west (negative values) relative to where the geolocation point was taken.|number (double)|
-|**yOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, north (positive values) or south (negative values) relative to where the geolocation point was taken.|number (double)|
-|**zOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to where the geolocation point was taken.|number (double)|
+|**alphaOrientation**  <br>*optional*|The elevation or pitch angle (in degrees) in the vertical plane at which a sensor is oriented relative to the horizontal plane.|
+|**betaOrientation**  <br>*optional*|The roll angle (in degrees) about the longitudinal axis of the sensor at which the sensor is oriented.|number (double)|
+|**gammaOrientation**  <br>*optional*|The azimuth or yaw angle (in degrees) at which a sensor is facing relative to true North.|number (double)|
+|**xOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, west (positive values) or east (negative values) relative to the reference location.|number (double)|
+|**yOffset**  <br>*optional*|CCartesian offsets of a sensor, in meters, south (positive values) or north (negative values) relative to the reference location.|number (double)|
+|**zOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to the reference location.|number (double)|
 |**offsetLocation**  <br>*optional*|The named location used as a reference point. Offsets are relative to this location.|[location](#location)|
 |**activePeriods**  <br>*optional*|List of active periods for the location|[[activePeriod](#activeperiod)]|
 |**locationPolygon**  <br>*optional*||[locationPolygon](#locationpolygon)|
@@ -181,12 +181,12 @@ Get information about a location.
 |**locationUtmNorthing**  <br>*optional*|The Universal Transverse Mercator northing|number (double)|
 |**locationUtmHemisphere**  <br>*optional*|The single character Universal Transverse Mercator hemisphere|string|
 |**locationUtmZone**  <br>*optional*|The integer Universal Transverse Mercator zone|number (int)|
-|**alphaOrientation**  <br>*optional*|The angle (in degrees) at which the sensor is facing relative to true North|number (double)|
-|**betaOrientation**  <br>*optional*|Beta orientation for the location.|number (double)|
-|**gammaOrientation**  <br>*optional*|Gamma orientation for the location.|number (double)|
-|**xOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, east (positive values) or west (negative values) relative to where the geolocation point was taken.|number (double)|
-|**yOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, north (positive values) or south (negative values) relative to where the geolocation point was taken.|number (double)|
-|**zOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to where the geolocation point was taken.|number (double)|
+|**alphaOrientation**  <br>*optional*|The elevation or pitch angle (in degrees) in the vertical plane at which a sensor is oriented relative to the horizontal plane.|
+|**betaOrientation**  <br>*optional*|The roll angle (in degrees) about the longitudinal axis of the sensor at which the sensor is oriented.|number (double)|
+|**gammaOrientation**  <br>*optional*|The azimuth or yaw angle (in degrees) at which a sensor is facing relative to true North.|number (double)|
+|**xOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, west (positive values) or east (negative values) relative to the reference location.|number (double)|
+|**yOffset**  <br>*optional*|CCartesian offsets of a sensor, in meters, south (positive values) or north (negative values) relative to the reference location.|number (double)|
+|**zOffset**  <br>*optional*|Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to the reference location.|number (double)|
 |**locationPolygon**  <br>*optional*||[locationPolygon](#locationpolygon)|
 |**locationProperties**  <br>*optional*|List of properties associated with the location.  Contents vary based on the type of location.|[[locationProperties](#locationproperties)]|
 

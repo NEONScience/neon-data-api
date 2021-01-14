@@ -11,7 +11,7 @@ const Env: ApiHostEnv = {
     if (typeof protocolOverride === 'string' && (protocolOverride.length > 0)) {
       protocol = String(protocolOverride);
     }
-    return `${protocol}`;
+    return protocol;
   },
   getApiHostName: (): string => {
     let hostName = `${window.location.host}`;
@@ -19,7 +19,7 @@ const Env: ApiHostEnv = {
     if (typeof hostOverride === 'string' && (hostOverride.length > 0)) {
       hostName = String(hostOverride);
     }
-    return `${hostName}`;
+    return hostName;
   },
   getApiHost: (): string => (
     `${Env.getApiProtocol()}//${Env.getApiHostName()}`

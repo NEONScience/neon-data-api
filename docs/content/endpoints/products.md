@@ -2,14 +2,14 @@
 
 The `/products` endpoint provides information about all published NEON data products, including availability by site and month (also see the [data product catalog](https://data.neonscience.org/data-products/explore)). The response can be filtered by a data product code or a release tag.
 
-Data products are specified using a 13 character code, and this code can be added the `/products` endpoint to filter the reponse to a single data product . For instance, 
+Data products are specified using a 13 character code, and this code can be added the `/products` endpoint to filter the reponse to a single data product. For instance, 
 [Chemical properties of groundwater](https://data.neonscience.org/data-products/DP1.20092.001) 
-uses product code DP1.20092.001, where 
+uses product code DP1.20092.001, where  
 
-* "DP1" refers to [data level](https://www.neonscience.org/data-samples/data-management/data-processing) 
-1 (quality controlled), 
-* "20092" is the unique numeric id of the data product, and 
-* "001" refers to the [revision](https://www.neonscience.org/data-samples/data-management/data-revisions-releases). Almost all of our data products are currently in revision 1.  
+  * "DP1" refers to [data level](https://www.neonscience.org/data-samples/data-management/data-processing) 
+  1 (quality controlled), 
+  * "20092" is the unique numeric id of the data product, and 
+  * "001" refers to the [revision](https://www.neonscience.org/data-samples/data-management/data-revisions-releases). Almost all of our data products are currently in revision 1.  
 
 Here, simply add the product code:
 
@@ -106,7 +106,9 @@ Get information about a data product.
 ## **Definitions**
 
 <a name="product"></a>
-### **product**: information about each data product
+### **product**  
+
+Information about each data product
 
 |Name|Description|Schema|
 |---|---|---|
@@ -118,7 +120,7 @@ Get information about a data product.
 |**productStatus**|Future, active, or retired product status|enum (FUTURE, ACTIVE, RETIRED)|
 |**productCategory**|Level 1, 2, 3, or 4 data product|string|
 |**productHasExpanded**|Whether a data product provides both a basic and expanded package|boolean|
-|**productScienceTeamAbbr**|Three letter abbreviation for the data science team|string|
+|**productScienceTeamAbbr**|Three letter abbreviation for the science team responsible for the data product|string|
 |**productPublicationFormatType**|Class of publication system used during the publication process; can be independent from productScienceTeam|string|
 |**productAbstract**|An abstract for the data product|string|
 |**productDesignDescription**|A description of the data product's design|string|
@@ -135,7 +137,9 @@ Get information about a data product.
 |**siteCodes**|List of sites and months of available data|[[siteCodes](#sitecodes)]|
 
 <a name="changeLogs"></a>
-### **changeLogs**: information about issues or changes that have affected the data
+### **changeLogs**  
+
+Information about issues or changes that have affected the data
 
 |Name|Description|Schema|
 |---|---|---|
@@ -150,7 +154,9 @@ Get information about a data product.
 |**resolution**|The description of the resolution applied for this issue|string|
 
 <a name="spec"></a>
-### **spec**: information about each specification or informational document associated with a data product
+### **spec**  
+
+Information about each specification or informational document associated with a data product
 
 |Name|Description|Schema|
 |---|---|---|
@@ -161,7 +167,9 @@ Get information about a data product.
 |**specDescription**|Title or description of the associated document|string|
 
 <a name="product-releases"></a>
-### **releases**: information about releases that a data product is included in
+### **releases**  
+
+Information about releases that a data product is included in
 
 |Name|Description|Schema|
 |---|---|---|
@@ -171,7 +179,9 @@ Get information about a data product.
 |**productDoi**|Information about the DOI associated with the product and release|[productDoi](#product-productdoi)|
 
 <a name="product-productdoi"></a>
-### **productDoi**: information about the Digital Object Identifier associated with this release of the data product
+### **productDoi**  
+
+Information about the Digital Object Identifier associated with this release of the data product
 
 |Name|Description|Schema|
 |---|---|---|
@@ -180,7 +190,9 @@ Get information about a data product.
 
 
 <a name="product-sitecodes"></a>
-### **siteCodes**: information about where (field sites) and when data were collected
+### **siteCodes**  
+
+Information about where (field sites) and when data were collected
 
 |Name|Description|Schema|
 |---|---|---|
@@ -190,7 +202,9 @@ Get information about a data product.
 |**availableReleases**|List of available releases and months contained within each release|[[availableReleases](#product-availablereleases)]|
 
 <a name="product-availablereleases"></a>
-### **availableReleases**: releases that are available for each field site and month
+### **availableReleases**  
+
+Releases that are available for each field site and month
 
 |Name|Description|Schema|
 |---|---|---|
@@ -199,7 +213,9 @@ Get information about a data product.
 
 
 <a name="error"></a>
-### **error**: information about errors in the response
+### **error**  
+
+Information about errors in the response
 
 |Name|Schema|
 |---|---|

@@ -2384,17 +2384,17 @@
         "xOffset": {
           "type": "number",
           "format": "double",
-          "description": "Cartesian offsets of a sensor, in meters, east (positive values) or west (negative values) relative to where the geolocation point was taken."
+          "description": "Cartesian offsets of a sensor, in meters, west (positive values) or east (negative values) relative to the reference location."
         },
         "yOffset": {
           "type": "number",
           "format": "double",
-          "description": "Cartesian offsets of a sensor, in meters, north (positive values) or south (negative values) relative to where the geolocation point was taken."
+          "description": "Cartesian offsets of a sensor, in meters, south (positive values) or north (negative values) relative to the reference location."
         },
         "zOffset": {
           "type": "number",
           "format": "double",
-          "description": "Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to where the geolocation point was taken."
+          "description": "Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to the reference location."
         },
         "locationPolygon": {
           "type": "object",
