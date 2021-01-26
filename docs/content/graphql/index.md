@@ -21,13 +21,17 @@ to obtain all associated metadata for a data product.
 !!! example
     **Request:**  
 
-    ``` bash tab="cURL"
-    curl -X GET https://data.neonscience.org/api/v0/products >> neon-data-products.json
-    ```  
+    === "cURL"
 
-    ``` bash tab="HTTPie"
-    http --download --output=neon-data-products.json GET https://data.neonscience.org/api/v0/products
-    ```  
+        ``` bash
+        curl -X GET https://data.neonscience.org/api/v0/products >> neon-data-products.json
+        ```
+
+    === "HTTPie"
+
+        ``` bash
+        http --download --output=neon-data-products.json GET https://data.neonscience.org/api/v0/products
+        ```  
 
     **Response:**  
     Showing the first element in the products array, properties truncated and 
@@ -101,32 +105,36 @@ with the following JSON body would produce the desired result:
 !!! example
     **Request:**  
 
-    ``` bash tab="cURL"
-    curl -H "Content-Type: application/json" -X POST -d " \
-    { \
-      \"query\": \"query Products { \
-        products { \
-          productCode \
-          productName \
-          productDescription \
-        } \
-      }\" \
-    } \
-    " https://data.neonscience.org/graphql >> neon-data-products-graphql.json
-    ```  
+    === "cURL"
 
-    ``` bash tab="HTTPie"
-    http --download --output=neon-data-products-graphql.json \
-      POST https://data.neonscience.org/graphql \
-      Content-Type:application/json \
-      query="query Products { \
-        products { \
-          productCode \
-          productName \
-          productDescription \
+        ``` bash
+        curl -H "Content-Type: application/json" -X POST -d " \
+        { \
+          \"query\": \"query Products { \
+            products { \
+              productCode \
+              productName \
+              productDescription \
+            } \
+          }\" \
         } \
-      }"
-    ```  
+        " https://data.neonscience.org/graphql >> neon-data-products-graphql.json
+        ```  
+
+    === "HTTPie"
+
+        ``` bash
+        http --download --output=neon-data-products-graphql.json \
+          POST https://data.neonscience.org/graphql \
+          Content-Type:application/json \
+          query="query Products { \
+            products { \
+              productCode \
+              productName \
+              productDescription \
+            } \
+          }"
+        ```  
 
     As the shape of the request query determines the shape of the response,
     each product element in the array would have the following properties:  
@@ -162,59 +170,63 @@ with the following JSON body would produce the desired result:
     on the root `data` object. The name of the property on the data object 
     reflects the name of the alias given to the query in the request.  
     
-    ``` JSON hl_lines="4 15" tab="Default Alias"
-    # Query
-    {
-      "query": "query Products {
-        products {
-          productCode
-          productName
-          productDescription
+    === "Default Alias"
+
+        ``` JSON hl_lines="4 15"
+        # Query
+        {
+          "query": "query Products {
+            products {
+              productCode
+              productName
+              productDescription
+            }
+          }"
         }
-      }"
-    }
 
-    # Response
-    {
-      "data": {
-        "products": [
-          {
-            "productCode": "...",
-            "productName": "...",
-            "productDescription": "...",
+        # Response
+        {
+          "data": {
+            "products": [
+              {
+                "productCode": "...",
+                "productName": "...",
+                "productDescription": "...",
+              }
+              ...
+            ]
           }
-          ...
-        ]
-      }
-    }
-    ```
-
-    ``` JSON hl_lines="4 15" tab="Named Alias"
-    # Query
-    {
-      "query": "query Products {
-        productList: products {
-          productCode
-          productName
-          productDescription
         }
-      }"
-    }
+        ```
 
-    # Response
-    {
-      "data": {
-        "productList": [
-          {
-            "productCode": "...",
-            "productName": "...",
-            "productDescription": "...",
+    === "Named Alias"
+
+        ``` JSON hl_lines="4 15"
+        # Query
+        {
+          "query": "query Products {
+            productList: products {
+              productCode
+              productName
+              productDescription
+            }
+          }"
+        }
+
+        # Response
+        {
+          "data": {
+            "productList": [
+              {
+                "productCode": "...",
+                "productName": "...",
+                "productDescription": "...",
+              }
+              ...
+            ]
           }
-          ...
-        ]
-      }
-    }
-    ```
+        }
+        ```
 
 To see this query in action, try it out using the [GraphQL Explorer](explorer/)!  
 Copy the following GraphiQL query into the query editor window and perform the request.  
@@ -253,13 +265,18 @@ Supported queries for the GraphQL endpoint.
   </thead>
   <tbody>
     <tr>
-      <td colspan="2" valign="top"><strong>products</strong></td>
+      <td valign="top"><strong>products</strong></td>
+      <td valign="top">release<br><a href="#scalars">String</a></td>
       <td valign="top">[<a href="#dataproduct">DataProduct</a>!]</td>
       <td>Get all data products</td>
     </tr>
     <tr>
       <td valign="top"><strong>product</strong></td>
-      <td valign="top">productCode  <a href="#scalars">String</a>!</td>
+      <td valign="top">
+        productCode<br><a href="#scalars">String</a>!
+        <br>
+        release<br><a href="#scalars">String</a>
+      </td>
       <td valign="top"><a href="#dataproduct">DataProduct</a>!</td>
       <td>
       Get a single product by product code with optional set of site
@@ -273,13 +290,18 @@ Supported queries for the GraphQL endpoint.
       <td>Get a set of data products based on a data product filter</td>
     </tr>
     <tr>
-      <td colspan="2" valign="top"><strong>sites</strong></td>
+      <td valign="top"><strong>sites</strong></td>
+      <td valign="top">release<br><a href="#scalars">String</a></td>
       <td valign="top">[<a href="#site">Site</a>!]</td>
       <td>Get all sites</td>
     </tr>
     <tr>
       <td valign="top"><strong>site</strong></td>
-      <td valign="top">siteCode<br><a href="#scalars">String</a>!</td>
+      <td valign="top">
+        siteCode<br><a href="#scalars">String</a>!
+        <br>
+        release<br><a href="#scalars">String</a>
+      </td>
       <td valign="top"><a href="#site">Site</a>!</td>
       <td>Get a single site by site code</td>
     </tr>
@@ -352,6 +374,42 @@ The activation date for the time period
 <td>
 
 The deactivation date for the time period
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **AvailableRelease**
+
+Type definition for associating a release with the set of months
+that have available data within the containing product or site
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>release</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The release that this availability refers to
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>availableMonths</strong></td>
+<td valign="top">[<a href="#scalars">String</a>]</td>
+<td>
+
+List of years and months that products are available. Formatted as YYYY-MM.
 
 </td>
 </tr>
@@ -527,11 +585,110 @@ List of documents associated with the data product.
 </td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>releases</strong></td>
+<td valign="top">[<a href="#dataproductrelease">DataProductRelease</a>]</td>
+<td>
+
+List of releases associated with the data product.
+
+</td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>siteCodes</strong></td>
 <td valign="top">[<a href="#dataproductsite">DataProductSite</a>]</td>
 <td>
 
 List of sites and months of available data
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **DataProductDoi**
+
+Type definition for a set of DOIs
+associated with a data product and release
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>url</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The URL of the DOI
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>generationDate</strong></td>
+<td valign="top"><a href="#scalars">DateTime</a></td>
+<td>
+
+The generation date of the DOI
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **DataProductRelease**
+
+Type definition for a release
+associated with a data product.
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>release</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The name of the release
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>generationDate</strong></td>
+<td valign="top"><a href="#scalars">DateTime</a></td>
+<td>
+
+The generation date of the release
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>url</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The URL of the release API endpoint
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>productDoi</strong></td>
+<td valign="top"><a href="#dataproductdoi">DataProductDoi</a></td>
+<td>
+
+The DOI definition for the product and release
 
 </td>
 </tr>
@@ -580,6 +737,16 @@ List of data urls for products that are available.
 
 </td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>availableReleases</strong></td>
+<td valign="top">[<a href="#availablerelease">AvailableRelease</a>]</td>
+<td>
+
+List of available releases and associated months that have
+available data within the containing product, site combination.
+
+</td>
+</tr>
 </tbody>
 </table>
 
@@ -602,7 +769,7 @@ Type definition for a set of documents associated with a data product
 <td valign="top"><a href="#scalars">Int</a></td>
 <td>
 
-Document code for the associated document.
+Document identifier for the associated document
 
 </td>
 </tr>
@@ -611,7 +778,34 @@ Document code for the associated document.
 <td valign="top"><a href="#scalars">String</a></td>
 <td>
 
-Name of the associated document.
+Document code for the associated document
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>specType</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The MIME type associated with the document.
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>specSize</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The size in bytes of the document.
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>specDescription</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The description of the document.
 
 </td>
 </tr>
@@ -746,7 +940,7 @@ The single character Universal Transverse Mercator hemisphere
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-The angle (in degrees) at which the sensor is facing relative to true North
+The elevation or pitch angle (in degrees) in the vertical plane at which a sensor is oriented relative to the horizontal plane.
 
 </td>
 </tr>
@@ -755,7 +949,7 @@ The angle (in degrees) at which the sensor is facing relative to true North
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Beta orientation for the location
+The roll angle (in degrees) about the longitudinal axis of the sensor at which the sensor is oriented.
 
 </td>
 </tr>
@@ -764,7 +958,7 @@ Beta orientation for the location
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Gamma orientation for the location
+The azimuth or yaw angle (in degrees) at which a sensor is facing relative to true North.
 
 </td>
 </tr>
@@ -773,8 +967,7 @@ Gamma orientation for the location
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Cartesian offsets of a sensor, in meters, east (positive values) or west
-(negative values) relative to where the geolocation point was taken
+Cartesian offsets of a sensor, in meters, west (positive values) or east (negative values) relative to the reference location.
 
 </td>
 </tr>
@@ -783,8 +976,7 @@ Cartesian offsets of a sensor, in meters, east (positive values) or west
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Cartesian offsets of a sensor, in meters, north (positive values) or south
-(negative values) relative to where the geolocation point was taken
+Cartesian offsets of a sensor, in meters, south (positive values) or north (negative values) relative to the reference location.
 
 </td>
 </tr>
@@ -793,8 +985,7 @@ Cartesian offsets of a sensor, in meters, north (positive values) or south
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Cartesian offsets of a sensor, in meters, up (positive values) or down
-(negative values) relative to where the geolocation point was taken
+Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to the reference location.
 
 </td>
 </tr>
@@ -1065,7 +1256,7 @@ The integer Universal Transverse Mercator zone
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-The angle (in degrees) at which the sensor is facing relative to true North
+The elevation or pitch angle (in degrees) in the vertical plane at which a sensor is oriented relative to the horizontal plane.
 
 </td>
 </tr>
@@ -1074,7 +1265,7 @@ The angle (in degrees) at which the sensor is facing relative to true North
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Beta orientation for the location
+The roll angle (in degrees) about the longitudinal axis of the sensor at which the sensor is oriented.
 
 </td>
 </tr>
@@ -1083,7 +1274,7 @@ Beta orientation for the location
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Gamma orientation for the location
+The azimuth or yaw angle (in degrees) at which a sensor is facing relative to true North.
 
 </td>
 </tr>
@@ -1092,8 +1283,7 @@ Gamma orientation for the location
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Cartesian offsets of a sensor, in meters, east (positive values) or west
-(negative values) relative to where the geolocation point was taken
+Cartesian offsets of a sensor, in meters, west (positive values) or east (negative values) relative to the reference location.
 
 </td>
 </tr>
@@ -1102,8 +1292,7 @@ Cartesian offsets of a sensor, in meters, east (positive values) or west
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Cartesian offsets of a sensor, in meters, north (positive values) or south
-(negative values) relative to where the geolocation point was taken
+Cartesian offsets of a sensor, in meters, south (positive values) or north (negative values) relative to the reference location.
 
 </td>
 </tr>
@@ -1112,8 +1301,7 @@ Cartesian offsets of a sensor, in meters, north (positive values) or south
 <td valign="top"><a href="#scalars">Float</a></td>
 <td>
 
-Cartesian offsets of a sensor, in meters, up (positive values) or down
-(negative values) relative to where the geolocation point was taken
+Cartesian offsets of a sensor, in meters, up (positive values) or down (negative values) relative to the reference location.
 
 </td>
 </tr>
@@ -1364,6 +1552,16 @@ domain this site is in
 </td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>releases</strong></td>
+<td valign="top">[<a href="#dataproductrelease">DataProductRelease</a>]</td>
+<td>
+
+List of releases associated with the site based on data
+products available.
+
+</td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>dataProducts</strong></td>
 <td valign="top">[<a href="#sitedataproduct">SiteDataProduct</a>]</td>
 <td>
@@ -1427,6 +1625,16 @@ List of data urls for products that are available.
 
 </td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>availableReleases</strong></td>
+<td valign="top">[<a href="#availablerelease">AvailableRelease</a>]</td>
+<td>
+
+List of available releases and associated months that have
+available data within the containing site, product combination.
+
+</td>
+</tr>
 </tbody>
 </table>
 
@@ -1465,7 +1673,7 @@ The set of site codes to include for each product
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>startMonth</strong></td>
-<td valign="top">[<a href="#scalars">String</a>!]</td>
+<td valign="top"><a href="#scalars">String</a></td>
 <td>
 
 The start month to filter the associated availability to. Formatted as YYYY-MM.
@@ -1474,10 +1682,19 @@ The start month to filter the associated availability to. Formatted as YYYY-MM.
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>endMonth</strong></td>
-<td valign="top">[<a href="#scalars">String</a>!]</td>
+<td valign="top"><a href="#scalars">String</a></td>
 <td>
 
 The end month to filter the associated availability to. Formatted as YYYY-MM.
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>release</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The release to filter the set of products and availability to.
 
 </td>
 </tr>
@@ -1542,7 +1759,7 @@ The set of product codes to include for each site
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>startMonth</strong></td>
-<td valign="top">[<a href="#scalars">String</a>!]</td>
+<td valign="top"><a href="#scalars">String</a></td>
 <td>
 
 The start month to filter the associated availability to. Formatted as YYYY-MM.
@@ -1551,10 +1768,19 @@ The start month to filter the associated availability to. Formatted as YYYY-MM.
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>endMonth</strong></td>
-<td valign="top">[<a href="#scalars">String</a>!]</td>
+<td valign="top"><a href="#scalars">String</a></td>
 <td>
 
 The end month to filter the associated availability to. Formatted as YYYY-MM.
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>release</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+The release to filter the set of sites and availability to.
 
 </td>
 </tr>
@@ -1614,54 +1840,62 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
 !!! example
     Get all products and include the product code, name, and description for each:  
 
-    ``` Ruby tab="GraphiQL Query"
-    query Products {
-      products {
-        productCode
-        productName
-        productDescription
-      }
-    }
-    ```
+    === "GraphiQL Query"
 
-    ``` JSON tab="POST JSON Body"
-    {
-      "query": "query Products {
-        products {
-          productCode
-          productName
-          productDescription
+        ``` Ruby
+        query Products {
+          products {
+            productCode
+            productName
+            productDescription
+          }
         }
-      }"
-    }
-    ```  
+        ```
 
-    ``` bash tab="cURL"
-    curl -H "Content-Type: application/json" -X POST -d " \
-    { \
-      \"query\": \"query Products { \
-        products { \
-          productCode \
-          productName \
-          productDescription \
-        } \
-      }\" \
-    } \
-    " https://data.neonscience.org/graphql >> neon-data-products-graphql.json
-    ```  
+    === "POST JSON Body"
 
-    ``` bash tab="HTTPie"
-    http --download --output=neon-data-products-graphql.json \
-      POST https://data.neonscience.org/graphql \
-      Content-Type:application/json \
-      query="query Products { \
-        products { \
-          productCode \
-          productName \
-          productDescription \
+        ``` JSON
+        {
+          "query": "query Products {
+            products {
+              productCode
+              productName
+              productDescription
+            }
+          }"
+        }
+        ```  
+
+    === "cURL"
+
+        ``` bash
+        curl -H "Content-Type: application/json" -X POST -d " \
+        { \
+          \"query\": \"query Products { \
+            products { \
+              productCode \
+              productName \
+              productDescription \
+            } \
+          }\" \
         } \
-      }"
-    ```
+        " https://data.neonscience.org/graphql >> neon-data-products-graphql.json
+        ```  
+
+    === "HTTPie"
+
+        ``` bash
+        http --download --output=neon-data-products-graphql.json \
+          POST https://data.neonscience.org/graphql \
+          Content-Type:application/json \
+          query="query Products { \
+            products { \
+              productCode \
+              productName \
+              productDescription \
+            } \
+          }"
+        ```
 
 #### **One or many data products**  
 
@@ -1670,116 +1904,129 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
 
     **One product:**
 
-    ``` Ruby tab="GraphiQL Query"
-    query Product {
-      product(productCode: "DP1.00001.001") {
-        productCode
-        productName
-        siteCodes {
-          siteCode
-          availableMonths
-        }
-      }
-    }
-    ```
+    === "GraphiQL Query"
 
-    ``` JSON tab="POST JSON Body"
-    {
-      "query": "query Product {
-        product(productCode: \"DP1.00001.001\") {
-          productCode
-          productName
-          siteCodes {
-            siteCode
-            availableMonths
+        ``` Ruby
+        query Product {
+          product(productCode: "DP1.00001.001") {
+            productCode
+            productName
+            siteCodes {
+              siteCode
+              availableMonths
+            }
           }
         }
-      }"
-    }
-    ```  
+        ```
 
-    ``` bash tab="HTTPie"
-    http --download --output=neon-data-product-DP1.00001.001-graphql.json \
-      POST https://data.neonscience.org/graphql \
-      Content-Type:application/json \
-      query="query Product { \
-        product(productCode: \"DP1.00001.001\") { \
-          productCode \
-          productName \
-          siteCodes { \
-            siteCode \
-            availableMonths \
-          } \
-        } \
-      }"
-    ```  
+    === "POST JSON Body"
+
+        ``` JSON
+        {
+          "query": "query Product {
+            product(productCode: \"DP1.00001.001\") {
+              productCode
+              productName
+              siteCodes {
+                siteCode
+                availableMonths
+              }
+            }
+          }"
+        }
+        ```  
+
+    === "HTTPie"
+
+        ``` bash
+        http --download --output=neon-data-product-DP1.00001.001-graphql.json \
+          POST https://data.neonscience.org/graphql \
+          Content-Type:application/json \
+          query="query Product { \
+            product(productCode: \"DP1.00001.001\") { \
+              productCode \
+              productName \
+              siteCodes { \
+                siteCode \
+                availableMonths \
+              } \
+            } \
+          }"
+        ```  
 
     **Many products:**  
     Note that this introduces a new query - [filterProducts](#queries).  Utilizing 
     the [DataProductFilter](#dataproductfilter) input type as an argument.
 
-    ``` Ruby tab="GraphiQL Query"
-    # Query editor window
-    query filterProducts($filter: DataProductFilter!) {
-      products: filterProducts(filter: $filter) {
-        productCode
-        productName
-        productDescription
-        siteCodes {
-          siteCode
-          availableMonths
-        }
-      }
-    }
+    === "GraphiQL Query"
 
-    # Query variables window
-    {
-      "filter": {
-        "productCodes": ["DP1.00001.001", "DP1.00002.001"]
-      }
-    }
-    ```
-
-    ``` JSON tab="POST JSON Body"
-    {
-      "query": "query filterProducts {
-        products: filterProducts(
-            filter: { 
-              productCodes: [\"DP1.00001.001\", \"DP1.00002.001\"]  
+        ``` Ruby
+        # Query editor window
+        query filterProducts($filter: DataProductFilter!) {
+          products: filterProducts(filter: $filter) {
+            productCode
+            productName
+            productDescription
+            siteCodes {
+              siteCode
+              availableMonths
             }
-        ) {
-          productCode
-          productName
-          productDescription
-          siteCodes {
-            siteCode
-            availableMonths
           }
         }
-      }"
-    }
-    ```  
+        ```  
+        ``` Ruby
+        # Query variables window
+        {
+          "filter": {
+            "productCodes": ["DP1.00001.001", "DP1.00002.001"]
+          }
+        }
+        ```
 
-    ``` bash tab="HTTPie"
-    http --download --output=neon-data-product-many-graphql.json \
-      POST https://data.neonscience.org/graphql \
-      Content-Type:application/json \
-      query="query filterProducts { \
-        products: filterProducts( \
-            filter: {  \
-              productCodes: [\"DP1.00001.001\", \"DP1.00002.001\"] \
+    === "POST JSON Body"
+
+        ``` JSON
+        {
+          "query": "query filterProducts {
+            products: filterProducts(
+                filter: { 
+                  productCodes: [\"DP1.00001.001\", \"DP1.00002.001\"]  
+                }
+            ) {
+              productCode
+              productName
+              productDescription
+              siteCodes {
+                siteCode
+                availableMonths
+              }
+            }
+          }"
+        }
+        ```  
+
+    === "HTTPie"
+
+        ``` bash
+        http --download --output=neon-data-product-many-graphql.json \
+          POST https://data.neonscience.org/graphql \
+          Content-Type:application/json \
+          query="query filterProducts { \
+            products: filterProducts( \
+                filter: {  \
+                  productCodes: [\"DP1.00001.001\", \"DP1.00002.001\"] \
+                } \
+            ) { \
+              productCode \
+              productName \
+              productDescription \
+              siteCodes { \
+                siteCode \
+                availableMonths \
+              } \
             } \
-        ) { \
-          productCode \
-          productName \
-          productDescription \
-          siteCodes { \
-            siteCode \
-            availableMonths \
-          } \
-        } \
-      }"
-    ```
+          }"
+        ```
 
 #### **Filtered data products**
 
@@ -1788,77 +2035,84 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
 
     **Filtered product:**
 
-    ``` Ruby tab="GraphiQL Query"
-    # Query editor window
-    query filterProducts($filter: DataProductFilter!) {
-      products: filterProducts(filter: $filter) {
-        productCode
-        productName
-        productDescription
-        siteCodes {
-          siteCode
-          availableMonths
-        }
-      }
-    }
+    === "GraphiQL Query"
 
-    # Query variables window
-    {
-      "filter": {
-        "productCodes": ["DP1.00001.001"],
-        "siteCodes": ["ABBY"],
-        "startMonth": "2019-01",
-        "endMonth": "2019-12"
-      }
-    }
-    ```
-
-    ``` JSON tab="POST JSON Body"
-    {
-      "query": "query filterProducts {
-        products: filterProducts(
-            filter: { 
-              productCodes: [\"DP1.00001.001\"],
-              siteCodes: [\"ABBY\"],
-              startMonth: \"2019-01\",
-              endMonth: \"2019-12\"
+        ``` Ruby
+        # Query editor window
+        query filterProducts($filter: DataProductFilter!) {
+          products: filterProducts(filter: $filter) {
+            productCode
+            productName
+            productDescription
+            siteCodes {
+              siteCode
+              availableMonths
             }
-        ) {
-          productCode
-          productName
-          productDescription
-          siteCodes {
-            siteCode
-            availableMonths
           }
         }
-      }"
-    }
-    ```  
+        ```  
+        ``` Ruby
+        # Query variables window
+        {
+          "filter": {
+            "productCodes": ["DP1.00001.001"],
+            "siteCodes": ["ABBY"],
+            "startMonth": "2019-01",
+            "endMonth": "2019-12"
+          }
+        }
+        ```
 
-    ``` bash tab="HTTPie"
-    http --download --output=neon-data-product-filtered-graphql.json \
-      POST https://data.neonscience.org/graphql \
-      Content-Type:application/json \
-      query="query filterProducts { \
-        products: filterProducts( \
-            filter: {  \
-              productCodes: [\"DP1.00001.001\"] \
-              siteCodes: [\"ABBY\"], \
-              startMonth: \"2019-01\", \
-              endMonth: \"2019-12\" \
+    === "POST JSON Body"
+
+        ``` JSON
+        {
+          "query": "query filterProducts {
+            products: filterProducts(
+                filter: { 
+                  productCodes: [\"DP1.00001.001\"],
+                  siteCodes: [\"ABBY\"],
+                  startMonth: \"2019-01\",
+                  endMonth: \"2019-12\"
+                }
+            ) {
+              productCode
+              productName
+              productDescription
+              siteCodes {
+                siteCode
+                availableMonths
+              }
+            }
+          }"
+        }
+        ```  
+
+    === "HTTPie"
+
+        ``` bash
+        http --download --output=neon-data-product-filtered-graphql.json \
+          POST https://data.neonscience.org/graphql \
+          Content-Type:application/json \
+          query="query filterProducts { \
+            products: filterProducts( \
+                filter: {  \
+                  productCodes: [\"DP1.00001.001\"] \
+                  siteCodes: [\"ABBY\"], \
+                  startMonth: \"2019-01\", \
+                  endMonth: \"2019-12\" \
+                } \
+            ) { \
+              productCode \
+              productName \
+              productDescription \
+              siteCodes { \
+                siteCode \
+                availableMonths \
+              } \
             } \
-        ) { \
-          productCode \
-          productName \
-          productDescription \
-          siteCodes { \
-            siteCode \
-            availableMonths \
-          } \
-        } \
-      }"
-    ```
+          }"
+        ```
 
 
 ### **Sites**
@@ -1868,58 +2122,66 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
 !!! example    
     Get sites with code, description, latitude, longitude.  
 
-    ``` Ruby tab="GraphiQL Query"
-    query Sites {
-      sites {
-        siteCode
-        siteDescription
-        siteLatitude
-        siteLongitude
-      }
-    }
-    ```
+    === "GraphiQL Query"
 
-    ``` JSON tab="POST JSON Body"
-    {
-      "query": "query Sites {
-        sites {
-          siteCode
-          siteDescription
-          siteLatitude
-          siteLongitude
+        ``` Ruby
+        query Sites {
+          sites {
+            siteCode
+            siteDescription
+            siteLatitude
+            siteLongitude
+          }
         }
-      }"
-    }
-    ```  
+        ```
 
-    ``` bash tab="cURL"
-    curl -H "Content-Type: application/json" -X POST -d " \
-    { \
-      \"query\": \"query Sites { \
-        products { \
-          siteCode \
-          siteDescription \
-          siteLatitude \
-          siteLongitude \
-        } \
-      }\" \
-    } \
-    " https://data.neonscience.org/graphql >> neon-sites-graphql.json
-    ```  
+    === "POST JSON Body"
 
-    ``` bash tab="HTTPie"
-    http --download --output=neon-sites-graphql.json \
-      POST https://data.neonscience.org/graphql \
-      Content-Type:application/json \
-      query="query Sites { \
-        sites { \
-          siteCode \
-          siteDescription \
-          siteLatitude \
-          siteLongitude \
+        ``` JSON
+        {
+          "query": "query Sites {
+            sites {
+              siteCode
+              siteDescription
+              siteLatitude
+              siteLongitude
+            }
+          }"
+        }
+        ```  
+
+    === "cURL"
+
+        ``` bash
+        curl -H "Content-Type: application/json" -X POST -d " \
+        { \
+          \"query\": \"query Sites { \
+            products { \
+              siteCode \
+              siteDescription \
+              siteLatitude \
+              siteLongitude \
+            } \
+          }\" \
         } \
-      }"
-    ```
+        " https://data.neonscience.org/graphql >> neon-sites-graphql.json
+        ```  
+
+    === "HTTPie"
+
+        ``` bash
+        http --download --output=neon-sites-graphql.json \
+          POST https://data.neonscience.org/graphql \
+          Content-Type:application/json \
+          query="query Sites { \
+            sites { \
+              siteCode \
+              siteDescription \
+              siteLatitude \
+              siteLongitude \
+            } \
+          }"
+        ```
 
 #### **One or many sites**
 
@@ -1928,125 +2190,138 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
 
     **One site:**
 
-    ``` Ruby tab="GraphiQL Query"
-    query Site {
-      site(siteCode: "ABBY") {
-        siteCode
-        siteDescription
-        siteLatitude
-        siteLongitude
-        dataProducts {
-          dataProductCode
-          availableMonths
-        }
-      }
-    }
-    ```
+    === "GraphiQL Query"
 
-    ``` JSON tab="POST JSON Body"
-    {
-      "query": "query Site {
-        site(siteCode: \"ABBY\") {
-          siteCode
-          siteDescription
-          siteLatitude
-          siteLongitude
-          dataProducts {
-            dataProductCode
-            availableMonths
+        ``` Ruby
+        query Site {
+          site(siteCode: "ABBY") {
+            siteCode
+            siteDescription
+            siteLatitude
+            siteLongitude
+            dataProducts {
+              dataProductCode
+              availableMonths
+            }
           }
         }
-      }"
-    }
-    ```  
+        ```
 
-    ``` bash tab="HTTPie"
-    http --download --output=neon-site-ABBY-graphql.json \
-      POST https://data.neonscience.org/graphql \
-      Content-Type:application/json \
-      query="query Site { \
-        site(siteCode: \"ABBY\") { \
-          siteCode \
-          siteDescription \
-          siteLatitude \
-          siteLongitude \
-          dataProducts { \
-            dataProductCode \
-            availableMonths \
-          } \
-        } \
-      }"
-    ```  
+    === "POST JSON Body"
+
+        ``` JSON
+        {
+          "query": "query Site {
+            site(siteCode: \"ABBY\") {
+              siteCode
+              siteDescription
+              siteLatitude
+              siteLongitude
+              dataProducts {
+                dataProductCode
+                availableMonths
+              }
+            }
+          }"
+        }
+        ```  
+
+    === "HTTPie"
+
+        ``` bash
+        http --download --output=neon-site-ABBY-graphql.json \
+          POST https://data.neonscience.org/graphql \
+          Content-Type:application/json \
+          query="query Site { \
+            site(siteCode: \"ABBY\") { \
+              siteCode \
+              siteDescription \
+              siteLatitude \
+              siteLongitude \
+              dataProducts { \
+                dataProductCode \
+                availableMonths \
+              } \
+            } \
+          }"
+        ```  
 
     **Many sites:**  
     Note that this introduces a new query - [filterSites](#queries).  Utilizing 
     the [SiteFilter](#sitefilter) input type as an argument.
 
-    ``` Ruby tab="GraphiQL Query"
-    # Query editor window
-    query filterSites($filter: SiteFilter!) {
-      sites: filterSites(filter: $filter) {
-        siteCode
-        siteDescription
-        siteLatitude
-        siteLongitude
-        dataProducts {
-          dataProductCode
-          availableMonths
-        }
-      }
-    }
+    === "GraphiQL Query"
 
-    # Query variables window
-    {
-      "filter": {
-        "siteCodes": ["ABBY", "CPER"]
-      }
-    }
-    ```
-
-    ``` JSON tab="POST JSON Body"
-    {
-      "query": "query filterSites {
-        sites: filterSites(
-            filter: { 
-              siteCodes: [\"ABBY\", \"CPER\"]  
+        ``` Ruby
+        # Query editor window
+        query filterSites($filter: SiteFilter!) {
+          sites: filterSites(filter: $filter) {
+            siteCode
+            siteDescription
+            siteLatitude
+            siteLongitude
+            dataProducts {
+              dataProductCode
+              availableMonths
             }
-        ) {
-          siteCode
-          siteDescription
-          siteLatitude
-          siteLongitude
-          dataProducts {
-            dataProductCode
-            availableMonths
           }
         }
-      }"
-    }
-    ```  
+        ```  
+        ``` Ruby
+        # Query variables window
+        {
+          "filter": {
+            "siteCodes": ["ABBY", "CPER"]
+          }
+        }
+        ```
 
-    ``` bash tab="HTTPie"
-    http --download --output=neon-sites-many-graphql.json \
-      POST https://data.neonscience.org/graphql \
-      Content-Type:application/json \
-      query="query filterSites { \
-        sites: filterSites( \
-            filter: {  \
-              siteCodes: [\"ABBY\", \"CPER\"] \
+    === "POST JSON Body"
+
+        ``` JSON
+        {
+          "query": "query filterSites {
+            sites: filterSites(
+                filter: { 
+                  siteCodes: [\"ABBY\", \"CPER\"]  
+                }
+            ) {
+              siteCode
+              siteDescription
+              siteLatitude
+              siteLongitude
+              dataProducts {
+                dataProductCode
+                availableMonths
+              }
+            }
+          }"
+        }
+        ```  
+
+    === "HTTPie"
+
+        ``` bash
+        http --download --output=neon-sites-many-graphql.json \
+          POST https://data.neonscience.org/graphql \
+          Content-Type:application/json \
+          query="query filterSites { \
+            sites: filterSites( \
+                filter: {  \
+                  siteCodes: [\"ABBY\", \"CPER\"] \
+                } \
+            ) { \
+              siteCode \
+              siteDescription \
+              siteLatitude \
+              siteLongitude \
+              dataProducts { \
+                dataProductCode \
+                availableMonths \
+              } \
             } \
-        ) { \
-          siteCode \
-          siteDescription \
-          siteLatitude \
-          siteLongitude \
-          dataProducts { \
-            dataProductCode \
-            availableMonths \
-          } \
-        } \
-      }"
-    ```
+          }"
+        ```
 
 #### **Filtered sites**
 
@@ -2055,80 +2330,87 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
 
     **Filtered site:**
 
-    ``` Ruby tab="GraphiQL Query"
-    # Query editor window
-    query filterSites($filter: SiteFilter!) {
-      sites: filterSites(filter: $filter) {
-        siteCode
-        siteDescription
-        siteLatitude
-        siteLongitude
-        dataProducts {
-          dataProductCode
-          availableMonths
-        }
-      }
-    }
+    === "GraphiQL Query"
 
-    # Query variables window
-    {
-      "filter": {
-        "siteCodes": ["ABBY"],
-        "productCodes": ["DP1.00001.001"],
-        "startMonth": "2019-01",
-        "endMonth": "2019-12"
-      }
-    }
-    ```
-
-    ``` JSON tab="POST JSON Body"
-    {
-      "query": "query filterSites {
-        sites: filterSites(
-            filter: { 
-              siteCodes: [\"ABBY\"],
-              productCodes: [\"DP1.00001.001\"],
-              startMonth: \"2019-01\",
-              endMonth: \"2019-12\"
+        ``` Ruby
+        # Query editor window
+        query filterSites($filter: SiteFilter!) {
+          sites: filterSites(filter: $filter) {
+            siteCode
+            siteDescription
+            siteLatitude
+            siteLongitude
+            dataProducts {
+              dataProductCode
+              availableMonths
             }
-        ) {
-          siteCode
-          siteDescription
-          siteLatitude
-          siteLongitude
-          dataProducts {
-            dataProductCode
-            availableMonths
           }
         }
-      }"
-    }
-    ```  
+        ```  
+        ``` Ruby
+        # Query variables window
+        {
+          "filter": {
+            "siteCodes": ["ABBY"],
+            "productCodes": ["DP1.00001.001"],
+            "startMonth": "2019-01",
+            "endMonth": "2019-12"
+          }
+        }
+        ```
 
-    ``` bash tab="HTTPie"
-    http --download --output=neon-site-filtered-graphql.json \
-      POST https://data.neonscience.org/graphql \
-      Content-Type:application/json \
-      query="query filterSites { \
-        sites: filterSites( \
-            filter: {  \
-              siteCodes: [\"ABBY\"], \
-              productCodes: [\"DP1.00001.001\"] \
-              startMonth: \"2019-01\", \
-              endMonth: \"2019-12\" \
+    === "POST JSON Body"
+
+        ``` JSON
+        {
+          "query": "query filterSites {
+            sites: filterSites(
+                filter: { 
+                  siteCodes: [\"ABBY\"],
+                  productCodes: [\"DP1.00001.001\"],
+                  startMonth: \"2019-01\",
+                  endMonth: \"2019-12\"
+                }
+            ) {
+              siteCode
+              siteDescription
+              siteLatitude
+              siteLongitude
+              dataProducts {
+                dataProductCode
+                availableMonths
+              }
+            }
+          }"
+        }
+        ```  
+
+    === "HTTPie"
+
+        ``` bash
+        http --download --output=neon-site-filtered-graphql.json \
+          POST https://data.neonscience.org/graphql \
+          Content-Type:application/json \
+          query="query filterSites { \
+            sites: filterSites( \
+                filter: {  \
+                  siteCodes: [\"ABBY\"], \
+                  productCodes: [\"DP1.00001.001\"] \
+                  startMonth: \"2019-01\", \
+                  endMonth: \"2019-12\" \
+                } \
+            ) { \
+              siteCode \
+              siteDescription \
+              siteLatitude \
+              siteLongitude \
+              dataProducts { \
+                dataProductCode \
+                availableMonths \
+              } \
             } \
-        ) { \
-          siteCode \
-          siteDescription \
-          siteLatitude \
-          siteLongitude \
-          dataProducts { \
-            dataProductCode \
-            availableMonths \
-          } \
-        } \
-      }"
-    ```
+          }"
+        ```
 
 ### **Locations**
 
@@ -2137,97 +2419,103 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
 !!! example
     Get location information by name
 
-    ``` Ruby tab="GraphiQL Query"
-    query Location {
-      location(name: "ABBY") {
-        locationName
-        locationDescription
-        locationType
-        domainCode
-        siteCode
-        locationDecimalLatitude
-        locationDecimalLongitude
-        locationElevation
-        locationUtmEasting
-        locationUtmNorthing
-        locationUtmHemisphere
-        locationUtmZone
-        alphaOrientation
-        betaOrientation
-        gammaOrientation
-        xOffset
-        yOffset
-        zOffset
-        locationProperties {
-          locationPropertyName
-          locationPropertyValue
-        }
-      }
-    }
-    ```
+    === "GraphiQL Query"
 
-    ``` JSON tab="POST JSON Body"
-    {
-      "query": "query Location {
-        location(name: \"ABBY\") {
-          locationName
-          locationDescription
-          locationType
-          domainCode
-          siteCode
-          locationDecimalLatitude
-          locationDecimalLongitude
-          locationElevation
-          locationUtmEasting
-          locationUtmNorthing
-          locationUtmHemisphere
-          locationUtmZone
-          alphaOrientation
-          betaOrientation
-          gammaOrientation
-          xOffset
-          yOffset
-          zOffset
-          locationProperties {
-            locationPropertyName
-            locationPropertyValue
+        ``` Ruby
+        query Location {
+          location(name: "ABBY") {
+            locationName
+            locationDescription
+            locationType
+            domainCode
+            siteCode
+            locationDecimalLatitude
+            locationDecimalLongitude
+            locationElevation
+            locationUtmEasting
+            locationUtmNorthing
+            locationUtmHemisphere
+            locationUtmZone
+            alphaOrientation
+            betaOrientation
+            gammaOrientation
+            xOffset
+            yOffset
+            zOffset
+            locationProperties {
+              locationPropertyName
+              locationPropertyValue
+            }
           }
         }
-      }"
-    }
-    ```  
+        ```
 
-    ``` bash tab="HTTPie"
-    http --download --output=neon-location-ABBY-graphql.json \
-      POST https://data.neonscience.org/graphql \
-      Content-Type:application/json \
-      query="query Location { \
-        location(name: \"ABBY\") { \
-          locationName \
-          locationDescription \
-          locationType \
-          domainCode \
-          siteCode \
-          locationDecimalLatitude \
-          locationDecimalLongitude \
-          locationElevation \
-          locationUtmEasting \
-          locationUtmNorthing \
-          locationUtmHemisphere \
-          locationUtmZone \
-          alphaOrientation \
-          betaOrientation \
-          gammaOrientation \
-          xOffset \
-          yOffset \
-          zOffset \
-          locationProperties { \
-            locationPropertyName \
-            locationPropertyValue \
-          } \
-        } \
-      }"
-    ```  
+    === "POST JSON Body"
+
+        ``` JSON
+        {
+          "query": "query Location {
+            location(name: \"ABBY\") {
+              locationName
+              locationDescription
+              locationType
+              domainCode
+              siteCode
+              locationDecimalLatitude
+              locationDecimalLongitude
+              locationElevation
+              locationUtmEasting
+              locationUtmNorthing
+              locationUtmHemisphere
+              locationUtmZone
+              alphaOrientation
+              betaOrientation
+              gammaOrientation
+              xOffset
+              yOffset
+              zOffset
+              locationProperties {
+                locationPropertyName
+                locationPropertyValue
+              }
+            }
+          }"
+        }
+        ```  
+
+    === "HTTPie"
+
+        ``` bash
+        http --download --output=neon-location-ABBY-graphql.json \
+          POST https://data.neonscience.org/graphql \
+          Content-Type:application/json \
+          query="query Location { \
+            location(name: \"ABBY\") { \
+              locationName \
+              locationDescription \
+              locationType \
+              domainCode \
+              siteCode \
+              locationDecimalLatitude \
+              locationDecimalLongitude \
+              locationElevation \
+              locationUtmEasting \
+              locationUtmNorthing \
+              locationUtmHemisphere \
+              locationUtmZone \
+              alphaOrientation \
+              betaOrientation \
+              gammaOrientation \
+              xOffset \
+              yOffset \
+              zOffset \
+              locationProperties { \
+                locationPropertyName \
+                locationPropertyValue \
+              } \
+            } \
+          }"
+        ```  
 
 #### **Find locations**
 
@@ -2236,71 +2524,78 @@ as a GraphiQL query for utilization from the [GraphQL Explorer](explorer/).
 
     **Find locations query:**
 
-    ``` Ruby tab="GraphiQL Query"
-    # Query editor window
-    query findLocations($query: LocationQuery!) {
-      locations: findLocations(query: $query) {
-        locationName
-        locationDescription
-        locationType
-        domainCode
-        siteCode
-        locationDecimalLatitude
-        locationDecimalLongitude
-        locationElevation
-      }
-    }
+    === "GraphiQL Query"
 
-    # Query variables window
-    {
-      "query": {
-        "locationNames": ["D10", "CPER", "ARIK"]
-      }
-    }
-    ```
-
-    ``` JSON tab="POST JSON Body"
-    {
-      "query": "query findLocations {
-        locations: findLocations(
-            query: { 
-              locationNames: [\"D10\", \"CPER\", \"ARIK\"]
-            }
-        ) {
-          locationName
-          locationDescription
-          locationType
-          domainCode
-          siteCode
-          locationDecimalLatitude
-          locationDecimalLongitude
-          locationElevation
+        ``` Ruby
+        # Query editor window
+        query findLocations($query: LocationQuery!) {
+          locations: findLocations(query: $query) {
+            locationName
+            locationDescription
+            locationType
+            domainCode
+            siteCode
+            locationDecimalLatitude
+            locationDecimalLongitude
+            locationElevation
+          }
         }
-      }"
-    }
-    ```  
+        ```  
+        ``` Ruby
+        # Query variables window
+        {
+          "query": {
+            "locationNames": ["D10", "CPER", "ARIK"]
+          }
+        }
+        ```
 
-    ``` bash tab="HTTPie"
-    http --download --output=neon-locations-graphql.json \
-      POST https://data.neonscience.org/graphql \
-      Content-Type:application/json \
-      query="query findLocations { \
-        locations: findLocations( \
-            query: {  \
-              locationNames: [\"D10\", \"CPER\", \"ARIK\"] \
+    === "POST JSON Body"
+
+        ``` JSON
+        {
+          "query": "query findLocations {
+            locations: findLocations(
+                query: { 
+                  locationNames: [\"D10\", \"CPER\", \"ARIK\"]
+                }
+            ) {
+              locationName
+              locationDescription
+              locationType
+              domainCode
+              siteCode
+              locationDecimalLatitude
+              locationDecimalLongitude
+              locationElevation
+            }
+          }"
+        }
+        ```  
+
+    === "HTTPie"
+
+        ``` bash
+        http --download --output=neon-locations-graphql.json \
+          POST https://data.neonscience.org/graphql \
+          Content-Type:application/json \
+          query="query findLocations { \
+            locations: findLocations( \
+                query: {  \
+                  locationNames: [\"D10\", \"CPER\", \"ARIK\"] \
+                } \
+            ) { \
+              locationName \
+              locationDescription \
+              locationType \
+              domainCode \
+              siteCode \
+              locationDecimalLatitude \
+              locationDecimalLongitude \
+              locationElevation \
             } \
-        ) { \
-          locationName \
-          locationDescription \
-          locationType \
-          domainCode \
-          siteCode \
-          locationDecimalLatitude \
-          locationDecimalLongitude \
-          locationElevation \
-        } \
-      }"
-    ```
+          }"
+        ```
 
 ## **Resources**
 

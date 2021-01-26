@@ -1,4 +1,7 @@
-toc: false
+---
+hide:
+  - toc
+---
 
 # GraphQL API Explorer
 
@@ -26,7 +29,7 @@ Try out GraphQL API calls for various queries and inspect the responses.
     Launch 
     <img class="app-open-img" 
       alt="logo" 
-      src="../../assets/images/launch-black-18dp.svg" width="24" height="24"> 
+      src="../../assets/images/launch-blue-18dp.svg" width="24" height="24"> 
   </a>
 </div>
 <iframe id="graphiql-frame" src="/data-api/graphql/explorer/build/index.html?{{TIMESTAMP}}" scrolling="no" class="graphiql-docs">

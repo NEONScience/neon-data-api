@@ -1,0 +1,177 @@
+:root {
+  --md-accent-fg-color: #0073cf;
+  --md-typeset-a-color: #0073cf;
+  --md-footer-bg-color: #352723;
+  --md-footer-bg-color--dark: #4B372E;
+}
+[data-md-color-primary=white] {
+  --md-accent-fg-color: #0073cf;
+  --md-typeset-a-color: #0073cf;
+  --md-footer-bg-color: #352723;
+  --md-footer-bg-color--dark: #4B372E;
+}
+
+.md-header {
+  z-index: 102 !important;
+}
+.md-header-nav.md-grid {
+  max-width: 1620px !important;
+  margin: 0px 1rem;
+}
+.md-header[data-md-state=shadow] {
+  /* box-shadow:
+    0 0 0.2rem rgba(0,0,0,.1),
+    0 0.2rem 0.4rem rgba(0,0,0,.2); */
+  box-shadow:
+    0px 1px 3px rgba(0,0,0,0.25),
+    0px 1px 1px rgba(0,0,0,0.25) !important;
+}
+.md-header-nav__button.md-logo img,
+.md-header-nav__button.md-logo svg {
+  width: 125px;
+  height: 46px;
+}
+nav.md-tabs {
+  z-index: 100 !important;
+  /* box-shadow:
+    0 0 0.2rem rgba(0,0,0,.1),
+    0 0.2rem 0.4rem rgba(0,0,0,.2); */
+  box-shadow:
+    0px 1px 3px rgba(0,0,0,0.25),
+    0px 1px 1px rgba(0,0,0,0.25);
+}
+nav.md-tabs .md-tabs__inner.md-grid {
+  max-width: 1620px !important;
+  margin: 0px 1rem;
+}
+main.md-main .md-main__inner .md-content {
+  margin-top: 1.5rem;
+}
+main.md-main .md-main__inner.md-grid {
+  max-width: 1620px !important;
+  margin-top: 0px !important;
+}
+@media screen and (max-width: 76.1875em) {
+  main.md-main .md-main__inner.md-grid .md-sidebar.md-sidebar--primary {
+    z-index: 200;
+  }
+  [data-md-toggle=drawer]:checked~.md-overlay {
+    z-index: 199;
+  }
+}
+@media (min-width: 1220px) {
+  main.md-main .md-main__inner.md-grid .md-sidebar.md-sidebar--primary {
+    height: 100%;
+    width: 14.1rem;
+    background-color: #F5F6F7;
+    margin: 0;
+    padding: 2.75rem 20px 2.7rem 20px;
+  }
+}
+
+main.md-main .md-sidebar.md-sidebar--secondary {
+  padding: 2.75rem 0px 1.2rem 0px;
+}
+
+footer.md-footer .md-footer-meta .md-footer-meta__inner {
+  padding: 1rem .2rem .2rem .2rem;
+}
+.md-footer.md-footer-nav.md-footer-nav__logo {
+  margin: 1rem auto 1rem auto;
+  padding: 0 .6rem;
+}
+.md-footer-footnote {
+  font-size: 0.7rem;
+  padding: 10px 10px 30px 10px;
+}
+
+@media (min-width: 1620px) {
+  .md-header-nav.md-grid {
+    margin: 0px auto !important;
+  }
+  nav.md-tabs .md-tabs__inner.md-grid {
+    margin: 0px auto !important;
+  }
+}
+@media (max-width: 959px) {
+  .md-header-nav.md-grid {
+    margin: 0px auto !important;
+  }
+  nav.md-tabs .md-tabs__inner.md-grid {
+    margin: 0px auto !important;
+  }
+}
+@media (max-width: 1219px) {
+  header.md-header {
+    /* box-shadow:
+      0 0 0.2rem rgba(0,0,0,.1),
+      0 0.2rem 0.4rem rgba(0,0,0,.2); */
+    box-shadow:
+      0px 1px 3px rgba(0,0,0,0.25),
+      0px 1px 1px rgba(0,0,0,0.25) !important;
+  }
+  .md-header-nav__button.md-logo img,
+  .md-header-nav__button.md-logo svg {
+    width: 98px;
+    height: 36px;
+  }
+  .md-header-nav__button.md-logo {
+    display: block;
+  }
+  .md-nav__title .md-nav__button.md-logo img,
+  .md-nav__title .md-nav__button.md-logo svg {
+    width: 98px;
+    height: 36px;
+  }
+}
+@media screen and (min-width: 76.25em) {
+  .md-nav--integrated .md-nav__link[for=__toc]~.md-nav {
+    border-left: .05rem solid rgba(0, 0, 0, .25);
+  }
+}
+
+.md-typeset h2 strong,
+.md-typeset h3 strong {
+  font-weight: 400;
+}
+
+iframe.swagger-docs {
+  display: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+iframe.graphiql-docs {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 800px;
+  border: none;
+  box-shadow:
+    0 2px 1px -1px rgba(0,0,0,.2),
+    0 1px 1px 0 rgba(0,0,0,.14),
+    0 1px 3px 0 rgba(0,0,0,.12);
+}
+
+div.app-open-container {
+  display: inline-flex;
+  float: right;
+  padding: 6px 15px;
+  margin-bottom: 10px;
+  border: 1px solid #0073cf;
+  color: #002c77;
+}
+div.app-open-container:hover {
+  cursor: pointer;
+  background-color: rgba(0, 115, 207, 0.04) !important;
+}
+div.app-open-container a.app-open-link {
+  display: inline-flex;
+  color: #0073cf !important;
+}
+div.app-open-container a.app-open-link img.app-open-img {
+  margin-left: 10px;
+}

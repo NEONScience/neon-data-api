@@ -4,6 +4,7 @@
     "./src/**/*"
   ],
   "compilerOptions": {
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "jsx": "react-jsx"
   }
 }

@@ -17,8 +17,3 @@ any bugs or descrepancies.
 
 NEON provides a set of R CRAN packages for working with the NEON data API:  
 [NEON-utilities](https://cran.r-project.org/web/packages/neonUtilities/index.html)
-
-## Contributing
-
-To get started with building and running the docs project, please refer to our 
-[building and testing](docs/content/contributing/building.md) section.

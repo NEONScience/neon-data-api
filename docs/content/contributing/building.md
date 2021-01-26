@@ -76,12 +76,12 @@ yarn run build:clean-deploy
 
 To build the project, utilize the convenience scripts for building a Docker container:
 ``` bash
-./docker.build.sh
+./scripts/docker.build.sh
 ```
 To verify the container is functioning property, test it out using the convenience 
 script for running the container:
 ``` bash
-./docker.run.sh
+./scripts/docker.run.sh
 ```
 You should now have an instance running at: `localhost:3200/data-api/`
 

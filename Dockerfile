@@ -1,16 +1,17 @@
 #-------------------------------------------------------------------------------
 # Builder container for reproducible build environment
 
-FROM python:3.8-alpine as builder
+FROM python:3.9-alpine as builder
 
 WORKDIR /usr/src/app
 COPY ./docs /usr/src/app/build-temp/api-docs/docs
 COPY ./mkdocs.yml /usr/src/app/build-temp/api-docs
 COPY ./requirements.txt /usr/src/app/build-temp/api-docs
 
+RUN apk add --no-cache build-base
 RUN cd /usr/src/app/build-temp/api-docs \
   && pip install --upgrade pip \
-  && pip install -r requirements.txt 
+  && pip install -r requirements.txt
 RUN cd /usr/src/app/build-temp/api-docs \
   && sed -i "s/{{TIMESTAMP}}/$(date +%s)/g" docs/content/explorer/index.md \
   && sed -i "s/{{TIMESTAMP}}/$(date +%s)/g" docs/content/graphql/explorer/index.md \
@@ -22,7 +23,7 @@ RUN cd /usr/src/app/build-temp/api-docs \
 #-------------------------------------------------------------------------------
 # Builder container for reproducible build environment
 
-FROM golang:1.14-alpine as go-builder
+FROM golang:1.15-alpine as go-builder
 
 WORKDIR /go/src/app
 
@@ -38,7 +39,7 @@ RUN go mod verify \
 #-------------------------------------------------------------------------------
 # Build production container with only necessary artifacts
 
-FROM alpine:3.11
+FROM alpine:3.12
 
 # Traefik auto discover labels
 LABEL \

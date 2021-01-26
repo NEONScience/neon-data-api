@@ -1,5 +1,14 @@
 .git
 site/
+scripts/
 node_modules/
 **/*/node_modules
 packages/**/*/build
+**/*.eslintcache
+
+.DS_Store
+**/*.DS_Store
+**/*.env.local
+**/*.env.development.local
+**/*.env.test.local
+**/*.env.production.local
