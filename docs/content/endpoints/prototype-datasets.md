@@ -1,6 +1,8 @@
 # Prototype Datasets Endpoint
 
-The `/prototype/datasets` endpoint provides information about all prototype NEON datasets.  The `/prototype/data` endpoint provides access to all data associated with the dataset.
+The `/prototype/datasets` endpoint provides information about all prototype NEON datasets. Prototype datasets have generally been collected during the design and construction of NEON. These datasets are not necessarily representative of the long-term standardized data otherwise available on the NEON data portal. Prototype data are provided as downloadable zip files.
+
+The `/prototype/data` endpoint provides access to all data associated with a single dataset.
 
 
 <a name="paths"></a>
@@ -169,7 +171,7 @@ Gets a data file
 |**projectTitle**  |The title of the project|string|
 |**projectDescription**  |The description of the project|string|
 |**designDescription**  |A description of the dataset's design|string|
-|**metadataDescription**  |A breif description of the metadata associated with the dataset|string|
+|**metadataDescription**  |A brief description of the metadata associated with the dataset|string|
 |**studyAreaDescription**  |A description of the dataset's spatial extent|string|
 |**datasetAbstract**  |An abstract of the dataset|string|
 |**startYear**  |The start year for the time span of the dataset|number (int)|
