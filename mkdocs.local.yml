@@ -50,6 +50,7 @@ nav:
       - 'Locations': 'endpoints/locations.md'
       - 'Taxonomy': 'endpoints/taxonomy.md'
       - 'Samples': 'endpoints/samples.md'
+      - 'Prototype Datasets': 'endpoints/prototype-datasets.md'
     - 'REST API Explorer': 'explorer/index.local.md'
     - 'GraphQL': 'graphql/index.md'
     - 'GraphQL Explorer': 'graphql/explorer/index.local.md'

@@ -197,7 +197,7 @@ Get a data package for a given product/site/month and package combination
 |Name|Description|Schema|
 |---|---|---|
 |**name**|Filename|string|
-|**size**|Estimated file size in bytes|number (int)|
+|**size**|File size in bytes|number (int)|
 |**md5**|MD5 value in hex|string|
 |**crc32**|CRC-32 value in hex|string|
 |**url**|Download URL|string|
