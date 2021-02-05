@@ -3042,7 +3042,7 @@
         },
         "metadataDescription": {
           "type": "string",
-          "description": "A breif description of the metadata associated with the dataset"
+          "description": "A brief description of the metadata associated with the dataset"
         },
         "studyAreaDescription": {
           "type": "string",
@@ -3118,11 +3118,11 @@
             "$ref": "#/definitions/prototypeRelatedDataProduct"
           }
         },
-        "responsibleParties": {
+        "scienceTeams": {
           "type": "array",
-          "description": "List of responsible parties for the dataset",
+          "description": "List of responsible science teams for the dataset",
           "items": {
-            "$ref": "#/definitions/prototypeResponsibleParty"
+            "type": "string"
           }
         }
       }
@@ -3287,32 +3287,6 @@
         "dataProductDescription": {
           "type": "string",
           "description": "A brief description of the data product"
-        }
-      }
-    },
-    "prototypeResponsibleParty": {
-      "type": "object",
-      "description": "Type definition for a prototype dataset responsible party",
-      "properties": {
-        "nameOne": {
-          "type": "string",
-          "description": "Primary or first name of the responsible party"
-        },
-        "nameTwo": {
-          "type": "string",
-          "description": "Secondary or last name of the responsible party"
-        },
-        "email": {
-          "type": "string",
-          "description": "The email for the responsible party"
-        },
-        "isNeonAffiliated": {
-          "type": "string",
-          "description": "Whether or not the responsible party is a NEON science team or affiliated with NEON"
-        },
-        "isThirdParty": {
-          "type": "string",
-          "description": "Whether or not the responsible party is not affiliated with a NEON science team"
         }
       }
     },

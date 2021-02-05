@@ -185,7 +185,7 @@ Gets a data file
 |**locations**  |List of locations of the dataset's spatial extent|[prototypeLocation](#prototypelocation) array|
 |**publicationCitations**  |List of publication citations involving the dataset|[prototypePublicationCitation](#prototypepublicationcitation) array|
 |**relatedDataProducts**  |List of data product's that the dataset is related to|[prototypeRelatedDataProduct](#prototyperelateddataproduct) array|
-|**responsibleParties**  |List of responsible parties for the dataset|[prototypeResponsibleParty](#prototyperesponsibleparty) array|
+|**scienceTeams**  |List of responsible science teams for the dataset|string array|
 
 
 <a name="prototypedatasetdatadetail"></a>
@@ -282,20 +282,6 @@ Type definition for a prototype dataset related data product
 |**dataProductCode**  |Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc.)|string|
 |**dataProductName**  |The name of the data product|string|
 |**dataProductDescription**  |A brief description of the data product|string|
-
-
-<a name="prototyperesponsibleparty"></a>
-### **prototypeResponsibleParty**
-Type definition for a prototype dataset responsible party
-
-
-|Name|Description|Schema|
-|---|---|---|
-|**nameOne**  |Primary or first name of the responsible party|string|
-|**nameTwo**  |Secondary or last name of the responsible party|string|
-|**email**  |The email for the responsible party|string|
-|**isNeonAffiliated**  |Whether or not the responsible party is a NEON science team or affiliated with NEON|string|
-|**isThirdParty**  |Whether or not the responsible party is not affiliated with a NEON science team|string|
 
 <a name="error"></a>
 ### **error**  

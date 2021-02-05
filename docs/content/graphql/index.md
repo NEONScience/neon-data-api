@@ -1667,7 +1667,7 @@ A description of the dataset's design
 <td valign="top"><a href="#string">String</a></td>
 <td>
 
-A breif description of the metadata associated
+A brief description of the metadata associated
 with the dataset
 
 </td>
@@ -1790,11 +1790,11 @@ List of data product's that the dataset is related to
 </td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>responsibleParties</strong></td>
-<td valign="top">[<a href="#prototyperesponsibleparty">PrototypeResponsibleParty</a>!]</td>
+<td colspan="2" valign="top"><strong>scienceTeams</strong></td>
+<td valign="top">[<a href="#string">String</a>!]</td>
 <td>
 
-List of responsible parties for the dataset
+List of responsible science teams for the dataset
 
 </td>
 </tr>
@@ -1981,68 +1981,6 @@ The name of the data product
 <td>
 
 A brief description of the data product
-
-</td>
-</tr>
-</tbody>
-</table>
-
-#### **PrototypeResponsibleParty**
-
-Type definition for a prototype dataset responsible party
-
-<table>
-<thead>
-<tr>
-<th align="left">Field</th>
-<th align="right">Argument</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td colspan="2" valign="top"><strong>nameOne</strong></td>
-<td valign="top"><a href="#string">String</a></td>
-<td>
-
-Primary name of the responsible party
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>nameTwo</strong></td>
-<td valign="top"><a href="#string">String</a></td>
-<td>
-
-Secondary name of the responsible party
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>email</strong></td>
-<td valign="top"><a href="#string">String</a></td>
-<td>
-
-The email for the responsible party
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>isNeonAffiliated</strong></td>
-<td valign="top"><a href="#boolean">Boolean</a></td>
-<td>
-
-Whether or not the responsible party is a NEON science team or affiliated with NEON
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>isThirdParty</strong></td>
-<td valign="top"><a href="#boolean">Boolean</a></td>
-<td>
-
-Whether or not the responsible party is not affiliated with a NEON science team
 
 </td>
 </tr>

@@ -2,11 +2,11 @@
 site_name: NEON Data API
 site_description: 'NEON Data API Documentation'
 site_author: 'Battelle'
-site_dir: site/data-api/
+site_dir: ../site/data-api/
 edit_uri: 'edit/master/docs/content'
 dev_addr: 0.0.0.0:8000
 
-docs_dir: 'docs/content'
+docs_dir: '../docs/content'
 
 # Repository
 repo_name: 'NEONScience/neon-data-api'
@@ -15,7 +15,7 @@ repo_url: 'https://github.com/NEONScience/neon-data-api'
 # Theme
 theme:
   name: 'material'
-  custom_dir: 'docs/theme/overrides'
+  custom_dir: '../docs/theme/overrides'
   language: 'en-custom'
   include_sidebar: true
   favicon: 'assets/images/favicon.ico'
