@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.3.0",
+    "version": "0.4.0",
     "title": "NEON Data API Requests",
     "description": "Expand the options below, click GET, and then click TRY IT OUT to see example calls."
   },
@@ -3071,6 +3071,26 @@
           "type": "boolean",
           "description": "Whether or not the dataset has been included in a publication"
         },
+        "version": {
+          "type": "string",
+          "description": "The version of the dataset"
+        },
+        "versionDescription": {
+          "type": "string",
+          "description": "The version description"
+        },
+        "doi": {
+          "type": "object",
+          "description": "The DOI for the dataset",
+          "$ref": "#/definitions/prototypeDatasetDoi"
+        },
+        "relatedVersions": {
+          "type": "array",
+          "description": "The related versions of this dataset",
+          "items": {
+            "$ref": "#/definitions/prototypeDatasetRelatedVersion"
+          }
+        },
         "data": {
           "type": "object",
           "description": "The dataset's data files",
@@ -3214,6 +3234,39 @@
         }
       }
     },
+    "prototypeDatasetDoi": {
+      "type": "object",
+      "description": "Type definition for a Prototype Dataset DOI",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "The URL of the DOI"
+        },
+        "generationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The generation date of the DOI"
+        }
+      }
+    },
+    "prototypeDatasetRelatedVersion": {
+      "type": "object",
+      "description": "Type definition for a Prototype Dataset related version",
+      "properties": {
+        "datasetUuid": {
+          "type": "string",
+          "description": "The related dataset UUID"
+        },
+        "datasetProjectTitle": {
+          "type": "string",
+          "description": "The related dataset project title"
+        },
+        "datasetVersion": {
+          "type": "string",
+          "description": "The related dataset version"
+        }
+      }
+    },
     "prototypeFileType": {
       "type": "object",
       "description": "Type definition for a prototype dataset file type",
@@ -3265,6 +3318,14 @@
         "citation": {
           "type": "string",
           "description": "The citation associated with a publication involving the dataset"
+        },
+        "citationIdentifier": {
+          "type": "string",
+          "description": "The citation identifier (DOI, arXiv, URL) associated with a publication involving the dataset"
+        },
+        "citationIdentifierType": {
+          "type": "string",
+          "description": "The citation identifier type associated with a publication involving the dataset (DOI, arXiv, URL)"
         }
       }
     },

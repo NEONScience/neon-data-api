@@ -1727,6 +1727,42 @@ Whether or not the dataset has been included in a publication
 </td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>version</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The version of the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>versionDescription</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The version description
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>doi</strong></td>
+<td valign="top"><a href="#prototypedatasetdoi">PrototypeDatasetDoi</a></td>
+<td>
+
+The DOI for the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>relatedVersions</strong></td>
+<td valign="top">[<a href="#prototypedatasetrelatedversion">PrototypeDatasetRelatedVersion</a>!]</td>
+<td>
+
+The related versions of this dataset
+
+</td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>data</strong></td>
 <td valign="top"><a href="#prototypedata">PrototypeData</a></td>
 <td>
@@ -1795,6 +1831,85 @@ List of data product's that the dataset is related to
 <td>
 
 List of responsible science teams for the dataset
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypeDatasetDoi**
+
+Type definition for a Prototype Dataset related version
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>url</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The URL of the DOI
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>generationDate</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td>
+
+The generation date of the DOI
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypeDatasetRelatedVersion**
+
+Type definition for a Prototype Dataset related version
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>datasetUuid</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The related dataset UUID
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>datasetProjectTitle</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The related dataset project title
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>datasetVersion</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The related dataset version
 
 </td>
 </tr>
@@ -1928,6 +2043,24 @@ Type definition for a prototype dataset publication citation
 <td>
 
 The citation associated with a publication involving the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>citationIdentifier</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The citation identifier (DOI, arXiv, URL) associated with a publication involving the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>citationIdentifierType</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The citation identifier type associated with a publication involving the dataset (DOI, arXiv, URL)
 
 </td>
 </tr>

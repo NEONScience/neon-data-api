@@ -178,6 +178,10 @@ Gets a data file
 |**endYear**  |The end year for the time span of the dataset|number (int)|
 |**dateUploaded**  |The date the dataset was uploaded|string (date-time)|
 |**isPublished**  |Whether or not the dataset has been included in a publication|boolean|
+|**version**  |The version of the dataset|string|
+|**versionDescription**  |The version description|string|
+|**doi**  |The DOI for the dataset|[prototypeDatasetDoi](#prototypedatasetdoi)|
+|**relatedVersions**  |The related versions of this dataset|[prototypeDatasetRelatedVersion](#prototypedatasetrelatedversion)|
 |**data**  |The dataset's data files|[prototypeDatasetDataDetail](#prototypedatasetdatadetail)|
 |**dataThemes**  |List of themes to which the dataset belongs|string array|
 |**fileTypes**  |List of file types to which the dataset belongs|[prototypeFileType](#prototypefiletype) array|
@@ -245,6 +249,28 @@ Type definition for a prototype dataset file type
 |**name**  |The name of the file type (CSV, PDF, HDF5, etc)|string|
 |**description**  |A description of the file type|string|
 
+<a name="prototypedatasetdoi"></a>
+### **prototypeDatasetDoi**
+Type definition for a Prototype Dataset DOI
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**url**  |The URL of the DOI|string|
+|**generationDate**  |The generation date of the DOI|string (date-time)|
+
+
+<a name="prototypedatasetrelatedversion"></a>
+### **prototypeDatasetRelatedVersion**
+Type definition for a Prototype Dataset related version
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**datasetUuid**  |The related dataset UUID|string|
+|**datasetProjectTitle**  |The related dataset project title|string|
+|**datasetVersion**  |The related dataset version|string|
+
 
 <a name="prototypelocation"></a>
 ### **prototypeLocation**
@@ -269,6 +295,8 @@ Type definition for a prototype dataset publication citation
 |Name|Description|Schema|
 |---|---|---|
 |**citation**  |The citation associated with a publication involving the dataset|string|
+|**citationIdentifier**  |The citation identifier (DOI, arXiv, URL) associated with a publication involving the dataset|string|
+|**citationIdentifierType**  |The citation identifier type associated with a publication involving the dataset (DOI, arXiv, URL)|string|
 
 
 <a name="prototyperelateddataproduct"></a>
