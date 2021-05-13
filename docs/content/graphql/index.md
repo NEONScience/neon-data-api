@@ -340,6 +340,22 @@ Supported queries for the GraphQL endpoint.
         The maximum allowable number of locations for a single request is 1000.
       </td>
     </tr>
+    <tr>
+      <td valign="top"><strong>prototypeDatasets</strong></td>
+      <td></td>
+      <td valign="top">[<a href="#prototypedataset">PrototypeDataset</a>!]</td>
+      <td>
+        Get all prototype datasets
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><strong>prototypeDataset</strong></td>
+      <td valign="top">uuid<br><a href="#scalars">String</a>!</td>
+      <td valign="top"><a href="#prototypedataset">PrototypeDataset</a>!</td>
+      <td>
+        Get a prototype dataset based on UUID
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -1442,6 +1458,664 @@ Type definition for a polygon
 <td colspan="2" valign="top"><strong>coordinates</strong></td>
 <td valign="top">[<a href="#coordinate">Coordinate</a>!]!</td>
 <td></td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypeData**
+
+Type definition for prototype dataset data
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>url</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The data URL for accessing the data files for the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>files</strong></td>
+<td valign="top">[<a href="#prototypedatafile">PrototypeDataFile</a>!]</td>
+<td>
+
+List of data files for the dataset
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypeDataFile**
+
+Type definition for prototype dataset data file
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The name of the data file
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>description</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+A description of the data file
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>fileSize</strong></td>
+<td valign="top"><a href="#int">Int</a></td>
+<td>
+
+File size in bytes
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>fileName</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Filename
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>md5</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+MD5 checksum value in hex
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>type</strong></td>
+<td valign="top"><a href="#prototypedatafiletype">PrototypeDataFileType</a>!</td>
+<td>
+
+The type of the data file (metadata, data, etc)
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>url</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Download URL
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypeDataFileType**
+
+Type definition for prototype dataset data file type
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The name of the data file type
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>description</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The description of the data file type
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypeDataset**
+
+Type definition for a prototype dataset
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>uuid</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The UUID of the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>projectTitle</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The title of the project
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>projectDescription</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The description of the project
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>designDescription</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+A description of the dataset's design
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>metadataDescription</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+A brief description of the metadata associated
+with the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>studyAreaDescription</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+A description of the dataset's spatial extent
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>datasetAbstract</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+An abstract of the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>startYear</strong></td>
+<td valign="top"><a href="#int">Int</a></td>
+<td>
+
+The start year for the time span of the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>endYear</strong></td>
+<td valign="top"><a href="#int">Int</a></td>
+<td>
+
+The end year for the time span of the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>dateUploaded</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td>
+
+The date the dataset was uploaded
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>isPublished</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a></td>
+<td>
+
+Whether or not the dataset has been included in a publication
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>version</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The version of the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>versionDescription</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The version description
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>doi</strong></td>
+<td valign="top"><a href="#prototypedatasetdoi">PrototypeDatasetDoi</a></td>
+<td>
+
+The DOI for the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>relatedVersions</strong></td>
+<td valign="top">[<a href="#prototypedatasetrelatedversion">PrototypeDatasetRelatedVersion</a>!]</td>
+<td>
+
+The related versions of this dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>data</strong></td>
+<td valign="top"><a href="#prototypedata">PrototypeData</a></td>
+<td>
+
+The dataset's data files
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>dataThemes</strong></td>
+<td valign="top">[<a href="#string">String</a>!]</td>
+<td>
+
+List of themes to which the dataset belongs
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>fileTypes</strong></td>
+<td valign="top">[<a href="#prototypefiletype">PrototypeFileType</a>!]</td>
+<td>
+
+List of file types to which the dataset belongs
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>keywords</strong></td>
+<td valign="top">[<a href="#string">String</a>!]</td>
+<td>
+
+List of words and phrases associated with the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>locations</strong></td>
+<td valign="top">[<a href="#prototypelocation">PrototypeLocation</a>!]</td>
+<td>
+
+List of locations of the dataset's spatial extent
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>publicationCitations</strong></td>
+<td valign="top">[<a href="#prototypepublicationcitation">PrototypePublicationCitation</a>!]</td>
+<td>
+
+List of publication citations involving the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>relatedDataProducts</strong></td>
+<td valign="top">[<a href="#prototyperelateddataproduct">PrototypeRelatedDataProduct</a>!]</td>
+<td>
+
+List of data product's that the dataset is related to
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>scienceTeams</strong></td>
+<td valign="top">[<a href="#string">String</a>!]</td>
+<td>
+
+List of responsible science teams for the dataset
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypeDatasetDoi**
+
+Type definition for a Prototype Dataset related version
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>url</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The URL of the DOI
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>generationDate</strong></td>
+<td valign="top"><a href="#datetime">DateTime</a></td>
+<td>
+
+The generation date of the DOI
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypeDatasetRelatedVersion**
+
+Type definition for a Prototype Dataset related version
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>datasetUuid</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The related dataset UUID
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>datasetProjectTitle</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The related dataset project title
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>datasetVersion</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The related dataset version
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypeFileType**
+
+Type definition for a prototype dataset file type
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The name of the file type (CSV, PDF, HDF5, etc)
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>description</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+A description of the file type
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypeLocation**
+
+Type definition for a prototype dataset location
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>domain</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Three character domain abbreviation (D01, D02, etc) for the
+domain this site is in
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>state</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Two letter state code that this site is in
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>siteCode</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Four character code for the site
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>siteName</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Full name for the site
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>latitude</strong></td>
+<td valign="top"><a href="#float">Float</a></td>
+<td>
+
+Decimal latitude for the location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>longitude</strong></td>
+<td valign="top"><a href="#float">Float</a></td>
+<td>
+
+Decimal longitude for the location
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypePublicationCitation**
+
+Type definition for a prototype dataset publication citation
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>citation</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The citation associated with a publication involving the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>citationIdentifier</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The citation identifier (DOI, arXiv, URL) associated with a publication involving the dataset
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>citationIdentifierType</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The citation identifier type associated with a publication involving the dataset (DOI, arXiv, URL)
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypeRelatedDataProduct**
+
+Type definition for a prototype dataset related data product
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>dataProductIdq</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Revisioned, long code for the data product (NEON.DOM.SITE.DP1.00001.001, etc.)
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>dataProductCode</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc.)
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>dataProductName</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The name of the data product
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>dataProductDescription</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+A brief description of the data product
+
+</td>
 </tr>
 </tbody>
 </table>

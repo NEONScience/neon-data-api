@@ -26,7 +26,7 @@ pip install -r requirements.txt
 ```
 To run a local instance, using the `mkdocs` CLI tool:
 ``` bash
-mkdocs serve --config-file mkdocs.local.yml
+mkdocs serve --config-file scripts/mkdocs.local.yml
 ```
 You should now have an instance running at: `localhost:8000`
 

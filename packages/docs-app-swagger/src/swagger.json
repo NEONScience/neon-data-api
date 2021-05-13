@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.3.0",
+    "version": "0.4.0",
     "title": "NEON Data API Requests",
     "description": "Expand the options below, click GET, and then click TRY IT OUT to see example calls."
   },
@@ -1560,6 +1560,196 @@
           }
         }
       }
+    },
+    "/prototype/datasets": {
+      "get": {
+        "description": "Get information about all prototype datasets",
+        "tags": [
+          "Prototype Datasets"
+        ],
+        "operationId": "Get_prototype_datasets_",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of prototype datasets",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/prototypeDataset"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/prototype/datasets/{uuid}": {
+      "get": {
+        "description": "Get information about a prototype dataset",
+        "tags": [
+          "Prototype Datasets"
+        ],
+        "operationId": "Get_prototype_datasets_uuid_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "Prototype dataset UUID to get",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single prototype dataset",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/prototypeDataset"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Prototype dataset not found",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/prototype/data/{uuid}": {
+      "get": {
+        "description": "Get information about data files for the prototype dataset",
+        "tags": [
+          "Prototype Datasets"
+        ],
+        "operationId": "Get_prototype_data_uuid_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "Prototype dataset UUID to get",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available data for the prototype dataset",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/prototypeDatasetData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Prototype dataset not found",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/prototype/data/{uuid}/{filename}": {
+      "get": {
+        "description": "Gets a data file",
+        "tags": [
+          "Prototype Datasets"
+        ],
+        "operationId": "Get_prototype_data_uuid_file_",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "Prototype dataset UUID to get",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filename",
+            "in": "path",
+            "description": "The name of the data file",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available file data",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "302": {
+            "description": "Found available file and redirects to data",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "400": {
+            "description": "Invalid file name specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -2828,6 +3018,336 @@
           "items": {
             "$ref": "#/definitions/entry"
           }
+        }
+      }
+    },
+    "prototypeDataset": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "description": "The UUID of the dataset"
+        },
+        "projectTitle": {
+          "type": "string",
+          "description": "The title of the project"
+        },
+        "projectDescription": {
+          "type": "string",
+          "description": "The description of the project"
+        },
+        "designDescription": {
+          "type": "string",
+          "description": "A description of the dataset's design"
+        },
+        "metadataDescription": {
+          "type": "string",
+          "description": "A brief description of the metadata associated with the dataset"
+        },
+        "studyAreaDescription": {
+          "type": "string",
+          "description": "A description of the dataset's spatial extent"
+        },
+        "datasetAbstract": {
+          "type": "string",
+          "description": "An abstract of the dataset"
+        },
+        "startYear": {
+          "type": "number",
+          "format": "int",
+          "description": "The start year for the time span of the dataset"
+        },
+        "endYear": {
+          "type": "number",
+          "format": "int",
+          "description": "The end year for the time span of the dataset"
+        },
+        "dateUploaded": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date the dataset was uploaded"
+        },
+        "isPublished": {
+          "type": "boolean",
+          "description": "Whether or not the dataset has been included in a publication"
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the dataset"
+        },
+        "versionDescription": {
+          "type": "string",
+          "description": "The version description"
+        },
+        "doi": {
+          "type": "object",
+          "description": "The DOI for the dataset",
+          "$ref": "#/definitions/prototypeDatasetDoi"
+        },
+        "relatedVersions": {
+          "type": "array",
+          "description": "The related versions of this dataset",
+          "items": {
+            "$ref": "#/definitions/prototypeDatasetRelatedVersion"
+          }
+        },
+        "data": {
+          "type": "object",
+          "description": "The dataset's data files",
+          "$ref": "#/definitions/prototypeDatasetDataDetail"
+        },
+        "dataThemes": {
+          "type": "array",
+          "description": "List of themes to which the dataset belongs",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fileTypes": {
+          "type": "array",
+          "description": "List of file types to which the dataset belongs",
+          "items": {
+            "$ref": "#/definitions/prototypeFileType"
+          }
+        },
+        "keywords": {
+          "type": "array",
+          "description": "List of words and phrases associated with the dataset",
+          "items": {
+            "type": "string"
+          }
+        },
+        "locations": {
+          "type": "array",
+          "description": "List of locations of the dataset's spatial extent",
+          "items": {
+            "$ref": "#/definitions/prototypeLocation"
+          }
+        },
+        "publicationCitations": {
+          "type": "array",
+          "description": "List of publication citations involving the dataset",
+          "items": {
+            "$ref": "#/definitions/prototypePublicationCitation"
+          }
+        },
+        "relatedDataProducts": {
+          "type": "array",
+          "description": "List of data product's that the dataset is related to",
+          "items": {
+            "$ref": "#/definitions/prototypeRelatedDataProduct"
+          }
+        },
+        "scienceTeams": {
+          "type": "array",
+          "description": "List of responsible science teams for the dataset",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "prototypeDatasetDataDetail": {
+      "type": "object",
+      "description": "The dataset's data files",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "The data URL for accessing the data files for the dataset"
+        },
+        "files": {
+          "type": "array",
+          "description": "List of data files for the dataset",
+          "items": {
+            "$ref": "#/definitions/prototypeDataFile"
+          }
+        }
+      }
+    },
+    "prototypeDatasetData": {
+      "type": "object",
+      "description": "Type definition for prototype dataset data",
+      "properties": {
+        "datasetUuid": {
+          "type": "string",
+          "description": "The dataset UUID"
+        },
+        "datasetProjectTitle": {
+          "type": "string",
+          "description": "The title of the project"
+        },
+        "files": {
+          "type": "array",
+          "description": "List of data files for the dataset",
+          "items": {
+            "$ref": "#/definitions/prototypeDataFile"
+          }
+        }
+      }
+    },
+    "prototypeDataFile": {
+      "type": "object",
+      "description": "Type definition for prototype dataset data file",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the data file"
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the data file"
+        },
+        "fileSize": {
+          "type": "string",
+          "description": "File size in bytes"
+        },
+        "fileName": {
+          "type": "string",
+          "description": "The filename of the file"
+        },
+        "md5": {
+          "type": "string",
+          "description": "MD5 checksum value in hex"
+        },
+        "url": {
+          "type": "string",
+          "description": "Download URL for the file"
+        },
+        "type": {
+          "type": "object",
+          "description": "The type of the data file (metadata, data, etc)",
+          "$ref": "#/definitions/prototypeDataFileType"
+        }
+      }
+    },
+    "prototypeDataFileType": {
+      "type": "object",
+      "description": "Type definition for prototype dataset data file type",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the data file type"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the data file type"
+        }
+      }
+    },
+    "prototypeDatasetDoi": {
+      "type": "object",
+      "description": "Type definition for a Prototype Dataset DOI",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "The URL of the DOI"
+        },
+        "generationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The generation date of the DOI"
+        }
+      }
+    },
+    "prototypeDatasetRelatedVersion": {
+      "type": "object",
+      "description": "Type definition for a Prototype Dataset related version",
+      "properties": {
+        "datasetUuid": {
+          "type": "string",
+          "description": "The related dataset UUID"
+        },
+        "datasetProjectTitle": {
+          "type": "string",
+          "description": "The related dataset project title"
+        },
+        "datasetVersion": {
+          "type": "string",
+          "description": "The related dataset version"
+        }
+      }
+    },
+    "prototypeFileType": {
+      "type": "object",
+      "description": "Type definition for a prototype dataset file type",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the file type (CSV, PDF, HDF5, etc)"
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the file type"
+        }
+      }
+    },
+    "prototypeLocation": {
+      "type": "object",
+      "description": "Type definition for a prototype dataset location",
+      "properties": {
+        "domain": {
+          "type": "string",
+          "description": "Three character domain abbreviation (D01, D02, etc) for the domain this site is in"
+        },
+        "state": {
+          "type": "string",
+          "description": "Two letter state code that this site is in"
+        },
+        "siteCode": {
+          "type": "string",
+          "description": "Four character code for the site"
+        },
+        "siteName": {
+          "type": "string",
+          "description": "Full name for the site"
+        },
+        "latitude": {
+          "type": "string",
+          "description": "Decimal latitude for the location"
+        },
+        "longitude": {
+          "type": "string",
+          "description": "Decimal longitude for the location"
+        }
+      }
+    },
+    "prototypePublicationCitation": {
+      "type": "object",
+      "description": "Type definition for a prototype dataset publication citation",
+      "properties": {
+        "citation": {
+          "type": "string",
+          "description": "The citation associated with a publication involving the dataset"
+        },
+        "citationIdentifier": {
+          "type": "string",
+          "description": "The citation identifier (DOI, arXiv, URL) associated with a publication involving the dataset"
+        },
+        "citationIdentifierType": {
+          "type": "string",
+          "description": "The citation identifier type associated with a publication involving the dataset (DOI, arXiv, URL)"
+        }
+      }
+    },
+    "prototypeRelatedDataProduct": {
+      "type": "object",
+      "description": "Type definition for a prototype dataset related data product",
+      "properties": {
+        "dataProductIdq": {
+          "type": "string",
+          "description": "Revisioned, long code for the data product (NEON.DOM.SITE.DP1.00001.001, etc.)"
+        },
+        "dataProductCode": {
+          "type": "string",
+          "description": "Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc.)"
+        },
+        "dataProductName": {
+          "type": "string",
+          "description": "The name of the data product"
+        },
+        "dataProductDescription": {
+          "type": "string",
+          "description": "A brief description of the data product"
         }
       }
     },
