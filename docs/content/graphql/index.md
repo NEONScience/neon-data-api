@@ -1494,6 +1494,15 @@ List of data files for the dataset
 
 </td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>dataLocations</strong></td>
+<td valign="top">[<a href="#prototypedatalocation">PrototypeDataLocation</a>!]</td>
+<td>
+
+List of data locations for the dataset
+
+</td>
+</tr>
 </tbody>
 </table>
 
@@ -1606,6 +1615,50 @@ The name of the data file type
 <td>
 
 The description of the data file type
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### **PrototypeDataLocation**
+
+Type definition for a prototype dataset data location
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>path</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+The path or URL to the data location
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>description</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+A description of the data location referenced by the path
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>metadata</strong></td>
+<td valign="top"><a href="#string">Boolean</a></td>
+<td>
+
+Indicates that this data location refers to metadata exclusively
 
 </td>
 </tr>

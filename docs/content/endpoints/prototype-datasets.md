@@ -199,9 +199,9 @@ The dataset's data files
 
 |Name|Description|Schema|
 |---|---|---|
+|**dataLocations** |List of data locations for the dataset|[prototypeDataLocation](#prototypedatalocation) array|
 |**files** |List of data files for the dataset|[prototypeDataFile](#prototypedatafile) array|
 |**url** |The data URL for accessing the data files for the dataset|string|
-
 
 <a name="prototypedatasetdata"></a>
 ### **prototypeDatasetData**
@@ -213,6 +213,7 @@ Type definition for prototype dataset data
 |**datasetUuid**  |The dataset UUID|string|
 |**datasetProjectTitle**  |The title of the project|string|
 |**files**  |List of data files for the dataset|[prototypeDatasetDataFile](#prototypedatasetdatafile) array|
+|**dataLocations** |List of data locations for the dataset|[prototypeDataLocation](#prototypedatalocation) array|
 
 <a name="prototypedatafile"></a>
 ### **prototypeDataFile**
@@ -238,6 +239,17 @@ Type definition for prototype dataset data file type
 |---|---|---|
 |**name**  |The name of the data file type|string|
 |**description**  |The description of the data file type|string|
+
+<a name="prototypedatalocation"></a>
+### **prototypeDataLocation**
+Type definition for a prototype dataset data location
+
+
+|Name|Description|Schema|
+|---|---|---|
+|**path**  |The path or URL to the data location|string|
+|**description**  |A description of the data location referenced by the path|string|
+|**metadata**  |Indicates that this data location refers to metadata exclusively|boolean|
 
 <a name="prototypefiletype"></a>
 ### **prototypeFileType**
