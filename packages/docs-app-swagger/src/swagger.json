@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.4.0",
+    "version": "0.5.0",
     "title": "NEON Data API Requests",
     "description": "Expand the options below, click GET, and then click TRY IT OUT to see example calls."
   },
@@ -3161,6 +3161,13 @@
           "items": {
             "$ref": "#/definitions/prototypeDataFile"
           }
+        },
+        "dataLocations": {
+          "type": "array",
+          "description": "List of data locations for the dataset",
+          "items": {
+            "$ref": "#/definitions/prototypeDataLocation"
+          }
         }
       }
     },
@@ -3181,6 +3188,13 @@
           "description": "List of data files for the dataset",
           "items": {
             "$ref": "#/definitions/prototypeDataFile"
+          }
+        },
+        "dataLocations": {
+          "type": "array",
+          "description": "List of data locations for the dataset",
+          "items": {
+            "$ref": "#/definitions/prototypeDataLocation"
           }
         }
       }
@@ -3231,6 +3245,24 @@
         "description": {
           "type": "string",
           "description": "The description of the data file type"
+        }
+      }
+    },
+    "prototypeDataLocation": {
+      "type": "object",
+      "description": "Type definition for a prototype dataset data location",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "The path or URL to the data location"
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the data location referenced by the path"
+        },
+        "metadata": {
+          "type": "boolean",
+          "description": "Indicates that this data location refers to metadata exclusively"
         }
       }
     },
