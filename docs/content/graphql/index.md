@@ -2279,6 +2279,15 @@ domain this site is in
 </td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>deimsId</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+Dynamic Ecological Information Management System - Site and dataset registry (DEIMS-SDR) ID for the site, see deims.org
+
+</td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>releases</strong></td>
 <td valign="top">[<a href="#dataproductrelease">DataProductRelease</a>]</td>
 <td>

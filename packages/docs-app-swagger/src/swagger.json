@@ -2064,6 +2064,10 @@
           "type": "string",
           "description": "Brief description for the domain this site is in"
         },
+        "deimsId": {
+          "type": "string",
+          "description": "Dynamic Ecological Information Management System - Site and dataset registry (DEIMS-SDR) ID for the site, see deims.org"
+        },
         "releases": {
           "type": "array",
           "description": "List of releases that this site has available data within.",

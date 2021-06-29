@@ -117,7 +117,7 @@ Get information about a field site.
 |**stateName**|Full name of the state or territory that this site is in|string|
 |**domainCode**|Three-character domain abbreviation (D01, D02, etc) for the domain this site is in|string|
 |**domainName**|Name of the domain this site is in|string|
-|**deimsId**|Dynamic Ecological Information Management System - Site and dataset registry (DEIMS-SDR) ID for the site, see deims.org
+|**deimsId**|Dynamic Ecological Information Management System - Site and dataset registry (DEIMS-SDR) ID for the site, see deims.org|string|
 |**releases**|List of releases that this site has available data within|[[releases](#site-releases)]|
 |**dataProducts**|List of data products and months of available data|[[productAvailability](#productavailability)]|
 
