@@ -110,7 +110,7 @@ Get information about a field site.
 |**siteCode**|Four character code for the site|string|
 |**siteName**|Full name for the site|string|
 |**siteDescription**|Brief version of site name|string|
-|**siteType**|Core or Relocatable site|enum (CORE, RELOCATABLE)|
+|**siteType**|Core or Gradient site|enum (CORE, GRADIENT)|
 |**siteLatitude**|Point latitude for the site|number|
 |**siteLongitude**|Point longitude for the site|number|
 |**stateCode**|Two-letter state code that this site is in|string|

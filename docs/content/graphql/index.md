@@ -2219,7 +2219,7 @@ Brief site description
 <td valign="top"><a href="#scalars">String</a></td>
 <td>
 
-Core or Relocatable site
+Core or Gradient site
 
 </td>
 </tr>

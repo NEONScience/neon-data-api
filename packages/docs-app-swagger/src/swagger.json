@@ -2036,9 +2036,9 @@
           "type": "string",
           "enum": [
             "CORE",
-            "RELOCATABLE"
+            "GRADIENT"
           ],
-          "description": "Core or Relocatable site"
+          "description": "Core or Gradient site"
         },
         "siteLatitude": {
           "type": "number",
