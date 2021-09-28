@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.5.0",
+    "version": "0.6.0",
     "title": "NEON Data API Requests",
     "description": "Expand the options below, click GET, and then click TRY IT OUT to see example calls."
   },
@@ -2036,9 +2036,9 @@
           "type": "string",
           "enum": [
             "CORE",
-            "RELOCATABLE"
+            "GRADIENT"
           ],
-          "description": "Core or Relocatable site"
+          "description": "Core or Gradient site"
         },
         "siteLatitude": {
           "type": "number",
@@ -2063,6 +2063,10 @@
         "domainName": {
           "type": "string",
           "description": "Brief description for the domain this site is in"
+        },
+        "deimsId": {
+          "type": "string",
+          "description": "Dynamic Ecological Information Management System - Site and dataset registry (DEIMS-SDR) ID for the site, see deims.org"
         },
         "releases": {
           "type": "array",

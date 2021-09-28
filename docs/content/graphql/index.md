@@ -2219,7 +2219,7 @@ Brief site description
 <td valign="top"><a href="#scalars">String</a></td>
 <td>
 
-Core or Relocatable site
+Core or Gradient site
 
 </td>
 </tr>
@@ -2275,6 +2275,15 @@ Brief description for the domain this site is in
 
 Three character domain abbreviation (D01, D02, etc) for the
 domain this site is in
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>deimsId</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+Dynamic Ecological Information Management System - Site and dataset registry (DEIMS-SDR) ID for the site, see deims.org
 
 </td>
 </tr>
