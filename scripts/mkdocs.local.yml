@@ -4,7 +4,7 @@ site_description: 'NEON Data API Documentation'
 site_author: 'Battelle'
 site_dir: ../site/data-api/
 edit_uri: 'edit/master/docs/content'
-dev_addr: 0.0.0.0:8000
+dev_addr: 127.0.0.1:8000
 
 docs_dir: '../docs/content'
 
@@ -22,11 +22,14 @@ theme:
   icon:
     logo: 'neon/neonscience-logo-sm'
   palette:
-    primary: 'white'
+    - scheme: default
+      primary: 'white'
   features:
     - navigation.tabs
     - navigation.instant
     - navigation.expand
+    - navigation.sections
+    - navigation.top
   font:
     text: 'Inter'
     code: 'Roboto Mono'
@@ -42,7 +45,7 @@ nav:
   - Data Portal: 'https://www.neonscience.org/data'
   - NEON Data API:
     - 'About': index.md
-    - 'REST API Endpoints':
+    - 'REST API':
       - 'Products': 'endpoints/products.md'
       - 'Sites': 'endpoints/sites.md'
       - 'Releases': 'endpoints/releases.md'
@@ -51,11 +54,13 @@ nav:
       - 'Taxonomy': 'endpoints/taxonomy.md'
       - 'Samples': 'endpoints/samples.md'
       - 'Prototype Datasets': 'endpoints/prototype-datasets.md'
-    - 'REST API Explorer': 'explorer/index.local.md'
-    - 'GraphQL': 'graphql/index.md'
-    - 'GraphQL Explorer': 'graphql/explorer/index.local.md'
-    - 'Rate Limiting': 'rate-limiting.md'
-    - 'Data Use and Policy': data-use-policy.md
+      - 'REST API Explorer': 'explorer/index.local.md'
+    - 'GraphQL API':
+      - 'Overview': 'graphql/index.md'
+      - 'GraphQL Explorer': 'graphql/explorer/index.local.md'
+    - 'Usage':
+      - 'Rate Limiting': 'rate-limiting.md'
+      - 'Data Use and Policy': data-use-policy.md
   - Data Use and Policy: 'https://www.neonscience.org/data-samples/data-policies-citation'
 
 plugins:

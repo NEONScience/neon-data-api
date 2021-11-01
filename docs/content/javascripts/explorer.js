@@ -8,10 +8,6 @@ function customize() {
         : 'block';
     });
   }
-  var swagger = document.querySelector('#swagger-frame')
-  if (swagger) {
-    swagger.style.display = 'block';
-  }
   var graphiql = document.querySelector('#graphiql-frame')
   if (graphiql) {
     var innerGrid = document.querySelector('div.md-main__inner.md-grid');
@@ -53,11 +49,5 @@ const Router = {
 };
 
 window.addEventListener('load', function () {
-  customize();
-});
-// Custom event listener for mkdocs-material "instant" feature.
-// See:
-// https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/instant/index.ts
-window.document.addEventListener('DOMContentSwitch', function () {
   customize();
 });
