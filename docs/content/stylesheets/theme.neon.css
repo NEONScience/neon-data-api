@@ -134,6 +134,10 @@ footer.md-footer .md-footer-meta .md-footer-meta__inner {
   font-weight: 400;
 }
 
+.md-typeset table:not([class]) th {
+  background-color: rgb(245, 245, 245);
+}
+
 iframe.swagger-docs {
   margin: 0;
   padding: 0;
