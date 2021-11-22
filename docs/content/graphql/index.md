@@ -519,6 +519,15 @@ A brief description of the data product
 </td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>productStatus</strong></td>
+<td valign="top"><a href="#scalars">String</a></td>
+<td>
+
+Future, active, or retired product status
+
+</td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>productScienceTeam</strong></td>
 <td valign="top"><a href="#scalars">String</a></td>
 <td>
