@@ -39,7 +39,7 @@ RUN go mod verify \
 #-------------------------------------------------------------------------------
 # Build production container with only necessary artifacts
 
-FROM alpine:3.14
+FROM alpine:3.15
 
 # Traefik auto discover labels
 LABEL \

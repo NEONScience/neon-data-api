@@ -5,7 +5,7 @@ URLs to downloadable files. Several terabytes of data are presently available.
 To keep data files to a reasonable size, they are generally arranged in 
 product/site/monthly chunks. Even so, files can be large and you may find it 
 worthwhile to check the size attribute before downloading. Also note that the 
-provided URLs are from an Amazon S3 service and expire 1 hour after 
+some provided URLs are from a Google Cloud Storage service and expire 1 hour after 
 generation. If the time between when you obtain a URL and start downloading the 
 file is more than 1 hour, you may need to obtain a new URL before proceeding.  
 
@@ -194,13 +194,55 @@ Get a data package for a given product/site/month and package combination
 <a name="file"></a>
 ### **file**
 
-|Name|Description|Schema|
-|---|---|---|
-|**name**|Filename|string|
-|**size**|File size in bytes|number (int)|
-|**md5**|MD5 value in hex|string|
-|**crc32**|CRC-32 value in hex|string|
-|**url**|Download URL|string|
+!!! info
+    Note that the `crc32` checksum property is deprecated in favor of the `crc32c`
+    checksum property.
+
+<div class="md-typeset__scrollwrap">
+  <div class="md-typeset__table">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Schema</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>name</strong></td>
+          <td>Filename</td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><strong>size</strong></td>
+          <td>File size in bytes</td>
+          <td>number (int)</td>
+        </tr>
+        <tr>
+          <td><strong>md5</strong></td>
+          <td>MD5 value in hex</td>
+          <td>string</td>
+        </tr>
+        <tr class="neon-deprecated-property-table-row">
+          <td><strong>crc32</strong></td>
+          <td><strong>DEPRECATED.</strong><br /> CRC32 value in hex</td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><strong>crc32c</strong></td>
+          <td>CRC32C value in hex</td>
+          <td>string</td>
+        </tr>
+        <tr>
+          <td><strong>url</strong></td>
+          <td>Download URL</td>
+          <td>string</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 
 <a name="externalData"></a>
