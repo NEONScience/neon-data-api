@@ -177,3 +177,8 @@ div.app-open-container a.app-open-link {
 div.app-open-container a.app-open-link img.app-open-img {
   margin-left: 10px;
 }
+
+.neon-deprecated-property-table-row {
+  background-color: rgba(255,145,0,.1);
+  border-color: #ff9100;
+}
