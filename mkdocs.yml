@@ -4,7 +4,7 @@ site_description: 'NEON Data API Documentation'
 site_author: 'Battelle'
 site_dir: site/data-api/
 site_url: 'https://www.neonscience.org'
-edit_uri: 'edit/master/docs/content'
+edit_uri: 'edit/main/docs/content'
 
 docs_dir: 'docs/content'
 
