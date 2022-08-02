@@ -4,28 +4,28 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
-    "@types/node": "^17.0.31",
-    "@types/react": "^18.0.8",
-    "@types/react-dom": "^18.0.3",
+    "@types/node": "^18.6.3",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "@types/resize-observer-browser": "^0.1.7",
     "isomorphic-form-data": "^2.0.0",
     "querystring-browser": "^1.0.4",
-    "react": "~18.1.0",
-    "react-dom": "~18.1.0",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0",
     "react-scripts": "^5.0.1",
-    "swagger-ui-react": "~4.10.3",
-    "typescript": "~4.6.4"
+    "swagger-ui-react": "~4.13.2",
+    "typescript": "~4.7.4"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.22.0",
-    "@typescript-eslint/parser": "^5.22.0",
-    "eslint": "^8.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "eslint": "^8.21.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.5.0",
-    "minify": "^8.0.4"
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "minify": "^9.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
