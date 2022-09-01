@@ -791,7 +791,7 @@ Type definition for a set of documents associated with a data product
 <tbody>
 <tr>
 <td colspan="2" valign="top"><strong>specId</strong></td>
-<td valign="top"><a href="#scalars">Int</a></td>
+<td valign="top"><a href="#scalars">String</a></td>
 <td>
 
 Document identifier for the associated document
