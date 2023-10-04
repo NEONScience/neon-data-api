@@ -2,12 +2,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import getGraphiQL from './GraphiQL';
+import AppGraphiQL from './AppGraphiQL';
 
 import './App.css';
 import 'graphiql/graphiql.css';
 
 ReactDOM.render(
-  getGraphiQL(),
+  <AppGraphiQL />,
   document.getElementById('root'),
 );

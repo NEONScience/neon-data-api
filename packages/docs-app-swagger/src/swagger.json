@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.7.0",
+    "version": "0.8.0",
     "title": "NEON Data API Requests",
     "description": "Expand the options below, click GET, and then click TRY IT OUT to see example calls."
   },

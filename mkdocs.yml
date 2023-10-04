@@ -28,8 +28,10 @@ theme:
     - navigation.tabs
     - navigation.expand
     - navigation.instant
+    - navigation.instant.progress
     - navigation.sections
     - navigation.top
+    - navigation.footer
   font:
     text: 'Inter'
     code: 'Roboto Mono'
@@ -82,7 +84,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.smartsymbols
   - pymdownx.superfences
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - toc:
       permalink: true
 
