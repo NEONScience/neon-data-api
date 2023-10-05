@@ -133,7 +133,7 @@ Information about each data product
 |**changeLogs**|List of issues and associated details for the product|[[changeLogs](#changelogs)]|
 |**specs**|List of documents, including protocols or user guides, associated with the data product|[[spec](#spec)]|
 |**keywords**|List of words and phrases associated with the data product|[string]|
-|**biorepositoryCollections**|List of NEON biorepository collections associated with the data product|[biorepositoryCollections](#biorepository-collections)|
+|**biorepositoryCollections**|List of NEON biorepository collections associated with the data product|[[biorepositoryCollections](#biorepository-collections)]|
 |**releases**|List of releases that this product has available data within|[[releases](#product-releases)]|
 |**siteCodes**|List of sites and months of available data|[[siteCodes](#sitecodes)]|
 
