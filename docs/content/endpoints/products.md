@@ -133,6 +133,7 @@ Information about each data product
 |**changeLogs**|List of issues and associated details for the product|[[changeLogs](#changelogs)]|
 |**specs**|List of documents, including protocols or user guides, associated with the data product|[[spec](#spec)]|
 |**keywords**|List of words and phrases associated with the data product|[string]|
+|**biorepositoryCollections**|List of NEON biorepository collections associated with the data product|[biorepositoryCollections](#biorepository-collections)|
 |**releases**|List of releases that this product has available data within|[[releases](#product-releases)]|
 |**siteCodes**|List of sites and months of available data|[[siteCodes](#sitecodes)]|
 
@@ -177,6 +178,19 @@ Information about releases that a data product is included in
 |**generationDate**|The generation date of the release|string (date-time)|
 |**url**|The URL to the API endpoint that references the release|string|
 |**productDoi**|Information about the DOI associated with the product and release|[productDoi](#product-productdoi)|
+
+<a name="biorepository-collections"></a>
+### **biorepositoryCollections**  
+
+Information about biorepository collections that are associated with this data product
+
+|Name|Description|Schema|
+|---|---|---|
+|**collectionCode**|The collection code assigned to the collection|string|
+|**collectionName**|The name of the collection|string|
+|**collectionUrl**|The URL to the API endpoint for the specified collection|string|
+|**collecitonContentUrl**|The URL to the biorepository collection landing page|string|
+|**collecitonDownloadUrl**|The URL to the biorepository collection dataset used for downloads|string|
 
 <a name="product-productdoi"></a>
 ### **productDoi**  

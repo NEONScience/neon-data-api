@@ -1,13 +1,11 @@
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import AppGraphiQL from './AppGraphiQL';
 
 import './App.css';
 import 'graphiql/graphiql.css';
 
-ReactDOM.render(
-  <AppGraphiQL />,
-  document.getElementById('root'),
-);
+const container = document.getElementById('root');
+const root = createRoot(container!);
+root.render(<AppGraphiQL />);

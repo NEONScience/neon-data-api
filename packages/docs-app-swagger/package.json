@@ -8,6 +8,7 @@
     "@types/react": "^18.2.24",
     "@types/react-dom": "^18.2.9",
     "@types/resize-observer-browser": "^0.1.8",
+    "@types/swagger-ui-react": "^4.18.1",
     "isomorphic-form-data": "^2.0.0",
     "querystring-browser": "^1.0.4",
     "react": "~18.2.0",

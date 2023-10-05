@@ -1905,6 +1905,13 @@
             "type": "string"
           }
         },
+        "biorepositoryCollections": {
+          "type": "array",
+          "description": "List of NEON biorepository collections associated with the data product",
+          "items": {
+            "$ref": "#/definitions/biorepositoryCollection"
+          }
+        },
         "releases": {
           "type": "array",
           "description": "List of releases that this product has available data within.",
@@ -1988,6 +1995,31 @@
               }
             }
           }
+        }
+      }
+    },
+    "biorepositoryCollection": {
+      "type": "object",
+      "properties": {
+        "collectionCode": {
+          "type": "string",
+          "description": "The collection code assigned to the collection."
+        },
+        "collectionName": {
+          "type": "string",
+          "description": "The name of the collection."
+        },
+        "collectionUrl": {
+          "type": "string",
+          "description": "The URL to the API endpoint for the specified collection."
+        },
+        "collecitonContentUrl": {
+          "type": "string",
+          "description": "The URL to the biorepository collection landing page."
+        },
+        "collecitonDownloadUrl": {
+          "type": "string",
+          "description": "The URL to the biorepository collection dataset used for downloads."
         }
       }
     },
