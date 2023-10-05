@@ -189,8 +189,8 @@ Information about biorepository collections that are associated with this data p
 |**collectionCode**|The collection code assigned to the collection|string|
 |**collectionName**|The name of the collection|string|
 |**collectionUrl**|The URL to the API endpoint for the specified collection|string|
-|**collecitonContentUrl**|The URL to the biorepository collection landing page|string|
-|**collecitonDownloadUrl**|The URL to the biorepository collection dataset used for downloads|string|
+|**collectionContentUrl**|The URL to the biorepository collection landing page|string|
+|**collectionDownloadUrl**|The URL to download the biorepository collection dataset|string|
 
 <a name="product-productdoi"></a>
 ### **productDoi**  

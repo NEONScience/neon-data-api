@@ -2013,13 +2013,13 @@
           "type": "string",
           "description": "The URL to the API endpoint for the specified collection."
         },
-        "collecitonContentUrl": {
+        "collectionContentUrl": {
           "type": "string",
           "description": "The URL to the biorepository collection landing page."
         },
-        "collecitonDownloadUrl": {
+        "collectionDownloadUrl": {
           "type": "string",
-          "description": "The URL to the biorepository collection dataset used for downloads."
+          "description": "The URL to download the biorepository collection dataset."
         }
       }
     },
