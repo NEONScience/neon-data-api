@@ -98,6 +98,11 @@ footer.md-footer .md-footer-meta .md-footer-meta__inner {
   margin: 1rem auto 1rem auto;
   padding: 0 .6rem;
 }
+.md-footer.md-footer-nav.md-footer-nav__logo.md-footer-nav__logo--prev {
+  margin: 1rem auto 1rem auto;
+  padding: 0 .6rem;
+  float: right;
+}
 .md-footer-footnote {
   font-size: 0.7rem;
   padding: 10px 10px 30px 10px;

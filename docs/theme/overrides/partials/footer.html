@@ -43,10 +43,27 @@
           </a>
         {% endif %}
 
-        <!-- Custon NEON logo -->
-        <div class="md-footer md-footer-nav md-footer-nav__logo">
-          {% include ".icons/neon/neonscience-logo-white.svg" %}
-        </div>
+        {% if page.previous_page and page.next_page %}
+          <!-- Custon NEON logo -->
+          <div class="md-footer md-footer-nav md-footer-nav__logo">
+            {% include ".icons/neon/neonscience-logo-white.svg" %}
+          </div>
+        {% elif page.previous_page %}
+          <!-- Custon NEON logo -->
+          <div class="md-footer md-footer-nav md-footer-nav__logo md-footer-nav__logo--prev">
+            {% include ".icons/neon/neonscience-logo-white.svg" %}
+          </div>
+        {% elif page.next_page %}
+          <!-- Custon NEON logo -->
+          <div class="md-footer md-footer-nav md-footer-nav__logo">
+            {% include ".icons/neon/neonscience-logo-white.svg" %}
+          </div>
+        {% else %}
+          <!-- Custon NEON logo -->
+          <div class="md-footer md-footer-nav md-footer-nav__logo">
+            {% include ".icons/neon/neonscience-logo-white.svg" %}
+          </div>
+        {% endif %}
 
       </nav>
     {% endif %}
