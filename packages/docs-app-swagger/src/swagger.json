@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.7.0",
+    "version": "0.8.0",
     "title": "NEON Data API Requests",
     "description": "Expand the options below, click GET, and then click TRY IT OUT to see example calls."
   },
@@ -1905,6 +1905,13 @@
             "type": "string"
           }
         },
+        "biorepositoryCollections": {
+          "type": "array",
+          "description": "List of NEON biorepository collections associated with the data product",
+          "items": {
+            "$ref": "#/definitions/biorepositoryCollection"
+          }
+        },
         "releases": {
           "type": "array",
           "description": "List of releases that this product has available data within.",
@@ -1988,6 +1995,31 @@
               }
             }
           }
+        }
+      }
+    },
+    "biorepositoryCollection": {
+      "type": "object",
+      "properties": {
+        "collectionCode": {
+          "type": "string",
+          "description": "The collection code assigned to the collection."
+        },
+        "collectionName": {
+          "type": "string",
+          "description": "The name of the collection."
+        },
+        "collectionUrl": {
+          "type": "string",
+          "description": "The URL to the API endpoint for the specified collection."
+        },
+        "collectionContentUrl": {
+          "type": "string",
+          "description": "The URL to the biorepository collection landing page."
+        },
+        "collectionDownloadUrl": {
+          "type": "string",
+          "description": "The URL to download the biorepository collection dataset."
         }
       }
     },

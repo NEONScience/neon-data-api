@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import getSwaggerUI from './SwaggerWrapper';
+import AppSwaggerUI from './AppSwaggerUI';
 
 import 'swagger-ui-react/swagger-ui.css';
 import './App.css';
@@ -33,7 +33,7 @@ const App: React.FC = () => {
   });
   return (
     <div className="neon-data-api-docs-swagger">
-      {getSwaggerUI(swaggerJSON)}
+      <AppSwaggerUI spec={swaggerJSON} />
     </div>
   );
 };
