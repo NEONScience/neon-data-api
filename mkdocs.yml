@@ -3,7 +3,7 @@ site_name: NEON Data API
 site_description: 'NEON Data API Documentation'
 site_author: 'Battelle'
 site_dir: site/data-api/
-site_url: 'https://www.neonscience.org'
+site_url: 'https://data.neonscience.org/data-api'
 edit_uri: 'edit/main/docs/content'
 
 docs_dir: 'docs/content'
@@ -52,6 +52,7 @@ nav:
       - 'Sites': 'endpoints/sites.md'
       - 'Releases': 'endpoints/releases.md'
       - 'Data': 'endpoints/data.md'
+      - 'Data Query': 'endpoints/data-query.md'
       - 'Locations': 'endpoints/locations.md'
       - 'Taxonomy': 'endpoints/taxonomy.md'
       - 'Samples': 'endpoints/samples.md'
@@ -79,8 +80,8 @@ markdown_extensions:
   - meta
   - admonition
   - footnotes
-  - codehilite
   - pymdownx.details
+  - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.smartsymbols
   - pymdownx.superfences

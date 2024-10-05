@@ -5,7 +5,7 @@ including availability by product, site, and month (also see the
 [data product catalog](https://data.neonscience.org/data-products/explore)
 to filter products and availability by release). The `/releases/{releaseTag}` 
 endpoint also supplies path based access for a specific release for the 
-`/products`, `/sites`, and `/data` endpoints.
+`/products`, `/sites`, `/data`, and `/data/query` endpoints.
 
 A data release is a set of data files that is static (unchanging), 
 always available to end users, and citable.  

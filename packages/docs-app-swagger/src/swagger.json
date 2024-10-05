@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.8.0",
+    "version": "0.9.0",
     "title": "NEON Data API Requests",
     "description": "Expand the options below, click GET, and then click TRY IT OUT to see example calls."
   },
@@ -1008,6 +1008,205 @@
           },
           "400": {
             "description": "Invalid product, site, or month specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/data/query": {
+      "get": {
+        "description": "Get files available for a given product, one or more sites, date range, release, package combination",
+        "tags": [
+          "Data Query"
+        ],
+        "operationId": "Get_data_query:availability_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "productCode",
+            "in": "query",
+            "description": "Product code to query for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "query",
+            "description": "One or more four letter site codes to query for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startDateMonth",
+            "in": "query",
+            "description": "YYYY-MM start date month to query for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endDateMonth",
+            "in": "query",
+            "description": "YYYY-MM end date month to query for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "release",
+            "in": "query",
+            "description": "The name of the release to query for",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "description": "Package type to query, basic or expanded",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "basic",
+              "expanded"
+            ]
+          },
+          {
+            "name": "includeProvisional",
+            "in": "query",
+            "description": "Optionally include provisional data in the query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available files",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/dataQuery"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or more invalid paramaters specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Get files available for a given product, one or more sites, date range, release, package combination",
+        "tags": [
+          "Data Query"
+        ],
+        "operationId": "Post_data_query:availability_",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "DataQueryRequest",
+            "in": "body",
+            "description": "The data query request",
+            "schema": {
+              "type": "object",
+              "required": [
+                "productCode",
+                "siteCodes",
+                "startDateMonth",
+                "endDateMonth"
+              ],
+              "properties": {
+                "productCode": {
+                  "type": "string",
+                  "description": "Product code to query for files"
+                },
+                "siteCodes": {
+                  "type": "array",
+                  "description": "One or more four letter site codes to query for files",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "startDateMonth": {
+                  "type": "string",
+                  "description": "YYYY-MM start date month to query for files"
+                },
+                "endDateMonth": {
+                  "type": "string",
+                  "description": "YYYY-MM end date month to query for files"
+                },
+                "release": {
+                  "type": "string",
+                  "description": "The name of the release to query for"
+                },
+                "package": {
+                  "type": "string",
+                  "description": "Package type to query, basic or expanded",
+                  "enum": [
+                    "basic",
+                    "expanded"
+                  ]
+                },
+                "includeProvisional": {
+                  "type": "boolean",
+                  "description": "Optionally include provisional data in the query"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available files",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/dataQuery"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or more invalid paramaters specified",
             "schema": {
               "type": "object",
               "properties": {
@@ -2340,6 +2539,93 @@
               "productDoi": {
                 "type": "string",
                 "description": "The DOI for the product within the release."
+              }
+            }
+          }
+        }
+      }
+    },
+    "dataQuery": {
+      "type": "object",
+      "properties": {
+        "productCode": {
+          "type": "string",
+          "description": "Revisioned, shortened code for the data product (DP1.00001.001, DP1.10072.001, etc)"
+        },
+        "siteCodes": {
+          "type": "array",
+          "description": "List of four character site codes available",
+          "items": {
+            "type": "string"
+          }
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start date of the query interval"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end date of the query interval"
+        },
+        "packageType": {
+          "type": "string",
+          "description": "The type of package, basic or expanded"
+        },
+        "releases": {
+          "type": "array",
+          "description": "The list of available releases for the query",
+          "items": {
+            "type": "object",
+            "description": "Describes a release data package",
+            "properties": {
+              "release": {
+                "type": "string",
+                "description": "The name of the release"
+              },
+              "generationDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The generation date of the release"
+              },
+              "packages": {
+                "type": "array",
+                "description": "The list of available packages within the release for the query",
+                "items": {
+                  "type": "object",
+                  "description": "Describes a data package",
+                  "properties": {
+                    "domainCode": {
+                      "type": "string",
+                      "description": "Three character domain abbreviation (D01, D02, etc) for the domain this package is in"
+                    },
+                    "siteCode": {
+                      "type": "string",
+                      "description": "Four character code for the site"
+                    },
+                    "month": {
+                      "type": "string",
+                      "description": "The available month, formatted as YYYY-MM"
+                    },
+                    "packageType": {
+                      "type": "string",
+                      "description": "The type of package, basic or expanded"
+                    },
+                    "generationDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The generation date of the package"
+                    },
+                    "files": {
+                      "type": "array",
+                      "description": "The list of available files within the package for the query",
+                      "items": {
+                        "$ref": "#/definitions/file"
+                      }
+                    }
+                  }
+                }
               }
             }
           }

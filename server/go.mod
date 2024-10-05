@@ -1,3 +1,3 @@
-module neon.portal/server
+module github.com/NEONScience/neon-data-api/server
 
-go 1.17
+go 1.23

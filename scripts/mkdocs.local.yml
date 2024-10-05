@@ -79,8 +79,8 @@ markdown_extensions:
   - meta
   - admonition
   - footnotes
-  - codehilite
   - pymdownx.details
+  - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.smartsymbols
   - pymdownx.superfences

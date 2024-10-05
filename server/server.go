@@ -30,7 +30,7 @@ var healthResponse healthCheckResponse = healthCheckResponse{
 	Status: "UP",
 }
 
-func handleHealthCheck(w http.ResponseWriter, r *http.Request) {
+func handleHealthCheck(w http.ResponseWriter) {
 	log.Println("INFO: Health check up")
 	w.Header().Add("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(healthResponse); err != nil {
@@ -78,7 +78,7 @@ func getRootHandlerFunc() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		switch {
 		case "/health" == r.URL.Path:
-			handleHealthCheck(w, r)
+			handleHealthCheck(w)
 		case routeRegex.MatchString(r.URL.Path):
 			handleFileServer.ServeHTTP(w, r)
 		default:
