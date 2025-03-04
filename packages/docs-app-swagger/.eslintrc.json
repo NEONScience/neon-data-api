@@ -3,7 +3,6 @@
     "../../.eslintrc.json",
     "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:jsx-a11y/recommended"
   ],
   "plugins": ["@typescript-eslint", "react", "import", "jsx-a11y"],

@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 # Builder container for reproducible build environment
 
-FROM python:3.11-alpine AS builder
+FROM python:3.12-alpine AS builder
 
 WORKDIR /usr/src/app
 COPY ./docs /usr/src/app/build-temp/api-docs/docs
@@ -23,7 +23,7 @@ RUN cd /usr/src/app/build-temp/api-docs \
 #-------------------------------------------------------------------------------
 # Builder container for reproducible build environment
 
-FROM golang:1.21-alpine AS go-builder
+FROM golang:1.23-alpine AS go-builder
 
 WORKDIR /go/src/app
 
@@ -39,7 +39,7 @@ RUN go mod verify \
 #-------------------------------------------------------------------------------
 # Build production container with only necessary artifacts
 
-FROM alpine:3.18
+FROM alpine:3.20
 
 # Traefik auto discover labels
 LABEL \

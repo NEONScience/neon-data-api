@@ -212,7 +212,7 @@ Type definition for prototype dataset data
 |---|---|---|
 |**datasetUuid**  |The dataset UUID|string|
 |**datasetProjectTitle**  |The title of the project|string|
-|**files**  |List of data files for the dataset|[prototypeDatasetDataFile](#prototypedatasetdatafile) array|
+|**files**  |List of data files for the dataset|[prototypeDatasetDataFile](#prototypedatafile) array|
 |**dataLocations** |List of data locations for the dataset|[prototypeDataLocation](#prototypedatalocation) array|
 
 <a name="prototypedatafile"></a>

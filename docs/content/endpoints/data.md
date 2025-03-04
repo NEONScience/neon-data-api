@@ -47,18 +47,18 @@ Get files available for a given product/site/month combination
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|Available files|[Response 200](#get_data_availability_resposne_200)|
-|**400**|Product, site not found or invalid date range specified|[Response 400](#get_data_availability_resposne_400)|
+|**200**|Available files|[Response 200](#get_data_availability_response_200)|
+|**400**|Product, site not found or invalid date range specified|[Response 400](#get_data_availability_response_400)|
 |**default**|General error|[error](#error)|
 
-<h5 id="get_data_availability_resposne_200">Response 200</h5>
+<h5 id="get_data_availability_response_200">Response 200</h5>
 
 |Name|Schema|
 |---|---|
 |**data**|[data](#data-productcode-sitecode-year-month-get-data)|
 
 
-<h5 id="get_data_availability_resposne_400">Response 400</h5>
+<h5 id="get_data_availability_response_400">Response 400</h5>
 
 |Name|Schema|
 |---|---|
@@ -252,7 +252,7 @@ Get a data package for a given product/site/month and package combination
 |---|---|---|
 |**name**|The name of the external data object|string|
 |**type**|The type of external data link provided.|string|
-|**url**|URL to external data.|number (int)|
+|**url**|URL to external data.|string|
 
 <a name="error"></a>
 ### **error**

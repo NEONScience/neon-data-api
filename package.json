@@ -1,5 +1,9 @@
 {
   "private": true,
+  "packageManager": "yarn@1.22.22",
+  "config": {
+    "yarnVersion": "1.22.22"
+  },
   "workspaces": [
     "packages/*"
   ],
@@ -10,6 +14,8 @@
     "build:all": "cd packages/docs-app-graphiql && yarn run build && cd ../docs-app-swagger && yarn run build",
     "build:clean-deploy": "yarn run build:all && yarn run apps:clean-deploy",
     "ci": "yarn install --frozen-lockfile",
-    "ci:prod": "yarn install --frozen-lockfile --production"
+    "ci:prod": "yarn install --frozen-lockfile --production",
+    "pm:init": "corepack enable && corepack prepare yarn@1.22.22 --activate",
+    "pm:install": "npm install -g corepack"
   }
 }
