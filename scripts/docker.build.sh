@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_NAME=quay.io/battelleecology/
+REPO_NAME=""
 IMAGE_NAME=portal-public-api-docs
 
 if [ -n "$1" ]; then

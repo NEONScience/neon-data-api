@@ -24,6 +24,12 @@ var (
 	clientRoute   string = os.Getenv("PORTAL_CLIENT_ROUTE")
 	port          string = os.Getenv("PORTAL_PORT")
 	routeRegex           = regexp.MustCompile(fmt.Sprintf(`^%s(.*)`, clientRoute))
+	healthPath    string = "/health"
+)
+
+var (
+	infoLog  = log.New(os.Stdout, "", log.LstdFlags)
+	errorLog = log.New(os.Stderr, "", log.LstdFlags)
 )
 
 var healthResponse healthCheckResponse = healthCheckResponse{
@@ -31,7 +37,7 @@ var healthResponse healthCheckResponse = healthCheckResponse{
 }
 
 func handleHealthCheck(w http.ResponseWriter) {
-	log.Println("INFO: Health check up")
+	infoLog.Println("INFO: Health check up")
 	w.Header().Add("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(healthResponse); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -60,7 +66,7 @@ func (fs sanitizedFileSystem) Open(name string) (http.File, error) {
 	if err != nil {
 		return nil, err
 	}
-	s, err := f.Stat()
+	s, _ := f.Stat()
 	if s.IsDir() {
 		index := fmt.Sprintf("%s/%s", strings.TrimSuffix(name, "/"), indexFilename)
 		ff, err := fs.fs.Open(index)
@@ -77,7 +83,7 @@ func getRootHandlerFunc() http.HandlerFunc {
 	handleFileServer := http.StripPrefix(clientRoute, fs)
 	return func(w http.ResponseWriter, r *http.Request) {
 		switch {
-		case "/health" == r.URL.Path:
+		case healthPath == r.URL.Path:
 			handleHealthCheck(w)
 		case routeRegex.MatchString(r.URL.Path):
 			handleFileServer.ServeHTTP(w, r)
@@ -88,12 +94,12 @@ func getRootHandlerFunc() http.HandlerFunc {
 }
 
 func main() {
-	log.Println("INFO: Starting go static file server...")
+	infoLog.Println("INFO: Starting go static file server...")
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	http.HandleFunc("/", getRootHandlerFunc())
-	log.Println(fmt.Sprintf("INFO: Listening on port %s", port))
-	log.Println(fmt.Sprintf("INFO: Serving files from directory %s", fileDir))
+	infoLog.Printf("INFO: Listening on port %s", port)
+	infoLog.Printf("INFO: Serving files from directory %s", fileDir)
 	if err := http.ListenAndServe(fmt.Sprintf(":%s", port), nil); err != nil {
-		log.Fatalf("Error in ListenAndServe: %s", err)
+		errorLog.Fatalf("Error in ListenAndServe: %s", err)
 	}
 }
