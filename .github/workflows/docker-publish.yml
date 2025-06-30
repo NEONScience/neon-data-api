@@ -57,4 +57,4 @@ jobs:
           files: |
             ./docker-bake.hcl
             ${{ steps.meta.outputs.bake-file }}
-          push: false
+          push: true
