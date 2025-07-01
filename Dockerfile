@@ -41,13 +41,6 @@ RUN go mod verify \
 
 FROM alpine:3.20
 
-# Traefik auto discover labels
-LABEL \
-  traefik.http.services.portal-public-api-docs.loadbalancer.server.port="3020" \
-  traefik.http.services.portal-public-api-docs.loadbalancer.healthcheck.path="/health" \
-  traefik.http.services.portal-public-api-docs.loadbalancer.healthcheck.interval="10s" \
-  traefik.http.services.portal-public-api-docs.loadbalancer.healthcheck.timeout="5s"
-
 EXPOSE 3020
 
 # Copy build artifacts from builder container
@@ -58,11 +51,10 @@ COPY --from=go-builder /go/src/app .
 ENV PORTAL_CLIENT_ROUTE="/"
 ENV PORTAL_PORT=3020
 
-RUN addgroup -S go \
-  && adduser -S -G go go \
-  && chown -R go:go /go/src/app
+RUN addgroup --gid 1301 docs \
+  && adduser -u 444 -D -G docs docs \
+  && chown -R docs:docs /go/src/app
 
-# Run as the go user
-USER go
+USER docs
 
 CMD ["./server"]
