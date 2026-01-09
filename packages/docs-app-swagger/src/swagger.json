@@ -3024,7 +3024,7 @@
           "type": "string"
         },
 		"updateDate": {
-          "description": "The date that the taxonomic list was last updated",
+          "description": "The date that this taxonomic record was last updated",
           "type": "string"			
 		},	
         "dwc:scientificName": {
