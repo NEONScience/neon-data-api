@@ -85,6 +85,7 @@ Get taxonomic lists.
 |**taxonTypeCode**|NEON taxonomic grouping|string|
 |**taxonID**|NEON taxonomic code|string|
 |**acceptedTaxonID**|Accepted taxonomic code from the authoritative source (dwc:nameAccordingToID)|string|
+|**updateDate**|The date that this taxonomic record was last updated|string|
 |**dwc:scientificName**|Scientific name, associated with the taxonID.  This is the name of the lowest level taxonomic rank that can be determined.  http://rs.tdwg.org/dwc/terms/scientificName|string|
 |**dwc:scientificNameAuthorship**|The authorship information for the scientificName formatted according to the conventions of the applicable nomenclaturalCode.  http://rs.tdwg.org/dwc/terms/scientificNameAuthorship|string|
 |**dwc:taxonRank**|The lowest level taxonomic rank that can be determined for the individual or specimen.  http://rs.tdwg.org/dwc/terms/taxonRank|string|

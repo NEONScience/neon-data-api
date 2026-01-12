@@ -3023,6 +3023,10 @@
           "description": "Accepted taxonomic code from the authoritative source (dwc:nameAccordingToID)",
           "type": "string"
         },
+		"updateDate": {
+          "description": "The date that this taxonomic record was last updated",
+          "type": "string"			
+		},	
         "dwc:scientificName": {
           "description": "Scientific name, associated with the taxonID.  This is the name of the lowest level taxonomic rank that can be determined.  http://rs.tdwg.org/dwc/terms/scientificName",
           "type": "string"
