@@ -44,20 +44,20 @@ extra_css:
 # Nav items
 nav:
   - Home: 'https://www.neonscience.org'
-  - Data Portal: 'https://www.neonscience.org/data'
+  - Data Portal: 'https://data.neonscience.org/data-products/explore'
   - NEON Data API:
     - 'About': index.md
-    - 'REST API':
+    - 'REST API Explorer & Endpoints':
+      - 'REST API Explorer': 'explorer/index.md'
       - 'Products': 'endpoints/products.md'
       - 'Sites': 'endpoints/sites.md'
-      - 'Releases': 'endpoints/releases.md'
+      - 'Locations': 'endpoints/locations.md'
       - 'Data': 'endpoints/data.md'
       - 'Data Query': 'endpoints/data-query.md'
-      - 'Locations': 'endpoints/locations.md'
-      - 'Taxonomy': 'endpoints/taxonomy.md'
+      - 'Releases': 'endpoints/releases.md'
       - 'Samples': 'endpoints/samples.md'
+      - 'Taxonomy': 'endpoints/taxonomy.md'
       - 'Prototype Datasets': 'endpoints/prototype-datasets.md'
-      - 'REST API Explorer': 'explorer/index.md'
     - 'GraphQL API':
       - 'Overview': 'graphql/index.md'
       - 'GraphQL Explorer': 'graphql/explorer/index.md'
