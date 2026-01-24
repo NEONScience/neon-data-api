@@ -53,7 +53,7 @@ const SwaggerService = {
       const findPathKey: string | undefined = Object.keys(TRUNCATE_ENDPOINTS)
         .find((value: string): boolean => url.pathname.startsWith(value));
       const appliedPathKey: string = exists(findPathKey)
-        ? findPathKey as string
+        ? findPathKey
         : '';
       let appliedPath: string = TRUNCATE_ENDPOINTS[appliedPathKey];
       if (appliedPath === 'releases') {

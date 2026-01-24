@@ -7,4 +7,4 @@ docker run -d --init \
   -p 3020:3020 \
   --memory="64M" \
   --name portal-public-api-docs \
-  quay.io/battelleecology/portal-public-api-docs
+  portal-public-api-docs

@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-import GraphiQL from 'graphiql';
-import { Fetcher, FetcherParams, FetcherReturnType } from '@graphiql/toolkit';
-import { useTheme } from '@graphiql/react';
+import { GraphiQL } from 'graphiql';
+import { createGraphiQLFetcher } from '@graphiql/toolkit';
+import type { Fetcher } from '@graphiql/toolkit';
 
 import Env from './env';
 
@@ -39,28 +38,15 @@ const defaultVariables = `
 }
 `;
 
-const graphQLFetcher: Fetcher = (graphQLParams: FetcherParams): FetcherReturnType => {
-  const init = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(graphQLParams),
-  };
-  return fetch(`${Env.getApiHost()}/graphql`, init)
-    .then((response: Response) => response.json());
-};
+const graphQLFetcher: Fetcher = createGraphiQLFetcher({ url: `${Env.getApiHost()}/graphql` });
 
-const AppGraphiQL = () => {
-  const { setTheme } = useTheme();
-  useEffect(() => {
-    setTheme('light');
-  }, []);
-  return (
-    <GraphiQL
-      fetcher={graphQLFetcher}
-      defaultQuery={defaultQuery}
-      variables={defaultVariables}
-    />
-  );
-};
+const AppGraphiQL = () => ((
+  <GraphiQL
+    fetcher={graphQLFetcher}
+    defaultTheme={"light"}
+    defaultQuery={defaultQuery}
+    initialVariables={defaultVariables}
+  />
+));
 
 export default AppGraphiQL;

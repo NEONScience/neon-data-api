@@ -23,7 +23,7 @@ RUN cd /usr/src/app/build-temp/api-docs \
 #-------------------------------------------------------------------------------
 # Builder container for reproducible build environment
 
-FROM golang:1.23-alpine AS go-builder
+FROM golang:1.25-alpine AS go-builder
 
 WORKDIR /go/src/app
 
@@ -39,7 +39,7 @@ RUN go mod verify \
 #-------------------------------------------------------------------------------
 # Build production container with only necessary artifacts
 
-FROM alpine:3.20
+FROM alpine:3.23
 
 EXPOSE 3020
 

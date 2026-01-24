@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.9.0",
+    "version": "0.10.0",
     "title": "NEON Data API Requests",
     "description": "Expand the options below, click GET, and then click TRY IT OUT to see example calls."
   },
@@ -3025,8 +3025,8 @@
         },
 		"updateDate": {
           "description": "The date that this taxonomic record was last updated",
-          "type": "string"			
-		},	
+          "type": "string"
+		},
         "dwc:scientificName": {
           "description": "Scientific name, associated with the taxonID.  This is the name of the lowest level taxonomic rank that can be determined.  http://rs.tdwg.org/dwc/terms/scientificName",
           "type": "string"
