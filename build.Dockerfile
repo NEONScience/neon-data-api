@@ -1,4 +1,4 @@
-FROM node:24.13-alpine AS builder
+FROM node:24.13-alpine
 
 ARG YARN_VERSION
 
@@ -8,6 +8,7 @@ RUN corepack enable && corepack prepare yarn@${YARN_VERSION} --activate
 
 WORKDIR /app
 COPY packages ./packages
+COPY scripts/package/docker-copy-dist.sh ./scripts/package/docker-copy-dist.sh
 COPY .yarnrc.yml ./.yarnrc.yml
 COPY package.json ./package.json
 COPY yarn.lock ./yarn.lock

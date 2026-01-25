@@ -32,22 +32,10 @@
     "vite-plugin-monaco-editor": "^1.1.0"
   },
   "scripts": {
-    "start": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "start": "vite --open",
+    "build": "npx tsc --build && vite build",
+    "lint": "npx eslint .",
     "preview": "vite preview",
     "generate:graphql-markdown": "yarn run graphql-markdown https://data.neonscience.org/graphql > ./graphql/schema.md"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }
