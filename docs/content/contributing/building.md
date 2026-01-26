@@ -11,7 +11,7 @@ The docs project consists of two main components:
 ### **Requirements**
 
   - MkDocs Project development  
-    - Python 3.12
+    - Python 3.12+
     - Pip, package manager for Python
   - React application development. 
     - Node.js LTS version 24

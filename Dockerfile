@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 # Builder container for reproducible build environment
 
-FROM python:3.12-alpine AS builder
+FROM python:3.14-alpine AS builder
 
 WORKDIR /usr/src/app
 COPY ./docs /usr/src/app/build-temp/api-docs/docs
