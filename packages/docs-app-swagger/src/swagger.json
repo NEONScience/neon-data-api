@@ -219,6 +219,583 @@
         }
       }
     },
+    "/locations/{locationName}": {
+      "get": {
+        "description": "Get information about a location",
+        "tags": [
+          "Locations"
+        ],
+        "operationId": "Get_locations:locationName_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "locationName",
+            "in": "path",
+            "description": "Location to get",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "history",
+            "in": "query",
+            "description": "Option to obtain location history information",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "hierarchy",
+            "in": "query",
+            "description": "Option to obtain location hierarchy information",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "locationType",
+            "in": "query",
+            "description": "\"When obtaining location hierarchy, specify a type of descendant to query for. For example, to obtain the location hierarchy for all towers at location CPER, utilize: /CPER?hierarchy=true&locationType=TOWER\"",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single location",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/location"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Location(s) not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/locations/sites": {
+      "get": {
+        "description": "Get information about the site-level locations",
+        "tags": [
+          "Locations",
+          "Sites"
+        ],
+        "operationId": "Get_locations_sites_",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of locations",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/location"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/data/{productCode}/{siteCode}/{year-month}": {
+      "get": {
+        "description": "Get files available for a given product/site/month combination",
+        "tags": [
+          "Data"
+        ],
+        "operationId": "Get_data:availability_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Product to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "path",
+            "description": "Site to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year-month",
+            "in": "path",
+            "description": "YYYY-MM month to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "description": "Package type to return, basic or expanded",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "basic",
+              "expanded"
+            ]
+          },
+          {
+            "name": "release",
+            "in": "query",
+            "description": "The name of the release to get for",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available files",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/data"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Product, site not found or invalid date range specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/data/{productCode}/{siteCode}/{year-month}/{filename}": {
+      "get": {
+        "description": "Get a file for a given product/site/month/filename combination",
+        "tags": [
+          "Data"
+        ],
+        "operationId": "Get_data:availability_file_",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Product to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "path",
+            "description": "Site to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year-month",
+            "in": "path",
+            "description": "YYYY-MM month to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filename",
+            "in": "path",
+            "description": "The name of the file",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "description": "Package type to return, basic or expanded",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "basic",
+              "expanded"
+            ]
+          },
+          {
+            "name": "release",
+            "in": "query",
+            "description": "The name of the release to get for",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available file data",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "302": {
+            "description": "Found available file and redirects to data",
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          },
+          "400": {
+            "description": "Invalid file name specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/data/package/{productCode}/{siteCode}/{year-month}": {
+      "get": {
+        "description": "Get a data package for a given product/site/month and package combination",
+        "tags": [
+          "Data"
+        ],
+        "operationId": "Get_data:availability_package_",
+        "produces": [
+          "application/zip"
+        ],
+        "parameters": [
+          {
+            "name": "productCode",
+            "in": "path",
+            "description": "Product to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "path",
+            "description": "Site to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "year-month",
+            "in": "path",
+            "description": "YYYY-MM month to check for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "description": "Package type to return, basic or expanded",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "basic",
+              "expanded"
+            ]
+          },
+          {
+            "name": "release",
+            "in": "query",
+            "description": "The name of the release to get for",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available data package as zip",
+            "content": {
+              "application/zip": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid product, site, or month specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/data/query": {
+      "get": {
+        "description": "Get files available for a given product, one or more sites, date range, release, package combination",
+        "tags": [
+          "Data Query"
+        ],
+        "operationId": "Get_data_query:availability_",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "productCode",
+            "in": "query",
+            "description": "Product code to query for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "siteCode",
+            "in": "query",
+            "description": "One or more four letter site codes to query for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startDateMonth",
+            "in": "query",
+            "description": "YYYY-MM start date month to query for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endDateMonth",
+            "in": "query",
+            "description": "YYYY-MM end date month to query for files",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "release",
+            "in": "query",
+            "description": "The name of the release to query for",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "description": "Package type to query, basic or expanded",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "basic",
+              "expanded"
+            ]
+          },
+          {
+            "name": "includeProvisional",
+            "in": "query",
+            "description": "Optionally include provisional data in the query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available files",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/dataQuery"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or more invalid paramaters specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Get files available for a given product, one or more sites, date range, release, package combination",
+        "tags": [
+          "Data Query"
+        ],
+        "operationId": "Post_data_query:availability_",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "DataQueryRequest",
+            "in": "body",
+            "description": "The data query request",
+            "schema": {
+              "type": "object",
+              "required": [
+                "productCode",
+                "siteCodes",
+                "startDateMonth",
+                "endDateMonth"
+              ],
+              "properties": {
+                "productCode": {
+                  "type": "string",
+                  "description": "Product code to query for files"
+                },
+                "siteCodes": {
+                  "type": "array",
+                  "description": "One or more four letter site codes to query for files",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "startDateMonth": {
+                  "type": "string",
+                  "description": "YYYY-MM start date month to query for files"
+                },
+                "endDateMonth": {
+                  "type": "string",
+                  "description": "YYYY-MM end date month to query for files"
+                },
+                "release": {
+                  "type": "string",
+                  "description": "The name of the release to query for"
+                },
+                "package": {
+                  "type": "string",
+                  "description": "Package type to query, basic or expanded",
+                  "enum": [
+                    "basic",
+                    "expanded"
+                  ]
+                },
+                "includeProvisional": {
+                  "type": "boolean",
+                  "description": "Optionally include provisional data in the query"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available files",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/definitions/dataQuery"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or more invalid paramaters specified",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
     "/releases": {
       "get": {
         "description": "Get information about all available data releases",
@@ -761,755 +1338,6 @@
         }
       }
     },
-    "/data/{productCode}/{siteCode}/{year-month}": {
-      "get": {
-        "description": "Get files available for a given product/site/month combination",
-        "tags": [
-          "Data"
-        ],
-        "operationId": "Get_data:availability_",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "productCode",
-            "in": "path",
-            "description": "Product to check for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "siteCode",
-            "in": "path",
-            "description": "Site to check for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "year-month",
-            "in": "path",
-            "description": "YYYY-MM month to check for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "package",
-            "in": "query",
-            "description": "Package type to return, basic or expanded",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "basic",
-              "expanded"
-            ]
-          },
-          {
-            "name": "release",
-            "in": "query",
-            "description": "The name of the release to get for",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Available files",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "$ref": "#/definitions/data"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Product, site not found or invalid date range specified",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "errors": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/error"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "General error",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        }
-      }
-    },
-    "/data/{productCode}/{siteCode}/{year-month}/{filename}": {
-      "get": {
-        "description": "Get a file for a given product/site/month/filename combination",
-        "tags": [
-          "Data"
-        ],
-        "operationId": "Get_data:availability_file_",
-        "produces": [
-          "application/octet-stream"
-        ],
-        "parameters": [
-          {
-            "name": "productCode",
-            "in": "path",
-            "description": "Product to check for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "siteCode",
-            "in": "path",
-            "description": "Site to check for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "year-month",
-            "in": "path",
-            "description": "YYYY-MM month to check for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "filename",
-            "in": "path",
-            "description": "The name of the file",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "package",
-            "in": "query",
-            "description": "Package type to return, basic or expanded",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "basic",
-              "expanded"
-            ]
-          },
-          {
-            "name": "release",
-            "in": "query",
-            "description": "The name of the release to get for",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Available file data",
-            "schema": {
-              "type": "string",
-              "format": "binary"
-            }
-          },
-          "302": {
-            "description": "Found available file and redirects to data",
-            "schema": {
-              "type": "string",
-              "format": "binary"
-            }
-          },
-          "400": {
-            "description": "Invalid file name specified",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "errors": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/error"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "General error",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        }
-      }
-    },
-    "/data/package/{productCode}/{siteCode}/{year-month}": {
-      "get": {
-        "description": "Get a data package for a given product/site/month and package combination",
-        "tags": [
-          "Data"
-        ],
-        "operationId": "Get_data:availability_package_",
-        "produces": [
-          "application/zip"
-        ],
-        "parameters": [
-          {
-            "name": "productCode",
-            "in": "path",
-            "description": "Product to check for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "siteCode",
-            "in": "path",
-            "description": "Site to check for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "year-month",
-            "in": "path",
-            "description": "YYYY-MM month to check for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "package",
-            "in": "query",
-            "description": "Package type to return, basic or expanded",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "basic",
-              "expanded"
-            ]
-          },
-          {
-            "name": "release",
-            "in": "query",
-            "description": "The name of the release to get for",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Available data package as zip",
-            "content": {
-              "application/zip": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid product, site, or month specified",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "errors": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/error"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "General error",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        }
-      }
-    },
-    "/data/query": {
-      "get": {
-        "description": "Get files available for a given product, one or more sites, date range, release, package combination",
-        "tags": [
-          "Data Query"
-        ],
-        "operationId": "Get_data_query:availability_",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "productCode",
-            "in": "query",
-            "description": "Product code to query for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "siteCode",
-            "in": "query",
-            "description": "One or more four letter site codes to query for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "startDateMonth",
-            "in": "query",
-            "description": "YYYY-MM start date month to query for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "endDateMonth",
-            "in": "query",
-            "description": "YYYY-MM end date month to query for files",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "release",
-            "in": "query",
-            "description": "The name of the release to query for",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "package",
-            "in": "query",
-            "description": "Package type to query, basic or expanded",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "basic",
-              "expanded"
-            ]
-          },
-          {
-            "name": "includeProvisional",
-            "in": "query",
-            "description": "Optionally include provisional data in the query",
-            "required": false,
-            "type": "boolean"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Available files",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "$ref": "#/definitions/dataQuery"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One or more invalid paramaters specified",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "errors": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/error"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "General error",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Get files available for a given product, one or more sites, date range, release, package combination",
-        "tags": [
-          "Data Query"
-        ],
-        "operationId": "Post_data_query:availability_",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "DataQueryRequest",
-            "in": "body",
-            "description": "The data query request",
-            "schema": {
-              "type": "object",
-              "required": [
-                "productCode",
-                "siteCodes",
-                "startDateMonth",
-                "endDateMonth"
-              ],
-              "properties": {
-                "productCode": {
-                  "type": "string",
-                  "description": "Product code to query for files"
-                },
-                "siteCodes": {
-                  "type": "array",
-                  "description": "One or more four letter site codes to query for files",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "startDateMonth": {
-                  "type": "string",
-                  "description": "YYYY-MM start date month to query for files"
-                },
-                "endDateMonth": {
-                  "type": "string",
-                  "description": "YYYY-MM end date month to query for files"
-                },
-                "release": {
-                  "type": "string",
-                  "description": "The name of the release to query for"
-                },
-                "package": {
-                  "type": "string",
-                  "description": "Package type to query, basic or expanded",
-                  "enum": [
-                    "basic",
-                    "expanded"
-                  ]
-                },
-                "includeProvisional": {
-                  "type": "boolean",
-                  "description": "Optionally include provisional data in the query"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Available files",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "$ref": "#/definitions/dataQuery"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One or more invalid paramaters specified",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "errors": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/error"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "General error",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        }
-      }
-    },
-    "/locations/{locationName}": {
-      "get": {
-        "description": "Get information about a location",
-        "tags": [
-          "Locations"
-        ],
-        "operationId": "Get_locations:locationName_",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "locationName",
-            "in": "path",
-            "description": "Location to get",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "history",
-            "in": "query",
-            "description": "Option to obtain location history information",
-            "required": false,
-            "type": "boolean"
-          },
-          {
-            "name": "hierarchy",
-            "in": "query",
-            "description": "Option to obtain location hierarchy information",
-            "required": false,
-            "type": "boolean"
-          },
-          {
-            "name": "locationType",
-            "in": "query",
-            "description": "\"When obtaining location hierarchy, specify a type of descendant to query for. For example, to obtain the location hierarchy for all towers at location CPER, utilize: /CPER?hierarchy=true&locationType=TOWER\"",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Single location",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "$ref": "#/definitions/location"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Location(s) not found",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "errors": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/error"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "General error",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        }
-      }
-    },
-    "/locations/sites": {
-      "get": {
-        "description": "Get information about the site-level locations",
-        "tags": [
-          "Locations",
-          "Sites"
-        ],
-        "operationId": "Get_locations_sites_",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "List of locations",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/location"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "General error",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        }
-      }
-    },
-    "/taxonomy": {
-      "get": {
-        "description": "Get taxonomic lists",
-        "tags": [
-          "Taxonomy"
-        ],
-        "operationId": "Get_taxonomy",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "taxonTypeCode",
-            "in": "query",
-            "description": "Taxon type code to get. Must not be used in conjunction with a taxon rank query parameter.",
-            "required": false,
-            "enum": [
-              "ALGAE",
-              "BEETLE",
-              "BIRD",
-              "FISH",
-              "HERPETOLOGY",
-              "MACROINVERTEBRATE",
-              "MOSQUITO",
-              "MOSQUITO_PATHOGENS",
-              "SMALL_MAMMAL",
-              "PLANT",
-              "TICK"
-            ],
-            "type": "string"
-          },
-          {
-            "name": "kingdom",
-            "in": "query",
-            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "phylum",
-            "in": "query",
-            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "division",
-            "in": "query",
-            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "order",
-            "in": "query",
-            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "class",
-            "in": "query",
-            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "family",
-            "in": "query",
-            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "genus",
-            "in": "query",
-            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "scientificname",
-            "in": "query",
-            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "verbose",
-            "in": "query",
-            "description": "Get verbose result set",
-            "required": false,
-            "type": "boolean"
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "description": "The number of items to skip before starting to collect the result set",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The number of items to limit the result set to",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "stream",
-            "in": "query",
-            "description": "Option to obtain the result as a stream. Utilize for large requests.",
-            "required": false,
-            "type": "boolean"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of taxonomic information",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "count": {
-                  "type": "integer",
-                  "description": "The number of results in the current paged response"
-                },
-                "total": {
-                  "type": "integer",
-                  "description": "The total number of results for the query"
-                },
-                "prev": {
-                  "type": "string",
-                  "format": "uri",
-                  "description": "Link to the previous page of results when available"
-                },
-                "next": {
-                  "type": "string",
-                  "format": "uri",
-                  "description": "Link to the next page of results when available"
-                },
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/taxonomy"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Taxonomic data does not exist for specified query",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "errors": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/error"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "General error",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        }
-      }
-    },
     "/samples/view": {
       "get": {
         "description": "For a given sample identifier, get a list of sample custody events as well as any parent and child sample identifiers that currently exist.",
@@ -1749,6 +1577,178 @@
             "description": "Sample Not Found",
             "schema": {
               "$ref": "#/definitions/error"
+            }
+          },
+          "default": {
+            "description": "General error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/taxonomy": {
+      "get": {
+        "description": "Get taxonomic lists",
+        "tags": [
+          "Taxonomy"
+        ],
+        "operationId": "Get_taxonomy",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "taxonTypeCode",
+            "in": "query",
+            "description": "Taxon type code to get. Must not be used in conjunction with a taxon rank query parameter.",
+            "required": false,
+            "enum": [
+              "ALGAE",
+              "BEETLE",
+              "BIRD",
+              "FISH",
+              "HERPETOLOGY",
+              "MACROINVERTEBRATE",
+              "MOSQUITO",
+              "MOSQUITO_PATHOGENS",
+              "SMALL_MAMMAL",
+              "PLANT",
+              "TICK"
+            ],
+            "type": "string"
+          },
+          {
+            "name": "kingdom",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phylum",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "division",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "class",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "family",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "genus",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "scientificname",
+            "in": "query",
+            "description": "The taxon rank to get. Must not be used in conjunction with taxon type code.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "verbose",
+            "in": "query",
+            "description": "Get verbose result set",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "The number of items to skip before starting to collect the result set",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of items to limit the result set to",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "stream",
+            "in": "query",
+            "description": "Option to obtain the result as a stream. Utilize for large requests.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of taxonomic information",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer",
+                  "description": "The number of results in the current paged response"
+                },
+                "total": {
+                  "type": "integer",
+                  "description": "The total number of results for the query"
+                },
+                "prev": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Link to the previous page of results when available"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Link to the next page of results when available"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/taxonomy"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Taxonomic data does not exist for specified query",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/error"
+                  }
+                }
+              }
             }
           },
           "default": {
