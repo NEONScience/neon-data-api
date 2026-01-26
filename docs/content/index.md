@@ -22,5 +22,8 @@ The [GraphQL](https://data.neonscience.org/data-api/graphql/) endpoint allows us
   
 ## **Provide Feedback**
 If you have design ideas, functionality requests, bug notes, examples of how you used the API, etc., please [contact us](https://www.neonscience.org/about/contact-us).
+<<<<<<< HEAD
 
 </br >
+=======
+>>>>>>> 4bbcb67a3e56edc068a010a6ce653debd4487a4e
