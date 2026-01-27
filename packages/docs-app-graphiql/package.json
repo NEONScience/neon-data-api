@@ -1,52 +1,41 @@
 {
   "name": "docs-app-graphiql",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "private": true,
   "homepage": ".",
+  "type": "module",
   "dependencies": {
-    "@graphiql/react": "^0.26.2",
-    "@graphiql/toolkit": "^0.11.0",
-    "@types/node": "^22.7.4",
-    "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0",
-    "graphiql": "^3.7.1",
-    "graphql": "^16.9.0",
-    "react": "~18.3.1",
-    "react-dom": "~18.3.1",
-    "react-scripts": "^5.0.1",
-    "typescript": "~5.6.2"
+    "@graphiql/toolkit": "^0.11.3",
+    "graphiql": "^5.2.2",
+    "graphql": "^16.12.0",
+    "graphql-ws": "^6.0.6",
+    "monaco-editor": "~0.52.2",
+    "monaco-graphql": "^1.7.3",
+    "prettier": "^3.8.1",
+    "react": "~19.2.3",
+    "react-dom": "~19.2.3"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "eslint": "^8.57.1",
-    "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-jsx-a11y": "^6.10.0",
-    "eslint-plugin-react": "^7.37.1",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "graphql-markdown": "^7.3.0"
+    "@eslint/js": "^9.39.2",
+    "@types/node": "^24.10.9",
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react-swc": "^4.2.2",
+    "eslint": "^9.39.2",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.26",
+    "globals": "^17.1.0",
+    "graphql-markdown": "^7.3.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.53.1",
+    "vite": "^7.3.1",
+    "vite-plugin-monaco-editor": "^1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "generate:graphql-markdown": "yarn run graphql-markdown https://data.neonscience.org/graphql > ./graphql/schema.md",
-    "lint": "(npx eslint src/ --ext .js,.jsx,.ts,.tsx || true) && exit 0",
-    "lint:fix": "(npx eslint --fix src/ --ext .js,.jsx,.ts,.tsx || true) && exit 0"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "start": "vite --open",
+    "build": "npx tsc --build && vite build",
+    "lint": "npx eslint .",
+    "preview": "vite preview",
+    "generate:graphql-markdown": "yarn run graphql-markdown https://data.neonscience.org/graphql > ./graphql/schema.md"
   }
 }

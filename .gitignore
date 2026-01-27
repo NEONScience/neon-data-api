@@ -8,10 +8,14 @@
 **/*/node_modules
 **/*/.pnp
 .pnp.js
+.pnp.*
+.yarn/
 
 # testing
 /coverage
 **/*/coverage
+
+/dist
 
 # production
 /packages/**/*/build
@@ -34,3 +38,4 @@
 **/*.eslintcache
 
 .venv
+venv

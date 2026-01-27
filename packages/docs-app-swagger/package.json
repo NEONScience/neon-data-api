@@ -1,53 +1,36 @@
 {
   "name": "docs-app-swagger",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "private": true,
   "homepage": ".",
+  "type": "module",
   "dependencies": {
-    "@types/node": "^22.7.4",
-    "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0",
-    "@types/resize-observer-browser": "^0.1.11",
-    "@types/swagger-ui-react": "^4.18.3",
-    "isomorphic-form-data": "^2.0.0",
-    "querystring-browser": "^1.0.4",
-    "react": "~18.3.1",
-    "react-dom": "~18.3.1",
-    "react-scripts": "^5.0.1",
-    "swagger-ui-react": "~5.17.14",
-    "typescript": "~5.6.2"
+    "react": "~19.2.3",
+    "react-dom": "~19.2.3",
+    "swagger-ui-react": "~5.31.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "eslint": "^8.57.1",
-    "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-jsx-a11y": "^6.10.0",
-    "eslint-plugin-react": "^7.37.1",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "minify": "^11.4.1"
+    "@eslint/js": "^9.39.2",
+    "@types/node": "^24.10.9",
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
+    "@types/resize-observer-browser": "^0.1.11",
+    "@types/swagger-ui-react": "^5.18.0",
+    "@vitejs/plugin-react-swc": "^4.2.2",
+    "eslint": "^9.39.2",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.26",
+    "globals": "^17.1.0",
+    "minify": "^15.0.1",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.53.1",
+    "vite": "^7.3.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "minify:css": "npx minify ./src/swagger-theme-material.css > ./src/swagger-theme-material.min.css",
-    "lint": "(npx eslint src/ --ext .js,.jsx,.ts,.tsx || true) && exit 0",
-    "lint:fix": "(npx eslint --fix src/ --ext .js,.jsx,.ts,.tsx || true) && exit 0"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "start": "vite --open",
+    "build": "npx tsc --build && vite build",
+    "lint": "npx eslint .",
+    "preview": "vite preview",
+    "minify:css": "npx minify ./src/swagger-theme-material.css > ./src/swagger-theme-material.min.css"
   }
 }

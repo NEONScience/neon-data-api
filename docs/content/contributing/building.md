@@ -11,14 +11,22 @@ The docs project consists of two main components:
 ### **Requirements**
 
   - MkDocs Project development  
-    - Python 3.7+
+    - Python 3.12+
     - Pip, package manager for Python
-  - React application development  
-    - Node.js LTS version
-    - Yarn - [Installation info](https://yarnpkg.com/en/docs/install)
+  - React application development. 
+    - Node.js LTS version 24
+    - Yarn 4.12 - [Installation info](https://yarnpkg.com/getting-started/install)
   - Docker
 
 ### **MkDocs**
+
+!!! note 
+    It is highly recommended to utilize a virtual environment.
+
+To initialize a fresh install of required packages / upgrade packages:
+``` bash
+pip install mkdocs-material mkdocs-exclude mkdocs-minify-plugin mkdocs-redirects
+```
 
 To build the MkDocs project, first install the python dependencies using pip:
 ``` bash
@@ -49,7 +57,7 @@ Apps:
 To build the React applications, first install packages from the `yarn.lock` file:
 ``` bash
 # From the project root directory
-yarn ci
+yarn run ci
 ```
 To install or synchronize new or updated packages ascross all projects, utilize 
 the install command:
@@ -65,7 +73,7 @@ running the application.
 Once application development is complete, to integrate into the existing MkDocs 
 project, utilize the scripts in the `package.json` file:
 ``` bash
-yarn run build:clean-deploy
+npm run build:docker
 ```
 
 !!! note 
@@ -83,6 +91,6 @@ script for running the container:
 ``` bash
 ./scripts/docker.run.sh
 ```
-You should now have an instance running at: `localhost:3200/data-api/`
+You should now have an instance running at: `localhost:3020/data-api/`
 
 <br/>

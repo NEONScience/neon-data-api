@@ -1,8 +1,8 @@
 {
   "private": true,
-  "packageManager": "yarn@1.22.22",
+  "packageManager": "yarn@4.12.0",
   "config": {
-    "yarnVersion": "1.22.22"
+    "yarnVersion": "4.12.0"
   },
   "workspaces": [
     "packages/*"
@@ -15,7 +15,14 @@
     "build:clean-deploy": "yarn run build:all && yarn run apps:clean-deploy",
     "ci": "yarn install --frozen-lockfile",
     "ci:prod": "yarn install --frozen-lockfile --production",
-    "pm:init": "corepack enable && corepack prepare yarn@1.22.22 --activate",
-    "pm:install": "npm install -g corepack"
+    "pm:init": "corepack enable && corepack prepare yarn@$npm_package_config_yarnVersion --activate",
+    "pm:install": "npm install -g corepack",
+    "build:docker": "npm run build:docker-builder && npm run build:docker-generate-dist && npm run build:docker-clean-deploy-dist",
+    "build:docker-builder": "CONTEXT_WORK_DIR=$(pwd) ./scripts/package/docker-builder.sh",
+    "build:docker-generate-dist": "npm run build:docker-generate-dist-runner",
+    "build:docker-generate-dist-runner": "CONTEXT_WORK_DIR=$(pwd) ./scripts/package/docker-generate-dist-runner.sh",
+    "build:docker-clean-deploy-dist": "npm run apps:clean && npm run build:docker-post-move",
+    "build:docker-post-move": "CONTEXT_WORK_DIR=$(pwd) ./scripts/package/docker-post-move.sh",
+    "build:docker-copy-dist": "CONTEXT_WORK_DIR=/app ./scripts/package/docker-copy-dist.sh"
   }
 }
