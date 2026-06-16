@@ -3,6 +3,15 @@
 ## **Introduction**
 The NEON Data API (Application Programming Interface) can be used to quickly access data as well as information about NEON's data products, samples, and sampling locations. It provides a simple means of constructing URLs or cURL statements that return information in a common machine-readable format, [JSON (JavaScript Object Notation)](https://json.org/json-en.html). 
 
+## **Authentication**
+You do not need to authenticate in order to explore information about NEON data or locations. However, if you will be using the APIs to download data products or sample data, or using the APIs intensively, then you will need to sign up for and use an [API Token](https://www.neonscience.org/resources/learning-hub/tutorials/api-token-setup). The endpoints this currently applies to are:
+
+  - /data (including /data/query and /releases/data)
+  - /samples
+
+## **Data Use Policy and Licensing**
+NEON data products and sample data are licensed under a Creative Commons Attribution 4.0 International License ([CC-BY](https://creativecommons.org/licenses/by/4.0/)). For more information, visit the [Data Guidelines and Policies](https://www.neonscience.org/data-samples/guidelines-policies) page.
+
 ## **R & Python packages**
 The neonUtilities packages are the easiest way to download and reformat NEON data.  
 
