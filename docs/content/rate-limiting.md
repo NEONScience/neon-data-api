@@ -1,9 +1,18 @@
 # Rate Limiting
 
-To ensure the quality of NEON's data API and associated services, 
-the data APIs are subject to rate limiting. Limits are applied and tracked globally 
-across all endpoints. You do not need to authenticate in order to explore NEON data. However, if you 
-will be intensively using the APIs, then you should sign up for an [API Token](#api-tokens).  
+To ensure the quality of NEON's data API and associated services, API 
+endpoints are subject to rate limiting. Limits are applied and tracked 
+globally across all endpoints.  
+
+You do not need to authenticate in order to explore information about NEON 
+data or locations. However, if you will be using the APIs to download data 
+products or sample data, or using the APIs intensively, then you will need 
+to sign up for and use an 
+[API Token](https://www.neonscience.org/resources/learning-hub/tutorials/api-token-setup). 
+The endpoints this currently applies to are:
+
+  - /data (including /data/query and /releases/data)
+  - /samples
 
 !!! info
     NEON reserves the right to modify the rate limits at any time. 
@@ -12,8 +21,8 @@ will be intensively using the APIs, then you should sign up for an [API Token](#
 
 All limits consist of two factors:  
 
-  - A burst - the total number of requests that can be made in a short period of time 
-    independent of rate, and  
+  - A burst - the total number of requests that can be made in a short period 
+of time independent of rate, and  
   - a rate - the number of requests per second that can be made
 
 Once the burst amount is utilized in its entirety, you will still be able to make 
@@ -163,7 +172,7 @@ a per token basis with the following rate specification for the token's `rate` s
 
 |Scope|Burst|Rate|Identifier|
 |---|---|---|---|
-|`rate:public`|1000 requests|4 requests per second|Token|
+|`rate:public`|2000 requests|8 requests per second|Token|
 
 
 <br/>
