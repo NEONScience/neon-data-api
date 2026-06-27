@@ -14,7 +14,7 @@ Try out REST API calls for various endpoints and inspect the responses.
 
 !!! requires-auth "Requires Authentication"
 
-    One or more endpoints require [API Token](/authentication#api-tokens) authentication.
+    One or more endpoints require [API Token](/data-api/authentication#api-tokens) authentication.
 
 
 <!-- Using the raw HTML for admonition here so we can display on demand -->

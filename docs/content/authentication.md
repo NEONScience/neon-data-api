@@ -67,9 +67,9 @@ parameter:
 
 Endpoints that require authentication are identified in the documentation for each endpoint:
 
-  - [Data Endpoints](/endpoints/data)
-  - [Data Query Endpoints](/endpoints/data-query)
-  - [Releases Endpoints](/endpoints/releases)
-  - [Samples Endpoints](/endpoints/samples)
+  - [Data Endpoints](/data-api/endpoints/data)
+  - [Data Query Endpoints](/data-api/endpoints/data-query)
+  - [Releases Endpoints](/data-api/endpoints/releases)
+  - [Samples Endpoints](/data-api/endpoints/samples)
 
 <br />

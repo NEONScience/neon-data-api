@@ -5,7 +5,7 @@ the data APIs are subject to rate limiting. Limits are applied and tracked globa
 across all endpoints. You do not need to authenticate in order to explore information about 
 NEON data or locations. However, if you will be using the APIs to download data products or 
 sample data, or using the APIs intensively, then you will need to sign up for and 
-use an [API Token](/authentication#api-tokens).  
+use an [API Token](/data-api/authentication#api-tokens).  
 
 !!! info
     NEON reserves the right to modify the rate limits at any time. 
@@ -93,7 +93,7 @@ RetryAfter: 1
 
 ## **API Tokens**  
 
-The NEON data API provides users the ability to manage and obtain [API Tokens](/authentication#api-tokens). 
+The NEON data API provides users the ability to manage and obtain [API Tokens](/data-api/authentication#api-tokens). 
 For rate limiting, this allows us to supply a higher rate limit for authenticated 
 users and tokens, enabling intensive use of the APIs.
 

@@ -2,7 +2,7 @@
 
 !!! requires-auth "Requires Authentication"
 
-    One or more endpoints require [API Token](/authentication#api-tokens) authentication, indicated below.
+    One or more endpoints require [API Token](/data-api/authentication#api-tokens) authentication, indicated below.
 
 
 The `/releases` endpoint provides information about NEON data releases, 
@@ -265,7 +265,7 @@ Get information about a field site within a specific release
 
 !!! requires-auth "Requires Authentication"
 
-    [API Token](/authentication#api-tokens) required to utilize this endpoint.
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
 
 
 #### Description
@@ -323,7 +323,7 @@ Get files available for a given release and product/site/month combination
 
 !!! requires-auth "Requires Authentication"
 
-    [API Token](/authentication#api-tokens) required to utilize this endpoint.
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
 
 
 #### Description
@@ -375,7 +375,7 @@ Get a file for a given release and product/site/month/filename combination
 
 !!! requires-auth "Requires Authentication"
 
-    [API Token](/authentication#api-tokens) required to utilize this endpoint.
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
 
 
 #### Description

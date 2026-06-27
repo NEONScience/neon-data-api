@@ -2,7 +2,7 @@
 
 !!! requires-auth "Requires Authentication"
 
-    One or more endpoints require [API Token](/authentication#api-tokens) authentication, indicated below.
+    One or more endpoints require [API Token](/data-api/authentication#api-tokens) authentication, indicated below.
 
 
 The `/data` endpoint shows which monthly data files are available, and provides 
@@ -37,7 +37,7 @@ The learn more about data releases, see: <a href="#" onclick="Router.jumpToRelea
 
 !!! requires-auth "Requires Authentication"
 
-    [API Token](/authentication#api-tokens) required to utilize this endpoint.
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
 
 
 #### **Description**
@@ -94,7 +94,7 @@ Get files available for a given product/site/month combination
 
 !!! requires-auth "Requires Authentication"
 
-    [API Token](/authentication#api-tokens) required to utilize this endpoint.
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
 
 
 #### Description
@@ -147,7 +147,7 @@ Get a file for a given product/site/month/filename combination
 
 !!! requires-auth "Requires Authentication"
 
-    [API Token](/authentication#api-tokens) required to utilize this endpoint.
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
 
 
 #### Description

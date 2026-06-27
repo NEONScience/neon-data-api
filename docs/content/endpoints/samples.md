@@ -2,7 +2,7 @@
 
 !!! requires-auth "Requires Authentication"
 
-    One or more endpoints require [API Token](/authentication#api-tokens) authentication, indicated below.
+    One or more endpoints require [API Token](/data-api/authentication#api-tokens) authentication, indicated below.
 
 
 NEON samples are physical objects collected or measured and tracked over time. Most samples are collected and archived for later analysis by researchers. Some samples remain in the field, such as trees and live mammals, while others are discarded after analysis, such as surface water samples. A sample hierarchy is created when a sample is subsampled, or when multiple samples are pooled, creating child samples. Any sample may have parent samples or child samples.
@@ -75,7 +75,7 @@ Get a list of Sample Classes for a given Sample Tag
 
 !!! requires-auth "Requires Authentication"
 
-    [API Token](/authentication#api-tokens) required to utilize this endpoint.
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
 
 
 #### **Description**
@@ -158,7 +158,7 @@ Get a list of sample classes and descriptions currently available
 
 !!! requires-auth "Requires Authentication"
 
-    [API Token](/authentication#api-tokens) required to utilize this endpoint.
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
 
 
 #### **Description**

@@ -4,12 +4,12 @@
 The NEON Data API (Application Programming Interface) can be used to quickly access data as well as information about NEON's data products, samples, and sampling locations. It provides a simple means of constructing URLs or cURL statements that return information in a common machine-readable format, [JSON (JavaScript Object Notation)](https://json.org/json-en.html). 
 
 ## **Authentication**
-You do not need to authenticate in order to explore information about NEON data or locations. However, if you will be using the APIs to download data products or sample data, or using the APIs intensively, then you will need to sign up for and use an [API Token](/authentication#api-tokens). To learn more about setting up and utilizing an API Token, see [API Token Setup](https://www.neonscience.org/resources/learning-hub/tutorials/api-token-setup). Endpoints that require authentication are identified in the documentation for each endpoint:
+You do not need to authenticate in order to explore information about NEON data or locations. However, if you will be using the APIs to download data products or sample data, or using the APIs intensively, then you will need to sign up for and use an [API Token](/data-api/authentication#api-tokens). To learn more about setting up and utilizing an API Token, see [API Token Setup](https://www.neonscience.org/resources/learning-hub/tutorials/api-token-setup). Endpoints that require authentication are identified in the documentation for each endpoint:
 
-  - [Data Endpoints](/endpoints/data)
-  - [Data Query Endpoints](/endpoints/data-query)
-  - [Releases Endpoints](/endpoints/releases)
-  - [Samples Endpoints](/endpoints/samples)
+  - [Data Endpoints](/data-api/endpoints/data)
+  - [Data Query Endpoints](/data-api/endpoints/data-query)
+  - [Releases Endpoints](/data-api/endpoints/releases)
+  - [Samples Endpoints](/data-api/endpoints/samples)
 
 ## **Data Use Policy and Licensing**
 NEON data products and sample data are licensed under a Creative Commons Attribution 4.0 International License ([CC-BY](https://creativecommons.org/licenses/by/4.0/)). For more information, visit the [Data Guidelines and Policies](https://www.neonscience.org/data-samples/guidelines-policies) page.
