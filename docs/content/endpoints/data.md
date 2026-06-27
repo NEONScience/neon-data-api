@@ -1,5 +1,10 @@
 # Data Endpoint
 
+!!! requires-auth "Requires Authentication"
+
+    One or more endpoints require [API Token](/authentication#api-tokens) authentication, indicated below.
+
+
 The `/data` endpoint shows which monthly data files are available, and provides 
 URLs to downloadable files. Several terabytes of data are presently available. 
 To keep data files to a reasonable size, they are generally arranged in 
@@ -27,6 +32,13 @@ The learn more about data releases, see: <a href="#" onclick="Router.jumpToRelea
 
 <a name="get_data-availability"></a>
 ### GET `/data/{productCode}/{siteCode}/{year-month}`
+
+#### **Authentication**
+
+!!! requires-auth "Requires Authentication"
+
+    [API Token](/authentication#api-tokens) required to utilize this endpoint.
+
 
 #### **Description**
 Get files available for a given product/site/month combination
@@ -78,6 +90,13 @@ Get files available for a given product/site/month combination
 <a name="get_data-availability_file"></a>
 ### GET /data/{productCode}/{siteCode}/{year-month}/{filename}
 
+#### **Authentication**
+
+!!! requires-auth "Requires Authentication"
+
+    [API Token](/authentication#api-tokens) required to utilize this endpoint.
+
+
 #### Description
 Get a file for a given product/site/month/filename combination
 
@@ -123,6 +142,13 @@ Get a file for a given product/site/month/filename combination
 
 <a name="get_data-availability_package"></a>
 ### GET /data/package/{productCode}/{siteCode}/{year-month}
+
+#### **Authentication**
+
+!!! requires-auth "Requires Authentication"
+
+    [API Token](/authentication#api-tokens) required to utilize this endpoint.
+
 
 #### Description
 Get a data package for a given product/site/month and package combination

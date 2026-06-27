@@ -12,6 +12,6 @@ COPY scripts/package/docker-copy-dist.sh ./scripts/package/docker-copy-dist.sh
 COPY .yarnrc.yml ./.yarnrc.yml
 COPY package.json ./package.json
 COPY yarn.lock ./yarn.lock
-RUN yarn run ci
+RUN yarn install --immutable
 RUN cd packages/docs-app-graphiql && yarn run build
 RUN cd packages/docs-app-swagger && yarn run build
