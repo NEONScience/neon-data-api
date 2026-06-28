@@ -10,9 +10,9 @@ URLs to downloadable files. Several terabytes of data are presently available.
 To keep data files to a reasonable size, they are generally arranged in 
 product/site/monthly chunks. Even so, files can be large and you may find it 
 worthwhile to check the size attribute before downloading. Also note that 
-some provided URLs are from a Google Cloud Storage service and expire 1 hour after 
+some provided URLs are from a Google Cloud Storage service and expire 7 days after 
 generation. If the time between when you obtain a URL and start downloading the 
-file is more than 1 hour, you may need to obtain a new URL before proceeding.  
+file is more than 7 days, you may need to obtain a new URL before proceeding.  
 
 <a name="data-releases"></a>
 ## **Data Releases**
