@@ -2,7 +2,7 @@ name: Docker Publish
 
 on:
   push:
-    branches: [ main, auth ]
+    branches: [ main ]
     tags: [ 'v*' ]
 
 env:
