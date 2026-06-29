@@ -12,6 +12,10 @@ Try out REST API calls for various endpoints and inspect the responses.
     as the authoritative source of API data. Requests that result in a large response body 
     will be truncated and may not represent the full response.  
 
+!!! requires-auth "Requires Authentication"
+
+    One or more endpoints require [API Token](/data-api/authentication#api-tokens) authentication.
+
 
 <!-- Using the raw HTML for admonition here so we can display on demand -->
 <div class="neon-data-api-app-ie" data-docs-app-ie-display="block" style="display: none;">

@@ -1,10 +1,9 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
-import $monacoEditorPlugin from 'vite-plugin-monaco-editor';
+import react from '@vitejs/plugin-react';
 
-// @ts-expect-error Expect error
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const monacoEditorPlugin = $monacoEditorPlugin.default ?? $monacoEditorPlugin;
+import monacoEditorPlugin from 'vite-plugin-monaco-editor';
+
+const monacoPlugin = (monacoEditorPlugin.default || monacoEditorPlugin);
 
 export default defineConfig({
   build: {
@@ -14,8 +13,7 @@ export default defineConfig({
   base: "",
   plugins: [
     react(),
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    monacoEditorPlugin({
+    monacoPlugin({
       languageWorkers: ['editorWorkerService', 'json'],
       customWorkers: [
         {

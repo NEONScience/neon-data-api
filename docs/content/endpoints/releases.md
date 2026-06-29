@@ -1,5 +1,10 @@
 # Releases Endpoint
 
+!!! requires-auth "Requires Authentication"
+
+    One or more endpoints require [API Token](/data-api/authentication#api-tokens) authentication, indicated below.
+
+
 The `/releases` endpoint provides information about NEON data releases, 
 including availability by product, site, and month (also see the 
 [data product catalog](https://data.neonscience.org/data-products/explore)
@@ -256,6 +261,13 @@ Get information about a field site within a specific release
 <a name="get_releases_data-availability"></a>
 ### GET `/releases/{releaseTag}/data/{productCode}/{siteCode}/{year-month}`
 
+#### **Authentication**
+
+!!! requires-auth "Requires Authentication"
+
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
+
+
 #### Description
 Get files available for a given release and product/site/month combination
 
@@ -307,6 +319,13 @@ Get files available for a given release and product/site/month combination
 <a name="get_releases_data-availability_file"></a>
 ### GET `/releases/{releaseTag}/data/{productCode}/{siteCode}/{year-month}/{filename}`
 
+#### **Authentication**
+
+!!! requires-auth "Requires Authentication"
+
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
+
+
 #### Description
 Get a file for a given release and product/site/month/filename combination
 
@@ -351,6 +370,13 @@ Get a file for a given release and product/site/month/filename combination
 
 <a name="get_releases_data-availability_package"></a>
 ### GET `/releases/{releaseTag}/data/package/{productCode}/{siteCode}/{year-month}`
+
+#### **Authentication**
+
+!!! requires-auth "Requires Authentication"
+
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
+
 
 #### Description
 Get a data package for a given release and product/site/month and package combination

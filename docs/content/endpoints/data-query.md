@@ -1,5 +1,10 @@
 # Data Query Endpoint
 
+!!! requires-auth "Requires Authentication"
+
+    One or more endpoints require [API Token](/data-api/authentication#api-tokens) authentication, indicated below.
+
+
 The `/data/query` endpoint provides the ability to query for available data
 files by product, one or more sites, a specified date range, and optionally
 by release, package type, and whether or not the query results should include
@@ -40,6 +45,13 @@ The learn more about data releases, see: <a href="#" onclick="Router.jumpToRelea
 
 <a name="get_data_query-availability"></a>
 ### GET `/data/query`
+
+#### **Authentication**
+
+!!! requires-auth "Requires Authentication"
+
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
+
 
 #### **Description**
 Get files available for a given product, one or more sites, date range, release, package combination
@@ -92,6 +104,13 @@ Get files available for a given product, one or more sites, date range, release,
 
 <a name="post_data_query-availability"></a>
 ### POST `/data/query`
+
+#### **Authentication**
+
+!!! requires-auth "Requires Authentication"
+
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
+
 
 #### **Description**
 Get files available for a given product, one or more sites, date range, release, package combination

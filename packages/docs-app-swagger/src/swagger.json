@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.10.0",
+    "version": "0.11.0",
     "title": "NEON Data API Requests",
     "description": "Expand the options below, click GET, and then click TRY IT OUT to see example calls."
   },
@@ -27,6 +27,7 @@
   "paths": {
     "/products": {
       "get": {
+        "security": [],
         "description": "Get information about all data products",
         "tags": [
           "Products"
@@ -70,6 +71,7 @@
     },
     "/products/{productCode}": {
       "get": {
+        "security": [],
         "description": "Get information about a data product",
         "tags": [
           "Products"
@@ -123,6 +125,7 @@
     },
     "/sites": {
       "get": {
+        "security": [],
         "description": "Get information about all field sites",
         "tags": [
           "Sites"
@@ -160,6 +163,7 @@
     },
     "/sites/{siteCode}": {
       "get": {
+        "security": [],
         "description": "Get information about a field site",
         "tags": [
           "Sites"
@@ -221,6 +225,7 @@
     },
     "/locations/{locationName}": {
       "get": {
+        "security": [],
         "description": "Get information about a location",
         "tags": [
           "Locations"
@@ -296,6 +301,7 @@
     },
     "/locations/sites": {
       "get": {
+        "security": [],
         "description": "Get information about the site-level locations",
         "tags": [
           "Locations",
@@ -798,6 +804,7 @@
     },
     "/releases": {
       "get": {
+        "security": [],
         "description": "Get information about all available data releases",
         "tags": [
           "Releases"
@@ -832,6 +839,7 @@
     },
     "/releases/{releaseIdentifier}": {
       "get": {
+        "security": [],
         "description": "Get information about a data release",
         "tags": [
           "Releases"
@@ -878,6 +886,7 @@
     },
     "/releases/{releaseTag}/products": {
       "get": {
+        "security": [],
         "description": "Get information about all data products within a specific release",
         "tags": [
           "Releases"
@@ -921,6 +930,7 @@
     },
     "/releases/{releaseTag}/products/{productCode}": {
       "get": {
+        "security": [],
         "description": "Get information about a data product within a specific release",
         "tags": [
           "Releases"
@@ -974,6 +984,7 @@
     },
     "/releases/{releaseTag}/sites": {
       "get": {
+        "security": [],
         "description": "Get information about all sites within a specific release",
         "tags": [
           "Releases"
@@ -1011,6 +1022,7 @@
     },
     "/releases/{releaseTag}/sites/{siteCode}": {
       "get": {
+        "security": [],
         "description": "Get information about a field site within a specific release",
         "tags": [
           "Releases"
@@ -1420,6 +1432,7 @@
     },
     "/samples/classes": {
       "get": {
+        "security": [],
         "description": "Get a list of Sample Classes for a given Sample Tag",
         "tags": [
           "Samples"
@@ -1472,6 +1485,7 @@
     },
     "/samples/supportedClasses": {
       "get": {
+        "security": [],
         "description": "Get a list of sample classes and descriptions currently available",
         "tags": [
           "Samples"
@@ -1590,6 +1604,7 @@
     },
     "/taxonomy": {
       "get": {
+        "security": [],
         "description": "Get taxonomic lists",
         "tags": [
           "Taxonomy"
@@ -1762,6 +1777,7 @@
     },
     "/prototype/datasets": {
       "get": {
+        "security": [],
         "description": "Get information about all prototype datasets",
         "tags": [
           "Prototype Datasets"
@@ -1796,6 +1812,7 @@
     },
     "/prototype/datasets/{uuid}": {
       "get": {
+        "security": [],
         "description": "Get information about a prototype dataset",
         "tags": [
           "Prototype Datasets"
@@ -1842,6 +1859,7 @@
     },
     "/prototype/data/{uuid}": {
       "get": {
+        "security": [],
         "description": "Get information about data files for the prototype dataset",
         "tags": [
           "Prototype Datasets"
@@ -1888,6 +1906,7 @@
     },
     "/prototype/data/{uuid}/{filename}": {
       "get": {
+        "security": [],
         "description": "Gets a data file",
         "tags": [
           "Prototype Datasets"

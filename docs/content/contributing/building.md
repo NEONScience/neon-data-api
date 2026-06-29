@@ -57,7 +57,7 @@ Apps:
 To build the React applications, first install packages from the `yarn.lock` file:
 ``` bash
 # From the project root directory
-yarn run ci
+yarn install --immutable
 ```
 To install or synchronize new or updated packages ascross all projects, utilize 
 the install command:

@@ -1108,7 +1108,7 @@ A list of URLs to request location data for the children of this location
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>locationChildHierarchy</strong></td>
-<td valign="top">[<a href="#locationchildhierarhcy">LocationChildHierarhcy</a>!]</td>
+<td valign="top">[<a href="#locationchildhierarchy">LocationChildHierarchy</a>!]</td>
 <td>
 
 When querying for the hierarchy, the location's set of immediate children
@@ -1119,7 +1119,7 @@ and associated hierarchy
 </tbody>
 </table>
 
-#### **LocationChildHierarhcy**
+#### **LocationChildHierarchy**
 
 Type definition for a child location hierarchy
 
@@ -1162,7 +1162,7 @@ A description for the location
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>locationChildHierarchy</strong></td>
-<td valign="top">[<a href="#locationchildhierarhcy">LocationChildHierarhcy</a>!]</td>
+<td valign="top">[<a href="#locationchildhierarchy">LocationChildHierarchy</a>!]</td>
 <td>
 
 The location's child hierarchy

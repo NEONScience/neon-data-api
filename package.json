@@ -1,8 +1,8 @@
 {
   "private": true,
-  "packageManager": "yarn@4.12.0",
+  "packageManager": "yarn@4.17.0",
   "config": {
-    "yarnVersion": "4.12.0"
+    "yarnVersion": "4.17.0"
   },
   "workspaces": [
     "packages/*"
@@ -13,8 +13,6 @@
     "apps:deploy": "mv packages/docs-app-swagger/build docs/content/explorer/ && mv packages/docs-app-graphiql/build docs/content/graphql/explorer/",
     "build:all": "cd packages/docs-app-graphiql && yarn run build && cd ../docs-app-swagger && yarn run build",
     "build:clean-deploy": "yarn run build:all && yarn run apps:clean-deploy",
-    "ci": "yarn install --frozen-lockfile",
-    "ci:prod": "yarn install --frozen-lockfile --production",
     "pm:init": "corepack enable && corepack prepare yarn@$npm_package_config_yarnVersion --activate",
     "pm:install": "npm install -g corepack",
     "build:docker": "npm run build:docker-builder && npm run build:docker-generate-dist && npm run build:docker-clean-deploy-dist",

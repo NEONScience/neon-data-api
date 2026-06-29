@@ -1,5 +1,10 @@
 # Samples Endpoint
 
+!!! requires-auth "Requires Authentication"
+
+    One or more endpoints require [API Token](/data-api/authentication#api-tokens) authentication, indicated below.
+
+
 NEON samples are physical objects collected or measured and tracked over time. Most samples are collected and archived for later analysis by researchers. Some samples remain in the field, such as trees and live mammals, while others are discarded after analysis, such as surface water samples. A sample hierarchy is created when a sample is subsampled, or when multiple samples are pooled, creating child samples. Any sample may have parent samples or child samples.
 
 Sample information is managed internally by NEON's Sample Management System (SMS). The samples endpoint provides read access into the SMS.
@@ -65,6 +70,13 @@ Get a list of Sample Classes for a given Sample Tag
 
 <a name="get_samplesdownloadbysampletagclass"></a>
 ### GET `/samples/download`
+
+#### **Authentication**
+
+!!! requires-auth "Requires Authentication"
+
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
+
 
 #### **Description**
 Get a list of sample views for a given sample identifier and search degree.
@@ -141,6 +153,13 @@ Get a list of sample classes and descriptions currently available
 
 <a name="get_samplesbytagclass"></a>
 ### GET `/samples/view`
+
+#### **Authentication**
+
+!!! requires-auth "Requires Authentication"
+
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
+
 
 #### **Description**
 For a given sample identifier, get a list of sample custody events as well as any parent and child sample identifiers that currently exist.

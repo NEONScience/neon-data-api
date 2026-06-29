@@ -2,8 +2,10 @@
 
 To ensure the quality of NEON's data API and associated services, 
 the data APIs are subject to rate limiting. Limits are applied and tracked globally 
-across all endpoints. You do not need to authenticate in order to explore NEON data. However, if you 
-will be intensively using the APIs, then you should sign up for an [API Token](#api-tokens).  
+across all endpoints. You do not need to authenticate in order to explore information about 
+NEON data or locations. However, if you will be using the APIs to download data products or 
+sample data, or using the APIs intensively, then you will need to sign up for and 
+use an [API Token](/data-api/authentication#api-tokens).  
 
 !!! info
     NEON reserves the right to modify the rate limits at any time. 
@@ -91,65 +93,10 @@ RetryAfter: 1
 
 ## **API Tokens**  
 
-The NEON data API provides users the ability to manage and obtain API tokens. 
+The NEON data API provides users the ability to manage and obtain [API Tokens](/data-api/authentication#api-tokens). 
 For rate limiting, this allows us to supply a higher rate limit for authenticated 
 users and tokens, enabling intensive use of the APIs.
 
-### **Generation**
-
-In order to generate an API Token, you must first sign in with your account 
-or create an account with the Data Portal. You can sign up or sign in by accessing 
-the [My Account](https://data.neonscience.org/myaccount) page. Once authenticated 
-and verified, you can request a token using the API Token management section 
-provided on the account page.
-
-!!! warning
-    Tokens should be treated like credentials. 
-    Never share your API token and store it in a secure location. 
-    It is strongly recommended to never commit this token to source control 
-    repositories such as GitHub. If your token has been compromised, 
-    please disable or delete the token through the 
-    [My Account](https://data.neonscience.org/myaccount) page and discontinue 
-    use of the token.
-
-### **Utilization**
-
-To utilize an API Token when making a request, include it as a header or query 
-parameter:  
-
-  - Header Name: `X-API-Token`
-  - Query Parameter Name: `apiToken`  
-
-=== "cURL"
-
-    ``` bash
-    # Replace TOKEN_VALUE with your API Token
-    # X-API-Token header
-    curl --verbose -H "X-API-Token: TOKEN_VALUE" \
-      -X GET https://data.neonscience.org/api/v0/products/DP1.00001.001 \
-      >> neon-data-products-DP1.00001.001.json
-    ```  
-    ``` bash
-    # apiToken query parameter
-    curl --verbose \
-      -X GET https://data.neonscience.org/api/v0/products/DP1.00001.001?apiToken=TOKEN_VALUE \
-      >> neon-data-products-DP1.00001.001.json
-    ```  
-
-=== "HTTPie"
-
-    ``` bash
-    # Replace TOKEN_VALUE with your API Token
-    # X-API-Token header
-    http --download --output=neon-data-products-DP1.00001.001.json \
-      GET https://data.neonscience.org/api/v0/products/DP1.00001.001 \
-      X-API-Token:TOKEN_VALUE
-    ```  
-    ``` bash
-    # apiToken query parameter
-    http --download --output=neon-data-products-DP1.00001.001.json \
-      GET https://data.neonscience.org/api/v0/products/DP1.00001.001?apiToken=TOKEN_VALUE
-    ```
 
 To verify that you are utilizing the token properly, inspect the `X-RateLimit-Limit` 
 and `X-RateLimit-Remaining` headers and verify it matches one of the 
@@ -163,7 +110,7 @@ a per token basis with the following rate specification for the token's `rate` s
 
 |Scope|Burst|Rate|Identifier|
 |---|---|---|---|
-|`rate:public`|1000 requests|4 requests per second|Token|
+|`rate:public`|2000 requests|8 requests per second|Token|
 
 
 <br/>
