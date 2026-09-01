@@ -12,8 +12,6 @@ WORKDIR /go/src/app
 COPY dist/server-${TARGETARCH} .
 COPY dist/neon-data-api-docs-site .
 
-RUN ls -al
-
 # Set app wide env variables
 ENV PORTAL_CLIENT_ROUTE="/"
 ENV PORTAL_PORT=3020
