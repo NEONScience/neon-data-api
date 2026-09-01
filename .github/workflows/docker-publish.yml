@@ -9,6 +9,7 @@ env:
   GCP_ARTIFACT_HOST: ${{ vars.SHARED_WIF_LOCATON }}-docker.pkg.dev
   GCP_REGISTRY: ${{ vars.SHARED_WIF_LOCATON }}-docker.pkg.dev/${{ vars.SHARED_WIF_PROJECT }}/${{ vars.SHARED_WIF_REPO }}
   IMAGE_NAME: portal-public-api-docs
+  PYTHON_VERSION: 3.14
 
 jobs:
   python-build:
@@ -26,7 +27,7 @@ jobs:
         # v7.0.0
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
-          python-version: 3.14
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Init Python
         run: |
