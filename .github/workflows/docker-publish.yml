@@ -11,6 +11,43 @@ env:
   IMAGE_NAME: portal-public-api-docs
 
 jobs:
+  python-build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        # v7.0.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: 3.14
+
+      - name: Init Python
+        run: |
+          mkdir -p "dist/neon-data-api-docs-site"
+          python -m pip install --upgrade pip
+          python -m pip install --no-cache-dir -r requirements.txt
+          sed -i "s/{{TIMESTAMP}}/$(date +%s)/g" docs/content/explorer/index.md
+          sed -i "s/{{TIMESTAMP}}/$(date +%s)/g" docs/content/graphql/explorer/index.md
+          sed -i "s/{{COPYRIGHT_YEAR}}/$(date +%Y)/g" mkdocs.yml
+          mkdocs build --config-file mkdocs.yml
+          mv site dist/neon-data-api-docs-site/
+
+      - name: Upload Build Artifact
+        # v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: neon-data-api-docs-site
+          path: dist/neon-data-api-docs-site
+          if-no-files-found: error
+          retention-days: 1
+
   go-build:
     runs-on: ubuntu-latest
     strategy:
@@ -64,6 +101,7 @@ jobs:
       contents: read
     needs:
       - go-build
+      - python-build
     steps:
       - name: Checkout
         # v7.0.1
@@ -71,7 +109,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download Build Artifacts
+      - name: Download Python Build Artifacts
+        # v8.0.1
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          name: neon-data-api-docs-site
+          path: dist/neon-data-api-docs-site
+
+      - name: Download Go Build Artifacts
         # v8.0.1
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
         with:
