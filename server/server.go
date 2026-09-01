@@ -37,7 +37,6 @@ var healthResponse healthCheckResponse = healthCheckResponse{
 }
 
 func handleHealthCheck(w http.ResponseWriter) {
-	infoLog.Println("INFO: Health check up")
 	w.Header().Add("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(healthResponse); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)

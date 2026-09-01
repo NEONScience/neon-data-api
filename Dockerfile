@@ -9,7 +9,7 @@ EXPOSE 3020
 
 # Copy build artifacts from builder container
 WORKDIR /go/src/app
-COPY dist/server-${TARGETARCH} .
+COPY --chmod=500 dist/server-${TARGETARCH} .
 COPY dist/neon-data-api-docs-site .
 
 # Set app wide env variables
