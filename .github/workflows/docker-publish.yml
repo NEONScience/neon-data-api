@@ -2,7 +2,7 @@ name: Docker Publish
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, multi-arch ]
     tags: [ 'v*' ]
 
 env:
@@ -11,36 +11,104 @@ env:
   IMAGE_NAME: portal-public-api-docs
 
 jobs:
+  go-build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ linux-amd64, linux-arm64 ]
+        include:
+          - os: linux-amd64
+            goarch: amd64
+          - os: linux-arm64
+            goarch: arm64
+    steps:
+      - name: Checkout
+        # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        # v7.0.0
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+        env:
+          # Ensure cache consistency on Linux, see https://github.com/actions/setup-go/pull/383
+          ImageOS: ${{ matrix.os }}
+        with:
+          go-version-file: 'server/go.mod'
+          check-latest: true
+          cache: false
+
+      - name: Build Go
+        env:
+          GOOS: linux
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: 0
+        run: |
+          cd server
+          mkdir -p "dist/linux/${GOARCH}"
+          go build -trimpath -o "dist/linux/${GOARCH}/server" server.go
+
+      - name: Upload Build Artifact
+        # v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: server-${{ matrix.goarch }}
+          path: server/dist/linux/${{ matrix.goarch }}/server
+          retention-days: 1
+
   docker-publish:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
+    needs:
+      - go-build
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+
+      - name: Download Build Artifacts
+        # v8.0.1
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          path: dist/
+          pattern: "server-*"
+          merge-multiple: false
 
       - name: Google Auth
         id: 'auth'
-        uses: 'google-github-actions/auth@v3'
+        # v3.0.0
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093
         with:
           workload_identity_provider: "${{ vars.SHARED_WIF_PROVIDER }}"
           service_account: "${{ vars.SHARED_WIF_SERVICE_ACCOUNT }}"
           token_format: 'access_token'
 
       - name: Docker Login
-        uses: 'docker/login-action@v4'
+        # v4.6.0
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f
         with:
           registry: ${{ env.GCP_ARTIFACT_HOST }}
           username: 'oauth2accesstoken'
           password: ${{ steps.auth.outputs.access_token }}
 
+      # Setup QEMU for multi-platform / arm64 support
+      - name: Setup QEMU
+        # v4.2.0
+        uses: docker/setup-qemu-action@96fe6ef7f33517b61c61be40b68a1882f3264fb8
+
       - name: Docker Buildx Setup
-        uses: docker/setup-buildx-action@v4
+        # v4.3.0
+        uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e
 
       - name: Docker Metadata
         id: meta
-        uses: docker/metadata-action@v6
+        # v6.2.0
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302
         with:
           images: ${{ env.GCP_REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
@@ -51,7 +119,8 @@ jobs:
             latest=false
 
       - name: Docker Build
-        uses: docker/bake-action@v7
+        # v7.3.0
+        uses: docker/bake-action@d3418bd7d0e9324001bca92fa8ba175ea7e6dc9b
         with:
           source: .
           files: |

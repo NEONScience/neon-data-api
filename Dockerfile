@@ -21,31 +21,20 @@ RUN cd /usr/src/app/build-temp/api-docs \
   && rm -rf /usr/src/app/build-temp
 
 #-------------------------------------------------------------------------------
-# Builder container for reproducible build environment
-
-FROM golang:1.25-alpine AS go-builder
-
-WORKDIR /go/src/app
-
-COPY ./server/server.go .
-COPY ./server/go.mod .
-COPY --from=builder /usr/src/app .
-
-RUN go mod verify \
-  && go build server.go \
-  && rm server.go \
-  && rm go.mod
-
-#-------------------------------------------------------------------------------
 # Build production container with only necessary artifacts
 
-FROM alpine:3.23
+FROM alpine:3.24
+
+ARG TARGETARCH
 
 EXPOSE 3020
 
 # Copy build artifacts from builder container
 WORKDIR /go/src/app
-COPY --from=go-builder /go/src/app .
+COPY dist/server-${TARGETARCH} .
+COPY --from=builder /usr/src/app .
+
+RUN ls -al
 
 # Set app wide env variables
 ENV PORTAL_CLIENT_ROUTE="/"
