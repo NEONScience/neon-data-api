@@ -1859,7 +1859,6 @@
     },
     "/prototype/data/{uuid}": {
       "get": {
-        "security": [],
         "description": "Get information about data files for the prototype dataset",
         "tags": [
           "Prototype Datasets"
@@ -1906,7 +1905,6 @@
     },
     "/prototype/data/{uuid}/{filename}": {
       "get": {
-        "security": [],
         "description": "Gets a data file",
         "tags": [
           "Prototype Datasets"
