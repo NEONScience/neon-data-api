@@ -1,5 +1,10 @@
 # Prototype Datasets Endpoint
 
+!!! requires-auth "Requires Authentication"
+
+    One or more endpoints require [API Token](/data-api/authentication#api-tokens) authentication, indicated below.
+
+
 The `/prototype/datasets` endpoint provides information about all prototype NEON datasets. Prototype datasets have generally been collected during the design and construction of NEON. These datasets are not necessarily representative of the long-term standardized data otherwise available on the NEON data portal. Prototype data are provided as downloadable zip files.
 
 The `/prototype/data` endpoint provides access to all data associated with a single dataset.
@@ -82,6 +87,13 @@ Get information about a prototype dataset
 <a name="get_prototype_data_uuid"></a>
 ### GET `/prototype/data/{uuid}`
 
+#### **Authentication**
+
+!!! requires-auth "Requires Authentication"
+
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
+
+
 #### **Description**
 Get information about data files for the prototype dataset
 
@@ -120,6 +132,13 @@ Get information about data files for the prototype dataset
 
 <a name="get_prototype_data_uuid_file"></a>
 ### GET `/prototype/data/{uuid}/{filename}`
+
+#### **Authentication**
+
+!!! requires-auth "Requires Authentication"
+
+    [API Token](/data-api/authentication#api-tokens) required to utilize this endpoint.
+
 
 #### **Description**
 Gets a data file
@@ -324,7 +343,7 @@ Type definition for a prototype dataset related data product
 |**dataProductDescription**  |A brief description of the data product|string|
 
 <a name="error"></a>
-### **error**  
+### **error**
 
 Information about errors in the response
 
