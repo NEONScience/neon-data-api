@@ -9,7 +9,6 @@ packages/**/*/build
 **/*.eslintcache
 .pnp.*
 .yarn/
-dist/
 
 .DS_Store
 **/*.DS_Store

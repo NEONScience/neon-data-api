@@ -15,7 +15,7 @@ target "docker-metadata-action" {
 }
 
 target "bootstrap" {
-  platforms = [ "linux/amd64" ]
+  platforms = [ "linux/amd64", "linux/arm64" ]
   no-cache = true
 }
 
